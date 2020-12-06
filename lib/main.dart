@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:flutter/material.dart';
 
 import 'package:game/daycircle.dart';
+import 'package:game/iPhone6781.dart';
 
 import 'package:game/resources.dart';
 
@@ -103,6 +104,12 @@ class MyApp2 extends ConsumerWidget {
                 })(),style: TextStyle(fontWeight: FontWeight.bold),),
               ],
             ),
+          ),
+          Positioned(
+
+
+            top: 500,
+            child: deneme(),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
