@@ -73,58 +73,84 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        return Positioned(
+        return Stack(
 
-          height: lerp(minHeight, maxHeight),
-          left: 0,
-          right: 0,
-          bottom: 0,
-          child: GestureDetector(
-            onTap: _toggle,
-            onVerticalDragUpdate: _handleDragUpdate,
-            onVerticalDragEnd: _handleDragEnd,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              decoration: const BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Stack(
-                      children: <Widget>[SheetHeader(
-                        fontSize: headerFontSize,
-                        topMargin: 20,
-                        text: 'Food Resources',
-                      ),
-                        for(String aaa in Resources.food_resources_name)_foodResources(aaa),
+          children: [
+
+            Positioned(
+
+              height: lerp(minHeight, maxHeight),
+              width: lerp(100, MediaQuery.of(context).size.width),
+
+              right: 0,
+              bottom: 0,
+              child: GestureDetector(
+                onTap: _toggle,
+                onVerticalDragUpdate: _handleDragUpdate,
+                onVerticalDragEnd: _handleDragEnd,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+                  ),
+                  child: Opacity(
+                    opacity: 1,
+                    child: Row(
+                      children: [
+                        Expanded(
+
+                          child: Stack(
+                            children: <Widget>[SheetHeader(
+                              fontSize: headerFontSize,
+                              topMargin: 20,
+                              text: 'Food Resources',
+                            ),
+                              for(String aaa in Resources.food_resources_name)_foodResources(aaa),
 
 
 
 
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Stack(
+                            children: <Widget>[SheetHeader(
+                              text: 'Industry Resources',
+                              fontSize: headerFontSize,
+                              topMargin: 20,
+                            ),
+                              for(String aaa in Resources.industry_resources_name)_industryResources(aaa),
+
+
+
+
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: Stack(
-                      children: <Widget>[SheetHeader(
-                        text: 'Industry Resources',
-                        fontSize: headerFontSize,
-                        topMargin: 20,
-                      ),
-                        for(String aaa in Resources.industry_resources_name)_industryResources(aaa),
-
-
-
-
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
+            Positioned(
+
+              height: 50,
+              width: 60,
+
+              right: 0,
+              bottom: 0,
+              child: Opacity(
+
+                opacity: 1,
+                child: Text('deneme',style: TextStyle(color: Colors.white),
+
+                ),
+              ),
+            ),
+          ],
         );
       },
     );

@@ -4,9 +4,7 @@ class MainInterface extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.grey.shade800,
-        body: Column(
+      child:  Column(
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
@@ -39,10 +37,10 @@ class MainInterface extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.grey.shade200,
+                              color: Colors.grey.shade300,
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.white,
+                                    color: Colors.grey.shade500,
                                     spreadRadius: 2,
                                     blurRadius: 7)
                               ]),
@@ -154,7 +152,7 @@ class MainInterface extends StatelessWidget {
             ),
           ],
         ),
-      ),
+
     );
   }
 }

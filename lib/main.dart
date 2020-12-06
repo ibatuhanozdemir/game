@@ -12,7 +12,7 @@ import 'exhibition_bottom_sheet.dart';
 
 
 void main() {
-  runApp(ProviderScope(child: MaterialApp(title: 'river', home: MainInterface())));
+  runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
 }
 
 class MyApp extends StatefulWidget {
@@ -64,24 +64,9 @@ class MyApp2 extends ConsumerWidget {
 
       body: Stack(
         children: <Widget>[
-          Container(
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: new AssetImage((() {
-                  if (greeting5.value1 < 3) {
-                    return "images/summer.jpg.jpg";
-                  } else if (greeting5.value1 >= 3 && greeting5.value1 < 6) {
-                    return "images/winter.jpg.jpg";
-                  } else if (greeting5.value1 >= 6 && greeting5.value1 < 9) {
-                    return "images/autumn.jpg.jpg";
-                  } else if (greeting5.value1 >= 9 && greeting5.value1 < 12) {
-                    return "images/spring.jpg.jpg";
-                  }
-                })()),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+         Positioned(
+           child: MainInterface(),
+         ),
           Positioned(
             height: 70,
             right: 50,
@@ -106,7 +91,7 @@ class MyApp2 extends ConsumerWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+            padding: EdgeInsets.fromLTRB(0,200, 0, 0),
             child: Card(child: Row(
 
               children: <Widget>[
