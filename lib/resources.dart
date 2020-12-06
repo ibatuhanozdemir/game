@@ -26,7 +26,7 @@ void saveResources(){
 wood().kaydet();
 food().kaydet();
 stone().kaydet();
-
+//650
 }
 
 Future<int> getResources()async{
