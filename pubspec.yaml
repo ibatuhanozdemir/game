@@ -29,8 +29,10 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_riverpod: ^0.12.1
   shared_preferences: ^0.5.12+4
-
   adobe_xd: ^1.0.0+1
+  font_awesome_flutter: ^8.10.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

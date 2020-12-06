@@ -2,9 +2,8 @@ import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/resources/food/food.dart';
 import 'package:game/resources.dart';
-import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/resources/industry/wood.dart';
+
 
 const double minHeight = 50;
 const double iconStartSize = 46;

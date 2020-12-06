@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/all.dart';
 
@@ -144,19 +143,16 @@ class MyApp2 extends ConsumerWidget {
 
     /* return  Scaffold(
         appBar: AppBar(title: Text('asdfaf',)),
-
       body: Center(child: Column(
         children: [
           RaisedButton(
             onPressed: (){context.read(asd).startTimer();},
-
           ),
           Consumer(builder: (context,  watch, child) {final greeting = watch(asd);
           return Text(greeting.value1.toString()); },)
           ,
           RaisedButton(
             onPressed: (){context.read(asd2).startTimer();},
-
           ),
           Consumer(builder: (context,  watch, child) {final greeting2 = watch(asd2);
           return Text(greeting2.value1.toString()); },),
@@ -164,7 +160,6 @@ class MyApp2 extends ConsumerWidget {
           return Text('food='+food.food_count.toString()); },),
           Consumer(builder: (context,  watch, child) {final greeting3 = watch(asd2);
           return Text('wood='+wood.wood_count.toString()); },),
-
           Consumer(builder: (context,  watch, child) {final greeting5 = watch(asd3);
           return Text('day='+greeting5.value1.toString()); },),
           Consumer(builder: (context,  watch, child) {final greeting5 = watch(asd3);
@@ -173,10 +168,7 @@ class MyApp2 extends ConsumerWidget {
           return Text('year='+greeting5.value3.toString()); },),
         ],
       ),
-
       ),
-
-
     );*/
   }
 }
