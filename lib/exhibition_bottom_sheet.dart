@@ -2,11 +2,11 @@ import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:game/food.dart';
+import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/resources/food/food.dart';
 import 'package:game/resources.dart';
-import 'package:game/wood.dart';
+import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/resources/industry/wood.dart';
 
-const double minHeight = 120;
+const double minHeight = 50;
 const double iconStartSize = 46;
 const double iconEndSize = 20;
 const double iconStartMarginTop = 40;
@@ -99,7 +99,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                         topMargin: 20,
                         text: 'Food Resources',
                       ),
-                        for(String aaa in Resources.isim)_buildIcon(aaa),
+                        for(String aaa in Resources.food_resources_name)_foodResources(aaa),
 
 
 
@@ -114,7 +114,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                         fontSize: headerFontSize,
                         topMargin: 20,
                       ),
-                        for(String aaa in Resources.isim)_buildIcon(aaa),
+                        for(String aaa in Resources.industry_resources_name)_industryResources(aaa),
 
 
 
@@ -131,8 +131,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     );
   }
 
-  Widget _buildIcon(String event) {
-    int index = Resources.isim.indexOf(event);
+  Widget _foodResources(String event) {
+    int index = Resources.food_resources_name.indexOf(event);
 
     return Positioned(
       height: 50,
@@ -141,11 +141,24 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       left: 5,
       child: ClipRRect(
 
-      child: Text(event+" = "+""+Resources.ert[0][event].toString(),style: TextStyle(color: Colors.white)),
+      child: Text(event+" = "+""+Resources.food_resources[0][event].toString(),style: TextStyle(color: Colors.white)),
       ),
     );
   }
+  Widget _industryResources(String event) {
+    int index = Resources.industry_resources_name.indexOf(event);
 
+    return Positioned(
+      height: 50,
+      width: 100,
+      top: 50+index.toDouble()*20,
+      left: 5,
+      child: ClipRRect(
+
+        child: Text(event+" = "+""+Resources.industry_resources[0][event].toString(),style: TextStyle(color: Colors.white)),
+      ),
+    );
+  }
 
 
   void _toggle() {
@@ -157,7 +170,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
   void _handleDragUpdate(DragUpdateDetails details) {
 
     _controller.value -= (details.primaryDelta) / maxHeight;
-    print(_controller.value);
+
   }
 
   void _handleDragEnd(DragEndDetails details) {

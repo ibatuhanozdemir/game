@@ -1,14 +1,15 @@
-import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/all.dart';
 
 import 'package:flutter/material.dart';
+
 import 'package:game/daycircle.dart';
-import 'package:game/deneme2.dart';
-import 'package:game/food.dart';
-import 'package:game/wood.dart';
+
+import 'package:game/resources.dart';
+
 import 'exhibition_bottom_sheet.dart';
-import 'deneme.dart';
+
 
 void main() {
   runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
@@ -21,6 +22,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +32,8 @@ class _MyAppState extends State<MyApp> {
       body: Center(
         child: RaisedButton(
           onPressed: () async {
-            dynamic result = await food().getIntFromSharedPref();
-            dynamic result2 = await wood().getIntFromSharedPref();
+
+            dynamic result2 = await Resources().getResources();
             context.read(asd3).startTimer();
             if (result2 == null) {
               print('error');
@@ -46,18 +48,20 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-final asd = ChangeNotifierProvider((ref) => deneme());
-final asd2 = ChangeNotifierProvider((ref) => deneme2());
+
 final asd3 = ChangeNotifierProvider((ref) => daycircle());
 
 class MyApp2 extends ConsumerWidget {
+
+
+
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final greeting = watch(asd);
-    final greeting2 = watch(asd2);
+
     final greeting5 = watch(asd3);
 
     return Scaffold(
+
       body: Stack(
         children: <Widget>[
           Container(
@@ -124,13 +128,16 @@ class MyApp2 extends ConsumerWidget {
                   padding: EdgeInsets.all(0),
                   width: MediaQuery.of(context).size.height * 0.05,
                   child: Text("1"),
-                )
+                ),
+
+
               ],
             ),
 
             ),
           ),
           ExhibitionBottomSheet(),
+
         ],
       ),
     );

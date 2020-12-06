@@ -1,21 +1,50 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:game/deneme.dart';
-import 'package:game/food.dart';
 
-import 'deneme2.dart';
+
+
+
+import 'package:game/resources.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class daycircle extends ChangeNotifier{
   int daycycle = 1;
   int get value1 => day;
   int get value2 => mounth;
   int get value3 => year;
-  int day=0;
-  int mounth = 0;
-  int year = 0;
+  static int day;
+  static int mounth;
+  static int year;
 
+  Future<void> kaydet()async{
+    final prefs= await SharedPreferences.getInstance();
+    notifyListeners();
+    prefs.setInt('day', day);
+    prefs.setInt('mounth', mounth);
+    prefs.setInt('year', year);
 
+  }
+  Future<int> getIntFromSharedPref() async {
+
+    final prefs = await SharedPreferences.getInstance();
+    final startupNumberday = prefs.getInt('day');
+    final startupNumbermounth = prefs.getInt('mounth');
+    final startupNumberyear = prefs.getInt('year');
+    if (startupNumberday == null) {
+      day=0;
+      year=0;
+      mounth=0;
+      return 0;
+
+    }
+    day=startupNumberday;
+    mounth=startupNumbermounth;
+    year=startupNumberyear;
+    return 0;
+  }
 
 
 
@@ -29,17 +58,19 @@ class daycircle extends ChangeNotifier{
 
         day++;
 
-        if(day>10){
+        if(day>2){
+          Resources().saveResources();
+
+          kaydet();
           day=0;
           mounth++;
           if(mounth>2){
             mounth=0;
             year++;}}
 
-        daycycle=1;
-        deneme().foodplus();
-        deneme2().woodplus();
-        notifyListeners();
+              daycycle=1;
+             Resources().updateResources();
+              notifyListeners();
 
         timer.cancel();
         startTimer();
