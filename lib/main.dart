@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:flutter/material.dart';
 
 import 'package:game/daycircle.dart';
+import 'package:game/main_interface.dart';
 
 import 'package:game/resources.dart';
 
@@ -11,7 +12,7 @@ import 'exhibition_bottom_sheet.dart';
 
 
 void main() {
-  runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
+  runApp(ProviderScope(child: MaterialApp(title: 'river', home: MainInterface())));
 }
 
 class MyApp extends StatefulWidget {
