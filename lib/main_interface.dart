@@ -6,9 +6,6 @@ class MainInterface extends StatelessWidget {
     return SafeArea(
       child:  Column(
           children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
-            ),
             Center(
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.2,

@@ -72,7 +72,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
           children: [
             Positioned(
               height: lerp(minHeight, maxHeight),
-              width: lerp(100, MediaQuery.of(context).size.width),
+              width: lerp(MediaQuery.of(context).size.width * 0.25,
+                  MediaQuery.of(context).size.width),
               right: 0,
               bottom: 0,
               child: GestureDetector(
@@ -137,11 +138,11 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                       )
                     : Positioned(
                         height: MediaQuery.of(context).size.width * 0.07,
-                        width: MediaQuery.of(context).size.width * 0.2,
+                        width: MediaQuery.of(context).size.width * 0.222,
                         right: 0,
                         bottom: 0,
                         child: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             _toggle();
                           },
                           child: Text(
@@ -195,7 +196,6 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     final bool isOpen = _controller.status == AnimationStatus.completed;
 
     _controller.fling(velocity: isOpen ? -2 : 2);
-
   }
 
   void _handleDragUpdate(DragUpdateDetails details) {
