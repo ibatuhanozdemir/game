@@ -1,9 +1,9 @@
 import 'dart:math' as math;
 import 'dart:ui';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:game/resources.dart';
-
 
 const double minHeight = 50;
 const double iconStartSize = 46;
@@ -14,19 +14,15 @@ const double iconsVerticalSpacing = 0;
 const double iconsHorizontalSpacing = 30;
 
 class ExhibitionBottomSheet extends StatefulWidget {
-
   @override
   _ExhibitionBottomSheetState createState() => _ExhibitionBottomSheetState();
 }
 
 class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     with SingleTickerProviderStateMixin {
-
-
-
   AnimationController _controller;
 
-  double get maxHeight => MediaQuery.of(context).size.height*0.8;
+  double get maxHeight => MediaQuery.of(context).size.height * 0.8;
 
   double get headerTopMargin =>
       lerp(20, 20 + MediaQuery.of(context).padding.top);
@@ -69,19 +65,14 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
 
   @override
   Widget build(BuildContext context) {
-
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
         return Stack(
-
           children: [
-
             Positioned(
-
               height: lerp(minHeight, maxHeight),
               width: lerp(100, MediaQuery.of(context).size.width),
-
               right: 0,
               bottom: 0,
               child: GestureDetector(
@@ -92,40 +83,37 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   decoration: const BoxDecoration(
                     color: Colors.black,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(32)),
                   ),
                   child: Opacity(
-                    opacity: 1,
+                    opacity: _controller.isCompleted ? 1 : 0,
                     child: Row(
                       children: [
                         Expanded(
-
                           child: Stack(
-                            children: <Widget>[SheetHeader(
-                              fontSize: headerFontSize,
-                              topMargin: 20,
-                              text: 'Food Resources',
-                            ),
-                              for(String aaa in Resources.food_resources_name)_foodResources(aaa),
-
-
-
-
+                            children: <Widget>[
+                              SheetHeader(
+                                fontSize: headerFontSize,
+                                topMargin: 20,
+                                text: 'Food Resources',
+                              ),
+                              for (String aaa in Resources.food_resources_name)
+                                _foodResources(aaa),
                             ],
                           ),
                         ),
                         Expanded(
                           child: Stack(
-                            children: <Widget>[SheetHeader(
-                              text: 'Industry Resources',
-                              fontSize: headerFontSize,
-                              topMargin: 20,
-                            ),
-                              for(String aaa in Resources.industry_resources_name)_industryResources(aaa),
-
-
-
-
+                            children: <Widget>[
+                              SheetHeader(
+                                text: 'Industry Resources',
+                                fontSize: headerFontSize,
+                                topMargin: 20,
+                              ),
+                              for (String aaa
+                                  in Resources.industry_resources_name)
+                                _industryResources(aaa),
                             ],
                           ),
                         ),
@@ -135,21 +123,33 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                 ),
               ),
             ),
-            Positioned(
-
-              height: 50,
-              width: 60,
-
-              right: 0,
-              bottom: 0,
-              child: Opacity(
-
-                opacity: 1,
-                child: Text('deneme',style: TextStyle(color: Colors.white),
-
-                ),
-              ),
-            ),
+            Container(
+                child: _controller.isCompleted
+                    ? Positioned(
+                        height: MediaQuery.of(context).size.width * 0.01,
+                        width: MediaQuery.of(context).size.width * 0.01,
+                        right: 0,
+                        bottom: 0,
+                        child: Text(
+                          '.',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    : Positioned(
+                        height: MediaQuery.of(context).size.width * 0.07,
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        right: 0,
+                        bottom: 0,
+                        child: GestureDetector(
+                          onTap: (){
+                            _toggle();
+                          },
+                          child: Text(
+                            'Resources',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      )),
           ],
         );
       },
@@ -162,40 +162,44 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     return Positioned(
       height: 50,
       width: 100,
-      top: 50+index.toDouble()*20,
+      top: 50 + index.toDouble() * 20,
       left: 5,
       child: ClipRRect(
-
-      child: Text(event+" = "+""+Resources.food_resources[0][event].toString(),style: TextStyle(color: Colors.white)),
+        child: Text(
+            event + " = " + "" + Resources.food_resources[0][event].toString(),
+            style: TextStyle(color: Colors.white)),
       ),
     );
   }
+
   Widget _industryResources(String event) {
     int index = Resources.industry_resources_name.indexOf(event);
 
     return Positioned(
       height: 50,
       width: 100,
-      top: 50+index.toDouble()*20,
+      top: 50 + index.toDouble() * 20,
       left: 5,
       child: ClipRRect(
-
-        child: Text(event+" = "+""+Resources.industry_resources[0][event].toString(),style: TextStyle(color: Colors.white)),
+        child: Text(
+            event +
+                " = " +
+                "" +
+                Resources.industry_resources[0][event].toString(),
+            style: TextStyle(color: Colors.white)),
       ),
     );
   }
-
 
   void _toggle() {
     final bool isOpen = _controller.status == AnimationStatus.completed;
 
     _controller.fling(velocity: isOpen ? -2 : 2);
+
   }
 
   void _handleDragUpdate(DragUpdateDetails details) {
-
     _controller.value -= (details.primaryDelta) / maxHeight;
-
   }
 
   void _handleDragEnd(DragEndDetails details) {
@@ -213,15 +217,15 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
   }
 }
 
-
-
-
 class SheetHeader extends StatelessWidget {
   final double fontSize;
   final double topMargin;
   final String text;
   const SheetHeader(
-      {Key key, @required this.fontSize, @required this.topMargin,@required this.text})
+      {Key key,
+      @required this.fontSize,
+      @required this.topMargin,
+      @required this.text})
       : super(key: key);
 
   @override
