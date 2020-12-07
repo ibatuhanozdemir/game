@@ -53,49 +53,17 @@ class MyApp2 extends ConsumerWidget {
     final greeting5 = watch(asd3);
 
     return Scaffold(
+      backgroundColor: Colors.grey,
       body: Stack(
         children: <Widget>[
           Positioned(
-            child: MainInterface(),
-          ),
-          Positioned(
-            height: 70,
-            right: 50,
-            top: 20,
-            child: Column(
-              children: [
-                Text(
-                  'day=' + greeting5.value1.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'mounth=' + greeting5.value2.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'year=' + greeting5.value3.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  (() {
-                    if (greeting5.value1 < 3) {
-                      return 'yaz';
-                    } else if (greeting5.value1 >= 3 && greeting5.value1 < 6) {
-                      return 'kış';
-                    } else if (greeting5.value1 >= 6 && greeting5.value1 < 9) {
-                      return 'sonbahar';
-                    } else if (greeting5.value1 >= 9 && greeting5.value1 < 12) {
-                      return 'ilkbahar';
-                    }
-                  })(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
+            child: MainInterface(greeting5.value1.toString(),greeting5.value2.toString(),greeting5.value3.toString(),greeting5.value1),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 200, 0, 0),
+            padding: EdgeInsets.fromLTRB(0, 210, 0, 0),
             child: Card(
+              color: Colors.grey.shade700,
+              elevation: 20,
               child: Row(
                 children: <Widget>[
                   Container(
