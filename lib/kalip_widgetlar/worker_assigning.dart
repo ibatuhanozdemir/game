@@ -34,6 +34,7 @@ class _WorkerAssigningState extends State<WorkerAssigning> {
   }
   @override
   Widget build(BuildContext context) {
+    context=widget.context;
     print('oluştum');
     return  Stack(
       children: <Widget>[
