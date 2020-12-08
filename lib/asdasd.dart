@@ -1,1 +1,0 @@
-TopResourceWidget('food', 'tomato', Resources.food_resources[0]['food'].toString())
