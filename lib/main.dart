@@ -9,6 +9,7 @@ import 'package:game/main_interface.dart';
 
 import 'package:game/resources.dart';
 import 'package:game/resources/industry/industy_building.dart';
+import 'package:game/resources/food/food_building.dart';
 
 import 'exhibition_bottom_sheet.dart';
 
@@ -31,6 +32,11 @@ class _MyAppState extends State<MyApp> {
       ),
       body: Center(
         child: RaisedButton(
+          child: Text(
+            "Tab bar tamam ama altındaki widgetlar yordu biraz. Onları da bir tek liste haline getiricem",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontFamily: "Cinzel"),
+          ),
           onPressed: () async {
             dynamic result2 = await Resources().getResources();
             context.read(asd3).startTimer();
@@ -53,20 +59,61 @@ class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final greeting5 = watch(asd3);
-
+    List<String> tabNames = [
+      "Industry",
+      "Food",
+    ];
     return Scaffold(
       backgroundColor: Colors.grey,
       body: Stack(
         children: <Widget>[
           Positioned(
-            child: MainInterface(greeting5.value1.toString(),greeting5.value2.toString(),greeting5.value3.toString(),greeting5.value1),
+            child: MainInterface(
+                greeting5.value1.toString(),
+                greeting5.value2.toString(),
+                greeting5.value3.toString(),
+                greeting5.value1),
           ),
           Positioned(
-            top:MediaQuery.of(context).size.height*0.2,
+            top: MediaQuery.of(context).size.height * 0.23,
             width: MediaQuery.of(context).size.width,
-            height:MediaQuery.of(context).size.height*0.8,
-            child: ListView.builder(itemBuilder:(_, index){ return IndstryBuilding(context,index);},
-            itemCount: IndustryBuilding.industry_building.length),
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: DefaultTabController(
+              length: 2,
+              child: Scaffold(
+                appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(
+                      MediaQuery.of(context).size.height * 0.04),
+                  child: Padding(
+                    padding: EdgeInsets.all(3),
+                    child: AppBar(
+                      backgroundColor: Colors.grey,
+                      bottom: TabBar(
+                        isScrollable: true,
+                        tabs: [
+                          Center(child: Text("Industry Buildings")),
+                          Center(child: Text("Food Buildings")),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                body: TabBarView(
+                  children: [
+                    ListView.builder(
+                        itemBuilder: (_, index) {
+                          return IndstryBuildingWidgeti(context, index);
+                        },
+                        itemCount: IndustryBuilding.industry_building.length),
+                    ListView.builder(
+                        itemBuilder: (_, index) {
+                          return FoodBuildingWidgeti(context, index);
+                        },
+                        itemCount: FoodBuilding.food_building.length),
+                  ],
+                ),
+              ),
+            ),
           ),
           ExhibitionBottomSheet(),
         ],
@@ -74,8 +121,7 @@ class MyApp2 extends ConsumerWidget {
     );
   }
 
-
-  Widget IndstryBuilding (BuildContext context,int index){
+  Widget IndstryBuildingWidgeti(BuildContext context, int index) {
     return GestureDetector(
       child: Card(
         color: Colors.grey.shade700,
@@ -104,17 +150,64 @@ class MyApp2 extends ConsumerWidget {
           ],
         ),
       ),
-      onTap: (){showInformationDialog(context,IndustryBuilding.industry_building[index]);},
+      onTap: () {
+        showInformationDialog(
+            context, IndustryBuilding.industry_building[index]);
+      },
     );
+  }
 
-}
-  Future<void> showInformationDialog(BuildContext context,String workarea) async {
+  Widget FoodBuildingWidgeti(BuildContext context, int index) {
+    return GestureDetector(
+      child: Card(
+        color: Colors.grey.shade700,
+        elevation: 20,
+        child: Row(
+          children: <Widget>[
+            Container(
+                height: MediaQuery.of(context).size.height * 0.16,
+                width: MediaQuery.of(context).size.height * 0.16,
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: Image.asset("images/woodcutter.png")),
+            SizedBox(
+              width: MediaQuery.of(context).size.height * 0.01,
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: Text(FoodBuilding.food_building[index]),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(0),
+              width: MediaQuery.of(context).size.height * 0.05,
+              child: Text("1"),
+            ),
+          ],
+        ),
+      ),
+      onTap: () {
+        showInformationDialog(
+            context, IndustryBuilding.industry_building[index]);
+      },
+    );
+  }
+
+  Future<void> showInformationDialog(
+      BuildContext context, String workarea) async {
     return await showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-
-            content: WorkerAssigning(context,workarea),
+            content: WorkerAssigning(context, workarea),
+            actions: [
+              GestureDetector(
+                child: Center(child: Text("Done")),
+                onTap: () {
+                  Navigator.pop;
+                },
+              )
+            ],
           );
         });
   }

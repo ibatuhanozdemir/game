@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:game/worker/citizen.dart';
 
@@ -25,9 +24,7 @@ class _WorkerAssigningState extends State<WorkerAssigning> {
   void initState() {
     // TODO: implement initState
     super.initState();
-eleme();
-
-
+    eleme();
   }
 
   @override
@@ -135,7 +132,9 @@ eleme();
           ],
         ),
       ),
-      onTap: (){this.IseAlma(unemployedworker[index]['id'],workarea);},
+      onTap: () {
+        this.IseAlma(unemployedworker[index]['id'], workarea);
+      },
     );
   }
 
@@ -149,7 +148,8 @@ eleme();
       }
     });
   }
-  void IseAlma(int id,String workarea_name) {
+
+  void IseAlma(int id, String workarea_name) {
     Citizen.citizen.forEach((element) {
       if (element['id'] == id) {
         setState(() {
@@ -159,7 +159,8 @@ eleme();
       }
     });
   }
-  void eleme(){
+
+  void eleme() {
     employedworker = Citizen.citizen
         .where((element) => (element['workarea'].contains(workarea)))
         .toList();
@@ -168,6 +169,5 @@ eleme();
         .toList();
 
     loading = true;
-
   }
 }
