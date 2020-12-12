@@ -1,4 +1,4 @@
 class IndustryBuilding{
 
-  static List industry_building=['woodcutter','stonecutter'];
+  static List industry_building=[{'name':'woodcutter','progres':true},{'name':'stonecutter','progres':true}];
 }

@@ -54,6 +54,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 final asd3 = ChangeNotifierProvider((ref) => daycircle());
+bool showprogres = false;
 
 class MyApp2 extends ConsumerWidget {
   @override
@@ -123,6 +124,7 @@ class MyApp2 extends ConsumerWidget {
         color: Colors.grey.shade700,
         elevation: 20,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
                 height: MediaQuery.of(context).size.height * 0.16,
@@ -133,16 +135,62 @@ class MyApp2 extends ConsumerWidget {
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: Text(IndustryBuilding.industry_building[index]),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: Text(IndustryBuilding.industry_building[index]
+                            ['name'] +
+                        '(10/15)'),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                    child: Text('Req= labour:50 wood:20  stone:30'),
+                  ),
+                ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(0),
-              width: MediaQuery.of(context).size.height * 0.05,
-              child: Text("1"),
-            ),
+            Column(children: [
+              Container(
+                color: Colors.red,
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width * 0.15,
+                child: Text("Qty. 15"),
+              ),
+              IndustryBuilding.industry_building[index]['progres']
+                  ? RaisedButton(
+                      child: Text('Build'),
+                      onPressed: () {
+                        IndustryBuilding.industry_building[index]['progres'] =
+                            false;
+                      })
+                  : RaisedButton(
+                      child: Text('Add Worker'),
+                      onPressed: () {
+                        IndustryBuilding.industry_building[index]['progres'] =
+                            false;
+                      }),
+              IndustryBuilding.industry_building[index]['progres']
+                  ?Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width * 0.20,
+              ): Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      child: LinearProgressIndicator(
+                        minHeight: MediaQuery.of(context).size.height * 0.02,
+                        backgroundColor: Colors.red,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          Colors.amber,
+                        ),
+                        value: 0.1,
+                      ))
+
+            ]),
           ],
         ),
       ),

@@ -24,7 +24,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
-  double get maxHeight => MediaQuery.of(context).size.height * 0.8;
+  double get maxHeight => MediaQuery.of(context).size.height * 0.75;
 
   double get headerTopMargin =>
       lerp(20, 20 + MediaQuery.of(context).padding.top);
