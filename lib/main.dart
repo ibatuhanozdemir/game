@@ -56,13 +56,11 @@ class _MyAppState extends State<MyApp> {
 final asd3 = ChangeNotifierProvider((ref) => daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
 
-
 class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-   
     final greeting5 = watch(asd3);
-  print('ana');
+
     List<String> tabNames = [
       "Industry",
       "Food",
@@ -121,8 +119,6 @@ class MyApp2 extends ConsumerWidget {
     );
   }
 
-
-
   Widget FoodBuildingWidgeti(BuildContext context, int index) {
     return GestureDetector(
       child: Card(
@@ -179,19 +175,14 @@ class MyApp2 extends ConsumerWidget {
   }
 }
 
-
-
-
-  
-
-
 class IndstryBuildingWidgeti extends ConsumerWidget {
   @override
   int index;
 
   IndstryBuildingWidgeti(this.index);
 
-  Widget build(BuildContext context,ScopedReader watch) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    print(IndustryBuilding.industry_building[index]['name']);
     watch(aa);
     return GestureDetector(
       child: Card(
@@ -215,7 +206,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                   Container(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                     child: Text(IndustryBuilding.industry_building[index]
-                    ['name'] +
+                            ['name'] +
                         '(10/15)'),
                   ),
                   SizedBox(
@@ -237,27 +228,31 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
               ),
               IndustryBuilding.industry_building[index]['progres']
                   ? RaisedButton(
-                  child: Text('Build'),
-                  onPressed: (){context.read(aa).build(index);})
+                      child: Text('Build'),
+                      onPressed: () {
+                        context.read(aa).build(index);
+                      })
                   : RaisedButton(
-                  child: Text('Add Worker'),
-                  onPressed: () {context.read(aa).build(index);}),
+                      child: Text('Add Worker'),
+                      onPressed: () {
+                        context.read(aa).build(index);
+                      }),
               IndustryBuilding.industry_building[index]['progres']
-                  ?Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width * 0.20,
-              ): Container(
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  child: LinearProgressIndicator(
-                    minHeight: MediaQuery.of(context).size.height * 0.02,
-                    backgroundColor: Colors.red,
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      Colors.amber,
-                    ),
-                    value: 0.1,
-                  ))
-
+                  ? Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.20,
+                    )
+                  : Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      child: LinearProgressIndicator(
+                        minHeight: MediaQuery.of(context).size.height * 0.02,
+                        backgroundColor: Colors.red,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          Colors.amber,
+                        ),
+                        value: 0.1,
+                      ))
             ]),
           ],
         ),
