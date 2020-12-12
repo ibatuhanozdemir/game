@@ -10,23 +10,40 @@ class SaveSystem {
   Future<void> save(String resource_save_name,int resource_name )async{
     final prefs= await SharedPreferences.getInstance();
 
-    Future<bool> resut = prefs.setInt(resource_save_name, resource_name);
+    prefs.setInt(resource_save_name, resource_name);
 
   }
-  Future<int> load(String resource_save_name,int resource_name) async {
+  Future<int> loadFood(String resource_save_name,int index) async {
 
     final prefs = await SharedPreferences.getInstance();
     final startupNumber =  prefs.getInt(resource_save_name);
 
 
     if (startupNumber == null) {
-     resource_name=0;
+     FoodResources.food_resource_sublist_count[index][resource_save_name]=0;
 
       return 0;
 
     }
 
-    resource_name=startupNumber;
+    FoodResources.food_resource_sublist_count[index][resource_save_name]=startupNumber;
+
+    return 0;
+  }
+  Future<int> loadIndustry(String resource_save_name,int index) async {
+
+    final prefs = await SharedPreferences.getInstance();
+    final startupNumber =  prefs.getInt(resource_save_name);
+
+
+    if (startupNumber == null) {
+      IndustryResources.industry_resources[index][resource_save_name]=0;
+
+      return 0;
+
+    }
+
+    IndustryResources.industry_resources[index][resource_save_name]=startupNumber;
 
     return 0;
   }
@@ -60,18 +77,18 @@ class SaveSystem {
 
 
   Future<void> AllSave()async{
-    int i=0;
-    await FoodResources.food_resource_sublist_name.forEach((element)async {
-      await save(element, FoodResources.food_resource_sublist_count[i][element]);
 
-      i=i+1;
+    await FoodResources.food_resource_sublist_name.forEach((element)async {
+      await save(element, FoodResources.food_resource_sublist_count[FoodResources.food_resource_sublist_name.indexOf(element)][element]);
+
+
     });
 
 
-    int a=0;
+
     await IndustryResources.industry_resources_name.forEach((element)async {
-      await save(element, IndustryResources.industry_resources[a][element]);
-      a=a+1;
+      await save(element, IndustryResources.industry_resources[IndustryResources.industry_resources_name.indexOf(element)][element]);
+
     });
     await kaydet();
    
@@ -79,18 +96,18 @@ class SaveSystem {
   }
 
   Future<int> getResources()async{
-    int i=0;
-    await FoodResources.food_resource_sublist_name.forEach((element)async {
-      await load(element, FoodResources.food_resource_sublist_count[i][element]);
 
-      i=i+1;
+    await FoodResources.food_resource_sublist_name.forEach((element)async {
+      await loadFood(element,FoodResources.food_resource_sublist_name.indexOf(element));
+
+
     });
 
-    int a=0;
-    await IndustryResources.industry_resources_name.forEach((element)async {
-      await load(element, IndustryResources.industry_resources[a][element]);
 
-      a=a+1;
+
+    await IndustryResources.industry_resources_name.forEach((element)async {
+      await loadIndustry(element, IndustryResources.industry_resources_name.indexOf(element));
+
     });
     await getIntFromSharedPref();
 

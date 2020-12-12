@@ -43,7 +43,7 @@ class daycircle extends ChangeNotifier {
           HuntingCabin().collectResources();
           WoodCutter().collectResources();
           StoneCutter().collectResources();
-          //FoodResources().calculateFood();
+          FoodResources().calculateFood();
           notifyListeners();
 
           timer.cancel();

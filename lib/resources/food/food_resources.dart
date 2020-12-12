@@ -18,11 +18,11 @@ static List food_resource_sublist_count=[{'mushroom':0,'kaysayı':1},{'raw meet'
 
 
 void calculateFood(){
-  int i=0;
 
+  food_resources_count[0]['food']=0;
   food_resource_sublist_name.forEach((element) {
-
-    food_resources_count[0]['food']=food_resource_sublist_count[i][element]*food_resource_sublist_count[i]['kaysayı'];
+      int aradeger = food_resource_sublist_count[ food_resource_sublist_name.indexOf(element)][element]*food_resource_sublist_count[food_resource_sublist_name.indexOf(element)]['kaysayı'];
+    food_resources_count[0]['food']=food_resources_count[0]['food']+aradeger;
   });
 
 }
