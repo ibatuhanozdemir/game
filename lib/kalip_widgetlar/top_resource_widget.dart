@@ -23,7 +23,7 @@ class TopResourceWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(3),
             child: Container(
-              height: 20,
+              height: 15,
               child: Image.asset("images/$photoName.png"),
             ),
           ),

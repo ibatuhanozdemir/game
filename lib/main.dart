@@ -5,14 +5,16 @@ import 'package:flutter/material.dart';
 
 import 'package:game/daycircle.dart';
 import 'package:game/kalip_widgetlar/worker_assigning.dart';
-import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/kalip_widgetlar/main_interface.dart';
+import 'package:game/resources/food/food_resources.dart';
 
-
-import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/buildings/industrybuildings/industy_buildings.dart';
-import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/buildings/foodbuildings/food_buildings.dart';
 import 'package:game/savesystem/save_system.dart';
 
+import 'buildings/foodbuildings/food_buildings.dart';
+import 'buildings/industrybuildings/industy_buildings.dart';
 import 'kalip_widgetlar/exhibition_bottom_sheet.dart';
+import 'kalip_widgetlar/main_interface.dart';
+import 'kalip_widgetlar/time_widget.dart';
+import 'kalip_widgetlar/top_resource_widget.dart';
 
 void main() {
   runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
@@ -64,42 +66,39 @@ class MyApp2 extends ConsumerWidget {
       "Industry",
       "Food",
     ];
-    return Scaffold(
-      backgroundColor: Colors.grey,
-      body: Stack(
-        children: <Widget>[
-          Positioned(
-            child: MainInterface(
-                greeting5.value1.toString(),
-                greeting5.value2.toString(),
-                greeting5.value3.toString(),
-                greeting5.value2),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: Colors.grey,
+        appBar: PreferredSize(
+          preferredSize:
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.2),
+          child: AppBar(
+            flexibleSpace: CustomAppBar(),
+            title: Text(
+              "Tayfun's Town",
+              style: TextStyle(
+                  color: Colors.grey.shade200,
+                  fontSize: 25,
+                  fontFamily: "Ewert"),
+            ),
+            centerTitle: true,
+            bottom: TabBar(
+              isScrollable: true,
+              tabs: [
+                Center(child: Text("Industry Buildings")),
+                Center(child: Text("Food Buildings")),
+              ],
+            ),
           ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.23,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.8,
-            child: DefaultTabController(
-              length: 2,
-              child: Scaffold(
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(
-                      MediaQuery.of(context).size.height * 0.04),
-                  child: Padding(
-                    padding: EdgeInsets.all(3),
-                    child: AppBar(
-                      backgroundColor: Colors.grey,
-                      bottom: TabBar(
-                        isScrollable: true,
-                        tabs: [
-                          Center(child: Text("Industry Buildings")),
-                          Center(child: Text("Food Buildings")),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                body: TabBarView(
+        ),
+        body: Stack(
+          children: <Widget>[
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.01,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.8,
+                child: TabBarView(
                   children: [
                     ListView.builder(
                         itemBuilder: (_, index) {
@@ -113,11 +112,11 @@ class MyApp2 extends ConsumerWidget {
                         itemCount: FoodBuilding.food_building.length),
                   ],
                 ),
-              ),
+
             ),
-          ),
-          ExhibitionBottomSheet(),
-        ],
+            ExhibitionBottomSheet(),
+          ],
+        ),
       ),
     );
   }
@@ -211,5 +210,82 @@ class MyApp2 extends ConsumerWidget {
             ],
           );
         });
+  }
+}
+
+class CustomAppBar extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, ScopedReader watch) {
+    final greeting5 = watch(asd3);
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: TopResourceWidget(
+                        'food',
+                        'tomato',
+                        FoodResources.food_resources_count[0]['food']
+                            .toString()),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: TopResourceWidget(
+                        'food',
+                        'tomato',
+                        FoodResources.food_resources_count[0]['food']
+                            .toString()),
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: TopResourceWidget('wood', 'wood', '0'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: TopResourceWidget('wood', 'wood', '0'),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  TimeWidget(greeting5.value1.toString(), greeting5.value2.toString(), greeting5.value3.toString(), greeting5.value2),
+                ],
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 2, 3, 8),
+                child: Icon(Icons.pause),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(3, 2, 8, 8),
+                child: Icon(Icons.play_arrow),
+              )
+            ],
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+        ],
+      ),
+    );
   }
 }

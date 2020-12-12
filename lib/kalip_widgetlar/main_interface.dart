@@ -75,7 +75,7 @@ class MainInterface extends StatelessWidget {
                         children: [
                           TimeWidget(day, month, year, season),
                         ],
-                      )
+                      ),
                     ],
                   ),
                   Row(
