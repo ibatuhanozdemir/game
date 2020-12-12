@@ -54,12 +54,15 @@ class _MyAppState extends State<MyApp> {
 }
 
 final asd3 = ChangeNotifierProvider((ref) => daycircle());
-bool showprogres = false;
+final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
+
 
 class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+   
     final greeting5 = watch(asd3);
+  print('ana');
     List<String> tabNames = [
       "Industry",
       "Food",
@@ -100,7 +103,7 @@ class MyApp2 extends ConsumerWidget {
                 children: [
                   ListView.builder(
                       itemBuilder: (_, index) {
-                        return IndstryBuildingWidgeti(context, index);
+                        return IndstryBuildingWidgeti(index);
                       },
                       itemCount: IndustryBuilding.industry_building.length),
                   ListView.builder(
@@ -118,88 +121,7 @@ class MyApp2 extends ConsumerWidget {
     );
   }
 
-  Widget IndstryBuildingWidgeti(BuildContext context, int index) {
-    return GestureDetector(
-      child: Card(
-        color: Colors.grey.shade700,
-        elevation: 20,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-                height: MediaQuery.of(context).size.height * 0.16,
-                width: MediaQuery.of(context).size.height * 0.16,
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Image.asset("images/woodcutter.png")),
-            SizedBox(
-              width: MediaQuery.of(context).size.height * 0.01,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    child: Text(IndustryBuilding.industry_building[index]
-                            ['name'] +
-                        '(10/15)'),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.05,
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                    child: Text('Req= labour:50 wood:20  stone:30'),
-                  ),
-                ],
-              ),
-            ),
-            Column(children: [
-              Container(
-                color: Colors.red,
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width * 0.15,
-                child: Text("Qty. 15"),
-              ),
-              IndustryBuilding.industry_building[index]['progres']
-                  ? RaisedButton(
-                      child: Text('Build'),
-                      onPressed: () {
-                        IndustryBuilding.industry_building[index]['progres'] =
-                            false;
-                      })
-                  : RaisedButton(
-                      child: Text('Add Worker'),
-                      onPressed: () {
-                        IndustryBuilding.industry_building[index]['progres'] =
-                            false;
-                      }),
-              IndustryBuilding.industry_building[index]['progres']
-                  ?Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width * 0.20,
-              ): Container(
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.20,
-                      child: LinearProgressIndicator(
-                        minHeight: MediaQuery.of(context).size.height * 0.02,
-                        backgroundColor: Colors.red,
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          Colors.amber,
-                        ),
-                        value: 0.1,
-                      ))
 
-            ]),
-          ],
-        ),
-      ),
-      onTap: () {
-        showInformationDialog(
-            context, IndustryBuilding.industry_building[index]);
-      },
-    );
-  }
 
   Widget FoodBuildingWidgeti(BuildContext context, int index) {
     return GestureDetector(
@@ -255,4 +177,114 @@ class MyApp2 extends ConsumerWidget {
           );
         });
   }
+}
+
+
+
+
+  
+
+
+class IndstryBuildingWidgeti extends ConsumerWidget {
+  @override
+  int index;
+
+  IndstryBuildingWidgeti(this.index);
+
+  Widget build(BuildContext context,ScopedReader watch) {
+    watch(aa);
+    return GestureDetector(
+      child: Card(
+        color: Colors.grey.shade700,
+        elevation: 20,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                height: MediaQuery.of(context).size.height * 0.16,
+                width: MediaQuery.of(context).size.height * 0.16,
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: Image.asset("images/woodcutter.png")),
+            SizedBox(
+              width: MediaQuery.of(context).size.height * 0.01,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: Text(IndustryBuilding.industry_building[index]
+                    ['name'] +
+                        '(10/15)'),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                    child: Text('Req= labour:50 wood:20  stone:30'),
+                  ),
+                ],
+              ),
+            ),
+            Column(children: [
+              Container(
+                color: Colors.red,
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width * 0.15,
+                child: Text("Qty. 15"),
+              ),
+              IndustryBuilding.industry_building[index]['progres']
+                  ? RaisedButton(
+                  child: Text('Build'),
+                  onPressed: (){context.read(aa).build(index);})
+                  : RaisedButton(
+                  child: Text('Add Worker'),
+                  onPressed: () {context.read(aa).build(index);}),
+              IndustryBuilding.industry_building[index]['progres']
+                  ?Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width * 0.20,
+              ): Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * 0.20,
+                  child: LinearProgressIndicator(
+                    minHeight: MediaQuery.of(context).size.height * 0.02,
+                    backgroundColor: Colors.red,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.amber,
+                    ),
+                    value: 0.1,
+                  ))
+
+            ]),
+          ],
+        ),
+      ),
+      onTap: () {
+        showInformationDialog2(
+            context, IndustryBuilding.industry_building[index]['name']);
+      },
+    );
+  }
+}
+
+Future<void> showInformationDialog2(
+    BuildContext context, String workarea) async {
+  return await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: WorkerAssigning(context, workarea),
+          actions: [
+            GestureDetector(
+              child: Center(child: Text("Done")),
+              onTap: () {
+                Navigator.pop;
+              },
+            )
+          ],
+        );
+      });
 }
