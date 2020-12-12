@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game/main.dart';
-import 'package:game/resources.dart';
+import 'package:game/resources/food/food_resources.dart';
+
 
 import 'kalip_widgetlar/time_widget.dart';
 import 'kalip_widgetlar/top_resource_widget.dart';
@@ -47,12 +48,12 @@ class MainInterface extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: TopResourceWidget('food', 'tomato',
-                                Resources.food_resources[0]['food'].toString()),
+                                FoodResources.food_resources_count[0]['food'].toString()),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: TopResourceWidget('food', 'tomato',
-                                Resources.food_resources[0]['food'].toString()),
+                                FoodResources.food_resources_count[0]['food'].toString()),
                           )
                         ],
                       ),

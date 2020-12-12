@@ -3,7 +3,9 @@ import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:game/resources.dart';
+
+import 'package:game/resources/food/food_resources.dart';
+import 'package:game/resources/industry/industry_resources.dart';
 
 const double minHeight = 50;
 const double iconStartSize = 46;
@@ -62,7 +64,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
 
   double lerp(double min, double max) =>
       lerpDouble(min, max, _controller.value);
-
+  int y=0;
+  int z=0;
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -99,8 +102,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                                 topMargin: 20,
                                 text: 'Food Resources',
                               ),
-                              for (String aaa in Resources.food_resources_name)
-                                _foodResources(aaa),
+                              for (String aaab in FoodResources.food_resource_sublist_name)
+                                _foodResources(aaab),
                             ],
                           ),
                         ),
@@ -113,7 +116,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                                 topMargin: 20,
                               ),
                               for (String aaa
-                                  in Resources.industry_resources_name)
+                                  in IndustryResources.industry_resources_name)
                                 _industryResources(aaa),
                             ],
                           ),
@@ -158,7 +161,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
   }
 
   Widget _foodResources(String event) {
-    int index = Resources.food_resources_name.indexOf(event);
+    int index = FoodResources.food_resource_sublist_name.indexOf(event);
 
     return Positioned(
       height: 50,
@@ -167,14 +170,14 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       left: 5,
       child: ClipRRect(
         child: Text(
-            event + " = " + "" + Resources.food_resources[0][event].toString(),
+            event + " = " + "" +FoodResources.food_resource_sublist_count[index][event].toString(),
             style: TextStyle(color: Colors.white)),
       ),
     );
   }
 
   Widget _industryResources(String event) {
-    int index = Resources.industry_resources_name.indexOf(event);
+    int index = IndustryResources.industry_resources_name.indexOf(event);
 
     return Positioned(
       height: 50,
@@ -186,7 +189,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
             event +
                 " = " +
                 "" +
-                Resources.industry_resources[0][event].toString(),
+                IndustryResources.industry_resources[index][event].toString(),
             style: TextStyle(color: Colors.white)),
       ),
     );

@@ -1,8 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-
-import 'package:game/resources.dart';
+import 'package:game/buildings/foodbuildings/gatheres_hut.dart';
+import 'package:game/buildings/foodbuildings/hunting_cabin.dart';
+import 'package:game/buildings/industrybuildings/stonecutter.dart';
+import 'package:game/buildings/industrybuildings/woodcutter.dart';
+import 'package:game/resources/food/food_resources.dart';
+import 'package:game/savesystem/save_system.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,50 +19,31 @@ class daycircle extends ChangeNotifier {
   static int mounth;
   static int year;
   static int stop = 0;
-  Future<void> kaydet() async {
-    final prefs = await SharedPreferences.getInstance();
-    notifyListeners();
-    prefs.setInt('day', day);
-    prefs.setInt('mounth', mounth);
-    prefs.setInt('year', year);
-  }
-
-  Future<int> getIntFromSharedPref() async {
-    final prefs = await SharedPreferences.getInstance();
-    final startupNumberday = prefs.getInt('day');
-    final startupNumbermounth = prefs.getInt('mounth');
-    final startupNumberyear = prefs.getInt('year');
-    if (startupNumberday == null) {
-      day = 0;
-      year = 0;
-      mounth = 0;
-      return 0;
-    }
-    day = startupNumberday;
-    mounth = startupNumbermounth;
-    year = startupNumberyear;
-    return 0;
-  }
 
   void startTimer() {
     const oneSec = const Duration(seconds: 1);
     notifyListeners();
     Timer.periodic(oneSec, (Timer timer) {
       if (stop == 0) {
-        if (daycycle < 1) {
+        if (daycycle < 5) {
           day++;
-          if (day > 2) {
-            Resources().saveResources();
-            kaydet();
-            day = 0;
+          if (day > 3) {
+
+
+            day = 1;
             mounth++;
-            if (mounth > 2) {
-              mounth = 0;
+            if (mounth > 12) {
+              mounth = 1;
               year++;
             }
           }
           daycycle = 1;
-          Resources().updateResources();
+          SaveSystem().AllSave();
+          GatherersHut().collectResources();
+          HuntingCabin().collectResources();
+          WoodCutter().collectResources();
+          StoneCutter().collectResources();
+          //FoodResources().calculateFood();
           notifyListeners();
 
           timer.cancel();
@@ -68,8 +53,9 @@ class daycircle extends ChangeNotifier {
 
           notifyListeners();
         }
+      } else {
+        timer.cancel();
       }
-      else{timer.cancel();}
     });
   }
 }

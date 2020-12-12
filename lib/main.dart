@@ -7,9 +7,10 @@ import 'package:game/daycircle.dart';
 import 'package:game/kalip_widgetlar/worker_assigning.dart';
 import 'package:game/main_interface.dart';
 
-import 'package:game/resources.dart';
-import 'package:game/resources/industry/industy_building.dart';
-import 'package:game/resources/food/food_building.dart';
+
+import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/buildings/industrybuildings/industy_buildings.dart';
+import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/buildings/foodbuildings/food_buildings.dart';
+import 'package:game/savesystem/save_system.dart';
 
 import 'exhibition_bottom_sheet.dart';
 
@@ -38,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             style: TextStyle(fontFamily: "Cinzel"),
           ),
           onPressed: () async {
-            dynamic result2 = await Resources().getResources();
+            dynamic result2 = await SaveSystem().getResources();
             context.read(asd3).startTimer();
             if (result2 == null) {
               print('error');
@@ -72,7 +73,7 @@ class MyApp2 extends ConsumerWidget {
                 greeting5.value1.toString(),
                 greeting5.value2.toString(),
                 greeting5.value3.toString(),
-                greeting5.value1),
+                greeting5.value2),
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.23,

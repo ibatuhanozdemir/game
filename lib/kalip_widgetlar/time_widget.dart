@@ -14,30 +14,40 @@ class TimeWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text(
-          'day=' + day,
+          day+"/"+month+"/"+year,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        Text(
-          'month=' + month,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        Text(
-          'year=' + year,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        Text(
-          (() {
-            if (season < 3) {
-              return 'yaz';
-            } else if (season >= 3 && season < 6) {
-              return 'kış';
-            } else if (season >= 6 && season < 9) {
-              return 'sonbahar';
-            } else if (season >= 9 && season < 12) {
-              return 'ilkbahar';
-            }
-          })(),
-          style: TextStyle(fontWeight: FontWeight.bold),
+
+        Row(
+          children: [
+            Container(
+              height: 20,
+              child: Image.asset((() {
+                if (season <= 3) {
+                  return 'images/summer.png';
+                } else if (season > 3 && season <= 6) {
+                  return 'images/winter.png';
+                } else if (season > 6 && season <= 9) {
+                  return 'images/autumn.png';
+                } else if (season > 9 && season <= 12) {
+                  return 'images/spring.png';
+                }
+              })()),
+            ),
+            Text(
+            (() {
+              if (season <= 3) {
+                return 'Summer';
+              } else if (season > 3 && season <= 6) {
+                return 'Winter';
+              } else if (season > 6 && season <= 9) {
+                return 'Autumn';
+              } else if (season > 9 && season <= 12) {
+                return 'Spring';
+              }
+            })(),
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),]
         ),
       ],
     );
