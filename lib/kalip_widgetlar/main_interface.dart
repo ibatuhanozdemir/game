@@ -3,8 +3,8 @@ import 'package:game/main.dart';
 import 'package:game/resources/food/food_resources.dart';
 
 
-import 'kalip_widgetlar/time_widget.dart';
-import 'kalip_widgetlar/top_resource_widget.dart';
+import 'time_widget.dart';
+import 'top_resource_widget.dart';
 
 class MainInterface extends StatelessWidget {
   MainInterface(this.day, this.month, this.year, this.season);

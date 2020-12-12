@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 import 'package:game/daycircle.dart';
 import 'package:game/kalip_widgetlar/worker_assigning.dart';
-import 'package:game/main_interface.dart';
+import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/kalip_widgetlar/main_interface.dart';
 
 
 import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/buildings/industrybuildings/industy_buildings.dart';
 import 'file:///C:/Users/tayfun2/AndroidStudioProjects/game/lib/buildings/foodbuildings/food_buildings.dart';
 import 'package:game/savesystem/save_system.dart';
 
-import 'exhibition_bottom_sheet.dart';
+import 'kalip_widgetlar/exhibition_bottom_sheet.dart';
 
 void main() {
   runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
