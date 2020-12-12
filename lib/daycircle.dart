@@ -8,7 +8,7 @@ import 'package:game/buildings/industrybuildings/woodcutter.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/savesystem/save_system.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class daycircle extends ChangeNotifier {
   int daycycle = 1;
@@ -37,7 +37,6 @@ class daycircle extends ChangeNotifier {
               year++;
             }
           }
-          daycycle = 1;
           SaveSystem().AllSave();
           GatherersHut().collectResources();
           HuntingCabin().collectResources();
@@ -45,13 +44,8 @@ class daycircle extends ChangeNotifier {
           StoneCutter().collectResources();
           FoodResources().calculateFood();
           notifyListeners();
-
           timer.cancel();
           startTimer();
-        } else {
-          daycycle = daycycle - 1;
-
-          notifyListeners();
         }
       } else {
         timer.cancel();
