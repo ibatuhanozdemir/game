@@ -24,7 +24,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
-  double get maxHeight => MediaQuery.of(context).size.height * 0.75;
+  double get maxHeight => MediaQuery.of(context).size.height * 0.76;
 
   double get headerTopMargin =>
       lerp(20, 20 + MediaQuery.of(context).padding.top);
@@ -100,7 +100,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                               SheetHeader(
                                 fontSize: headerFontSize,
                                 topMargin: 20,
-                                text: 'Food Resources',
+                                text: 'Food',
                               ),
                               for (String aaab in FoodResources.food_resource_sublist_name)
                                 _foodResources(aaab),
@@ -111,7 +111,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                           child: Stack(
                             children: <Widget>[
                               SheetHeader(
-                                text: 'Industry Resources',
+                                text: 'Industry',
                                 fontSize: headerFontSize,
                                 topMargin: 20,
                               ),
@@ -165,9 +165,9 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
 
     return Positioned(
       height: 50,
-      width: 100,
+      width: 180,
       top: 50 + index.toDouble() * 20,
-      left: 5,
+      left: 0,
       child: ClipRRect(
         child: Text(
             event + " = " + "" +FoodResources.food_resource_sublist_count[index][event].toString(),
@@ -181,9 +181,9 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
 
     return Positioned(
       height: 50,
-      width: 100,
+      width: 180,
       top: 50 + index.toDouble() * 20,
-      left: 5,
+      left: 0,
       child: ClipRRect(
         child: Text(
             event +

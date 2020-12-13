@@ -11,7 +11,7 @@ import 'package:game/savesystem/save_system.dart';
 import 'buildings/foodbuildings/food_buildings.dart';
 import 'buildings/industrybuildings/industy_buildings.dart';
 import 'kalip_widgetlar/exhibition_bottom_sheet.dart';
-import 'kalip_widgetlar/main_interface.dart';
+import 'kalip_widgetlar/custom_app_bar.dart';
 
 void main() {
   runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
@@ -60,11 +60,6 @@ class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final greeting5 = watch(asd3);
-
-    List<String> tabNames = [
-      "Industry",
-      "Food",
-    ];
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -79,11 +74,13 @@ class MyApp2 extends ConsumerWidget {
               style: TextStyle(
                   color: Colors.grey.shade200,
                   fontSize: 25,
-                  fontFamily: "Ewert"),
+                  fontFamily: "Hanalei"),
             ),
             centerTitle: true,
             bottom: TabBar(
+              unselectedLabelColor: Colors.brown,
               isScrollable: true,
+              indicatorColor: Colors.brown,
               tabs: [
                 Center(child: Text("Industry Buildings")),
                 Center(child: Text("Food Buildings")),
