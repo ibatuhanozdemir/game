@@ -82,8 +82,8 @@ class MyApp2 extends ConsumerWidget {
               isScrollable: true,
               indicatorColor: Colors.brown,
               tabs: [
-                Center(child: Text("Industry Buildings")),
-                Center(child: Text("Food Buildings")),
+                Center(child: Text("Buildings")),
+                Center(child: Text("Other Things")),
               ],
             ),
           ),
@@ -91,12 +91,12 @@ class MyApp2 extends ConsumerWidget {
         body: Stack(
           children: <Widget>[
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.0,
+              top: MediaQuery.of(context).size.height * 0.005,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.8,
               child: TabBarView(
                 children: [
-                  SecondLayerCustomAppBar("ilkTab", "ikinciTab"),
+                  SecondLayerCustomAppBar("Industry Buildings", "Food Buildings"),
                   SecondLayerCustomAppBar("ilkTab", "ikinciTab"),
                 ],
               ),
@@ -130,12 +130,15 @@ class MyApp2 extends ConsumerWidget {
 }
 
 
-class FoodBuildingWidgeti extends ConsumerWidget {
+class FoodBuildingWidgeti extends StatelessWidget {
   int index;
+
   FoodBuildingWidgeti(this.index);
+
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    GestureDetector(
+  Widget build(BuildContext context) {
+
+    return GestureDetector(
       child: Card(
         color: Colors.grey.shade700,
         elevation: 20,
@@ -165,7 +168,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
       ),
       onTap: () {
         showInformationDialog2(
-            context, IndustryBuilding.industry_building[index]);
+            context, FoodBuilding.food_building[index]);
       },
     );
   }

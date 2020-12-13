@@ -123,7 +123,7 @@ class _SecondLayerCustomAppBarState extends State<SecondLayerCustomAppBar>
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(30),
             child: AppBar(
-              backgroundColor: Colors.grey.shade200,
+              backgroundColor: Colors.grey,
               title: TabBar(
                 unselectedLabelColor: Colors.brown,
                 isScrollable: true,
@@ -148,8 +148,12 @@ class _SecondLayerCustomAppBarState extends State<SecondLayerCustomAppBar>
                     return FoodBuildingWidgeti(index);
                   },
                   itemCount: FoodBuilding.food_building.length),
+
+
             ],
           ),
         ));
   }
+
+
 }
