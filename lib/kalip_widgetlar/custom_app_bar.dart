@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
+import 'package:game/buildings/foodbuildings/food_buildings.dart';
+import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/daycircle.dart';
 import 'package:game/main.dart';
 import 'package:game/resources/food/food_resources.dart';
-
 
 import 'time_widget.dart';
 import 'top_resource_widget.dart';
@@ -60,7 +61,11 @@ class CustomAppBar extends ConsumerWidget {
               ),
               Column(
                 children: [
-                  TimeWidget(greeting5.value1.toString(), greeting5.value2.toString(), greeting5.value3.toString(), greeting5.value2),
+                  TimeWidget(
+                      greeting5.value1.toString(),
+                      greeting5.value2.toString(),
+                      greeting5.value3.toString(),
+                      greeting5.value2),
                 ],
               ),
             ],
@@ -70,19 +75,81 @@ class CustomAppBar extends ConsumerWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 2, 3, 8),
-                child: GestureDetector(child: Icon(Icons.pause),
-                  onTap: (){daycircle.stop=1; },),
+                child: GestureDetector(
+                  child: Icon(Icons.pause),
+                  onTap: () {
+                    daycircle.stop = 1;
+                  },
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(3, 2, 8, 8),
-                child: GestureDetector(child: Icon(Icons.play_arrow),
-                  onTap: (){daycircle.stop=0;context.read(asd3).startTimer();},),
+                child: GestureDetector(
+                  child: Icon(Icons.play_arrow),
+                  onTap: () {
+                    daycircle.stop = 0;
+                    context.read(asd3).startTimer();
+                  },
+                ),
               )
             ],
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
+          ),
         ],
       ),
     );
+  }
+}
+
+class SecondLayerCustomAppBar extends StatefulWidget {
+  String ilkTab;
+  String ikinciTab;
+  SecondLayerCustomAppBar(this.ilkTab, this.ikinciTab);
+  @override
+  _SecondLayerCustomAppBarState createState() =>
+      _SecondLayerCustomAppBarState();
+}
+
+class _SecondLayerCustomAppBarState extends State<SecondLayerCustomAppBar>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(30),
+            child: AppBar(
+              backgroundColor: Colors.grey.shade200,
+              title: TabBar(
+                unselectedLabelColor: Colors.brown,
+                isScrollable: true,
+                indicatorColor: Colors.brown,
+                tabs: [
+                  Text(widget.ilkTab),
+                  Text(widget.ikinciTab),
+                ],
+              ),
+              centerTitle: true,
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              ListView.builder(
+                  itemBuilder: (_, index) {
+                    return IndstryBuildingWidgeti(index);
+                  },
+                  itemCount: IndustryBuilding.industry_building.length),
+              ListView.builder(
+                  itemBuilder: (_, index) {
+                    return FoodBuildingWidgeti(index);
+                  },
+                  itemCount: FoodBuilding.food_building.length),
+            ],
+          ),
+        ));
   }
 }

@@ -91,21 +91,13 @@ class MyApp2 extends ConsumerWidget {
         body: Stack(
           children: <Widget>[
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.01,
+              top: MediaQuery.of(context).size.height * 0.0,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.8,
               child: TabBarView(
                 children: [
-                  ListView.builder(
-                      itemBuilder: (_, index) {
-                        return IndstryBuildingWidgeti(index);
-                      },
-                      itemCount: IndustryBuilding.industry_building.length),
-                  ListView.builder(
-                      itemBuilder: (_, index) {
-                        return FoodBuildingWidgeti(context, index);
-                      },
-                      itemCount: FoodBuilding.food_building.length),
+                  SecondLayerCustomAppBar("ilkTab", "ikinciTab"),
+                  SecondLayerCustomAppBar("ilkTab", "ikinciTab"),
                 ],
               ),
             ),
@@ -116,8 +108,34 @@ class MyApp2 extends ConsumerWidget {
     );
   }
 
-  Widget FoodBuildingWidgeti(BuildContext context, int index) {
-    return GestureDetector(
+
+  Future<void> showInformationDialog(
+      BuildContext context, String workarea) async {
+    return await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: WorkerAssigning(context, workarea),
+            actions: [
+              GestureDetector(
+                child: Center(child: Text("Done")),
+                onTap: () {
+                  Navigator.pop;
+                },
+              )
+            ],
+          );
+        });
+  }
+}
+
+
+class FoodBuildingWidgeti extends ConsumerWidget {
+  int index;
+  FoodBuildingWidgeti(this.index);
+  @override
+  Widget build(BuildContext context, ScopedReader watch) {
+    GestureDetector(
       child: Card(
         color: Colors.grey.shade700,
         elevation: 20,
@@ -146,31 +164,13 @@ class MyApp2 extends ConsumerWidget {
         ),
       ),
       onTap: () {
-        showInformationDialog(
+        showInformationDialog2(
             context, IndustryBuilding.industry_building[index]);
       },
     );
   }
-
-  Future<void> showInformationDialog(
-      BuildContext context, String workarea) async {
-    return await showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: WorkerAssigning(context, workarea),
-            actions: [
-              GestureDetector(
-                child: Center(child: Text("Done")),
-                onTap: () {
-                  Navigator.pop;
-                },
-              )
-            ],
-          );
-        });
-  }
 }
+
 
 class IndstryBuildingWidgeti extends ConsumerWidget {
   @override
