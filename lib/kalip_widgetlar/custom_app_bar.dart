@@ -5,6 +5,7 @@ import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/daycircle.dart';
 import 'package:game/main.dart';
 import 'package:game/resources/food/food_resources.dart';
+import 'package:game/resources/industry/industry_resources.dart';
 
 import 'time_widget.dart';
 import 'top_resource_widget.dart';
@@ -20,6 +21,13 @@ class CustomAppBar extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          Text(
+            "Tayfun's Town",
+            style: TextStyle(
+                color: Colors.grey.shade200,
+                fontSize: MediaQuery.of(context).size.height * 0.05,
+                fontFamily: "Hanalei"),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -51,11 +59,13 @@ class CustomAppBar extends ConsumerWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(2.0),
-                    child: TopResourceWidget('wood', 'wood', '0'),
+                    child: TopResourceWidget('wood', 'wood', IndustryResources.industry_resources[0]['wood']
+                        .toString()),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(2.0),
-                    child: TopResourceWidget('wood', 'wood', '0'),
+                    child: TopResourceWidget('wood', 'wood', IndustryResources.industry_resources[0]['wood']
+                        .toString()),
                   )
                 ],
               ),
@@ -76,7 +86,7 @@ class CustomAppBar extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 2, 3, 8),
                 child: GestureDetector(
-                  child: Icon(Icons.pause),
+                  child: Icon(Icons.pause,color: Colors.red,),
                   onTap: () {
                     daycircle.stop = 1;
                   },

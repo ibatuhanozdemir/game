@@ -66,17 +66,10 @@ class MyApp2 extends ConsumerWidget {
         backgroundColor: Colors.grey,
         appBar: PreferredSize(
           preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.2),
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.19),
           child: AppBar(
             flexibleSpace: CustomAppBar(),
-            title: Text(
-              "Tayfun's Town",
-              style: TextStyle(
-                  color: Colors.grey.shade200,
-                  fontSize: 25,
-                  fontFamily: "Hanalei"),
-            ),
-            centerTitle: true,
+
             bottom: TabBar(
               unselectedLabelColor: Colors.brown,
               isScrollable: true,
@@ -194,8 +187,8 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                  height: MediaQuery.of(context).size.height * 0.16,
-                  width: MediaQuery.of(context).size.width * 0.25,
+                  //height: MediaQuery.of(context).size.height * 0.16,
+                  //width: MediaQuery.of(context).size.width * 0.25,
                   child: Image.asset("images/woodcutter.png")),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.01,
@@ -224,11 +217,13 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
               Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                Container(
-                  color: Colors.red,
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width * 0.15,
-                  child: Text("Qty. "+IndustryBuilding.industry_building[index]['quantity'].toString()),
+                Expanded(
+                  child: Container(
+                    color: Colors.red,
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width * 0.15,
+                    child: Text("Qty. "+IndustryBuilding.industry_building[index]['quantity'].toString()),
+                  ),
                 ),
                 IndustryBuilding.industry_building[index]['progres']
                     ? RaisedButton(
