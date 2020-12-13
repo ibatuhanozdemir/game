@@ -196,7 +196,6 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
               Container(
                   height: MediaQuery.of(context).size.height * 0.16,
                   width: MediaQuery.of(context).size.width * 0.25,
-
                   child: Image.asset("images/woodcutter.png")),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.01,
@@ -209,7 +208,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: Text(IndustryBuilding.industry_building[index]
                               ['name'] +
-                          '(10/15)'),
+                          '(10/15)', style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.016),),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
@@ -217,7 +216,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                     Container(
 
                       padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                      child: Text('Req= labour:50 wood:20  stone:30'),
+                      child: Text('Req= labour:50 wood:20  stone:30',style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.016)),
                     ),
                   ],
                 ),
