@@ -179,7 +179,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
   IndstryBuildingWidgeti(this.index);
 
   Widget build(BuildContext context, ScopedReader watch) {
-    print(IndustryBuilding.industry_building[index]['name']);
+
     watch(aa);
     return GestureDetector(
       child: Card(
@@ -221,18 +221,19 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                 color: Colors.red,
                 alignment: Alignment.center,
                 width: MediaQuery.of(context).size.width * 0.15,
-                child: Text("Qty. 15"),
+                child: Text("Qty. "+IndustryBuilding.industry_building[index]['quantity'].toString()),
               ),
               IndustryBuilding.industry_building[index]['progres']
                   ? RaisedButton(
                       child: Text('Build'),
                       onPressed: () {
-                        context.read(aa).build(index);
+                        context.read(aa).buildstart(index);
                       })
                   : RaisedButton(
-                      child: Text('Add Worker'),
+                      child: Text('Add Builder'),
                       onPressed: () {
-                        context.read(aa).build(index);
+                        showInformationDialog2(
+                            context, 'builder'+IndustryBuilding.industry_building[index]['name']);
                       }),
               IndustryBuilding.industry_building[index]['progres']
                   ? Container(
@@ -248,7 +249,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                         valueColor: AlwaysStoppedAnimation<Color>(
                           Colors.amber,
                         ),
-                        value: 0.1,
+                        value: IndustryBuilding.industry_building[index]['buildprogres']/IndustryBuilding.industry_building[index]['labourcost'],
                       ))
             ]),
           ],
