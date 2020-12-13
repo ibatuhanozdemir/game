@@ -1,7 +1,6 @@
 
 
 
-import 'package:game/daycircle.dart';
 
 
 class FoodResources {

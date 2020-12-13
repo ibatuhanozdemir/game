@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:game/worker/citizen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class IndustryBuilding extends ChangeNotifier {
   static List industry_building = [
@@ -28,4 +31,35 @@ class IndustryBuilding extends ChangeNotifier {
     });
 
   }
+
+  Future<void> save( )async{
+    final prefs= await SharedPreferences.getInstance();
+
+    prefs.setString('industry_building',jsonEncode(industry_building) );
+
+
+  }
+  Future<int> loadIndustryBuilding() async {
+
+    final prefs = await SharedPreferences.getInstance();
+    final startupNumber =  prefs.getString('industry_building');
+
+
+
+    if (startupNumber == null) {
+      industry_building=industry_building;
+
+      return 0;
+
+    }
+    industry_building=jsonDecode(startupNumber);
+
+
+    return 0;
+  }
+
+
+
+
+
 }

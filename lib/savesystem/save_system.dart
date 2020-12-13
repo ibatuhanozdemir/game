@@ -1,6 +1,8 @@
-import 'package:flutter/cupertino.dart';
+
+import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
+import 'package:game/worker/citizen.dart';
 import '../daycircle.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,11 +14,13 @@ class SaveSystem {
 
     prefs.setInt(resource_save_name, resource_name);
 
+
   }
   Future<int> loadFood(String resource_save_name,int index) async {
 
     final prefs = await SharedPreferences.getInstance();
     final startupNumber =  prefs.getInt(resource_save_name);
+
 
 
     if (startupNumber == null) {
@@ -91,8 +95,8 @@ class SaveSystem {
 
     });
     await kaydet();
-   
-
+   IndustryBuilding().save();
+    Citizen().save();
   }
 
   Future<int> getResources()async{
@@ -110,7 +114,9 @@ class SaveSystem {
 
     });
     await getIntFromSharedPref();
-
+    Citizen().loadCitizen();
+    IndustryBuilding().loadIndustryBuilding();
     return 0;
   }
+
 }
