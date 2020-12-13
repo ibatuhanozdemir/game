@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:game/buildings/foodbuildings/gatheres_hut.dart';
 import 'package:game/buildings/foodbuildings/hunting_cabin.dart';
+import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/buildings/industrybuildings/stonecutter.dart';
 import 'package:game/buildings/industrybuildings/woodcutter.dart';
 import 'package:game/resources/food/food_resources.dart';
@@ -43,6 +44,7 @@ class daycircle extends ChangeNotifier {
           WoodCutter().collectResources();
           StoneCutter().collectResources();
           FoodResources().calculateFood();
+          IndustryBuilding().buildOnGoing();
           notifyListeners();
           timer.cancel();
           startTimer();
