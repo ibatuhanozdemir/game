@@ -10,6 +10,7 @@ import 'package:game/savesystem/save_system.dart';
 
 import 'buildings/foodbuildings/food_buildings.dart';
 import 'buildings/industrybuildings/industy_buildings.dart';
+import 'kalip_widgetlar/citizen_widget.dart';
 import 'kalip_widgetlar/exhibition_bottom_sheet.dart';
 import 'kalip_widgetlar/custom_app_bar.dart';
 
@@ -26,6 +27,7 @@ class _MyAppState extends State<MyApp> {
   @override
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Giriş'),
@@ -90,7 +92,7 @@ class MyApp2 extends ConsumerWidget {
               child: TabBarView(
                 children: [
                   SecondLayerCustomAppBar("Industry Buildings", "Food Buildings"),
-                  SecondLayerCustomAppBar("ilkTab", "ikinciTab"),
+                  SecondLayerCustomAppBar2("Citizen", "ikinciTab"),
                 ],
               ),
             ),
@@ -179,7 +181,8 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
     watch(aa);
     return GestureDetector(
       child: Container(
-        height: MediaQuery.of(context).size.height*0.12,
+        height: MediaQuery.of(context).size.height*0.05*MediaQuery.of(context).devicePixelRatio,
+        color: Colors.red,
         child: Card(
           color: Colors.grey.shade700,
           elevation: 20,

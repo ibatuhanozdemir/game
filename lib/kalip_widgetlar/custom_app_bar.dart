@@ -6,6 +6,7 @@ import 'package:game/daycircle.dart';
 import 'package:game/main.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
+import 'package:game/worker/citizen.dart';
 
 import 'time_widget.dart';
 import 'top_resource_widget.dart';
@@ -59,13 +60,19 @@ class CustomAppBar extends ConsumerWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(2.0),
-                    child: TopResourceWidget('wood', 'wood', IndustryResources.industry_resources[0]['wood']
-                        .toString()),
+                    child: TopResourceWidget(
+                        'wood',
+                        'wood',
+                        IndustryResources.industry_resources[0]['wood']
+                            .toString()),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(2.0),
-                    child: TopResourceWidget('wood', 'wood', IndustryResources.industry_resources[0]['wood']
-                        .toString()),
+                    child: TopResourceWidget(
+                        'wood',
+                        'wood',
+                        IndustryResources.industry_resources[0]['wood']
+                            .toString()),
                   )
                 ],
               ),
@@ -86,17 +93,30 @@ class CustomAppBar extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 2, 3, 8),
                 child: GestureDetector(
-                  child: Icon(Icons.pause,color: Colors.red,),
+                  child: (() {
+                    if (daycircle.stop== 0) {
+                      return Icon(Icons.pause, color: Colors.black);
+                    } else {
+                      return Icon(Icons.pause, color: Colors.red);
+                    }
+                  })(),
                   onTap: () {
-                    daycircle.stop = 1;
+                    context.read(asd3).stop2();
                   },
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(3, 2, 8, 8),
                 child: GestureDetector(
-                  child: Icon(Icons.play_arrow),
+                  child: (() {
+                    if (daycircle.stop == 1) {
+                      return Icon(Icons.play_arrow, color: Colors.black);
+                    } else {
+                      return Icon(Icons.play_arrow, color: Colors.red);
+                    }
+                  })(),
                   onTap: () {
+
                     daycircle.stop = 0;
                     context.read(asd3).startTimer();
                   },
@@ -158,12 +178,9 @@ class _SecondLayerCustomAppBarState extends State<SecondLayerCustomAppBar>
                     return FoodBuildingWidgeti(index);
                   },
                   itemCount: FoodBuilding.food_building.length),
-
-
             ],
           ),
         ));
   }
-
-
 }
+

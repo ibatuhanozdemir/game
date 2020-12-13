@@ -8,6 +8,7 @@ import 'package:game/buildings/industrybuildings/stonecutter.dart';
 import 'package:game/buildings/industrybuildings/woodcutter.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/savesystem/save_system.dart';
+import 'package:game/worker/citizen.dart';
 
 
 
@@ -16,6 +17,7 @@ class daycircle extends ChangeNotifier {
   int get value1 => day;
   int get value2 => mounth;
   int get value3 => year;
+
   static int day;
   static int mounth;
   static int year;
@@ -36,6 +38,7 @@ class daycircle extends ChangeNotifier {
             if (mounth > 12) {
               mounth = 1;
               year++;
+              Citizen().incrementAge();
             }
           }
           SaveSystem().AllSave();
@@ -45,6 +48,7 @@ class daycircle extends ChangeNotifier {
           StoneCutter().collectResources();
           FoodResources().calculateFood();
           IndustryBuilding().buildOnGoing();
+
           notifyListeners();
           timer.cancel();
           startTimer();
@@ -54,4 +58,10 @@ class daycircle extends ChangeNotifier {
       }
     });
   }
+
+    void stop2(){
+        stop=1;
+        notifyListeners();
+    }
+
 }
