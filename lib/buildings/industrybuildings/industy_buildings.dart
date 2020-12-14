@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class IndustryBuilding extends ChangeNotifier {
   static List industry_building = [
-    {'name': 'woodcutter', 'progres': true,'labourcost':7,'buildprogres':0,'quantity':10},
-    {'name': 'stonecutter', 'progres': true,'labourcost':10,'buildprogres':0,'quantity':10}
+    {'name': 'woodcutter', 'progres': true,'labourcost':7,'buildprogres':0,'quantity':10,'capacity':2,'workercount':1},
+    {'name': 'stonecutter', 'progres': true,'labourcost':10,'buildprogres':0,'quantity':10,'capacity':2,'workercount':1}
   ];
 
   void buildstart(int index) {
@@ -53,6 +53,11 @@ class IndustryBuilding extends ChangeNotifier {
 
     }
     industry_building=jsonDecode(startupNumber);
+    industry_building.forEach((element3) { element3['workercount']=Citizen.citizen
+        .where((element) => (element['workarea'].contains(element3['name'])))
+        .toList().length;
+
+    });
 
 
     return 0;

@@ -58,6 +58,7 @@ class _MyAppState extends State<MyApp> {
 final asd3 = ChangeNotifierProvider((ref) => daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
 
+
 class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -102,26 +103,6 @@ class MyApp2 extends ConsumerWidget {
       ),
     );
   }
-
-
-  Future<void> showInformationDialog(
-      BuildContext context, String workarea) async {
-    return await showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: WorkerAssigning(context, workarea),
-            actions: [
-              GestureDetector(
-                child: Center(child: Text("Done")),
-                onTap: () {
-                  Navigator.pop;
-                },
-              )
-            ],
-          );
-        });
-  }
 }
 
 
@@ -163,7 +144,7 @@ class FoodBuildingWidgeti extends StatelessWidget {
       ),
       onTap: () {
         showInformationDialog2(
-            context, FoodBuilding.food_building[index]);
+            context, FoodBuilding.food_building[index],index);
       },
     );
   }
@@ -204,7 +185,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: Text(IndustryBuilding.industry_building[index]
                               ['name'] +
-                          '(10/15)', style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.016),),
+                          '('+IndustryBuilding.industry_building[index]['workercount'].toString()+"/"+IndustryBuilding.industry_building[index]['capacity'].toString()+')', style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.016),),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
@@ -237,7 +218,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                     : RaisedButton(
                         child: Text('Add Builder'),
                         onPressed: () {
-                          showInformationDialog2(
+                          showInformationDialog3(
                               context, 'builder'+IndustryBuilding.industry_building[index]['name']);
                         }),
                 IndustryBuilding.industry_building[index]['progres']
@@ -263,19 +244,38 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
       ),
       onTap: () {
         showInformationDialog2(
-            context, IndustryBuilding.industry_building[index]['name']);
+            context, IndustryBuilding.industry_building[index]['name'],index);
       },
     );
   }
 }
 
 Future<void> showInformationDialog2(
+    BuildContext context, String workarea,int index) async {
+  return await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: WorkerAssigning(context, workarea,index),
+          actions: [
+            GestureDetector(
+              child: Center(child: Text("Done")),
+              onTap: () {
+                Navigator.pop;
+              },
+            )
+          ],
+        );
+      });
+}
+
+Future<void> showInformationDialog3(
     BuildContext context, String workarea) async {
   return await showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: WorkerAssigning(context, workarea),
+          content: WorkerAssigningBuilder(context, workarea),
           actions: [
             GestureDetector(
               child: Center(child: Text("Done")),

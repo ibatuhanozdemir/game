@@ -1,10 +1,12 @@
 import 'package:game/resources/industry/industry_resources.dart';
-import 'package:game/worker/citizen.dart';
+
+
+import 'industy_buildings.dart';
 
 class StoneCutter{
 
   void collectResources(){
-    int worker=Citizen.citizen.where((element) => element['workarea'].contains('stonecutter')).toList().length;
+    int worker=IndustryBuilding.industry_building[1]['workercount'];
     IndustryResources.industry_resources[1]['stone']=IndustryResources.industry_resources[1]['stone']+worker*3;
 
   }
