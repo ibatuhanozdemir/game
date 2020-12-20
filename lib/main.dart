@@ -7,6 +7,7 @@ import 'package:game/daycircle.dart';
 import 'package:game/kalip_widgetlar/worker_assigning.dart';
 
 import 'package:game/savesystem/save_system.dart';
+import 'package:game/screens/townhall.dart';
 
 import 'buildings/foodbuildings/food_buildings.dart';
 import 'buildings/industrybuildings/industy_buildings.dart';
@@ -16,7 +17,7 @@ import 'kalip_widgetlar/custom_app_bar.dart';
 import 'menu.dart';
 
 void main() {
-  runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
+  runApp(ProviderScope(child: MaterialApp(title: 'river', home: TownHall())));
 }
 
 class MyApp extends StatefulWidget {
