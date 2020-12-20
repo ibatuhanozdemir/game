@@ -34,25 +34,25 @@ class _TownHallState extends State<TownHall> {
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Column(
               children: [
-                TextBox(80, 30, 'OverView', 3, 3),
+                TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'OverView', 3, 3),
 
                 Row(children: [
                   Column(children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                      padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              TextBox(60, 29, 'Year', -3, -3),
-                              TextBox(60 , 29, '1', 3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6 , MediaQuery.of(context).size.height*0.05, '1', 3, -3),
 
                             ],
                           ),
                           Row(
                             children: [
-                              TextBox(60, 29, 'Season', -3, 3),
-                              TextBox(60, 29, 'Summer', 3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3),
 
                             ],
                           ),
@@ -60,20 +60,20 @@ class _TownHallState extends State<TownHall> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                      padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              TextBox(60, 29, 'Year', -3, -3),
-                              TextBox(60 , 29, '1', 3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
 
                             ],
                           ),
                           Row(
                             children: [
-                              TextBox(60, 29, 'Season', -3, 3),
-                              TextBox(60, 29, 'Summer', 3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3),
 
                             ],
                           ),
@@ -82,20 +82,20 @@ class _TownHallState extends State<TownHall> {
                     ),],),
                   Column(children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                      padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              TextBox(60, 29, 'Year', -3, -3),
-                              TextBox(60 , 29, '1', 3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
 
                             ],
                           ),
                           Row(
                             children: [
-                              TextBox(60, 29, 'Season', -3, 3),
-                              TextBox(60, 29, 'Summer', 3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3),
 
                             ],
                           ),
@@ -103,20 +103,20 @@ class _TownHallState extends State<TownHall> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                      padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              TextBox(60, 29, 'Year', -3, -3),
-                              TextBox(60 , 29, '1', 3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
 
                             ],
                           ),
                           Row(
                             children: [
-                              TextBox(60, 29, 'Season', -3, 3),
-                              TextBox(60, 29, 'Summer', 3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3),
 
                             ],
                           ),
@@ -125,20 +125,20 @@ class _TownHallState extends State<TownHall> {
                     ),],),
                   Column(children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                      padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              TextBox(60, 29, 'Year', -3, -3),
-                              TextBox(60 , 29, '1', 3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
 
                             ],
                           ),
                           Row(
                             children: [
-                              TextBox(60, 29, 'Season', -3, 3),
-                              TextBox(60, 29, 'Summer', 3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3),
 
                             ],
                           ),
@@ -146,20 +146,20 @@ class _TownHallState extends State<TownHall> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                      padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              TextBox(60, 29, 'Year', -3, -3),
-                              TextBox(60 , 29, '1', 3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
 
                             ],
                           ),
                           Row(
                             children: [
-                              TextBox(60, 29, 'Season', -3, 3),
-                              TextBox(60, 29, 'Summer', 3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
+                              TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3),
 
                             ],
                           ),
@@ -181,25 +181,22 @@ class _TownHallState extends State<TownHall> {
   Widget TextBox(double width,double height,String text,double shadowx,double shadowy){
 
 
-    return FittedBox(
-      fit: BoxFit.fitWidth,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          color: const Color(0xffffffff),
-          border: Border.all(
-              width: 1.0, color: const Color(0x2e707070)),
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xb8000000),
-              offset: Offset(shadowx, shadowy),
-              blurRadius: 6,
-            ),
-          ],
-        ),
-        child: Center(child: FittedBox(fit:BoxFit.fitWidth,child: Text(text))),
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: Colors.red,
+        border: Border.all(
+            width: 1.0, color: const Color(0x2e707070)),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xb8000000),
+            offset: Offset(shadowx, shadowy),
+            blurRadius: 6,
+          ),
+        ],
       ),
+      child: Center(child: Text(text,style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.033),)),
     );
 
 
