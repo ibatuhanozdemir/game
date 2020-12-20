@@ -12,8 +12,7 @@ class _TownHallState extends State<TownHall> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: FittedBox(
-        fit: BoxFit.fitWidth,
+      body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height*0.4,
@@ -31,7 +30,7 @@ class _TownHallState extends State<TownHall> {
           ),
 
           child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height*0.01, 0, 0),
             child: Column(
               children: [
                 TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'OverView', 3, 3),
@@ -185,7 +184,7 @@ class _TownHallState extends State<TownHall> {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: Colors.red,
+        color: Colors.white,
         border: Border.all(
             width: 1.0, color: const Color(0x2e707070)),
         boxShadow: [
@@ -196,7 +195,7 @@ class _TownHallState extends State<TownHall> {
           ),
         ],
       ),
-      child: Center(child: Text(text,style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.033),)),
+      child: Center(child: Text(text,style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.03),)),
     );
 
 
