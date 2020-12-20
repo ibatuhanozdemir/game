@@ -17,12 +17,12 @@ class daycircle extends ChangeNotifier {
   int get value1 => day;
   int get value2 => mounth;
   int get value3 => year;
-
+  String get value4 => abc;
   static int day;
   static int mounth;
   static int year;
   static int stop = 0;
-
+  static String abc='adsf';
   void startTimer() {
     const oneSec = const Duration(seconds: 1);
     notifyListeners();
@@ -64,4 +64,9 @@ class daycircle extends ChangeNotifier {
         notifyListeners();
     }
 
+
+    void numberswitch(int i){
+    abc=i.toString();
+    notifyListeners();
+  }
 }

@@ -3,6 +3,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/all.dart';
+import 'package:game/daycircle.dart';
+import 'package:game/screens/townhall.dart';
+
+import 'main.dart';
 
 
 
@@ -281,6 +286,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
+                    context.read(asd3).numberswitch(2);
                     print('First Button');
                   },
                 ),
@@ -310,6 +316,10 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
+
+                      context.read(asd3).numberswitch(1);
+
+
                     print('First Button');
                   },
                 ),
@@ -364,6 +374,9 @@ class _MyHomePage2State extends State<MyHomePage2>
                 color: Colors.white,
               ),
               onClick: () {
+
+
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MyApp2()), (route) => false);
                 print('First Button');
               },
             ),
@@ -386,6 +399,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                 color: Colors.white,
               ),
               onClick: () {
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>TownHall()), (route) => false);
                 print('Second button');
               },
             ),
@@ -490,6 +504,7 @@ class CircularButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       width: width,

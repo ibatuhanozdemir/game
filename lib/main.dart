@@ -17,7 +17,7 @@ import 'kalip_widgetlar/custom_app_bar.dart';
 import 'menu.dart';
 
 void main() {
-  runApp(ProviderScope(child: MaterialApp(title: 'river', home: TownHall())));
+  runApp(ProviderScope(child: MaterialApp(title: 'river', home:MyApp())));
 }
 
 class MyApp extends StatefulWidget {
@@ -30,27 +30,29 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Giriş'),
-      ),
-      body: Center(
-        child: RaisedButton(
-          child: Text(
-            "Tab bar tamam ama altındaki widgetlar yordu biraz. Onları da bir tek liste haline getiricem",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontFamily: "Cinzel"),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Giriş'),
+        ),
+        body: Center(
+          child: RaisedButton(
+            child: Text(
+              "Tab bar tamam ama altındaki widgetlar yordu biraz. Onları da bir tek liste haline getiricem",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontFamily: "Cinzel"),
+            ),
+            onPressed: () async {
+              dynamic result2 = await SaveSystem().getResources();
+              context.read(asd3).startTimer();
+              if (result2 == null) {
+                print('error');
+              } else {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => TownHall()));
+              }
+            },
           ),
-          onPressed: () async {
-            dynamic result2 = await SaveSystem().getResources();
-            context.read(asd3).startTimer();
-            if (result2 == null) {
-              print('error');
-            } else {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => MyApp2()));
-            }
-          },
         ),
       ),
     );
@@ -65,43 +67,49 @@ class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final greeting5 = watch(asd3);
+    print('deneme');
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        floatingActionButton: MyHomePage2(),
-        backgroundColor: Colors.grey,
-        appBar: PreferredSize(
-          preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.19),
-          child: AppBar(
-            flexibleSpace: CustomAppBar(),
+      child: SafeArea(
+        child: Scaffold(
+          floatingActionButton: MyHomePage2(),
+          backgroundColor: Colors.grey,
+          appBar: PreferredSize(
+            preferredSize:
+                Size.fromHeight(MediaQuery.of(context).size.height * 0.22),
+            child: AppBar(
+              flexibleSpace: CustomAppBar(),
 
-            bottom: TabBar(
-              unselectedLabelColor: Colors.brown,
-              isScrollable: true,
-              indicatorColor: Colors.brown,
-              tabs: [
-                Center(child: Text("Buildings")),
-                Center(child: Text("Other Things")),
-              ],
-            ),
-          ),
-        ),
-        body: Stack(
-          children: <Widget>[
-            Positioned(
-              top: MediaQuery.of(context).size.height * 0.005,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.8,
-              child: TabBarView(
-                children: [
-                  SecondLayerCustomAppBar("Industry Buildings", "Food Buildings"),
-                  SecondLayerCustomAppBar2("Citizen", "ikinciTab"),
+              bottom: TabBar(
+                unselectedLabelColor: Colors.brown,
+                isScrollable: true,
+                indicatorColor: Colors.brown,
+                tabs: [
+                  Center(child: Text("Buildings")),
+                  Center(child: Text("Other Things")),
                 ],
               ),
             ),
-            ExhibitionBottomSheet(),
-          ],
+          ),
+          body: Stack(
+            children: <Widget>[
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.005,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.8,
+                child: TabBarView(
+                  children: [
+                    SecondLayerCustomAppBar("Industry Buildings", "Food Buildings"),
+                    SecondLayerCustomAppBar2("Citizen", "ikinciTab"),
+                  ],
+                ),
+              ),
+              Positioned(
+
+                child: Text(greeting5.value4),),
+              ExhibitionBottomSheet(),
+            ],
+          ),
         ),
       ),
     );
