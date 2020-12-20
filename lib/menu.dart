@@ -330,8 +330,8 @@ class _MyHomePage2State extends State<MyHomePage2>
               alignment: Alignment.center,
               child: () {
                 if (animationController.isCompleted &&
-                    !animationController2.isCompleted &&
-                    !animationController3.isCompleted) {
+                    (animationController2.value==0) &&
+                    (animationController3.value==0)) {
                   return Material(
 
                       borderRadius: BorderRadius.horizontal(
