@@ -13,6 +13,7 @@ import 'buildings/industrybuildings/industy_buildings.dart';
 import 'kalip_widgetlar/citizen_widget.dart';
 import 'kalip_widgetlar/exhibition_bottom_sheet.dart';
 import 'kalip_widgetlar/custom_app_bar.dart';
+import 'menu.dart';
 
 void main() {
   runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
@@ -66,6 +67,7 @@ class MyApp2 extends ConsumerWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        floatingActionButton: MyHomePage2(),
         backgroundColor: Colors.grey,
         appBar: PreferredSize(
           preferredSize:

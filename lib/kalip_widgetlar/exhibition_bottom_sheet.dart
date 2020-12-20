@@ -77,7 +77,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
               height: lerp(minHeight, maxHeight),
               width: lerp(MediaQuery.of(context).size.width * 0.25,
                   MediaQuery.of(context).size.width),
-              right: 0,
+              left: 0,
               bottom: 0,
               child: GestureDetector(
                 onTap: _toggle,
@@ -142,7 +142,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                     : Positioned(
                         height: MediaQuery.of(context).size.width * 0.07,
                         width: MediaQuery.of(context).size.width * 0.222,
-                        right: 0,
+                        left: 18,
                         bottom: 0,
                         child: GestureDetector(
                           onTap: () {
