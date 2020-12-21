@@ -31,7 +31,7 @@ dependencies:
   shared_preferences: ^0.5.12+4
   adobe_xd: ^1.0.0+1
   font_awesome_flutter: ^8.10.0
-
+  rive: ^0.6.3
 
 dev_dependencies:
   flutter_test:
