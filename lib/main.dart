@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
                     print('error');
                   } else {
                     Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (context) => TownHall()));
+                        context, MaterialPageRoute(builder: (context) => MyApp2()));
                   }
                 },
               ),
@@ -98,7 +98,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-final asd3 = ChangeNotifierProvider((ref) => daycircle());
+final asd3 = ChangeNotifierProvider((ref) => Daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
 
 

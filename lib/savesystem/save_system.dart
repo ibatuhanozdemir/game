@@ -54,9 +54,9 @@ class SaveSystem {
   Future<void> kaydet() async {
     final prefs = await SharedPreferences.getInstance();
 
-    prefs.setInt('day', daycircle.day);
-    prefs.setInt('mounth', daycircle.mounth);
-    prefs.setInt('year', daycircle.year);
+    prefs.setInt('day', Daycircle.day);
+    prefs.setInt('mounth', Daycircle.mounth);
+    prefs.setInt('year', Daycircle.year);
 
   }
 
@@ -67,14 +67,14 @@ class SaveSystem {
     final startupNumberyear = prefs.getInt('year');
 
     if (startupNumberday == null) {
-      daycircle.day = 0;
-      daycircle.year = 0;
-      daycircle.mounth = 0;
+      Daycircle.day = 0;
+      Daycircle.year = 0;
+      Daycircle.mounth = 0;
       return 0;
     }
-    daycircle.day = startupNumberday;
-    daycircle.mounth = startupNumbermounth;
-    daycircle.year = startupNumberyear;
+    Daycircle.day = startupNumberday;
+    Daycircle.mounth = startupNumbermounth;
+    Daycircle.year = startupNumberyear;
 
     return 0;
   }

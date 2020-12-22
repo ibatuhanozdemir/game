@@ -104,19 +104,19 @@ class citizenWidgeti extends StatelessWidget {
       ),
       onTap:() {
     showInformationDialog3(
-    context, Citizen.citizen[index]['name'],Citizen.citizen[index]['workarea'],Citizen.citizen[index]['gender'],Citizen.citizen[index]['tool'],Citizen.citizen[index]['cloth'],Citizen.citizen[index]['education'],Citizen.citizen[index]['health'],Citizen.citizen[index]['happiness'],Citizen.citizen[index]['overallef'],Citizen.citizen[index]['age']);
+    context, Citizen.citizen[index]['name'],Citizen.citizen[index]['workarea'],Citizen.citizen[index]['gender'],Citizen.citizen[index]['tool'],Citizen.citizen[index]['cloth'],Citizen.citizen[index]['education'],Citizen.citizen[index]['health'],Citizen.citizen[index]['happiness'],Citizen.citizen[index]['overallef'],Citizen.citizen[index]['age'],Citizen.citizen[index]['hunger']);
     },
     );
   }
 }
 
 Future<void> showInformationDialog3(BuildContext context, String name,String workarea,String gender,
-    String tool,String cloth,String education,int health,int happiness,int overallef,int age) async {
+    String tool,String cloth,String education,int health,int happiness,int overallef,int age, String hunger) async {
   return await showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: CitizenInfo(context, name,workarea,gender,tool,cloth,education,health,happiness,overallef,age),
+          content: CitizenInfo(context, name,workarea,gender,tool,cloth,education,health,happiness,overallef,age,hunger),
           actions: [
             GestureDetector(
               child: Center(child: Text("Done")),
@@ -143,8 +143,10 @@ class CitizenInfo extends StatelessWidget {
       this.health,
       this.happines,
       this.overallef,
-      this.age);
+      this.age,
+      this.hunger,);
 
+  String hunger;
   String name;
   String workarea;
   String gender, tool,cloth,education;
@@ -179,6 +181,7 @@ class CitizenInfo extends StatelessWidget {
             Text("Tool:"+tool),
             Text("Cloth"+cloth),
             Text("Education"+education),
+            Text("Hunger"+hunger),
 
 
           ],

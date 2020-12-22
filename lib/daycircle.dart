@@ -12,7 +12,7 @@ import 'package:game/worker/citizen.dart';
 
 
 
-class daycircle extends ChangeNotifier {
+class Daycircle extends ChangeNotifier {
   int daycycle = 1;
   int get value1 => day;
   int get value2 => mounth;
@@ -32,6 +32,7 @@ class daycircle extends ChangeNotifier {
           day++;
           if (day > 3) {
 
+            FoodResources().calculateFood();
 
             day = 1;
             mounth++;
@@ -41,12 +42,13 @@ class daycircle extends ChangeNotifier {
               Citizen().incrementAge();
             }
           }
+          Citizen().citizenBirth();
           SaveSystem().AllSave();
           GatherersHut().collectResources();
           HuntingCabin().collectResources();
           WoodCutter().collectResources();
           StoneCutter().collectResources();
-          FoodResources().calculateFood();
+
           IndustryBuilding().buildOnGoing();
 
           notifyListeners();

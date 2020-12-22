@@ -61,10 +61,9 @@ class CustomAppBar extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.all(2.0),
                     child: TopResourceWidget(
+                        'Population',
                         'wood',
-                        'wood',
-                        IndustryResources.industry_resources[0]['wood']
-                            .toString()),
+                        Citizen.citizen.length.toString() + "/" + Citizen.citizenCapacity.toString()),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(2.0),
@@ -94,7 +93,7 @@ class CustomAppBar extends ConsumerWidget {
                 padding: const EdgeInsets.fromLTRB(8, 2, 3, 8),
                 child: GestureDetector(
                   child: (() {
-                    if (daycircle.stop== 0) {
+                    if (Daycircle.stop== 0) {
                       return Icon(Icons.pause, color: Colors.black);
                     } else {
                       return Icon(Icons.pause, color: Colors.red);
@@ -109,7 +108,7 @@ class CustomAppBar extends ConsumerWidget {
                 padding: const EdgeInsets.fromLTRB(3, 2, 8, 8),
                 child: GestureDetector(
                   child: (() {
-                    if (daycircle.stop == 1) {
+                    if (Daycircle.stop == 1) {
                       return Icon(Icons.play_arrow, color: Colors.black);
                     } else {
                       return Icon(Icons.play_arrow, color: Colors.red);
@@ -117,7 +116,7 @@ class CustomAppBar extends ConsumerWidget {
                   })(),
                   onTap: () {
 
-                    daycircle.stop = 0;
+                    Daycircle.stop = 0;
                     context.read(asd3).startTimer();
                   },
                 ),
