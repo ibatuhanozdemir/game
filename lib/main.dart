@@ -106,7 +106,7 @@ class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final greeting5 = watch(asd3);
-    print('deneme');
+
     return DefaultTabController(
       length: 2,
       child: SafeArea(

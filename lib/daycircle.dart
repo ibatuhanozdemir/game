@@ -32,8 +32,8 @@ class Daycircle extends ChangeNotifier {
           day++;
           if (day > 3) {
 
-            FoodResources().calculateFood();
 
+            //Citizen().citizenBirth();
             day = 1;
             mounth++;
             if (mounth > 12) {
@@ -42,13 +42,13 @@ class Daycircle extends ChangeNotifier {
               Citizen().incrementAge();
             }
           }
-          Citizen().citizenBirth();
+
           SaveSystem().AllSave();
           GatherersHut().collectResources();
           HuntingCabin().collectResources();
           WoodCutter().collectResources();
           StoneCutter().collectResources();
-
+          FoodResources().calculateFood();
           IndustryBuilding().buildOnGoing();
 
           notifyListeners();
