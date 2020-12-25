@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../menu.dart';
 
-class TownHall extends StatefulWidget {
-  @override
-  _TownHallState createState() => _TownHallState();
-}
+class TownHall extends StatelessWidget {
 
-class _TownHallState extends State<TownHall> {
-List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefasd','dsafaa','werqr','dsafasdf','sdafwqe','erwtwert','asdfaf','asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefasd','dsafaa','werqr','dsafasdf','sdafwqe','erwtwert','asdfaf'];
+static List events = [""];
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         floatingActionButton: MyHomePage2(),
@@ -38,7 +33,7 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
                 padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height*0.01, 0, 0),
                 child: Column(
                   children: [
-                    TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'OverView', 3, 3),
+                    TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'OverView', 3, 3,context),
 
                     Row(children: [
                       Column(children: [
@@ -48,15 +43,15 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
                             children: [
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6 , MediaQuery.of(context).size.height*0.05, '1', 3, -3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6 , MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
 
                                 ],
                               ),
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3,context),
 
                                 ],
                               ),
@@ -69,15 +64,15 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
                             children: [
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
 
                                 ],
                               ),
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
 
                                 ],
                               ),
@@ -91,15 +86,15 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
                             children: [
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
 
                                 ],
                               ),
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
 
                                 ],
                               ),
@@ -112,15 +107,15 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
                             children: [
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
 
                                 ],
                               ),
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
 
                                 ],
                               ),
@@ -134,15 +129,15 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
                             children: [
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
 
                                 ],
                               ),
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3,context),
 
                                 ],
                               ),
@@ -155,15 +150,15 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
                             children: [
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
 
                                 ],
                               ),
                               Row(
                                 children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
 
                                 ],
                               ),
@@ -196,7 +191,7 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
                 child:Padding(
                   padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height*0.01, 0, 0),
                   child: Column(children: [
-                    TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'Event Log', 3, 3),
+                    TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'Event Log', 3, 3,context),
                     SizedBox(
                       height: MediaQuery.of(context).size.height*0.01 ,
                     ),
@@ -220,7 +215,7 @@ List events = ['asdfaasadf','asdfsdfa','sdafasdfqwweqr','werwqrwqsdfasdf','awefa
   }
 
 
-  Widget TextBox(double width,double height,String text,double shadowx,double shadowy){
+  Widget TextBox(double width,double height,String text,double shadowx,double shadowy, BuildContext context){
 
 
     return Container(

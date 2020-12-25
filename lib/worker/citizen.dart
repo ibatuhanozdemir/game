@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:game/daycircle.dart';
+import 'package:game/screens/townhall.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Citizen {
@@ -731,18 +733,23 @@ class Citizen {
     citizen.forEach((element) {
       if (element['age'] >= 60 && element['age'] < 70) {
         if (next(1, 101) <= 5) {
+          TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+ element['name']+ " died at age of " + element['age'].toString());
           citizen.removeAt(citizen.indexOf(element));
+
         }
       } else if (element['age'] >= 70 && element['age'] < 80) {
         if (next(1, 101) <= 10) {
+          TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+ element['name']+ " died at age of " + element['age'].toString());
           citizen.removeAt(citizen.indexOf(element));
         }
       } else if (element['age'] >= 80 && element['age'] < 90) {
         if (next(1, 101) <= 20) {
+          TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+ element['name']+ " died at age of " + element['age'].toString());
           citizen.removeAt(citizen.indexOf(element));
         }
       }else if (element['age'] >= 90 ) {
         if (next(1, 101) <=70) {
+          TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+ element['name']+ " died at age of " + element['age'].toString());
           citizen.removeAt(citizen.indexOf(element));
         }
       }

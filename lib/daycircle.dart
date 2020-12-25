@@ -24,7 +24,7 @@ class Daycircle extends ChangeNotifier {
   static int stop = 0;
   static String abc='adsf';
   void startTimer() {
-    const oneSec = const Duration(seconds: 1);
+    const oneSec = const Duration(seconds: 2);
     notifyListeners();
     Timer.periodic(oneSec, (Timer timer) {
       if (stop == 0) {
@@ -50,6 +50,7 @@ class Daycircle extends ChangeNotifier {
           FoodResources().calculateFood();
           IndustryBuilding().buildOnGoing();
           Citizen().calculateGlobalHealth();
+          Citizen().citizenDeath();
           notifyListeners();
           timer.cancel();
           startTimer();
