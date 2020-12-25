@@ -729,16 +729,20 @@ class Citizen {
 
   void citizenDeath() {
     citizen.forEach((element) {
-      if (element['age'] > 60 && element['age'] < 70) {
+      if (element['age'] >= 60 && element['age'] < 70) {
         if (next(1, 101) <= 5) {
           citizen.removeAt(citizen.indexOf(element));
         }
-      } else if (element['age'] > 70 && element['age'] < 80) {
+      } else if (element['age'] >= 70 && element['age'] < 80) {
         if (next(1, 101) <= 10) {
           citizen.removeAt(citizen.indexOf(element));
         }
-      } else if (element['age'] > 80 && element['age'] < 90) {
+      } else if (element['age'] >= 80 && element['age'] < 90) {
         if (next(1, 101) <= 20) {
+          citizen.removeAt(citizen.indexOf(element));
+        }
+      }else if (element['age'] >= 90 ) {
+        if (next(1, 101) <=70) {
           citizen.removeAt(citizen.indexOf(element));
         }
       }
