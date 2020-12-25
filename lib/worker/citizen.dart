@@ -724,37 +724,43 @@ class Citizen {
           'hunger': 'yes'
         };
         citizen.add(newCitizen);
+        TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+newCitizen['name']+ " was born.");
         newCitizen = {};
       }
+
     }
+
   }
 
   void citizenDeath() {
+    List deaths=[];
     citizen.forEach((element) {
       if (element['age'] >= 60 && element['age'] < 70) {
         if (next(1, 101) <= 5) {
           TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+ element['name']+ " died at age of " + element['age'].toString());
-          citizen.removeAt(citizen.indexOf(element));
+          deaths.add(element);
 
         }
       } else if (element['age'] >= 70 && element['age'] < 80) {
         if (next(1, 101) <= 10) {
           TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+ element['name']+ " died at age of " + element['age'].toString());
-          citizen.removeAt(citizen.indexOf(element));
+          deaths.add(element);
         }
       } else if (element['age'] >= 80 && element['age'] < 90) {
         if (next(1, 101) <= 20) {
           TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+ element['name']+ " died at age of " + element['age'].toString());
-          citizen.removeAt(citizen.indexOf(element));
+          deaths.add(element);
         }
       }else if (element['age'] >= 90 ) {
         if (next(1, 101) <=70) {
           TownHall.events.add(Daycircle.day.toString()+"/" +Daycircle.mounth.toString()+ "/" + Daycircle.year.toString()+ " : "+ element['name']+ " died at age of " + element['age'].toString());
-          citizen.removeAt(citizen.indexOf(element));
+          deaths.add(element);
         }
       }
     }
       );
+
+    citizen.removeWhere((element) => deaths.contains(element));
   }
 
 

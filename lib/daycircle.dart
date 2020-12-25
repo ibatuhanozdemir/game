@@ -33,7 +33,7 @@ class Daycircle extends ChangeNotifier {
           if (day > 3) {
 
 
-            //Citizen().citizenBirth();
+
             day = 1;
             mounth++;
             if (mounth > 12) {
@@ -50,6 +50,7 @@ class Daycircle extends ChangeNotifier {
           FoodResources().calculateFood();
           IndustryBuilding().buildOnGoing();
           Citizen().calculateGlobalHealth();
+          Citizen().citizenBirth();
           Citizen().citizenDeath();
           notifyListeners();
           timer.cancel();

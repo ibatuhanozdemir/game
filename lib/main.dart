@@ -132,25 +132,30 @@ class MyApp2 extends ConsumerWidget {
               ),
             ),
           ),
-          body: Stack(
-            children: <Widget>[
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.005,
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.8,
-                child: TabBarView(
-                  children: [
-                    SecondLayerCustomAppBar(
-                        "Industry Buildings", "Food Buildings"),
-                    SecondLayerCustomAppBar2("Citizen", "ikinciTab"),
-                  ],
+          body: SafeArea(
+            child: Stack(
+              children: <Widget>[
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.005,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: TabBarView(
+                    children: [
+                      SecondLayerCustomAppBar(
+                          "Industry Buildings", "Food Buildings"),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                        child: SecondLayerCustomAppBar2("Citizen", "ikinciTab"),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Positioned(
-                child: Text(greeting5.value4),
-              ),
-              ExhibitionBottomSheet(),
-            ],
+                Positioned(
+                  child: Text(greeting5.value4),
+                ),
+                ExhibitionBottomSheet(),
+              ],
+            ),
           ),
         ),
       ),

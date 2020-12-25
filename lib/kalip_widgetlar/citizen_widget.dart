@@ -22,36 +22,38 @@ class _SecondLayerCustomAppBar2State extends State<SecondLayerCustomAppBar2>
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 2,
-        child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(30),
-            child: AppBar(
-              backgroundColor: Colors.grey,
-              title: TabBar(
-                unselectedLabelColor: Colors.brown,
-                isScrollable: true,
-                indicatorColor: Colors.brown,
-                tabs: [
-                  Text(widget.ilkTab),
-                  Text(widget.ikinciTab),
-                ],
+        child: SafeArea(
+          child: Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(30),
+              child: AppBar(
+                backgroundColor: Colors.grey,
+                title: TabBar(
+                  unselectedLabelColor: Colors.brown,
+                  isScrollable: true,
+                  indicatorColor: Colors.brown,
+                  tabs: [
+                    Text(widget.ilkTab),
+                    Text(widget.ikinciTab),
+                  ],
+                ),
+                centerTitle: true,
               ),
-              centerTitle: true,
             ),
-          ),
-          body: TabBarView(
-            children: [
-              ListView.builder(
-                  itemBuilder: (_, index) {
-                    return citizenWidgeti(index);
-                  },
-                  itemCount: Citizen.citizen.length),
-              ListView.builder(
-                  itemBuilder: (_, index) {
-                    return FoodBuildingWidgeti(index);
-                  },
-                  itemCount: FoodBuilding.food_building.length),
-            ],
+            body: TabBarView(
+              children: [
+                ListView.builder(
+                    itemBuilder: (_, index) {
+                      return citizenWidgeti(index);
+                    },
+                    itemCount: Citizen.citizen.length),
+                ListView.builder(
+                    itemBuilder: (_, index) {
+                      return FoodBuildingWidgeti(index);
+                    },
+                    itemCount: FoodBuilding.food_building.length),
+              ],
+            ),
           ),
         ));
   }
@@ -71,8 +73,8 @@ class citizenWidgeti extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Container(
-                height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.height * 0.08,
+                height: MediaQuery.of(context).size.height * 0.07,
+                width: MediaQuery.of(context).size.height * 0.07,
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: (() {
                   if (Citizen.citizen[index]['gender'] == 'male') {
@@ -106,7 +108,7 @@ class citizenWidgeti extends StatelessWidget {
                     }
                   })() +
                   ".png"),
-              height: 20,
+              height: 30,
             ),
             Container(
               padding: EdgeInsets.all(0),

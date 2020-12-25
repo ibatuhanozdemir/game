@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/all.dart';
 
+import '../main.dart';
 import '../menu.dart';
 
-class TownHall extends StatelessWidget {
+class TownHall extends ConsumerWidget {
 
 static List events = [""];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,ScopedReader watch) {
+    final prov=watch(asd3);
+
+
     return SafeArea(
       child: Scaffold(
         floatingActionButton: MyHomePage2(),
@@ -259,7 +264,7 @@ static List events = [""];
       child:
       Row(children: [
 
-        Text("Event 1:  " +events[index])
+        Text("Event 1:  " +events.reversed.toList()[index])
 
 
 
