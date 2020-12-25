@@ -37,6 +37,10 @@ class FoodResources {
         if (element['id'] == yiyici[araDeger]['id']) {
           if (food_resources_count[0]['food'] <= foodConsumptionPerCitizen) {
             element['hunger'] = 'yes'; // yemek yoksa
+            if(element['health']>=10){
+              element['health']= element['health']-10;
+            }
+
           } else {
             element['hunger'] = 'no'; // yemek varsa
             //yemeklerden düşüm
@@ -46,7 +50,9 @@ class FoodResources {
             food_resource_sublist_count[1]['raw meet'] =
                 food_resource_sublist_count[1]['raw meet'] -
                     foodConsumptionPerCitizen;
-
+            if(element['health']<=90){
+              element['health']= element['health']+10;
+            }
             // toplam food hesabı
             food_resources_count[0]['food']=0;
             food_resource_sublist_name.forEach((element) {

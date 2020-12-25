@@ -42,7 +42,6 @@ class Daycircle extends ChangeNotifier {
               Citizen().incrementAge();
             }
           }
-
           SaveSystem().AllSave();
           GatherersHut().collectResources();
           HuntingCabin().collectResources();
@@ -50,7 +49,7 @@ class Daycircle extends ChangeNotifier {
           StoneCutter().collectResources();
           FoodResources().calculateFood();
           IndustryBuilding().buildOnGoing();
-
+          Citizen().calculateGlobalHealth();
           notifyListeners();
           timer.cancel();
           startTimer();

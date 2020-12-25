@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Citizen {
+  static int globalHealth=0;
   List femaleNames = [
     "Emily",
     "Hannah",
@@ -726,6 +727,37 @@ class Citizen {
     }
   }
 
+  void citizenDeath() {
+    citizen.forEach((element) {
+      if (element['age'] > 60 && element['age'] < 70) {
+        if (next(1, 101) <= 5) {
+          citizen.removeAt(citizen.indexOf(element));
+        }
+      } else if (element['age'] > 70 && element['age'] < 80) {
+        if (next(1, 101) <= 10) {
+          citizen.removeAt(citizen.indexOf(element));
+        }
+      } else if (element['age'] > 80 && element['age'] < 90) {
+        if (next(1, 101) <= 20) {
+          citizen.removeAt(citizen.indexOf(element));
+        }
+      }
+    }
+      );
+  }
+
+
   final _random = new Random();
   int next(min, int max) => min + _random.nextInt(max - min);
+
+  void calculateGlobalHealth(){
+    globalHealth=0;
+    citizen.forEach((element) {
+      globalHealth = globalHealth + element['health'];
+    });
+    double a = globalHealth/citizen.length;
+    globalHealth = a.toInt();
+
+  }
+
 }

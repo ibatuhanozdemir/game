@@ -47,9 +47,23 @@ class CustomAppBar extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.all(2.0),
                     child: TopResourceWidget(
-                        'food',
-                        'tomato',
-                        FoodResources.food_resources_count[0]['food']
+                        'Global health',
+                        "heart" +
+                            (() {
+                              if (Citizen.globalHealth <= 20) {
+                                return "20";
+                              }else if(Citizen.globalHealth <= 40){
+                                return "40";
+                              }else if(Citizen.globalHealth <= 60){
+                                return "60";
+                              }else if(Citizen.globalHealth <= 80){
+                                return "80";
+                              }else if(Citizen.globalHealth <= 100){
+                                return "100";
+                              }
+                            })()
+                            ,
+                        Citizen.globalHealth
                             .toString()),
                   )
                 ],
