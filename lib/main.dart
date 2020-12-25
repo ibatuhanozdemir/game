@@ -19,7 +19,7 @@ import 'kalip_widgetlar/custom_app_bar.dart';
 import 'menu.dart';
 
 void main() {
-  runApp(ProviderScope(child: MaterialApp(title: 'river', home:MyApp())));
+  runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
 }
 
 class MyApp extends StatefulWidget {
@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     rootBundle.load('images/new_file.riv').then(
-          (data) async {
+      (data) async {
         final file = RiveFile();
 
         // Load the RiveFile from the binary data.
@@ -52,9 +52,9 @@ class _MyAppState extends State<MyApp> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -63,6 +63,7 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: [
+
               SizedBox(
                 height: 100,
               ),
@@ -71,7 +72,10 @@ class _MyAppState extends State<MyApp> {
                 height: 300,
                 child: _riveArtboard == null
                     ? const SizedBox()
-                    : Rive(artboard: _riveArtboard,fit: BoxFit.contain,),
+                    : Rive(
+                        artboard: _riveArtboard,
+                        fit: BoxFit.contain,
+                      ),
               ),
               RaisedButton(
                 child: Text(
@@ -85,8 +89,8 @@ class _MyAppState extends State<MyApp> {
                   if (result2 == null) {
                     print('error');
                   } else {
-                    Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (context) => MyApp2()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => MyApp2()));
                   }
                 },
               ),
@@ -100,7 +104,6 @@ class _MyAppState extends State<MyApp> {
 
 final asd3 = ChangeNotifierProvider((ref) => Daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
-
 
 class MyApp2 extends ConsumerWidget {
   @override
@@ -118,7 +121,6 @@ class MyApp2 extends ConsumerWidget {
                 Size.fromHeight(MediaQuery.of(context).size.height * 0.22),
             child: AppBar(
               flexibleSpace: CustomAppBar(),
-
               bottom: TabBar(
                 unselectedLabelColor: Colors.brown,
                 isScrollable: true,
@@ -138,14 +140,15 @@ class MyApp2 extends ConsumerWidget {
                 height: MediaQuery.of(context).size.height * 0.8,
                 child: TabBarView(
                   children: [
-                    SecondLayerCustomAppBar("Industry Buildings", "Food Buildings"),
+                    SecondLayerCustomAppBar(
+                        "Industry Buildings", "Food Buildings"),
                     SecondLayerCustomAppBar2("Citizen", "ikinciTab"),
                   ],
                 ),
               ),
               Positioned(
-
-                child: Text(greeting5.value4),),
+                child: Text(greeting5.value4),
+              ),
               ExhibitionBottomSheet(),
             ],
           ),
@@ -155,7 +158,6 @@ class MyApp2 extends ConsumerWidget {
   }
 }
 
-
 class FoodBuildingWidgeti extends StatelessWidget {
   int index;
 
@@ -163,7 +165,6 @@ class FoodBuildingWidgeti extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
       child: Card(
         color: Colors.grey.shade700,
@@ -194,12 +195,11 @@ class FoodBuildingWidgeti extends StatelessWidget {
       ),
       onTap: () {
         showInformationDialog2(
-            context, FoodBuilding.food_building[index],index);
+            context, FoodBuilding.food_building[index], index);
       },
     );
   }
 }
-
 
 class IndstryBuildingWidgeti extends ConsumerWidget {
   @override
@@ -208,11 +208,12 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
   IndstryBuildingWidgeti(this.index);
 
   Widget build(BuildContext context, ScopedReader watch) {
-
     watch(aa);
     return GestureDetector(
       child: Container(
-        height: MediaQuery.of(context).size.height*0.05*MediaQuery.of(context).devicePixelRatio,
+        height: MediaQuery.of(context).size.height *
+            0.05 *
+            MediaQuery.of(context).devicePixelRatio,
         color: Colors.red,
         child: Card(
           color: Colors.grey.shade700,
@@ -233,30 +234,44 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                   children: [
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: Text(IndustryBuilding.industry_building[index]
-                              ['name'] +
-                          '('+IndustryBuilding.industry_building[index]['workercount'].toString()+"/"+IndustryBuilding.industry_building[index]['capacity'].toString()+')', style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.016),),
+                      child: Text(
+                        IndustryBuilding.industry_building[index]['name'] +
+                            '(' +
+                            IndustryBuilding.industry_building[index]
+                                    ['workercount']
+                                .toString() +
+                            "/" +
+                            IndustryBuilding.industry_building[index]
+                                    ['capacity']
+                                .toString() +
+                            ')',
+                        style: TextStyle(
+                            fontSize:
+                                MediaQuery.of(context).size.height * 0.016),
+                      ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     Container(
-
                       padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                      child: Text('Req= labour:50 wood:20  stone:30',style: TextStyle(fontSize: MediaQuery.of(context).size.height*0.016)),
+                      child: Text('Req= labour:50 wood:20  stone:30',
+                          style: TextStyle(
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.016)),
                     ),
                   ],
                 ),
               ),
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Expanded(
                   child: Container(
                     color: Colors.red,
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width * 0.15,
-                    child: Text("Qty. "+IndustryBuilding.industry_building[index]['quantity'].toString()),
+                    child: Text("Qty. " +
+                        IndustryBuilding.industry_building[index]['quantity']
+                            .toString()),
                   ),
                 ),
                 IndustryBuilding.industry_building[index]['progres']
@@ -269,7 +284,10 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                         child: Text('Add Builder'),
                         onPressed: () {
                           showInformationDialog3(
-                              context, 'builder'+IndustryBuilding.industry_building[index]['name']);
+                              context,
+                              'builder' +
+                                  IndustryBuilding.industry_building[index]
+                                      ['name']);
                         }),
                 IndustryBuilding.industry_building[index]['progres']
                     ? Container(
@@ -285,7 +303,10 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                           valueColor: AlwaysStoppedAnimation<Color>(
                             Colors.amber,
                           ),
-                          value: IndustryBuilding.industry_building[index]['buildprogres']/IndustryBuilding.industry_building[index]['labourcost'],
+                          value: IndustryBuilding.industry_building[index]
+                                  ['buildprogres'] /
+                              IndustryBuilding.industry_building[index]
+                                  ['labourcost'],
                         ))
               ]),
             ],
@@ -294,19 +315,19 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
       ),
       onTap: () {
         showInformationDialog2(
-            context, IndustryBuilding.industry_building[index]['name'],index);
+            context, IndustryBuilding.industry_building[index]['name'], index);
       },
     );
   }
 }
 
 Future<void> showInformationDialog2(
-    BuildContext context, String workarea,int index) async {
+    BuildContext context, String workarea, int index) async {
   return await showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: WorkerAssigning(context, workarea,index),
+          content: WorkerAssigning(context, workarea, index),
           actions: [
             GestureDetector(
               child: Center(child: Text("Done")),

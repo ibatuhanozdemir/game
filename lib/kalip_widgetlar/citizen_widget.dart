@@ -59,7 +59,7 @@ class _SecondLayerCustomAppBar2State extends State<SecondLayerCustomAppBar2>
 class citizenWidgeti extends StatelessWidget {
   @override
   int index;
-
+  int heartDeger = 20;
   citizenWidgeti(this.index);
 
   Widget build(BuildContext context) {
@@ -90,6 +90,24 @@ class citizenWidgeti extends StatelessWidget {
               ),
             ),
             Container(
+              child: Image.asset("images/heart" +
+                  (() {
+                    if (Citizen.citizen[index]['health'] <= 20) {
+                      return "20";
+                    }else if(Citizen.citizen[index]['health'] <= 40){
+                      return "40";
+                    }else if(Citizen.citizen[index]['health'] <= 60){
+                      return "60";
+                    }else if(Citizen.citizen[index]['health'] <= 80){
+                      return "80";
+                    }else if(Citizen.citizen[index]['health'] <= 100){
+                      return "100";
+                    }
+                  })() +
+                  ".png"),
+              height: 20,
+            ),
+            Container(
               padding: EdgeInsets.all(0),
               width: MediaQuery.of(context).size.height * 0.15,
               child: Column(
@@ -102,21 +120,44 @@ class citizenWidgeti extends StatelessWidget {
           ],
         ),
       ),
-      onTap:() {
-    showInformationDialog3(
-    context, Citizen.citizen[index]['name'],Citizen.citizen[index]['workarea'],Citizen.citizen[index]['gender'],Citizen.citizen[index]['tool'],Citizen.citizen[index]['cloth'],Citizen.citizen[index]['education'],Citizen.citizen[index]['health'],Citizen.citizen[index]['happiness'],Citizen.citizen[index]['overallef'],Citizen.citizen[index]['age'],Citizen.citizen[index]['hunger']);
-    },
+      onTap: () {
+        showInformationDialog3(
+            context,
+            Citizen.citizen[index]['name'],
+            Citizen.citizen[index]['workarea'],
+            Citizen.citizen[index]['gender'],
+            Citizen.citizen[index]['tool'],
+            Citizen.citizen[index]['cloth'],
+            Citizen.citizen[index]['education'],
+            Citizen.citizen[index]['health'],
+            Citizen.citizen[index]['happiness'],
+            Citizen.citizen[index]['overallef'],
+            Citizen.citizen[index]['age'],
+            Citizen.citizen[index]['hunger']);
+      },
     );
   }
 }
 
-Future<void> showInformationDialog3(BuildContext context, String name,String workarea,String gender,
-    String tool,String cloth,String education,int health,int happiness,int overallef,int age, String hunger) async {
+Future<void> showInformationDialog3(
+    BuildContext context,
+    String name,
+    String workarea,
+    String gender,
+    String tool,
+    String cloth,
+    String education,
+    int health,
+    int happiness,
+    int overallef,
+    int age,
+    String hunger) async {
   return await showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: CitizenInfo(context, name,workarea,gender,tool,cloth,education,health,happiness,overallef,age,hunger),
+          content: CitizenInfo(context, name, workarea, gender, tool, cloth,
+              education, health, happiness, overallef, age, hunger),
           actions: [
             GestureDetector(
               child: Center(child: Text("Done")),
@@ -133,57 +174,57 @@ class CitizenInfo extends StatelessWidget {
   BuildContext context;
 
   CitizenInfo(
-      this.context,
-      this.name,
-      this.workarea,
-      this.gender,
-      this.tool,
-      this.cloth,
-      this.education,
-      this.health,
-      this.happines,
-      this.overallef,
-      this.age,
-      this.hunger,);
+    this.context,
+    this.name,
+    this.workarea,
+    this.gender,
+    this.tool,
+    this.cloth,
+    this.education,
+    this.health,
+    this.happines,
+    this.overallef,
+    this.age,
+    this.hunger,
+  );
 
   String hunger;
   String name;
   String workarea;
-  String gender, tool,cloth,education;
-  int health,happines,overallef,age;
+  String gender, tool, cloth, education;
+  int health, happines, overallef, age;
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:
-
-      Center(
+      child: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               height: 200,
-              child:(() {
+              child: (() {
                 if (gender == 'male') {
                   return Image.asset("images/maleface.jpg");
                 } else {
                   return Image.asset("images/femaleface.jpg");
                 }
-              })(),),
-            SizedBox(height: 20,),
-            Text("Name:"+name),
-            Text("Age"+age.toString()),
-            Text("Gender:"+gender),
-            Text("Workarea:"+workarea),
-            Text("Health"+health.toString()),
-            Text("Happiness"+happines.toString()),
-            Text("Overall Efficiency:"+overallef.toString()),
-            Text("Tool:"+tool),
-            Text("Cloth"+cloth),
-            Text("Education"+education),
-            Text("Hunger"+hunger),
-
-
+              })(),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text("Name:" + name),
+            Text("Age" + age.toString()),
+            Text("Gender:" + gender),
+            Text("Workarea:" + workarea),
+            Text("Health" + health.toString()),
+            Text("Happiness" + happines.toString()),
+            Text("Overall Efficiency:" + overallef.toString()),
+            Text("Tool:" + tool),
+            Text("Cloth" + cloth),
+            Text("Education" + education),
+            Text("Hunger" + hunger),
           ],
         ),
       ),
