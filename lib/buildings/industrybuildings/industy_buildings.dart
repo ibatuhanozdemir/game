@@ -57,7 +57,9 @@ class IndustryBuilding extends ChangeNotifier {
                 (element2['workarea'].contains('builder' + element['name'])))
             .toList()
             .forEach((element5) {
-          element['buildprogres'] = element['buildprogres'] + 1;
+          if (element['progres'] == false){
+
+            element['buildprogres'] = element['buildprogres'] + 1;
           if (element['buildprogres'] >= element['totalupgradereq']) {
             element['buildprogres'] = 0;
             element['progres'] = true;
@@ -65,11 +67,12 @@ class IndustryBuilding extends ChangeNotifier {
             element['buildingprosses2'] = 0;
             Citizen.citizen
                 .where((element2) => (element2['workarea']
-                    .contains('builder' + element['name'])))
+                .contains('builder' + element['name'])))
                 .toList()
                 .forEach((element3) {
               element3['workarea'] = 'unemployed';
             });
+
           }
 
           int buildstatus = 0;
@@ -88,6 +91,7 @@ class IndustryBuilding extends ChangeNotifier {
               element['buildingprosses1'] = element['upgradereq'][element['buildingprosses2']]['name']+" ";
 
             }
+          }
           }
 
         });
