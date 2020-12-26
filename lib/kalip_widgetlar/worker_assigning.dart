@@ -42,7 +42,7 @@ class _WorkerAssigningState extends State<WorkerAssigning> {
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.05,
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery.of(context).size.width*0.565,
           height: MediaQuery.of(context).size.height * 0.3,
           child: ListView.builder(
               itemBuilder: (_, index) {
@@ -58,7 +58,7 @@ class _WorkerAssigningState extends State<WorkerAssigning> {
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.4,
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery.of(context).size.width*0.565,
           height: MediaQuery.of(context).size.height * 0.3,
           child: ListView.builder(
               itemBuilder: (_, index) {
@@ -148,7 +148,7 @@ class _WorkerAssigningState extends State<WorkerAssigning> {
           element['workarea'] = 'unemployed';
           eleme();
           IndustryBuilding.industry_building.forEach((element3) { element3['workercount']=Citizen.citizen
-              .where((element) => (element['workarea'].contains(element3['name'])))
+              .where((element) => (element['workarea']==element3['name']))
               .toList().length;
 
           });
@@ -159,7 +159,7 @@ class _WorkerAssigningState extends State<WorkerAssigning> {
   }
 
   void IseAlma(int id, String workarea_name) {
-    List a=IndustryBuilding.industry_building.where((element) => element['name'].contains(workarea_name)).toList();
+    List a=IndustryBuilding.industry_building.where((element) => element['name']==workarea_name).toList();
     if(a[0]['workercount']<a[0]['capacity']){
       Citizen.citizen.forEach((element) {
         if (element['id'] == id) {
@@ -167,7 +167,7 @@ class _WorkerAssigningState extends State<WorkerAssigning> {
             element['workarea'] = workarea_name;
             eleme();
             IndustryBuilding.industry_building.forEach((element3) { element3['workercount']=Citizen.citizen
-                .where((element) => (element['workarea'].contains(element3['name'])))
+                .where((element) => (element['workarea']==element3['name']))
                 .toList().length;
 
             });
@@ -183,11 +183,13 @@ class _WorkerAssigningState extends State<WorkerAssigning> {
   }
 
   void eleme() {
+    print(workarea);
     employedworker = Citizen.citizen
-        .where((element) => (element['workarea'].contains(workarea)))
+        .where((element) => (element['workarea']==workarea))
         .toList();
+    print(employedworker);
     unemployedworker = Citizen.citizen
-        .where((element) => (element['workarea'].contains('unemployed')))
+        .where((element) => (element['workarea']=='unemployed'))
         .toList();
 
     loading = true;
@@ -221,7 +223,7 @@ class _WorkerAssigningBuilderState extends State<WorkerAssigningBuilder> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    eleme();
+    eleme(workarea);
   }
 
   @override
@@ -237,7 +239,7 @@ class _WorkerAssigningBuilderState extends State<WorkerAssigningBuilder> {
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.05,
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery.of(context).size.width*0.565,
           height: MediaQuery.of(context).size.height * 0.3,
           child: ListView.builder(
               itemBuilder: (_, index) {
@@ -253,7 +255,7 @@ class _WorkerAssigningBuilderState extends State<WorkerAssigningBuilder> {
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.4,
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery.of(context).size.width*0.565,
           height: MediaQuery.of(context).size.height * 0.3,
           child: ListView.builder(
               itemBuilder: (_, index) {
@@ -295,7 +297,7 @@ class _WorkerAssigningBuilderState extends State<WorkerAssigningBuilder> {
         ),
       ),
       onTap: () {
-        this.IstenCikarma(employedworker[index]['id']);
+        this.IstenCikarma(employedworker[index]['id'],workarea);
 
       },
     );
@@ -336,12 +338,12 @@ class _WorkerAssigningBuilderState extends State<WorkerAssigningBuilder> {
     );
   }
 
-  void IstenCikarma(int id) {
+  void IstenCikarma(int id,String workarea_name) {
     Citizen.citizen.forEach((element) {
       if (element['id'] == id) {
         setState(() {
           element['workarea'] = 'unemployed';
-          eleme();
+          eleme(workarea_name);
         });
       }
     });
@@ -350,12 +352,12 @@ class _WorkerAssigningBuilderState extends State<WorkerAssigningBuilder> {
 
   void IseAlma(int id, String workarea_name) {
 
-
+      print(workarea_name);
       Citizen.citizen.forEach((element) {
         if (element['id'] == id) {
           setState(() {
             element['workarea'] = workarea_name;
-            eleme();
+            eleme(workarea_name);
 
           });
         }
@@ -368,12 +370,12 @@ class _WorkerAssigningBuilderState extends State<WorkerAssigningBuilder> {
 
   }
 
-  void eleme() {
+  void eleme(String workarea_name) {
     employedworker = Citizen.citizen
-        .where((element) => (element['workarea'].contains(workarea)))
+        .where((element) => (element['workarea']==workarea_name))
         .toList();
     unemployedworker = Citizen.citizen
-        .where((element) => (element['workarea'].contains('unemployed')))
+        .where((element) => (element['workarea']=='unemployed'))
         .toList();
 
     loading = true;

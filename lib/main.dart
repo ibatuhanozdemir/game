@@ -366,7 +366,13 @@ Future<void> showInformationDialog2(
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: WorkerAssigning(context, workarea, index),
+          content: Builder(
+
+
+              builder: (context) {return Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: WorkerAssigning(context, workarea,index));}),
           actions: [
             GestureDetector(
               child: Center(child: Text("Done")),
@@ -385,7 +391,13 @@ Future<void> showInformationDialog3(
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: WorkerAssigningBuilder(context, workarea),
+          content: Builder(
+
+
+          builder: (context) {return Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: WorkerAssigningBuilder(context, workarea));}),
           actions: [
             GestureDetector(
               child: Center(child: Text("Done")),
