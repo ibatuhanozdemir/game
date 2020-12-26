@@ -199,7 +199,7 @@ class FoodBuildingWidgeti extends StatelessWidget {
         ),
       ),
       onTap: () {
-        showInformationDialog2(
+        WorkerAssignDialog(
             context, FoodBuilding.food_building[index], index);
       },
     );
@@ -313,7 +313,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                     : RaisedButton(
                         child: Text('Add Builder'),
                         onPressed: () {
-                          showInformationDialog3(
+                          BuilderAssignDialog(
                               context,
                               'builder' +
                                   IndustryBuilding.industry_building[index]
@@ -353,14 +353,14 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
         ),
       ),
       onTap: () {
-        showInformationDialog2(
+        WorkerAssignDialog(
             context, IndustryBuilding.industry_building[index]['name'], index);
       },
     );
   }
 }
 
-Future<void> showInformationDialog2(
+Future<void> WorkerAssignDialog(
     BuildContext context, String workarea, int index) async {
   return await showDialog(
       context: context,
@@ -385,7 +385,7 @@ Future<void> showInformationDialog2(
       });
 }
 
-Future<void> showInformationDialog3(
+Future<void> BuilderAssignDialog(
     BuildContext context, String workarea) async {
   return await showDialog(
       context: context,
