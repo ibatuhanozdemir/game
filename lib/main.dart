@@ -63,7 +63,6 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: [
-
               SizedBox(
                 height: 100,
               ),
@@ -170,6 +169,7 @@ class FoodBuildingWidgeti extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(IndustryBuilding.industry_building[index]['upgradereq'].length-1);
     return GestureDetector(
       child: Card(
         color: Colors.grey.shade700,
@@ -259,12 +259,37 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                      child: Text('Req= labour:50 wood:20  stone:30',
-                          style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.016)),
-                    ),
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Req. for Building:',
+                              style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      0.016),
+                            ),
+                            Row(
+                              children: [
+
+                                for (Map aaa in IndustryBuilding
+                                    .industry_building[index]['upgradereq'])
+                                  Expanded(
+                                    child: Text(
+                                      aaa['name'] +
+                                          ':' +
+                                          aaa['count'].toString() +
+                                          '  ',
+                                      style: TextStyle(
+                                          fontSize:
+                                              MediaQuery.of(context).size.height *
+                                                  0.016),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ],
+                        )),
                   ],
                 ),
               ),
@@ -302,17 +327,26 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                     : Container(
                         alignment: Alignment.center,
                         width: MediaQuery.of(context).size.width * 0.20,
-                        child: LinearProgressIndicator(
-                          minHeight: MediaQuery.of(context).size.height * 0.02,
-                          backgroundColor: Colors.red,
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.amber,
+                        child: Stack(children: [
+
+                          LinearProgressIndicator(
+                            minHeight:
+                                MediaQuery.of(context).size.height * 0.02,
+                            backgroundColor: Colors.red,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.amber,
+                            ),
+                            value: IndustryBuilding.industry_building[index]
+                                    ['buildprogres'] /
+                                IndustryBuilding.industry_building[index]['totalupgradereq'],
                           ),
-                          value: IndustryBuilding.industry_building[index]
-                                  ['buildprogres'] /
-                              IndustryBuilding.industry_building[index]
-                                  ['labourcost'],
-                        ))
+                          Text(IndustryBuilding.industry_building[index]['buildingprosses1']+IndustryBuilding.industry_building[index]
+                          ['buildprogres'].toString()+'/'+
+                              IndustryBuilding.industry_building[index]['totalupgradereq'].toString(),style: TextStyle(
+                              fontSize:
+                              MediaQuery.of(context).size.height *
+                                  0.016)),
+                        ]))
               ]),
             ],
           ),

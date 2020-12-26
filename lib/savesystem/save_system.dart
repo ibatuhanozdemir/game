@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
@@ -16,21 +17,7 @@ class SaveSystem {
     prefs.setInt(resource_save_name, resource_name);
   }
 
-  Future<int> loadFood(String resource_save_name, int index) async {
-    final prefs = await SharedPreferences.getInstance();
-    final startupNumber = prefs.getInt(resource_save_name);
 
-    if (startupNumber == null) {
-      FoodResources.food_resource_sublist_count[index][resource_save_name] = 0;
-
-      return 0;
-    }
-
-    FoodResources.food_resource_sublist_count[index][resource_save_name] =
-        startupNumber;
-
-    return 0;
-  }
 
   Future<int> loadIndustry(String resource_save_name, int index) async {
     final prefs = await SharedPreferences.getInstance();
@@ -75,6 +62,41 @@ class SaveSystem {
     return 0;
   }
 
+  Future<void> saveFood() async{
+    final prefs = await SharedPreferences.getInstance();
+
+    prefs.setInt('foodcount', FoodResources.foodCount);
+    prefs.setString('foodsublist', jsonEncode(FoodResources.food_resource_sublist));
+  }
+
+  Future<int> loadFoodSublist() async {
+    final prefs = await SharedPreferences.getInstance();
+    final startupNumber = prefs.getString('foodsublist');
+
+    if (startupNumber == null) {
+      FoodResources.food_resource_sublist = FoodResources.food_resource_sublist;
+
+      return 0;
+    }
+    FoodResources.food_resource_sublist= jsonDecode(startupNumber);
+
+    return 0;
+  }
+
+  Future<int> loadFoodCount() async {
+    final prefs = await SharedPreferences.getInstance();
+    final startupNumber = prefs.getInt('foodcount');
+
+    if (startupNumber == null) {
+      FoodResources.foodCount = FoodResources.foodCount;
+
+      return 0;
+    }
+    FoodResources.foodCount= startupNumber;
+
+    return 0;
+  }
+
   Future<void> saveEvents() async{
     final prefs = await SharedPreferences.getInstance();
 
@@ -96,13 +118,7 @@ class SaveSystem {
   }
 
   Future<void> AllSave() async {
-    await FoodResources.food_resource_sublist_name.forEach((element) async {
-      await save(
-          element,
-          FoodResources.food_resource_sublist_count[
-                  FoodResources.food_resource_sublist_name.indexOf(element)]
-              [element]);
-    });
+
 
     await IndustryResources.industry_resources_name.forEach((element) async {
       await save(
@@ -112,22 +128,22 @@ class SaveSystem {
               [element]);
     });
     await kaydet();
+    await saveFood();
     IndustryBuilding().save();
     Citizen().save();
-    saveEvents();
+    await saveEvents();
   }
 
   Future<int> getResources() async {
-    await FoodResources.food_resource_sublist_name.forEach((element) async {
-      await loadFood(
-          element, FoodResources.food_resource_sublist_name.indexOf(element));
-    });
+
 
     await IndustryResources.industry_resources_name.forEach((element) async {
       await loadIndustry(
           element, IndustryResources.industry_resources_name.indexOf(element));
     });
     await getIntFromSharedPref();
+    await loadFoodSublist();
+    await loadFoodCount();
     Citizen().loadCitizen();
     IndustryBuilding().loadIndustryBuilding();
     loadEvents();

@@ -102,8 +102,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                                 topMargin: 20,
                                 text: 'Food',
                               ),
-                              for (String aaab in FoodResources.food_resource_sublist_name)
-                                _foodResources(aaab),
+                              for (Map aaab in FoodResources.food_resource_sublist)
+                                _foodResources(aaab['foodname'],FoodResources.food_resource_sublist.indexOf(aaab)),
                             ],
                           ),
                         ),
@@ -160,8 +160,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     );
   }
 
-  Widget _foodResources(String event) {
-    int index = FoodResources.food_resource_sublist_name.indexOf(event);
+  Widget _foodResources(String event,int index) {
+
 
     return Positioned(
       height: 50,
@@ -170,7 +170,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       left: 0,
       child: ClipRRect(
         child: Text(
-            event + " = " + "" +FoodResources.food_resource_sublist_count[index][event].toString(),
+            event + " = " + "" +FoodResources.food_resource_sublist[index]['count'].toString(),
             style: TextStyle(color: Colors.white)),
       ),
     );

@@ -6,65 +6,120 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class IndustryBuilding extends ChangeNotifier {
   static List industry_building = [
-    {'name': 'woodcutter', 'progres': true,'labourcost':7,'buildprogres':0,'quantity':10,'capacity':2,'workercount':1},
-    {'name': 'stonecutter', 'progres': true,'labourcost':10,'buildprogres':0,'quantity':10,'capacity':2,'workercount':1}
+    {
+      'name': 'woodcutter',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 1,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0
+    },
+    {
+      'name': 'stonecutter',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 1,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0
+    }
   ];
 
   void buildstart(int index) {
     IndustryBuilding.industry_building[index]['progres'] = false;
+    IndustryBuilding.industry_building[index]['buildingprosses1'] = IndustryBuilding.industry_building[index]['upgradereq'][0]['name']+" ";
 
     notifyListeners();
   }
-  void buildOnGoing(){
-    industry_building.forEach((element) {
-      if(element['progres']==false){
-        element['buildprogres']=element['buildprogres']+Citizen.citizen.where((element2) => (element2['workarea'].contains('builder'+element['name']))).toList().length;
 
-        if(element['buildprogres']>=element['labourcost']){
-          element['buildprogres']=0;
-          element['progres']=true;
-          element['quantity']=element['quantity']+1;
-          Citizen.citizen.where((element2) => (element2['workarea'].contains('builder'+element['name']))).toList().forEach((element3) { element3['workarea']='unemployed';});
-        }
+  void buildOnGoing() {
+
+
+    industry_building.forEach((element) {
+      if (element['progres'] == false) {
+        Citizen.citizen
+            .where((element2) =>
+                (element2['workarea'].contains('builder' + element['name'])))
+            .toList()
+            .forEach((element5) {
+          element['buildprogres'] = element['buildprogres'] + 1;
+          if (element['buildprogres'] >= element['totalupgradereq']) {
+            element['buildprogres'] = 0;
+            element['progres'] = true;
+            element['quantity'] = element['quantity'] + 1;
+            element['buildingprosses2'] = 0;
+            Citizen.citizen
+                .where((element2) => (element2['workarea']
+                    .contains('builder' + element['name'])))
+                .toList()
+                .forEach((element3) {
+              element3['workarea'] = 'unemployed';
+            });
+          }
+
+          int buildstatus = 0;
+          for (int i = 0; i <= element['buildingprosses2']; i++) {
+            buildstatus = buildstatus + element['upgradereq'][i]['count'];
+          }
+
+          if (buildstatus <= element['buildprogres']) {
+            element['buildingprosses2'] = element['buildingprosses2'] + 1;
+            print(element['buildingprosses2']);
+
+            if (element['buildingprosses2'] == element['upgradereq'].length - 1) {
+              element['buildingprosses1'] = 'Building ';
+
+            } else {
+              element['buildingprosses1'] = element['upgradereq'][element['buildingprosses2']]['name']+" ";
+
+            }
+          }
+
+        });
+
       }
 
     });
-
   }
 
-  Future<void> save( )async{
-    final prefs= await SharedPreferences.getInstance();
-
-    prefs.setString('industry_building',jsonEncode(industry_building) );
-
-
-  }
-  Future<int> loadIndustryBuilding() async {
-
+  Future<void> save() async {
     final prefs = await SharedPreferences.getInstance();
-    final startupNumber =  prefs.getString('industry_building');
 
+    prefs.setString('industry_building', jsonEncode(industry_building));
+  }
 
+  Future<int> loadIndustryBuilding() async {
+    final prefs = await SharedPreferences.getInstance();
+    final startupNumber = prefs.getString('industry_building');
 
     if (startupNumber == null) {
-      industry_building=industry_building;
+      industry_building = industry_building;
 
       return 0;
-
     }
-    industry_building=jsonDecode(startupNumber);
-    industry_building.forEach((element3) { element3['workercount']=Citizen.citizen
-        .where((element) => (element['workarea'].contains(element3['name'])))
-        .toList().length;
-
+    industry_building = jsonDecode(startupNumber);
+    industry_building.forEach((element3) {
+      element3['workercount'] = Citizen.citizen
+          .where((element) => (element['workarea'].contains(element3['name'])))
+          .toList()
+          .length;
     });
-
 
     return 0;
   }
-
-
-
-
-
 }

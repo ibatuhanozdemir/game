@@ -41,7 +41,7 @@ class CustomAppBar extends ConsumerWidget {
                     child: TopResourceWidget(
                         'food',
                         'tomato',
-                        FoodResources.food_resources_count[0]['food']
+                        FoodResources.foodCount
                             .toString()),
                   ),
                   Padding(

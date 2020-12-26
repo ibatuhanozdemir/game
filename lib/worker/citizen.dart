@@ -673,7 +673,7 @@ class Citizen {
     }
   ];
 
-  static int citizenCapacity = 100;
+  static int citizenCapacity = 10;
   int min = 0;
 
   Future<void> save() async {
@@ -706,7 +706,7 @@ class Citizen {
     if (citizen.length < citizenCapacity) {
       if (next(0, 101) > 80) {
         int gender = next(0, 2);
-        print(gender);
+
         Map newCitizen = {
           'id': citizen[citizen.length - 1]["id"] + 1,
           'name': femaleNames[next(min, femaleNames.length - 1)] +
