@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 import 'package:game/daycircle.dart';
 import 'package:game/kalip_widgetlar/worker_assigning.dart';
+import 'package:game/navigation.dart';
 
 import 'package:game/savesystem/save_system.dart';
-import 'package:game/screens/townhall.dart';
 import 'package:rive/rive.dart';
 
 import 'buildings/foodbuildings/food_buildings.dart';
@@ -100,7 +100,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
+final nav = ChangeNotifierProvider((ref) => Navigation());
 final asd3 = ChangeNotifierProvider((ref) => Daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
 
@@ -108,58 +108,36 @@ class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final greeting5 = watch(asd3);
+    final navWatch = watch(nav);
 
-    return DefaultTabController(
-      length: 2,
-      child: SafeArea(
-        child: Scaffold(
-          floatingActionButton: MyHomePage2(),
-          backgroundColor: Colors.grey,
-          appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.height * 0.22),
-            child: AppBar(
-              flexibleSpace: CustomAppBar(),
-              bottom: TabBar(
-                unselectedLabelColor: Colors.brown,
-                isScrollable: true,
-                indicatorColor: Colors.brown,
-                tabs: [
-                  Center(child: Text("Buildings")),
-                  Center(child: Text("Other Things")),
-                ],
-              ),
-            ),
+    return SafeArea(
+      child: Scaffold(
+        floatingActionButton: MyHomePage2(),
+        backgroundColor: Colors.grey,
+        appBar: PreferredSize(
+          preferredSize:
+              Size.fromHeight(MediaQuery.of(context).size.height * 0.22),
+          child: AppBar(
+            flexibleSpace: CustomAppBar(),
           ),
-          body: SafeArea(
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  top: MediaQuery.of(context).size.height * 0.005,
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.8,
-                  child: TabBarView(
-                    children: [
-                      SecondLayerCustomAppBar(
-                          "Industry Buildings", "Food Buildings"),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                        child: SecondLayerCustomAppBar2("Citizen", "ikinciTab"),
-                      ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  child: Text(greeting5.value4),
-                ),
-                ExhibitionBottomSheet(),
-              ],
+        ),
+        body: Stack(
+          children: <Widget>[
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.005,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: navWatch.navigation()
             ),
-          ),
+            ExhibitionBottomSheet(),
+          ],
         ),
       ),
     );
   }
+
+
+
 }
 
 class FoodBuildingWidgeti extends StatelessWidget {

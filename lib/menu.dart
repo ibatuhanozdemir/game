@@ -5,6 +5,7 @@ import 'package:game/daycircle.dart';
 import 'package:game/screens/townhall.dart';
 
 import 'main.dart';
+import 'navigation.dart';
 
 class MyHomePage2 extends StatefulWidget {
   @override
@@ -186,6 +187,11 @@ class _MyHomePage2State extends State<MyHomePage2>
                   ),
                   onClick: () {
                     print('Management ustteki buton');
+                    Navigation.index =2;
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyApp2()),
+                            (route) => false);
                   },
                 ),
               ),
@@ -215,9 +221,41 @@ class _MyHomePage2State extends State<MyHomePage2>
                   ),
                   onClick: () {
                     print('Buildings üstten 2. buton');
+                    Navigation.index =1;
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyApp2()),
+                            (route) => false);
                   },
                 ),
               ),
+            ),
+          ),
+        ),
+        Transform.translate(
+          offset: Offset.fromDirection(
+              getRadiansFromDegree(270), degOneTranslationAnimation.value * 75),
+          child: Transform.translate(
+            offset: Offset.fromDirection(getRadiansFromDegree(180),
+                degOneTranslationAnimation.value * 50),
+            child: Transform(
+              transform: Matrix4.rotationZ(
+                  getRadiansFromDegree(rotationAnimation.value)),
+              alignment: Alignment.center,
+              child: () {
+                if (animationController.isCompleted &&
+                    (animationController2.value == 0) &&
+                    (animationController3.value == 0)) {
+                  return Material(
+                      borderRadius:
+                      BorderRadius.horizontal(left: Radius.circular(20)),
+                      color: Colors.amber,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Text('deneme '),
+                      ));
+                }
+              }(),
             ),
           ),
         ),
@@ -244,6 +282,11 @@ class _MyHomePage2State extends State<MyHomePage2>
                   ),
                   onClick: () {
                     print('Buildings üstteki buton');
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyApp2()),
+                            (route) => false);
+                    Navigation.index =0;
                   },
                 ),
               ),
@@ -304,7 +347,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                   onClick: () {
                     context.read(asd3).numberswitch(1);
 
-                    print('Buildings en alttakı buton');
+                    print('Buildings en alttaki buton');
                   },
                 ),
               ),
