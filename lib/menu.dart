@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
@@ -9,8 +6,6 @@ import 'package:game/screens/townhall.dart';
 
 import 'main.dart';
 
-
-
 class MyHomePage2 extends StatefulWidget {
   @override
   _MyHomePage2State createState() => _MyHomePage2State();
@@ -18,7 +13,8 @@ class MyHomePage2 extends StatefulWidget {
 
 class _MyHomePage2State extends State<MyHomePage2>
     with TickerProviderStateMixin {
-  AnimationController animationController, animationController2,
+  AnimationController animationController,
+      animationController2,
       animationController3;
   Animation degOneTranslationAnimation,
       degTwoTranslationAnimation,
@@ -37,18 +33,16 @@ class _MyHomePage2State extends State<MyHomePage2>
     return degree / unitRadian;
   }
 
-  double y1 = 0,
-      y2 = 0,
-      y3 = 0;
+  double y1 = 0, y2 = 0, y3 = 0;
 
   @override
   void initState() {
-    animationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 500));
-    animationController2 = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 500));
-    animationController3 = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 500));
+    animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    animationController2 =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    animationController3 =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     degOneTranslationAnimation = TweenSequence([
       TweenSequenceItem<double>(
           tween: Tween<double>(begin: 0.0, end: 0.8), weight: 75.0),
@@ -122,14 +116,10 @@ class _MyHomePage2State extends State<MyHomePage2>
       });
     });
     animationController2.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
     animationController3.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 
@@ -140,8 +130,8 @@ class _MyHomePage2State extends State<MyHomePage2>
       children: <Widget>[
         IgnorePointer(
           child: Container(
-            color: Colors.black.withOpacity(
-                0), // comment or change to transparent color
+            color: Colors.black
+                .withOpacity(0), // comment or change to transparent color
             height: 500,
             width: 400,
           ),
@@ -157,7 +147,6 @@ class _MyHomePage2State extends State<MyHomePage2>
               child: Transform(
                 transform: Matrix4.rotationZ(
                     getRadiansFromDegree(rotationAnimation2.value)),
-
                 alignment: Alignment.center,
                 child: CircularButton(
                   color: Colors.blue,
@@ -168,7 +157,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
-                    print('First Button');
+                    print('Management alttaki buton');
                   },
                 ),
               ),
@@ -184,13 +173,10 @@ class _MyHomePage2State extends State<MyHomePage2>
               offset: Offset.fromDirection(getRadiansFromDegree(270),
                   secodlayerSixTranslationAnimaytion.value * 12),
               child: Transform(
-
                 transform: Matrix4.rotationZ(
                     getRadiansFromDegree(rotationAnimation2.value)),
-
                 alignment: Alignment.center,
                 child: CircularButton(
-
                   color: Colors.blue,
                   width: 40,
                   height: 40,
@@ -199,7 +185,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
-                    print('First Button');
+                    print('Management ustteki buton');
                   },
                 ),
               ),
@@ -228,7 +214,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
-                    print('First Button');
+                    print('Buildings üstten 2. buton');
                   },
                 ),
               ),
@@ -257,7 +243,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
-                    print('First Button');
+                    print('Buildings üstteki buton');
                   },
                 ),
               ),
@@ -287,7 +273,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                   ),
                   onClick: () {
                     context.read(asd3).numberswitch(2);
-                    print('First Button');
+                    print('Buildins üstten 3. buton');
                   },
                 ),
               ),
@@ -316,11 +302,9 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
+                    context.read(asd3).numberswitch(1);
 
-                      context.read(asd3).numberswitch(1);
-
-
-                    print('First Button');
+                    print('Buildings en alttakı buton');
                   },
                 ),
               ),
@@ -328,29 +312,26 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(getRadiansFromDegree(270),
-              degOneTranslationAnimation.value * 75),
+          offset: Offset.fromDirection(
+              getRadiansFromDegree(270), degOneTranslationAnimation.value * 75),
           child: Transform.translate(
             offset: Offset.fromDirection(getRadiansFromDegree(180),
                 degOneTranslationAnimation.value * 50),
             child: Transform(
               transform: Matrix4.rotationZ(
                   getRadiansFromDegree(rotationAnimation.value)),
-
               alignment: Alignment.center,
               child: () {
                 if (animationController.isCompleted &&
-                    (animationController2.value==0) &&
-                    (animationController3.value==0)) {
+                    (animationController2.value == 0) &&
+                    (animationController3.value == 0)) {
                   return Material(
-
-                      borderRadius: BorderRadius.horizontal(
-                          left: Radius.circular(20)),
-
+                      borderRadius:
+                          BorderRadius.horizontal(left: Radius.circular(20)),
                       color: Colors.amber,
                       child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text('deneme'),
+                        padding: const EdgeInsets.all(6.0),
+                        child: Text('deneme '),
                       ));
                 }
               }(),
@@ -358,12 +339,11 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(getRadiansFromDegree(270),
-              degOneTranslationAnimation.value * 70),
+          offset: Offset.fromDirection(
+              getRadiansFromDegree(270), degOneTranslationAnimation.value * 70),
           child: Transform(
             transform: Matrix4.rotationZ(
                 getRadiansFromDegree(rotationAnimation.value)),
-
             alignment: Alignment.center,
             child: CircularButton(
               color: Colors.blue,
@@ -374,21 +354,48 @@ class _MyHomePage2State extends State<MyHomePage2>
                 color: Colors.white,
               ),
               onClick: () {
-
-
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MyApp2()), (route) => false);
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyApp2()),
+                    (route) => false);
                 print('First Button');
               },
             ),
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(getRadiansFromDegree(270),
-              degTwoTranslationAnimation.value * 70),
+          offset: Offset.fromDirection(
+              getRadiansFromDegree(270), degOneTranslationAnimation.value * 143),
+          child: Transform.translate(
+            offset: Offset.fromDirection(getRadiansFromDegree(180),
+                degOneTranslationAnimation.value * 50),
+            child: Transform(
+              transform: Matrix4.rotationZ(
+                  getRadiansFromDegree(rotationAnimation.value)),
+              alignment: Alignment.center,
+              child: () {
+                if (animationController.isCompleted &&
+                    (animationController2.value == 0) &&
+                    (animationController3.value == 0)) {
+                  return Material(
+                      borderRadius:
+                      BorderRadius.horizontal(left: Radius.circular(20)),
+                      color: Colors.amber,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Text('Event Log '),
+                      ));
+                }
+              }(),
+            ),
+          ),
+        ),
+        Transform.translate(
+          offset: Offset.fromDirection(
+              getRadiansFromDegree(270), degTwoTranslationAnimation.value * 70),
           child: Transform(
             transform: Matrix4.rotationZ(
                 getRadiansFromDegree(rotationAnimation.value)),
-
             alignment: Alignment.center,
             child: CircularButton(
               color: Colors.black,
@@ -399,9 +406,39 @@ class _MyHomePage2State extends State<MyHomePage2>
                 color: Colors.white,
               ),
               onClick: () {
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>TownHall()), (route) => false);
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => TownHall()),
+                    (route) => false);
                 print('Second button');
               },
+            ),
+          ),
+        ),
+        Transform.translate(
+          offset: Offset.fromDirection(
+              getRadiansFromDegree(270), degOneTranslationAnimation.value * 213),
+          child: Transform.translate(
+            offset: Offset.fromDirection(getRadiansFromDegree(180),
+                degOneTranslationAnimation.value * 50),
+            child: Transform(
+              transform: Matrix4.rotationZ(
+                  getRadiansFromDegree(rotationAnimation.value)),
+              alignment: Alignment.center,
+              child: () {
+                if (animationController.isCompleted &&
+                    (animationController2.value == 0) &&
+                    (animationController3.value == 0)) {
+                  return Material(
+                      borderRadius:
+                      BorderRadius.horizontal(left: Radius.circular(20)),
+                      color: Colors.amber,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Text('Management '),
+                      ));
+                }
+              }(),
             ),
           ),
         ),
@@ -412,7 +449,6 @@ class _MyHomePage2State extends State<MyHomePage2>
             transform: Matrix4.rotationZ(
                 getRadiansFromDegree(rotationAnimation.value)),
             alignment: Alignment.center,
-
             child: CircularButton(
               color: Colors.orangeAccent,
               width: 40,
@@ -434,12 +470,38 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
+          offset: Offset.fromDirection(
+              getRadiansFromDegree(270), degOneTranslationAnimation.value * 285),
+          child: Transform.translate(
+            offset: Offset.fromDirection(getRadiansFromDegree(180),
+                degOneTranslationAnimation.value * 50),
+            child: Transform(
+              transform: Matrix4.rotationZ(
+                  getRadiansFromDegree(rotationAnimation.value)),
+              alignment: Alignment.center,
+              child: () {
+                if (animationController.isCompleted &&
+                    (animationController2.value == 0) &&
+                    (animationController3.value == 0)) {
+                  return Material(
+                      borderRadius:
+                      BorderRadius.horizontal(left: Radius.circular(20)),
+                      color: Colors.amber,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Text('Buildings '),
+                      ));
+                }
+              }(),
+            ),
+          ),
+        ),
+        Transform.translate(
           offset: Offset.fromDirection(getRadiansFromDegree(270),
               degFourTranslationAnimation.value * 70),
           child: Transform(
             transform: Matrix4.rotationZ(
                 getRadiansFromDegree(rotationAnimation.value)),
-
             alignment: Alignment.center,
             child: CircularButton(
               color: Colors.black,
@@ -462,8 +524,8 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform(
-          transform: Matrix4.rotationZ(
-              getRadiansFromDegree(rotationAnimation.value)),
+          transform:
+              Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value)),
           alignment: Alignment.center,
           child: CircularButton(
             color: Colors.red,
@@ -486,9 +548,6 @@ class _MyHomePage2State extends State<MyHomePage2>
         )
       ],
     );
-
-
-
   }
 }
 
@@ -504,7 +563,6 @@ class CircularButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       width: width,
@@ -518,7 +576,6 @@ class CircularButton extends StatelessWidget {
         },
         onPressed: onClick,
         child: Icon(
-
           icon.icon,
           color: Colors.white,
         ),

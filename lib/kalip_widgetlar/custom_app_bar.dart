@@ -68,7 +68,7 @@ class CustomAppBar extends ConsumerWidget {
                   ],
                 ),
               ),
-              SizedBox(width: 10,),
+              SizedBox(width: 2,),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -94,7 +94,7 @@ class CustomAppBar extends ConsumerWidget {
                   ],
                 ),
               ),
-              SizedBox(width: 10,),
+              SizedBox(width: 2,),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -128,11 +128,14 @@ class CustomAppBar extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TimeWidget(
-                  greeting5.value1.toString(),
-                  greeting5.value2.toString(),
-                  greeting5.value3.toString(),
-                  greeting5.value2),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                child: TimeWidget(
+                    greeting5.value1.toString(),
+                    greeting5.value2.toString(),
+                    greeting5.value3.toString(),
+                    greeting5.value2),
+              ),
               Row(
                 children: [
                   Padding(

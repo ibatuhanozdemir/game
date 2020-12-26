@@ -42,14 +42,14 @@ class IndustryBuilding extends ChangeNotifier {
 
   void buildstart(int index) {
     IndustryBuilding.industry_building[index]['progres'] = false;
-    IndustryBuilding.industry_building[index]['buildingprosses1'] = IndustryBuilding.industry_building[index]['upgradereq'][0]['name']+" ";
+    IndustryBuilding.industry_building[index]['buildingprosses1'] =
+        IndustryBuilding.industry_building[index]['upgradereq'][0]['name'] +
+            " ";
 
     notifyListeners();
   }
 
   void buildOnGoing() {
-
-
     industry_building.forEach((element) {
       if (element['progres'] == false) {
         Citizen.citizen
@@ -57,47 +57,43 @@ class IndustryBuilding extends ChangeNotifier {
                 (element2['workarea'].contains('builder' + element['name'])))
             .toList()
             .forEach((element5) {
-          if (element['progres'] == false){
-
+          if (element['progres'] == false) {
             element['buildprogres'] = element['buildprogres'] + 1;
-          if (element['buildprogres'] >= element['totalupgradereq']) {
-            element['buildprogres'] = 0;
-            element['progres'] = true;
-            element['quantity'] = element['quantity'] + 1;
-            element['buildingprosses2'] = 0;
-            Citizen.citizen
-                .where((element2) => (element2['workarea']
-                .contains('builder' + element['name'])))
-                .toList()
-                .forEach((element3) {
-              element3['workarea'] = 'unemployed';
-            });
+            if (element['buildprogres'] >= element['totalupgradereq']) {
+              element['buildprogres'] = 0;
+              element['progres'] = true;
+              element['quantity'] = element['quantity'] + 1;
+              element['buildingprosses2'] = 0;
+              Citizen.citizen
+                  .where((element2) => (element2['workarea']
+                      .contains('builder' + element['name'])))
+                  .toList()
+                  .forEach((element3) {
+                element3['workarea'] = 'unemployed';
+              });
+            }
 
-          }
+            int buildstatus = 0;
+            for (int i = 0; i <= element['buildingprosses2']; i++) {
+              buildstatus = buildstatus + element['upgradereq'][i]['count'];
+            }
 
-          int buildstatus = 0;
-          for (int i = 0; i <= element['buildingprosses2']; i++) {
-            buildstatus = buildstatus + element['upgradereq'][i]['count'];
-          }
+            if (buildstatus <= element['buildprogres']) {
+              element['buildingprosses2'] = element['buildingprosses2'] + 1;
+              print(element['buildingprosses2']);
 
-          if (buildstatus <= element['buildprogres']) {
-            element['buildingprosses2'] = element['buildingprosses2'] + 1;
-            print(element['buildingprosses2']);
-
-            if (element['buildingprosses2'] == element['upgradereq'].length - 1) {
-              element['buildingprosses1'] = 'Building ';
-
-            } else {
-              element['buildingprosses1'] = element['upgradereq'][element['buildingprosses2']]['name']+" ";
-
+              if (element['buildingprosses2'] ==
+                  element['upgradereq'].length - 1) {
+                element['buildingprosses1'] = 'Building ';
+              } else {
+                element['buildingprosses1'] = element['upgradereq']
+                        [element['buildingprosses2']]['name'] +
+                    " ";
+              }
             }
           }
-          }
-
         });
-
       }
-
     });
   }
 
