@@ -52,19 +52,17 @@ class CustomAppBar extends ConsumerWidget {
                             (() {
                               if (Citizen.globalHealth <= 20) {
                                 return "20";
-                              }else if(Citizen.globalHealth <= 40){
+                              } else if (Citizen.globalHealth <= 40) {
                                 return "40";
-                              }else if(Citizen.globalHealth <= 60){
+                              } else if (Citizen.globalHealth <= 60) {
                                 return "60";
-                              }else if(Citizen.globalHealth <= 80){
+                              } else if (Citizen.globalHealth <= 80) {
                                 return "80";
-                              }else if(Citizen.globalHealth <= 100){
+                              } else if (Citizen.globalHealth <= 100) {
                                 return "100";
                               }
-                            })()
-                            ,
-                        Citizen.globalHealth
-                            .toString()),
+                            })(),
+                        Citizen.globalHealth.toString()),
                   )
                 ],
               ),
@@ -77,7 +75,9 @@ class CustomAppBar extends ConsumerWidget {
                     child: TopResourceWidget(
                         'Population',
                         'wood',
-                        Citizen.citizen.length.toString() + "/" + Citizen.citizenCapacity.toString()),
+                        Citizen.citizen.length.toString() +
+                            "/" +
+                            Citizen.citizenCapacity.toString()),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(2.0),
@@ -89,52 +89,54 @@ class CustomAppBar extends ConsumerWidget {
                   )
                 ],
               ),
-              Column(
-                children: [
-                  TimeWidget(
-                      greeting5.value1.toString(),
-                      greeting5.value2.toString(),
-                      greeting5.value3.toString(),
-                      greeting5.value2),
-                ],
-              ),
             ],
           ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
+          ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 2, 3, 8),
-                child: GestureDetector(
-                  child: (() {
-                    if (Daycircle.stop== 0) {
-                      return Icon(Icons.pause, color: Colors.black);
-                    } else {
-                      return Icon(Icons.pause, color: Colors.red);
-                    }
-                  })(),
-                  onTap: () {
-                    context.read(asd3).stop2();
-                  },
-                ),
+              TimeWidget(
+                  greeting5.value1.toString(),
+                  greeting5.value2.toString(),
+                  greeting5.value3.toString(),
+                  greeting5.value2),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 2, 3, 8),
+                    child: GestureDetector(
+                      child: (() {
+                        if (Daycircle.stop == 0) {
+                          return Icon(Icons.pause, color: Colors.black);
+                        } else {
+                          return Icon(Icons.pause, color: Colors.red);
+                        }
+                      })(),
+                      onTap: () {
+                        context.read(asd3).stop2();
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(3, 2, 8, 8),
+                    child: GestureDetector(
+                      child: (() {
+                        if (Daycircle.stop == 1) {
+                          return Icon(Icons.play_arrow, color: Colors.black);
+                        } else {
+                          return Icon(Icons.play_arrow, color: Colors.red);
+                        }
+                      })(),
+                      onTap: () {
+                        Daycircle.stop = 0;
+                        context.read(asd3).startTimer();
+                      },
+                    ),
+                  )
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(3, 2, 8, 8),
-                child: GestureDetector(
-                  child: (() {
-                    if (Daycircle.stop == 1) {
-                      return Icon(Icons.play_arrow, color: Colors.black);
-                    } else {
-                      return Icon(Icons.play_arrow, color: Colors.red);
-                    }
-                  })(),
-                  onTap: () {
-
-                    Daycircle.stop = 0;
-                    context.read(asd3).startTimer();
-                  },
-                ),
-              )
             ],
           ),
           SizedBox(
@@ -196,4 +198,3 @@ class _SecondLayerCustomAppBarState extends State<SecondLayerCustomAppBar>
         ));
   }
 }
-

@@ -108,7 +108,7 @@ class citizenWidgeti extends StatelessWidget {
                     }
                   })() +
                   ".png"),
-              height: 30,
+              height: 25,
             ),
             Container(
               padding: EdgeInsets.all(0),

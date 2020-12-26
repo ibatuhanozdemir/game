@@ -395,7 +395,7 @@ class _MyHomePage2State extends State<MyHomePage2>
               width: 40,
               height: 40,
               icon: Icon(
-                Icons.camera_alt,
+                Icons.article_rounded,
                 color: Colors.white,
               ),
               onClick: () {
