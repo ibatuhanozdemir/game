@@ -32,62 +32,93 @@ class CustomAppBar extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: TopResourceWidget(
-                        'food',
-                        'tomato',
-                        FoodResources.food_resources_count[0]['food']
-                            .toString()),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: TopResourceWidget(
-                        'Global health',
-                        "heart" +
-                            (() {
-                              if (Citizen.globalHealth <= 20) {
-                                return "20";
-                              } else if (Citizen.globalHealth <= 40) {
-                                return "40";
-                              } else if (Citizen.globalHealth <= 60) {
-                                return "60";
-                              } else if (Citizen.globalHealth <= 80) {
-                                return "80";
-                              } else if (Citizen.globalHealth <= 100) {
-                                return "100";
-                              }
-                            })(),
-                        Citizen.globalHealth.toString()),
-                  )
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: TopResourceWidget(
+                          'food',
+                          'tomato',
+                          FoodResources.food_resources_count[0]['food']
+                              .toString()),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: TopResourceWidget(
+                          'Total health',
+                          "heart" +
+                              (() {
+                                if (Citizen.globalHealth <= 20) {
+                                  return "20";
+                                } else if (Citizen.globalHealth <= 40) {
+                                  return "40";
+                                } else if (Citizen.globalHealth <= 60) {
+                                  return "60";
+                                } else if (Citizen.globalHealth <= 80) {
+                                  return "80";
+                                } else if (Citizen.globalHealth <= 100) {
+                                  return "100";
+                                }
+                              })(),
+                          Citizen.globalHealth.toString()),
+                    )
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: TopResourceWidget(
-                        'Population',
-                        'wood',
-                        Citizen.citizen.length.toString() +
-                            "/" +
-                            Citizen.citizenCapacity.toString()),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: TopResourceWidget(
-                        'wood',
-                        'wood',
-                        IndustryResources.industry_resources[0]['wood']
-                            .toString()),
-                  )
-                ],
+              SizedBox(width: 10,),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: TopResourceWidget(
+                          'Popul.',
+                          'population',
+                          Citizen.citizen.length.toString() +
+                              "/" +
+                              Citizen.citizenCapacity.toString()),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: TopResourceWidget(
+                          'wood',
+                          'wood',
+                          IndustryResources.industry_resources[0]['wood']
+                              .toString()),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(width: 10,),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: TopResourceWidget(
+                          'Happ. ',
+                          'laugh',
+                          Citizen.citizen.length.toString() +
+                              "/" +
+                              Citizen.citizenCapacity.toString()),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: TopResourceWidget(
+                          'wood',
+                          'wood',
+                          IndustryResources.industry_resources[0]['wood']
+                              .toString()),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
