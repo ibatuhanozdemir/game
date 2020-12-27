@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
 
-const double minHeight = 50;
+
 const double iconStartSize = 46;
 const double iconEndSize = 20;
 const double iconStartMarginTop = 40;
@@ -23,8 +23,8 @@ class ExhibitionBottomSheet extends StatefulWidget {
 class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-
-  double get maxHeight => MediaQuery.of(context).size.height * 0.76;
+  double get minHeight => MediaQuery.of(context).size.height *0.07;
+  double get maxHeight => MediaQuery.of(context).size.height * 0.745;
 
   double get headerTopMargin =>
       lerp(20, 20 + MediaQuery.of(context).padding.top);
