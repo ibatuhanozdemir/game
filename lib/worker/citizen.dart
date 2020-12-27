@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:game/daycircle.dart';
 import 'package:game/screens/townhall.dart';
+import 'package:game/town_services/town_service_building.dart';
 import 'package:game/worker/citizen_names.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -84,6 +85,11 @@ class Citizen {
 
   static int citizenCapacity = 10;
   int min = 0;
+
+  citizenCapacityCalculator(){
+    citizenCapacity = TownServiceBuilding.town_service_building.where((element) => element['name']=='house').toList()[0]['quantity']*TownServiceBuilding.town_service_building.where((element) => element['name']=='house').toList()[0]['capacity'];
+  }
+
 
   Future<void> save() async {
     final prefs = await SharedPreferences.getInstance();

@@ -52,6 +52,7 @@ class Daycircle extends ChangeNotifier {
           IndustryBuilding().buildOnGoing();
           TownServiceBuilding().buildOnGoing();
           Citizen().calculateGlobalHealth();
+          Citizen().citizenCapacityCalculator();
           Citizen().citizenBirth();
           Citizen().citizenDeath();
           notifyListeners();
