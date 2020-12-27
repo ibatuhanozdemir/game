@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:game/daycircle.dart';
 import 'package:game/kalip_widgetlar/worker_assigning.dart';
+import 'package:game/menu2.dart';
 import 'package:game/navigation.dart';
 
 import 'package:game/savesystem/save_system.dart';
@@ -129,6 +130,7 @@ class MyApp2 extends ConsumerWidget {
               height: MediaQuery.of(context).size.height * 0.8,
               child: navWatch.navigation()
             ),
+            Menu2(),
             ExhibitionBottomSheet(),
           ],
         ),
