@@ -315,7 +315,6 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
-                    context.read(asd3).numberswitch(2);
                     print('Buildins üstten 3. buton');
                   },
                 ),
@@ -345,7 +344,7 @@ class _MyHomePage2State extends State<MyHomePage2>
                     color: Colors.white,
                   ),
                   onClick: () {
-                    context.read(asd3).numberswitch(1);
+
 
                     print('Buildings en alttaki buton');
                   },

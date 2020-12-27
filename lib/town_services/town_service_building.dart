@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:game/worker/citizen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class IndustryBuilding extends ChangeNotifier {
-  static List industry_building = [
+class TownServiceBuilding extends ChangeNotifier {
+  static List town_service_building = [
     {
-      'name': 'woodcutter',
+      'name': 'house',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
@@ -23,7 +23,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildingprosses2': 0
     },
     {
-      'name': 'stonecutter',
+      'name': 'church',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
@@ -41,20 +41,20 @@ class IndustryBuilding extends ChangeNotifier {
   ];
 
   void buildstart(int index) {
-    industry_building[index]['progres'] = false;
-    industry_building[index]['buildingprosses1'] =
-        industry_building[index]['upgradereq'][0]['name'] +
+    town_service_building[index]['progres'] = false;
+    town_service_building[index]['buildingprosses1'] =
+        town_service_building[index]['upgradereq'][0]['name'] +
             " ";
 
     notifyListeners();
   }
 
   void buildOnGoing() {
-    industry_building.forEach((element) {
+    town_service_building.forEach((element) {
       if (element['progres'] == false) {
         Citizen.citizen
             .where((element2) =>
-                (element2['workarea'].contains('builder' + element['name'])))
+        (element2['workarea'].contains('builder' + element['name'])))
             .toList()
             .forEach((element5) {
           if (element['progres'] == false) {
@@ -66,7 +66,7 @@ class IndustryBuilding extends ChangeNotifier {
               element['buildingprosses2'] = 0;
               Citizen.citizen
                   .where((element2) => (element2['workarea']
-                      .contains('builder' + element['name'])))
+                  .contains('builder' + element['name'])))
                   .toList()
                   .forEach((element3) {
                 element3['workarea'] = 'unemployed';
@@ -87,7 +87,7 @@ class IndustryBuilding extends ChangeNotifier {
                 element['buildingprosses1'] = 'Building ';
               } else {
                 element['buildingprosses1'] = element['upgradereq']
-                        [element['buildingprosses2']]['name'] +
+                [element['buildingprosses2']]['name'] +
                     " ";
               }
             }
@@ -100,19 +100,19 @@ class IndustryBuilding extends ChangeNotifier {
   Future<void> save() async {
     final prefs = await SharedPreferences.getInstance();
 
-    prefs.setString('industry_building', jsonEncode(industry_building));
+    prefs.setString('town_service_building', jsonEncode(town_service_building));
   }
 
-  Future<int> loadIndustryBuilding() async {
+  Future<int> loadTownServiceBuilding() async {
     final prefs = await SharedPreferences.getInstance();
-    final startupNumber = prefs.getString('industry_building');
+    final startupNumber = prefs.getString('town_service_building');
 
     if (startupNumber == null) {
-      industry_building = industry_building;
+      town_service_building = town_service_building;
 
       return 0;
     }
-    industry_building = jsonDecode(startupNumber);
+    town_service_building = jsonDecode(startupNumber);
 
 
     return 0;

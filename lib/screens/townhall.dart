@@ -13,14 +13,171 @@ static List events = [""];
     final prov=watch(asd3);
 
 
-    return SafeArea(
-      child: Scaffold(
-        floatingActionButton: MyHomePage2(),
-        body: Column(
-          children: [
-            Container(
+    return Column(
+        children: [
+          /*Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*0.32,
+            decoration: BoxDecoration(
+              color: Colors.brown,
+              border: Border.all(
+                  width: 1.0, color: const Color(0x2e707070)),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xb8000000),
+                  offset: Offset(5, 5),
+                  blurRadius: 6,
+                ),
+              ],
+            ),
+
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height*0.01, 0, 0),
+              child: Column(
+                children: [
+                  TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'OverView', 3, 3,context),
+
+                  Row(children: [
+                    Column(children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6 , MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3,context),
+
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
+
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),],),
+                    Column(children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
+
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
+
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),],),
+                    Column(children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3,context),
+
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
+                                TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
+
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),],)
+                  ],)
+
+
+                ],
+              ),
+            ),
+          ),*/
+          Expanded(
+            child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height*0.32,
+
               decoration: BoxDecoration(
                 color: Colors.brown,
                 border: Border.all(
@@ -33,190 +190,29 @@ static List events = [""];
                   ),
                 ],
               ),
-
-              child: Padding(
+              child:Padding(
                 padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height*0.01, 0, 0),
-                child: Column(
-                  children: [
-                    TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'OverView', 3, 3,context),
-
-                    Row(children: [
-                      Column(children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6 , MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
-
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3,context),
-
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
-
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
-
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),],),
-                      Column(children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
-
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
-
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
-
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
-
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),],),
-                      Column(children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 10, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
-
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05,'Summer', 3, 3,context),
-
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.04, 5, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Year', -3, -3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, '1', 3, -3,context),
-
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Season', -3, 3,context),
-                                  TextBox(MediaQuery.of(context).size.width*0.84/6, MediaQuery.of(context).size.height*0.05, 'Summer', 3, 3,context),
-
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),],)
-                    ],)
+                child: Column(children: [
+                  TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'Event Log', 3, 3,context),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height*0.01 ,
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                        itemBuilder: (_, index) {
+                          return Evets(index);
+                        },
+                        itemCount: events.length),
+                  )
 
 
-                  ],
-                ),
+                ],),
               ),
             ),
-            Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
+          ),
+        ],
+      );
 
-                decoration: BoxDecoration(
-                  color: Colors.brown,
-                  border: Border.all(
-                      width: 1.0, color: const Color(0x2e707070)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xb8000000),
-                      offset: Offset(5, 5),
-                      blurRadius: 6,
-                    ),
-                  ],
-                ),
-                child:Padding(
-                  padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height*0.01, 0, 0),
-                  child: Column(children: [
-                    TextBox(MediaQuery.of(context).size.width*0.2, MediaQuery.of(context).size.height*0.05, 'Event Log', 3, 3,context),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height*0.01 ,
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                          itemBuilder: (_, index) {
-                            return Evets(index);
-                          },
-                          itemCount: events.length),
-                    )
-
-
-                  ],),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 
 

@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:game/screens/townhall.dart';
+import 'package:game/town_services/town_service_building.dart';
+import 'package:game/town_services/town_service_widget.dart';
 import 'package:game/worker/citizen.dart';
 import 'buildings/foodbuildings/food_buildings.dart';
 import 'kalip_widgetlar/citizen_widget.dart';
@@ -30,7 +33,21 @@ class Navigation extends ChangeNotifier {
             return citizenWidgeti(index);
           },
           itemCount: Citizen.citizen.length);
+    }else if(index==3){
+      return TownHall();
+    }else if(index==4){
+      return ListView.builder(
+          itemBuilder: (_, index) {
+            return TownServiceWidget(index);
+          },
+          itemCount: TownServiceBuilding.town_service_building.length);
     }
     notifyListeners();
   }
+
+ void numberswitch(int i){
+   Navigation.index = i;
+   notifyListeners();
+ }
 }
+

@@ -5,6 +5,7 @@ import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
 import 'package:game/screens/townhall.dart';
+import 'package:game/town_services/town_service_building.dart';
 import 'package:game/worker/citizen.dart';
 import '../daycircle.dart';
 
@@ -130,6 +131,7 @@ class SaveSystem {
     await kaydet();
     await saveFood();
     IndustryBuilding().save();
+    TownServiceBuilding().save();
     Citizen().save();
     await saveEvents();
   }
@@ -146,6 +148,7 @@ class SaveSystem {
     await loadFoodCount();
     Citizen().loadCitizen();
     IndustryBuilding().loadIndustryBuilding();
+    TownServiceBuilding().loadTownServiceBuilding();
     loadEvents();
     return 0;
   }

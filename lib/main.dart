@@ -10,6 +10,7 @@ import 'package:game/menu2.dart';
 import 'package:game/navigation.dart';
 
 import 'package:game/savesystem/save_system.dart';
+import 'package:game/town_services/town_service_building.dart';
 import 'package:rive/rive.dart';
 
 import 'buildings/foodbuildings/food_buildings.dart';
@@ -104,6 +105,7 @@ class _MyAppState extends State<MyApp> {
 final nav = ChangeNotifierProvider((ref) => Navigation());
 final asd3 = ChangeNotifierProvider((ref) => Daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
+final town = ChangeNotifierProvider((ref)=> TownServiceBuilding());
 
 class MyApp2 extends ConsumerWidget {
   @override
@@ -113,7 +115,6 @@ class MyApp2 extends ConsumerWidget {
 
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: MyHomePage2(),
         backgroundColor: Colors.grey,
         appBar: PreferredSize(
           preferredSize:
@@ -127,7 +128,7 @@ class MyApp2 extends ConsumerWidget {
             Positioned(
               top: MediaQuery.of(context).size.height * 0.005,
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.8,
+              bottom: MediaQuery.of(context).size.height *0.078,
               child: navWatch.navigation()
             ),
             Menu2(),

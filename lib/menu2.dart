@@ -99,8 +99,11 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 child: Button(
                     color: Color(0xffd6d6d6),
                     icon: Icons.people,
-                    text: animationController.value == 1 ? 'deneme' : '1',
-                    onTap: () {}),
+                    text: animationController.value == 1 ? 'Industry' : '1',
+                    onTap: () {
+                      (context).read(nav).numberswitch(0);
+                      animationController.reverse();
+                    }),
               ),
             ),
           ),
@@ -119,8 +122,11 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 child: Button(
                     color: Color(0xffd6d6d6),
                     icon: Icons.people,
-                    text: animationController.value == 1 ? 'deneme' : '1',
-                    onTap: () {}),
+                    text: animationController.value == 1 ? 'Food' : '1',
+                    onTap: () {
+                      (context).read(nav).numberswitch(1);
+                      animationController.reverse();
+                    }),
               ),
             ),
           ),
@@ -197,8 +203,11 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 child: Button(
                     color: Color(0xffd6d6d6),
                     icon: Icons.people,
-                    text: animationController2.value == 1 ? 'deneme' : '1',
-                    onTap: () {}),
+                    text: animationController2.value == 1 ? 'Citizen' : '1',
+                    onTap: () {
+                      animationController2.reverse();
+                      (context).read(nav).numberswitch(2);
+                    }),
               ),
             ),
           ),
@@ -241,6 +250,8 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                   icon: Icons.people,
                   text: 'Event Log',
                   onTap: () {
+                    (context).read(nav).numberswitch(3);
+
                     if (animationController2.isCompleted ||
                         animationController.isCompleted) {
                       animationController2.reverse();
@@ -251,8 +262,9 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 Button(
                   color: Color(0xffd6d6d6),
                   icon: Icons.people,
-                  text: 'deneme',
+                  text: 'Town Service',
                   onTap: () {
+                    (context).read(nav).numberswitch(4);
                     if (animationController2.isCompleted ||
                         animationController.isCompleted) {
                       animationController2.reverse();

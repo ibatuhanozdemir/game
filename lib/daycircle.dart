@@ -8,6 +8,7 @@ import 'package:game/buildings/industrybuildings/stonecutter.dart';
 import 'package:game/buildings/industrybuildings/woodcutter.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/savesystem/save_system.dart';
+import 'package:game/town_services/town_service_building.dart';
 import 'package:game/worker/citizen.dart';
 
 
@@ -49,6 +50,7 @@ class Daycircle extends ChangeNotifier {
           StoneCutter().collectResources();
           FoodResources().calculateFood();
           IndustryBuilding().buildOnGoing();
+          TownServiceBuilding().buildOnGoing();
           Citizen().calculateGlobalHealth();
           Citizen().citizenBirth();
           Citizen().citizenDeath();
@@ -68,8 +70,5 @@ class Daycircle extends ChangeNotifier {
     }
 
 
-    void numberswitch(int i){
-    abc=i.toString();
-    notifyListeners();
-  }
+
 }
