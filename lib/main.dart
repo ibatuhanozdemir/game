@@ -200,17 +200,17 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
         height: MediaQuery.of(context).size.height *
             0.05 *
             MediaQuery.of(context).devicePixelRatio,
-        color: Colors.red,
+
         child: Card(
-          color: Colors.grey.shade700,
+          color: Color(0XFF99997A),
           elevation: 20,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                  //height: MediaQuery.of(context).size.height * 0.16,
-                  //width: MediaQuery.of(context).size.width * 0.25,
-                  child: Image.asset("images/woodcutter.png")),
+                  height: MediaQuery.of(context).size.height * 0.16,
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  child: Image.asset("images/ev.png")),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.01,
               ),
