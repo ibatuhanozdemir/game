@@ -145,7 +145,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 child: Button(
                     color: Color(0xffd6d6d6),
                     icon: Icons.people,
-                    text: animationController.value == 1 ? 'deneme' : '1',
+                    text: animationController.value == 1 ? 'Natural' : '1',
                     onTap: () {}),
               ),
             ),
@@ -165,7 +165,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 child: Button(
                     color: Color(0xffd6d6d6),
                     icon: Icons.people,
-                    text: animationController.value == 1 ? 'deneme' : '1',
+                    text: animationController.value == 1 ? 'Storage' : '1',
                     onTap: () {}),
               ),
             ),
@@ -182,7 +182,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 child: Button(
                     color: Color(0xffd6d6d6),
                     icon: Icons.people,
-                    text: animationController2.value == 1 ? 'deneme' : '1',
+                    text: animationController2.value == 1 ? 'Proficiency' : '1',
                     onTap: () {}),
               ),
             ),
