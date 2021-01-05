@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:game/buildings/foodbuildings/food_buildings.dart';
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/daycircle.dart';
@@ -17,10 +18,11 @@ class CustomAppBar extends ConsumerWidget {
     final greeting5 = watch(asd3);
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey,
+        image: DecorationImage(image: AssetImage('images/appbar.png'),fit: BoxFit.fill),
+
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
             "Tayfun's Town",
@@ -29,7 +31,7 @@ class CustomAppBar extends ConsumerWidget {
                 fontSize: MediaQuery.of(context).size.height * 0.05,
                 fontFamily: "Hanalei"),
           ),
-          Row(
+          /*Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
@@ -175,7 +177,7 @@ class CustomAppBar extends ConsumerWidget {
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.01,
-          ),
+          ),*/
         ],
       ),
     );
