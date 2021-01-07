@@ -29,7 +29,7 @@ class CustomAppBar extends ConsumerWidget {
           Text(
             "Tayfun's Town",
             style: TextStyle(
-                color: Colors.grey.shade200,
+                color: Color(0xFFE8C341),
                 fontSize: MediaQuery.of(context).size.height * 0.05,
                 fontFamily: "Hanalei"),
           ),
