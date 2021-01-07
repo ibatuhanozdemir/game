@@ -204,132 +204,142 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
         child: Card(
           color: Color(0XFF99997A),
           elevation: 20,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                  height: MediaQuery.of(context).size.height * 0.16,
-                  width: MediaQuery.of(context).size.width * 0.25,
-                  child: Image.asset("images/ev.png")),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.01,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              image: DecorationImage(
+                image: AssetImage("images/card.png"),
+                fit: BoxFit.fill,
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: Text(
-                        IndustryBuilding.industry_building[index]['name'] +
-                            '(' +
-                            IndustryBuilding.industry_building[index]
-                                    ['workercount']
-                                .toString() +
-                            "/" +
-                            IndustryBuilding.industry_building[index]
-                                    ['capacity']
-                                .toString() +
-                            ')',
-                        style: TextStyle(
-                            fontSize:
-                                MediaQuery.of(context).size.height * 0.016),
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    Container(
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Req. for Building:',
-                              style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height *
-                                      0.016),
-                            ),
-                            Row(
-                              children: [
-
-                                for (Map aaa in IndustryBuilding
-                                    .industry_building[index]['upgradereq'])
-                                  Expanded(
-                                    child: Text(
-                                      aaa['name'] +
-                                          ':' +
-                                          aaa['count'].toString() +
-                                          '  ',
-                                      style: TextStyle(
-                                          fontSize:
-                                              MediaQuery.of(context).size.height *
-                                                  0.016),
-                                    ),
-                                  ),
-                              ],
-                            ),
-                          ],
-                        )),
-                  ],
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                    height: MediaQuery.of(context).size.height * 0.16,
+                    width: MediaQuery.of(context).size.width * 0.25,
+                    child: Image.asset("images/saloon.png")),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.01,
                 ),
-              ),
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Expanded(
-                  child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                        child: Text(
+                          IndustryBuilding.industry_building[index]['name'] +
+                              '(' +
+                              IndustryBuilding.industry_building[index]
+                                      ['workercount']
+                                  .toString() +
+                              "/" +
+                              IndustryBuilding.industry_building[index]
+                                      ['capacity']
+                                  .toString() +
+                              ')',
+                          style: TextStyle(
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.016),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Req. for Building:',
+                                style: TextStyle(
+                                    fontSize: MediaQuery.of(context).size.height *
+                                        0.016),
+                              ),
+                              Row(
+                                children: [
+
+                                  for (Map aaa in IndustryBuilding
+                                      .industry_building[index]['upgradereq'])
+                                    Expanded(
+                                      child: Text(
+                                        aaa['name'] +
+                                            ':' +
+                                            aaa['count'].toString() +
+                                            '  ',
+                                        style: TextStyle(
+                                            fontSize:
+                                                MediaQuery.of(context).size.height *
+                                                    0.016),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ],
+                          )),
+                    ],
+                  ),
+                ),
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Container(
                     color: Colors.red,
                     alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width * 0.15,
+                    height: MediaQuery.of(context).size.height * 0.05,
                     child: Text("Qty. " +
                         IndustryBuilding.industry_building[index]['quantity']
                             .toString()),
                   ),
-                ),
-                IndustryBuilding.industry_building[index]['progres']
-                    ? RaisedButton(
-                        child: Text('Build'),
-                        onPressed: () {
-                          context.read(aa).buildstart(index);
-                        })
-                    : RaisedButton(
-                        child: Text('Add Builder'),
-                        onPressed: () {
-                          BuilderAssignDialog(
-                              context,
-                              'builder' +
-                                  IndustryBuilding.industry_building[index]
-                                      ['name']);
-                        }),
-                IndustryBuilding.industry_building[index]['progres']
-                    ? Container(
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width * 0.20,
-                      )
-                    : Container(
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width * 0.20,
-                        child: Stack(children: [
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+                  IndustryBuilding.industry_building[index]['progres']
+                      ? GestureDetector(
+                          child: Container(
+                              height: MediaQuery.of(context).size.width * 0.07,
+                              child: Image.asset('images/build.png')),
+                          onTap: () {
+                            context.read(aa).buildstart(index);
+                          })
+                      : RaisedButton(
+                          child: Text('Add Builder'),
+                          onPressed: () {
+                            BuilderAssignDialog(
+                                context,
+                                'builder' +
+                                    IndustryBuilding.industry_building[index]
+                                        ['name']);
+                          }),
+                  IndustryBuilding.industry_building[index]['progres']
+                      ? Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width * 0.20,
+                        )
+                      : Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width * 0.20,
+                          child: Stack(children: [
 
-                          LinearProgressIndicator(
-                            minHeight:
-                                MediaQuery.of(context).size.height * 0.02,
-                            backgroundColor: Colors.red,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Colors.amber,
+                            LinearProgressIndicator(
+                              minHeight:
+                                  MediaQuery.of(context).size.height * 0.02,
+                              backgroundColor: Colors.red,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.amber,
+                              ),
+                              value: IndustryBuilding.industry_building[index]
+                                      ['buildprogres'] /
+                                  IndustryBuilding.industry_building[index]['totalupgradereq'],
                             ),
-                            value: IndustryBuilding.industry_building[index]
-                                    ['buildprogres'] /
-                                IndustryBuilding.industry_building[index]['totalupgradereq'],
-                          ),
-                          Text(IndustryBuilding.industry_building[index]['buildingprosses1']+IndustryBuilding.industry_building[index]
-                          ['buildprogres'].toString()+'/'+
-                              IndustryBuilding.industry_building[index]['totalupgradereq'].toString(),style: TextStyle(
-                              fontSize:
-                              MediaQuery.of(context).size.height *
-                                  0.016)),
-                        ]))
-              ]),
-            ],
+                            Text(IndustryBuilding.industry_building[index]['buildingprosses1']+IndustryBuilding.industry_building[index]
+                            ['buildprogres'].toString()+'/'+
+                                IndustryBuilding.industry_building[index]['totalupgradereq'].toString(),style: TextStyle(
+                                fontSize:
+                                MediaQuery.of(context).size.height *
+                                    0.016)),
+                          ]))
+                ]),
+              ],
+            ),
           ),
         ),
       ),

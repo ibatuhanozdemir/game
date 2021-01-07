@@ -18,6 +18,10 @@ class CustomAppBar extends ConsumerWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey,
+        image: DecorationImage(
+          image: AssetImage("images/AppBar.png"),
+          fit: BoxFit.fill,
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -129,7 +133,7 @@ class CustomAppBar extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                padding: const EdgeInsets.fromLTRB(35, 0, 0, 5),
                 child: TimeWidget(
                     greeting5.value1.toString(),
                     greeting5.value2.toString(),
@@ -143,9 +147,13 @@ class CustomAppBar extends ConsumerWidget {
                     child: GestureDetector(
                       child: (() {
                         if (Daycircle.stop == 0) {
-                          return Icon(Icons.pause, color: Colors.black);
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.04,
+                              child: Image.asset('images/pauseoff.png'));
                         } else {
-                          return Icon(Icons.pause, color: Colors.red);
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.04,
+                              child: Image.asset('images/pauseon.png'));
                         }
                       })(),
                       onTap: () {
@@ -158,9 +166,13 @@ class CustomAppBar extends ConsumerWidget {
                     child: GestureDetector(
                       child: (() {
                         if (Daycircle.stop == 1) {
-                          return Icon(Icons.play_arrow, color: Colors.black);
+                          return Container(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                              child: Image.asset('images/playoff.png'));
                         } else {
-                          return Icon(Icons.play_arrow, color: Colors.red);
+                          return Container(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                              child: Image.asset('images/playon.png'));
                         }
                       })(),
                       onTap: () {
@@ -168,7 +180,8 @@ class CustomAppBar extends ConsumerWidget {
                         context.read(asd3).startTimer();
                       },
                     ),
-                  )
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.04,)
                 ],
               ),
             ],
@@ -182,53 +195,3 @@ class CustomAppBar extends ConsumerWidget {
   }
 }
 
-class SecondLayerCustomAppBar extends StatefulWidget {
-  String ilkTab;
-  String ikinciTab;
-  SecondLayerCustomAppBar(this.ilkTab, this.ikinciTab);
-  @override
-  _SecondLayerCustomAppBarState createState() =>
-      _SecondLayerCustomAppBarState();
-}
-
-class _SecondLayerCustomAppBarState extends State<SecondLayerCustomAppBar>
-    with SingleTickerProviderStateMixin {
-  TabController _tabController;
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(30),
-            child: AppBar(
-              backgroundColor: Colors.grey,
-              title: TabBar(
-                unselectedLabelColor: Colors.brown,
-                isScrollable: true,
-                indicatorColor: Colors.brown,
-                tabs: [
-                  Text(widget.ilkTab),
-                  Text(widget.ikinciTab),
-                ],
-              ),
-              centerTitle: true,
-            ),
-          ),
-          body: TabBarView(
-            children: [
-              ListView.builder(
-                  itemBuilder: (_, index) {
-                    return IndstryBuildingWidgeti(index);
-                  },
-                  itemCount: IndustryBuilding.industry_building.length),
-              ListView.builder(
-                  itemBuilder: (_, index) {
-                    return FoodBuildingWidgeti(index);
-                  },
-                  itemCount: FoodBuilding.food_building.length),
-            ],
-          ),
-        ));
-  }
-}
