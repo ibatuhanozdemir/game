@@ -115,7 +115,7 @@ class MyApp2 extends ConsumerWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0XFF99997A),
         appBar: PreferredSize(
           preferredSize:
               Size.fromHeight(MediaQuery.of(context).size.height * 0.22),

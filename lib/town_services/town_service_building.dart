@@ -19,7 +19,8 @@ class TownServiceBuilding extends ChangeNotifier {
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0
+      'buildingprosses2': 0,
+      'imagename':'ev.png'
     },
     {
       'name': 'church',
@@ -35,7 +36,42 @@ class TownServiceBuilding extends ChangeNotifier {
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0
+      'buildingprosses2': 0,
+      'imagename':'church.png'
+    },
+    {
+      'name': 'tavern',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 1,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0,
+      'imagename':'saloon.png'
+    },
+    {
+      'name': 'graveyard',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 1,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0,
+      'imagename':'mezar.png'
     }
   ];
 
