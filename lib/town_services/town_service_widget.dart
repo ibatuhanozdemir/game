@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
@@ -12,140 +13,162 @@ class TownServiceWidget extends ConsumerWidget {
 
   Widget build(BuildContext context, ScopedReader watch) {
     watch(town);
+
     return GestureDetector(
       child: Container(
         height: MediaQuery.of(context).size.height *
-            0.05 *
-            MediaQuery.of(context).devicePixelRatio,
-        color: Colors.red,
-        child: Card(
-          color: Colors.grey.shade700,
-          elevation: 20,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                //height: MediaQuery.of(context).size.height * 0.16,
-                //width: MediaQuery.of(context).size.width * 0.25,
-                  child: Image.asset("images/woodcutter.png")),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.01,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: Text(
-                        TownServiceBuilding.town_service_building[index]['name'] +
-                            '(' +
-                            TownServiceBuilding.town_service_building[index]
-                            ['workercount']
-                                .toString() +
-                            "/" +
-                            TownServiceBuilding.town_service_building[index]
-                            ['capacity']
-                                .toString() +
-                            ')',
-                        style: TextStyle(
-                            fontSize:
-                            MediaQuery.of(context).size.height * 0.016),
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    Container(
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Req. for Building:',
-                              style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height *
-                                      0.016),
-                            ),
-                            Row(
-                              children: [
+            0.15,
 
-                                for (Map aaa in TownServiceBuilding.town_service_building[index]['upgradereq'])
-                                  Expanded(
-                                    child: Text(
-                                      aaa['name'] +
-                                          ':' +
-                                          aaa['count'].toString() +
-                                          '  ',
-                                      style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              0.016),
-                                    ),
-                                  ),
-                              ],
-                            ),
-                          ],
-                        )),
-                  ],
-                ),
+
+        child: Card(
+          color: Color(0XFF99997A),
+          elevation: 0,
+
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0XFF99997A),
+              image: DecorationImage(
+                image: AssetImage("images/card.png"),
+                fit: BoxFit.fill,
               ),
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Expanded(
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                   child: Container(
-                    color: Colors.red,
-                    alignment: Alignment.center,
+                    height: MediaQuery.of(context).size.height * 0.15,
                     width: MediaQuery.of(context).size.width * 0.15,
-                    child: Text("Qty. " +
-                        TownServiceBuilding.town_service_building[index]['quantity']
-                            .toString()),
+                      decoration: BoxDecoration(
+
+                        image: DecorationImage(
+                          image: AssetImage('images/'+TownServiceBuilding.town_service_building[index]['imagename']),
+                  ),
+                        ),
+                      ),
+                ),
+
+
+
+
+
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.01,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                        child: Text(
+                          TownServiceBuilding.town_service_building[index]['name'] +
+                              '(' +
+                              "Qty. " +
+                                  TownServiceBuilding.town_service_building[index]['quantity']
+                                      .toString()+
+                              ')',
+                          style: TextStyle(
+                              fontSize:
+                              MediaQuery.of(context).size.height * 0.016),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Req. for Building:',
+                                style: TextStyle(
+                                    fontSize: MediaQuery.of(context).size.height *
+                                        0.016),
+                              ),
+                              Row(
+                                children: [
+
+                                  for (Map aaa in TownServiceBuilding.town_service_building[index]['upgradereq'])
+                                    Expanded(
+                                      child: Text(
+                                        aaa['name'] +
+                                            ':' +
+                                            aaa['count'].toString() +
+                                            '  ',
+                                        style: TextStyle(
+                                            fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.016),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ],
+                          )),
+                    ],
                   ),
                 ),
-                TownServiceBuilding.town_service_building[index]['progres']
-                    ? RaisedButton(
-                    child: Text('Build'),
-                    onPressed: () {
-                      context.read(town).buildstart(index);
-                    })
-                    : RaisedButton(
-                    child: Text('Add Builder'),
-                    onPressed: () {
-                      BuilderAssignDialog(
-                          context,
-                          'builder' +
-                              TownServiceBuilding.town_service_building[index]
-                              ['name']);
-                    }),
-                TownServiceBuilding.town_service_building[index]['progres']
-                    ? Container(
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width * 0.20,
-                )
-                    : Container(
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width * 0.20,
-                    child: Stack(children: [
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
 
-                      LinearProgressIndicator(
-                        minHeight:
-                        MediaQuery.of(context).size.height * 0.02,
-                        backgroundColor: Colors.red,
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          Colors.amber,
-                        ),
-                        value: TownServiceBuilding.town_service_building[index]
-                        ['buildprogres'] /
-                            TownServiceBuilding.town_service_building[index]['totalupgradereq'],
-                      ),
-                      Text(TownServiceBuilding.town_service_building[index]['buildingprosses1']+TownServiceBuilding.town_service_building[index]
-                      ['buildprogres'].toString()+'/'+
-                          TownServiceBuilding.town_service_building[index]['totalupgradereq'].toString(),style: TextStyle(
-                          fontSize:
-                          MediaQuery.of(context).size.height *
-                              0.016)),
-                    ]))
-              ]),
-            ],
+                  TownServiceBuilding.town_service_building[index]['progres']
+                      ? GestureDetector(
+                      child: Container(
+                          height: MediaQuery.of(context).size.width * 0.07,
+                          child: Image.asset('images/build.png')),
+                      onTap: () {
+                        context.read(town).buildstart(index);
+                      })
+                      : GestureDetector(
+                      child: Container(
+                          height: MediaQuery.of(context).size.width * 0.07,
+                          child: Image.asset('images/addperson.png')),
+                      onTap: () {
+                        BuilderAssignDialog(
+                            context,
+                            'builder' +
+                                TownServiceBuilding.town_service_building[index]
+                                ['name']);
+                      }),
+
+
+
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: TownServiceBuilding.town_service_building[index]['progres']
+                        ? Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.20,
+                    )
+                        : Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width * 0.20,
+                        child: Stack(children: [
+
+                          LinearProgressIndicator(
+                            minHeight:
+                            MediaQuery.of(context).size.height * 0.02,
+                            backgroundColor: Colors.red,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.amber,
+                            ),
+                            value: TownServiceBuilding.town_service_building[index]
+                            ['buildprogres'] /
+                                TownServiceBuilding.town_service_building[index]['totalupgradereq'],
+                          ),
+                          Text(TownServiceBuilding.town_service_building[index]['buildingprosses1']+TownServiceBuilding.town_service_building[index]
+                          ['buildprogres'].toString()+'/'+
+                              TownServiceBuilding.town_service_building[index]['totalupgradereq'].toString(),style: TextStyle(
+                              fontSize:
+                              MediaQuery.of(context).size.height *
+                                  0.016)),
+                        ])),
+                  )
+                ]),
+              ],
+            ),
           ),
         ),
       ),
