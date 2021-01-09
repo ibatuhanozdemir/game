@@ -161,7 +161,7 @@ class FoodBuildingWidgeti extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.16,
                 width: MediaQuery.of(context).size.height * 0.16,
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Image.asset("images/woodcutter.png")),
+                child: Image.asset("images/pastorEXPAND.png")),
             SizedBox(
               width: MediaQuery.of(context).size.height * 0.01,
             ),
@@ -209,7 +209,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
               color: Colors.grey,
               image: DecorationImage(
                 image: AssetImage("images/card.png"),
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
             child: Row(
@@ -218,7 +218,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                 Container(
                     height: MediaQuery.of(context).size.height * 0.16,
                     width: MediaQuery.of(context).size.width * 0.25,
-                    child: Image.asset("images/saloon.png")),
+                    child: Image.asset("images/pastorEXPAND.png")),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.01,
                 ),
