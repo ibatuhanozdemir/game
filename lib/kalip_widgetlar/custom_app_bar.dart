@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:game/buildings/foodbuildings/food_buildings.dart';
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/daycircle.dart';
@@ -18,20 +17,23 @@ class CustomAppBar extends ConsumerWidget {
     final greeting5 = watch(asd3);
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('images/appbar.png'),fit: BoxFit.fill),
-
+        color: Colors.grey,
+        image: DecorationImage(
+          image: AssetImage("images/AppBar.png"),
+          fit: BoxFit.fill,
+        ),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
             "Tayfun's Town",
             style: TextStyle(
-                color: Colors.grey.shade200,
+                color: Color(0xFFE8C341),
                 fontSize: MediaQuery.of(context).size.height * 0.05,
                 fontFamily: "Hanalei"),
           ),
-          /*Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
@@ -131,7 +133,7 @@ class CustomAppBar extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                padding: const EdgeInsets.fromLTRB(35, 0, 0, 5),
                 child: TimeWidget(
                     greeting5.value1.toString(),
                     greeting5.value2.toString(),
@@ -145,9 +147,13 @@ class CustomAppBar extends ConsumerWidget {
                     child: GestureDetector(
                       child: (() {
                         if (Daycircle.stop == 0) {
-                          return Icon(Icons.pause, color: Colors.black);
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.04,
+                              child: Image.asset('images/pauseoff.png'));
                         } else {
-                          return Icon(Icons.pause, color: Colors.red);
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.04,
+                              child: Image.asset('images/pauseon.png'));
                         }
                       })(),
                       onTap: () {
@@ -160,9 +166,13 @@ class CustomAppBar extends ConsumerWidget {
                     child: GestureDetector(
                       child: (() {
                         if (Daycircle.stop == 1) {
-                          return Icon(Icons.play_arrow, color: Colors.black);
+                          return Container(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                              child: Image.asset('images/playoff.png'));
                         } else {
-                          return Icon(Icons.play_arrow, color: Colors.red);
+                          return Container(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                              child: Image.asset('images/playon.png'));
                         }
                       })(),
                       onTap: () {
@@ -170,67 +180,18 @@ class CustomAppBar extends ConsumerWidget {
                         context.read(asd3).startTimer();
                       },
                     ),
-                  )
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.04,)
                 ],
               ),
             ],
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.01,
-          ),*/
+          ),
         ],
       ),
     );
   }
 }
 
-class SecondLayerCustomAppBar extends StatefulWidget {
-  String ilkTab;
-  String ikinciTab;
-  SecondLayerCustomAppBar(this.ilkTab, this.ikinciTab);
-  @override
-  _SecondLayerCustomAppBarState createState() =>
-      _SecondLayerCustomAppBarState();
-}
-
-class _SecondLayerCustomAppBarState extends State<SecondLayerCustomAppBar>
-    with SingleTickerProviderStateMixin {
-  TabController _tabController;
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(30),
-            child: AppBar(
-              backgroundColor: Colors.grey,
-              title: TabBar(
-                unselectedLabelColor: Colors.brown,
-                isScrollable: true,
-                indicatorColor: Colors.brown,
-                tabs: [
-                  Text(widget.ilkTab),
-                  Text(widget.ikinciTab),
-                ],
-              ),
-              centerTitle: true,
-            ),
-          ),
-          body: TabBarView(
-            children: [
-              ListView.builder(
-                  itemBuilder: (_, index) {
-                    return IndstryBuildingWidgeti(index);
-                  },
-                  itemCount: IndustryBuilding.industry_building.length),
-              ListView.builder(
-                  itemBuilder: (_, index) {
-                    return FoodBuildingWidgeti(index);
-                  },
-                  itemCount: FoodBuilding.food_building.length),
-            ],
-          ),
-        ));
-  }
-}

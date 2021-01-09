@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:game/worker/citizen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,8 +42,7 @@ class TownServiceBuilding extends ChangeNotifier {
   void buildstart(int index) {
     town_service_building[index]['progres'] = false;
     town_service_building[index]['buildingprosses1'] =
-        town_service_building[index]['upgradereq'][0]['name'] +
-            " ";
+        town_service_building[index]['upgradereq'][0]['name'] + " ";
 
     notifyListeners();
   }
@@ -54,7 +52,7 @@ class TownServiceBuilding extends ChangeNotifier {
       if (element['progres'] == false) {
         Citizen.citizen
             .where((element2) =>
-        (element2['workarea'].contains('builder' + element['name'])))
+                (element2['workarea'].contains('builder' + element['name'])))
             .toList()
             .forEach((element5) {
           if (element['progres'] == false) {
@@ -66,7 +64,7 @@ class TownServiceBuilding extends ChangeNotifier {
               element['buildingprosses2'] = 0;
               Citizen.citizen
                   .where((element2) => (element2['workarea']
-                  .contains('builder' + element['name'])))
+                      .contains('builder' + element['name'])))
                   .toList()
                   .forEach((element3) {
                 element3['workarea'] = 'unemployed';
@@ -87,7 +85,7 @@ class TownServiceBuilding extends ChangeNotifier {
                 element['buildingprosses1'] = 'Building ';
               } else {
                 element['buildingprosses1'] = element['upgradereq']
-                [element['buildingprosses2']]['name'] +
+                        [element['buildingprosses2']]['name'] +
                     " ";
               }
             }
@@ -113,7 +111,6 @@ class TownServiceBuilding extends ChangeNotifier {
       return 0;
     }
     town_service_building = jsonDecode(startupNumber);
-
 
     return 0;
   }

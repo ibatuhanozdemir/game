@@ -133,7 +133,6 @@ class MyApp2 extends ConsumerWidget {
             ),
             Menu2(),
             ExhibitionBottomSheet(),
-
           ],
         ),
       ),
@@ -203,16 +202,23 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
             MediaQuery.of(context).devicePixelRatio,
 
         child: Card(
+          color: Color(0XFF99997A),
+          elevation: 20,
           child: Container(
-        decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('images/appbar.png'),fit: BoxFit.fill),),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              image: DecorationImage(
+                image: AssetImage("images/card.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
                     height: MediaQuery.of(context).size.height * 0.16,
                     width: MediaQuery.of(context).size.width * 0.25,
-                    child: Image.asset("images/ev.png")),
+                    child: Image.asset("images/saloon.png")),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.01,
                 ),
@@ -277,20 +283,21 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                   ),
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Expanded(
-                    child: Container(
-                      color: Colors.red,
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.15,
-                      child: Text("Qty. " +
-                          IndustryBuilding.industry_building[index]['quantity']
-                              .toString()),
-                    ),
+                  Container(
+                    color: Colors.red,
+                    alignment: Alignment.center,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    child: Text("Qty. " +
+                        IndustryBuilding.industry_building[index]['quantity']
+                            .toString()),
                   ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
                   IndustryBuilding.industry_building[index]['progres']
-                      ? RaisedButton(
-                          child: Text('Build'),
-                          onPressed: () {
+                      ? GestureDetector(
+                          child: Container(
+                              height: MediaQuery.of(context).size.width * 0.07,
+                              child: Image.asset('images/build.png')),
+                          onTap: () {
                             context.read(aa).buildstart(index);
                           })
                       : RaisedButton(
