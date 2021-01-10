@@ -27,7 +27,7 @@ class CustomAppBar extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            "Tayfun's Town",
+            "Public's Town",
             style: TextStyle(
                 color: Color(0xFFE8C341),
                 fontSize: MediaQuery.of(context).size.height * 0.05,
