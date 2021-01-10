@@ -10,7 +10,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
-      'capacity': 2,
+      'capacity': 3,
       'workercount': 1,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
