@@ -4,6 +4,7 @@ import 'package:game/town_services/town_service_building.dart';
 import 'package:game/town_services/town_service_widget.dart';
 import 'package:game/worker/citizen.dart';
 import 'buildings/foodbuildings/food_buildings.dart';
+import 'buildings/industrybuildings/industry_buildings_widget.dart';
 import 'kalip_widgetlar/citizen_widget.dart';
 import 'main.dart';
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
@@ -36,6 +37,7 @@ class Navigation extends ChangeNotifier {
     }else if(index==3){
       return TownHall();
     }else if(index==4){
+
       return ListView.builder(
           itemBuilder: (_, index) {
             return TownServiceWidget(index);

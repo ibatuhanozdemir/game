@@ -2,19 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
 
-import 'package:game/main.dart';
-import 'package:game/town_services/town_service_building.dart';
 import 'package:game/worker/citizen.dart';
 
-class TownServiceWidget extends ConsumerWidget {
+import '../../main.dart';
+import 'industy_buildings.dart';
+
+class IndstryBuildingWidgeti extends ConsumerWidget {
   @override
   int index;
 
-  TownServiceWidget(this.index);
+  IndstryBuildingWidgeti(this.index);
 
   Widget build(BuildContext context, ScopedReader watch) {
-    watch(town);
-
+    watch(aa);
     return GestureDetector(
       child: Container(
         height: MediaQuery.of(context).size.height * 0.15,
@@ -40,7 +40,7 @@ class TownServiceWidget extends ConsumerWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('images/' +
-                            TownServiceBuilding.town_service_building[index]
+                            IndustryBuilding.industry_building[index]
                                 ['imagename']),
                       ),
                     ),
@@ -56,12 +56,11 @@ class TownServiceWidget extends ConsumerWidget {
                       Container(
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                         child: Text(
-                          TownServiceBuilding.town_service_building[index]
-                                  ['name'] +
-                              '(' +
+                          IndustryBuilding.industry_building[index]['name'] +
+                              '('  +
                               "Qty. " +
-                              TownServiceBuilding.town_service_building[index]
-                                      ['quantity']
+                              IndustryBuilding.industry_building[index]
+                              ['quantity']
                                   .toString() +
                               ')',
                           style: TextStyle(
@@ -86,9 +85,8 @@ class TownServiceWidget extends ConsumerWidget {
                               ),
                               Row(
                                 children: [
-                                  for (Map aaa in TownServiceBuilding
-                                          .town_service_building[index]
-                                      ['upgradereq'])
+                                  for (Map aaa in IndustryBuilding
+                                      .industry_building[index]['upgradereq'])
                                     Expanded(
                                       child: Text(
                                         aaa['name'] +
@@ -110,29 +108,28 @@ class TownServiceWidget extends ConsumerWidget {
                   ),
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  TownServiceBuilding.town_service_building[index]['progres']
+
+                  IndustryBuilding.industry_building[index]['progres']
                       ? GestureDetector(
                           child: Container(
                               height: MediaQuery.of(context).size.width * 0.07,
                               child: Image.asset('images/build.png')),
                           onTap: () {
-                            context.read(town).buildstart(index);
+                            context.read(aa).buildstart(index);
                           })
                       : GestureDetector(
-                          child: Container(
-                              height: MediaQuery.of(context).size.width * 0.07,
-                              child: Image.asset('images/addperson.png')),
-                          onTap: () {
-                            BuilderAssignTownServiceDialog(
-                                context,
-                                'builder' +
-                                    TownServiceBuilding
-                                        .town_service_building[index]['name']);
-                          }),
+                      child: Container(
+                          height: MediaQuery.of(context).size.width * 0.07,
+                          child: Image.asset('images/addperson.png')),
+                      onTap: () {
+                        BuilderAssignIndustryDialog(
+                            context,
+                            'builder' +
+                                IndustryBuilding.industry_building[index]['name']);
+                      }),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: TownServiceBuilding.town_service_building[index]
-                            ['progres']
+                    child: IndustryBuilding.industry_building[index]['progres']
                         ? Container(
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width * 0.20,
@@ -148,24 +145,19 @@ class TownServiceWidget extends ConsumerWidget {
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                   Colors.amber,
                                 ),
-                                value: TownServiceBuilding
-                                            .town_service_building[index]
+                                value: IndustryBuilding.industry_building[index]
                                         ['buildprogres'] /
-                                    TownServiceBuilding
-                                            .town_service_building[index]
+                                    IndustryBuilding.industry_building[index]
                                         ['totalupgradereq'],
                               ),
                               Text(
-                                  TownServiceBuilding
-                                              .town_service_building[index]
+                                  IndustryBuilding.industry_building[index]
                                           ['buildingprosses1'] +
-                                      TownServiceBuilding
-                                          .town_service_building[index]
+                                      IndustryBuilding.industry_building[index]
                                               ['buildprogres']
                                           .toString() +
                                       '/' +
-                                      TownServiceBuilding
-                                          .town_service_building[index]
+                                      IndustryBuilding.industry_building[index]
                                               ['totalupgradereq']
                                           .toString(),
                                   style: TextStyle(
@@ -181,14 +173,14 @@ class TownServiceWidget extends ConsumerWidget {
         ),
       ),
       onTap: () {
-        WorkerAssignTownServiceDialog(context,
-            TownServiceBuilding.town_service_building[index]['name'], index);
+        WorkerAssignIndustryDialog(
+            context, IndustryBuilding.industry_building[index]['name'], index);
       },
     );
   }
 }
 
-Future<void> WorkerAssignTownServiceDialog(
+Future<void> WorkerAssignIndustryDialog(
     BuildContext context, String workarea, int index) async {
   return await showDialog(
       context: context,
@@ -199,13 +191,13 @@ Future<void> WorkerAssignTownServiceDialog(
             return Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: WorkerAssigningTownService(context, workarea, index));
+                child: WorkerAssigningIndustry(context, workarea, index));
           }),
         );
       });
 }
 
-Future<void> BuilderAssignTownServiceDialog(
+Future<void> BuilderAssignIndustryDialog(
     BuildContext context, String workarea) async {
   return await showDialog(
       context: context,
@@ -216,31 +208,28 @@ Future<void> BuilderAssignTownServiceDialog(
             return Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: WorkerAssigningTownServiceBuilder(context, workarea));
+                child: WorkerAssigningIndustryBuilder(context, workarea));
           }),
-
-
         );
       });
 }
 
-class WorkerAssigningTownService extends StatefulWidget {
+class WorkerAssigningIndustry extends StatefulWidget {
   BuildContext context;
   String workarea;
   int index;
-  WorkerAssigningTownService(this.context, this.workarea, this.index);
+  WorkerAssigningIndustry(this.context, this.workarea, this.index);
 
   @override
-  _WorkerAssigningTownServiceState createState() =>
-      _WorkerAssigningTownServiceState(context, workarea, index);
+  _WorkerAssigningIndustryState createState() =>
+      _WorkerAssigningIndustryState(context, workarea, index);
 }
 
-class _WorkerAssigningTownServiceState
-    extends State<WorkerAssigningTownService> {
+class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
   @override
   BuildContext context;
   int index;
-  _WorkerAssigningTownServiceState(this.context, this.workarea, this.index);
+  _WorkerAssigningIndustryState(this.context, this.workarea, this.index);
   List employedworker = [];
   List unemployedworker = [];
   String workarea;
@@ -286,12 +275,10 @@ class _WorkerAssigningTownServiceState
                 flex: 1,
                 child: Center(
                     child: Text('Assign Worker (' +
-                        TownServiceBuilding.town_service_building[index]
-                                ['workercount']
+                        IndustryBuilding.industry_building[index]['workercount']
                             .toString() +
                         "/" +
-                        TownServiceBuilding.town_service_building[index]
-                                ['capacity']
+                        IndustryBuilding.industry_building[index]['capacity']
                             .toString() +
                         ')'))),
             Expanded(
@@ -395,7 +382,7 @@ class _WorkerAssigningTownServiceState
         setState(() {
           element['workarea'] = 'unemployed';
           eleme();
-          TownServiceBuilding.town_service_building.forEach((element3) {
+          IndustryBuilding.industry_building.forEach((element3) {
             element3['workercount'] = Citizen.citizen
                 .where((element) => (element['workarea'] == element3['name']))
                 .toList()
@@ -407,7 +394,7 @@ class _WorkerAssigningTownServiceState
   }
 
   void IseAlma(int id, String workarea_name) {
-    List a = TownServiceBuilding.town_service_building
+    List a = IndustryBuilding.industry_building
         .where((element) => element['name'] == workarea_name)
         .toList();
     if (a[0]['workercount'] < a[0]['capacity']) {
@@ -416,7 +403,7 @@ class _WorkerAssigningTownServiceState
           setState(() {
             element['workarea'] = workarea_name;
             eleme();
-            TownServiceBuilding.town_service_building.forEach((element3) {
+            IndustryBuilding.industry_building.forEach((element3) {
               element3['workercount'] = Citizen.citizen
                   .where((element) => (element['workarea'] == element3['name']))
                   .toList()
@@ -445,23 +432,23 @@ class _WorkerAssigningTownServiceState
   }
 }
 
-class WorkerAssigningTownServiceBuilder extends StatefulWidget {
+class WorkerAssigningIndustryBuilder extends StatefulWidget {
   BuildContext context;
   String workarea;
   int index;
-  WorkerAssigningTownServiceBuilder(this.context, this.workarea);
+  WorkerAssigningIndustryBuilder(this.context, this.workarea);
 
   @override
-  _WorkerAssigningTownServiceBuilderState createState() =>
-      _WorkerAssigningTownServiceBuilderState(context, workarea);
+  _WorkerAssigningIndustryBuilderState createState() =>
+      _WorkerAssigningIndustryBuilderState(context, workarea);
 }
 
-class _WorkerAssigningTownServiceBuilderState
-    extends State<WorkerAssigningTownServiceBuilder> {
+class _WorkerAssigningIndustryBuilderState
+    extends State<WorkerAssigningIndustryBuilder> {
   @override
   BuildContext context;
 
-  _WorkerAssigningTownServiceBuilderState(this.context, this.workarea);
+  _WorkerAssigningIndustryBuilderState(this.context, this.workarea);
   List employedworker = [];
   List unemployedworker = [];
   String workarea;

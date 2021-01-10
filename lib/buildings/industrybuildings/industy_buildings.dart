@@ -20,7 +20,8 @@ class IndustryBuilding extends ChangeNotifier {
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0
+      'buildingprosses2': 0,
+      'imagename':'woodcutter.png'
     },
     {
       'name': 'stonecutter',
@@ -36,7 +37,42 @@ class IndustryBuilding extends ChangeNotifier {
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0
+      'buildingprosses2': 0,
+      'imagename':'stone mining.png'
+    },
+    {
+      'name': 'coal mine',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 1,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0,
+      'imagename':'coal mining.png'
+    },
+    {
+      'name': 'iron mine',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 1,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0,
+      'imagename':'iron mining.png'
     }
   ];
 

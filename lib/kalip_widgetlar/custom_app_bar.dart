@@ -19,7 +19,7 @@ class CustomAppBar extends ConsumerWidget {
       decoration: BoxDecoration(
         color: Colors.grey,
         image: DecorationImage(
-          image: AssetImage("images/AppBar.png"),
+          image: AssetImage("images/appbar.png"),
           fit: BoxFit.fill,
         ),
       ),

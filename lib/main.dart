@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:flutter/material.dart';
 
 import 'package:game/daycircle.dart';
-import 'package:game/kalip_widgetlar/worker_assigning.dart';
+
 import 'package:game/menu2.dart';
 import 'package:game/navigation.dart';
 
@@ -14,6 +14,7 @@ import 'package:game/town_services/town_service_building.dart';
 import 'package:rive/rive.dart';
 
 import 'buildings/foodbuildings/food_buildings.dart';
+import 'buildings/industrybuildings/industry_buildings_widget.dart';
 import 'buildings/industrybuildings/industy_buildings.dart';
 import 'kalip_widgetlar/citizen_widget.dart';
 import 'kalip_widgetlar/exhibition_bottom_sheet.dart';
@@ -180,223 +181,10 @@ class FoodBuildingWidgeti extends StatelessWidget {
         ),
       ),
       onTap: () {
-        WorkerAssignDialog(
-            context, FoodBuilding.food_building[index], index);
+        /*WorkerAssignDialog(
+            context, FoodBuilding.food_building[index], index);*/
       },
     );
   }
 }
 
-class IndstryBuildingWidgeti extends ConsumerWidget {
-  @override
-  int index;
-
-  IndstryBuildingWidgeti(this.index);
-
-  Widget build(BuildContext context, ScopedReader watch) {
-    watch(aa);
-    return GestureDetector(
-      child: Container(
-        height: MediaQuery.of(context).size.height *
-            0.05 *
-            MediaQuery.of(context).devicePixelRatio,
-
-        child: Card(
-          color: Color(0XFF99997A),
-          elevation: 20,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              image: DecorationImage(
-                image: AssetImage("images/card.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                    height: MediaQuery.of(context).size.height * 0.16,
-                    width: MediaQuery.of(context).size.width * 0.25,
-                    child: Image.asset("images/pastorEXPAND.png")),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.01,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                        child: Text(
-                          IndustryBuilding.industry_building[index]['name'] +
-                              '(' +
-                              IndustryBuilding.industry_building[index]
-                                      ['workercount']
-                                  .toString() +
-                              "/" +
-                              IndustryBuilding.industry_building[index]
-                                      ['capacity']
-                                  .toString() +
-                              ')',
-                          style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.016),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Req. for Building:',
-                                style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.height *
-                                        0.016),
-                              ),
-                              Row(
-                                children: [
-
-                                  for (Map aaa in IndustryBuilding
-                                      .industry_building[index]['upgradereq'])
-                                    Expanded(
-                                      child: Text(
-                                        aaa['name'] +
-                                            ':' +
-                                            aaa['count'].toString() +
-                                            '  ',
-                                        style: TextStyle(
-                                            fontSize:
-                                                MediaQuery.of(context).size.height *
-                                                    0.016),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Container(
-                    color: Colors.red,
-                    alignment: Alignment.center,
-                    height: MediaQuery.of(context).size.height * 0.05,
-                    child: Text("Qty. " +
-                        IndustryBuilding.industry_building[index]['quantity']
-                            .toString()),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-                  IndustryBuilding.industry_building[index]['progres']
-                      ? GestureDetector(
-                          child: Container(
-                              height: MediaQuery.of(context).size.width * 0.07,
-                              child: Image.asset('images/build.png')),
-                          onTap: () {
-                            context.read(aa).buildstart(index);
-                          })
-                      : RaisedButton(
-                          child: Text('Add Builder'),
-                          onPressed: () {
-                            BuilderAssignDialog(
-                                context,
-                                'builder' +
-                                    IndustryBuilding.industry_building[index]
-                                        ['name']);
-                          }),
-                  IndustryBuilding.industry_building[index]['progres']
-                      ? Container(
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width * 0.20,
-                        )
-                      : Container(
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width * 0.20,
-                          child: Stack(children: [
-
-                            LinearProgressIndicator(
-                              minHeight:
-                                  MediaQuery.of(context).size.height * 0.02,
-                              backgroundColor: Colors.red,
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                Colors.amber,
-                              ),
-                              value: IndustryBuilding.industry_building[index]
-                                      ['buildprogres'] /
-                                  IndustryBuilding.industry_building[index]['totalupgradereq'],
-                            ),
-                            Text(IndustryBuilding.industry_building[index]['buildingprosses1']+IndustryBuilding.industry_building[index]
-                            ['buildprogres'].toString()+'/'+
-                                IndustryBuilding.industry_building[index]['totalupgradereq'].toString(),style: TextStyle(
-                                fontSize:
-                                MediaQuery.of(context).size.height *
-                                    0.016)),
-                          ]))
-                ]),
-              ],
-            ),
-          ),
-        ),
-      ),
-      onTap: () {
-        WorkerAssignDialog(
-            context, IndustryBuilding.industry_building[index]['name'], index);
-      },
-    );
-  }
-}
-
-Future<void> WorkerAssignDialog(
-    BuildContext context, String workarea, int index) async {
-  return await showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: Builder(
-
-
-              builder: (context) {return Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  child: WorkerAssigning(context, workarea,index));}),
-          actions: [
-            GestureDetector(
-              child: Center(child: Text("Done")),
-              onTap: () {
-                Navigator.pop;
-              },
-            )
-          ],
-        );
-      });
-}
-
-Future<void> BuilderAssignDialog(
-    BuildContext context, String workarea) async {
-  return await showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: Builder(
-
-
-          builder: (context) {return Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: WorkerAssigningBuilder(context, workarea));}),
-          actions: [
-            GestureDetector(
-              child: Center(child: Text("Done")),
-              onTap: () {
-                Navigator.pop;
-              },
-            )
-          ],
-        );
-      });
-}

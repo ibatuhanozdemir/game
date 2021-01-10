@@ -265,6 +265,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                   text: 'Town Service',
                   onTap: () {
                     (context).read(nav).numberswitch(4);
+
                     if (animationController2.isCompleted ||
                         animationController.isCompleted) {
                       animationController2.reverse();
