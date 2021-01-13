@@ -107,7 +107,7 @@ final nav = ChangeNotifierProvider((ref) => Navigation());
 final asd3 = ChangeNotifierProvider((ref) => Daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
 final town = ChangeNotifierProvider((ref)=> TownServiceBuilding());
-
+final food_building_provider = ChangeNotifierProvider((ref) => FoodBuilding());
 class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -144,47 +144,4 @@ class MyApp2 extends ConsumerWidget {
 
 }
 
-class FoodBuildingWidgeti extends StatelessWidget {
-  int index;
-
-  FoodBuildingWidgeti(this.index);
-
-  @override
-  Widget build(BuildContext context) {
-    print(IndustryBuilding.industry_building[index]['upgradereq'].length-1);
-    return GestureDetector(
-      child: Card(
-        color: Colors.grey.shade700,
-        elevation: 20,
-        child: Row(
-          children: <Widget>[
-            Container(
-                height: MediaQuery.of(context).size.height * 0.16,
-                width: MediaQuery.of(context).size.height * 0.16,
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Image.asset("images/pastorEXPAND.png")),
-            SizedBox(
-              width: MediaQuery.of(context).size.height * 0.01,
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: Text(FoodBuilding.food_building[index]),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(0),
-              width: MediaQuery.of(context).size.height * 0.05,
-              child: Text("1"),
-            ),
-          ],
-        ),
-      ),
-      onTap: () {
-        /*WorkerAssignDialog(
-            context, FoodBuilding.food_building[index], index);*/
-      },
-    );
-  }
-}
 

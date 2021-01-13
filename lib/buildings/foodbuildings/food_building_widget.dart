@@ -1,21 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
-import 'package:game/kalip_widgetlar/production_indicator.dart';
 
 import 'package:game/worker/citizen.dart';
 
 import '../../main.dart';
-import 'industy_buildings.dart';
+import 'food_buildings.dart';
 
-class IndstryBuildingWidgeti extends ConsumerWidget {
+
+class FoodBuildingWidgeti extends ConsumerWidget {
   @override
   int index;
 
-  IndstryBuildingWidgeti(this.index);
+  FoodBuildingWidgeti(this.index);
 
   Widget build(BuildContext context, ScopedReader watch) {
-    watch(aa);
+    watch(food_building_provider);
     return GestureDetector(
       child: Container(
         height: MediaQuery.of(context).size.height * 0.15,
@@ -41,8 +41,8 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('images/' +
-                            IndustryBuilding.industry_building[index]
-                                ['imagename']),
+                            FoodBuilding.food_building[index]
+                            ['imagename']),
                       ),
                     ),
                   ),
@@ -57,16 +57,16 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                       Container(
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                         child: Text(
-                          IndustryBuilding.industry_building[index]['name'] +
+                          FoodBuilding.food_building[index]['name'] +
                               '('  +
                               "Qty. " +
-                              IndustryBuilding.industry_building[index]
+                              FoodBuilding.food_building[index]
                               ['quantity']
                                   .toString() +
                               ')',
                           style: TextStyle(
                               fontSize:
-                                  MediaQuery.of(context).size.height * 0.016),
+                              MediaQuery.of(context).size.height * 0.016),
                         ),
                       ),
                       SizedBox(
@@ -81,13 +81,12 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                                 'Req. for Building:',
                                 style: TextStyle(
                                     fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.016),
+                                    MediaQuery.of(context).size.height *
+                                        0.016),
                               ),
                               Row(
                                 children: [
-                                  for (Map aaa in IndustryBuilding
-                                      .industry_building[index]['upgradereq'])
+                                  for (Map aaa in FoodBuilding.food_building[index]['upgradereq'])
                                     Expanded(
                                       child: Text(
                                         aaa['name'] +
@@ -96,8 +95,8 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                                             '  ',
                                         style: TextStyle(
                                             fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
+                                                .size
+                                                .height *
                                                 0.016),
                                       ),
                                     ),
@@ -105,20 +104,19 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                               ),
                             ],
                           )),
-                      CustomProductionProgressIndicator(IndustryBuilding.industry_building[index]['productionprogress'], IndustryBuilding.industry_building[index]['totalprodctionprogress']),
                     ],
                   ),
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
 
-                  IndustryBuilding.industry_building[index]['progres']
+                  FoodBuilding.food_building[index]['progres']
                       ? GestureDetector(
-                          child: Container(
-                              height: MediaQuery.of(context).size.width * 0.07,
-                              child: Image.asset('images/build.png')),
-                          onTap: () {
-                            context.read(aa).buildstart(index);
-                          })
+                      child: Container(
+                          height: MediaQuery.of(context).size.width * 0.07,
+                          child: Image.asset('images/build.png')),
+                      onTap: () {
+                        context.read(food_building_provider).buildstart(index);
+                      })
                       : GestureDetector(
                       child: Container(
                           height: MediaQuery.of(context).size.width * 0.07,
@@ -127,46 +125,46 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                         BuilderAssignIndustryDialog(
                             context,
                             'builder' +
-                                IndustryBuilding.industry_building[index]['name']);
+                                FoodBuilding.food_building[index]['name']);
                       }),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: IndustryBuilding.industry_building[index]['progres']
+                    child: FoodBuilding.food_building[index]['progres']
                         ? Container(
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width * 0.20,
-                          )
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.20,
+                    )
                         : Container(
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width * 0.20,
-                            child: Stack(children: [
-                              LinearProgressIndicator(
-                                minHeight:
-                                    MediaQuery.of(context).size.height * 0.02,
-                                backgroundColor: Colors.red,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.amber,
-                                ),
-                                value: IndustryBuilding.industry_building[index]
-                                        ['buildprogres'] /
-                                    IndustryBuilding.industry_building[index]
-                                        ['totalupgradereq'],
-                              ),
-                              Text(
-                                  IndustryBuilding.industry_building[index]
-                                          ['buildingprosses1'] +
-                                      IndustryBuilding.industry_building[index]
-                                              ['buildprogres']
-                                          .toString() +
-                                      '/' +
-                                      IndustryBuilding.industry_building[index]
-                                              ['totalupgradereq']
-                                          .toString(),
-                                  style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              0.016)),
-                            ])),
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width * 0.20,
+                        child: Stack(children: [
+                          LinearProgressIndicator(
+                            minHeight:
+                            MediaQuery.of(context).size.height * 0.02,
+                            backgroundColor: Colors.red,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.amber,
+                            ),
+                            value: FoodBuilding.food_building[index]
+                            ['buildprogres'] /
+                                FoodBuilding.food_building[index]
+                                ['totalupgradereq'],
+                          ),
+                          Text(
+                              FoodBuilding.food_building[index]
+                              ['buildingprosses1'] +
+                                  FoodBuilding.food_building[index]
+                                  ['buildprogres']
+                                      .toString() +
+                                  '/' +
+                                  FoodBuilding.food_building[index]
+                                  ['totalupgradereq']
+                                      .toString(),
+                              style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context).size.height *
+                                      0.016)),
+                        ])),
                   )
                 ]),
               ],
@@ -176,7 +174,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
       ),
       onTap: () {
         WorkerAssignIndustryDialog(
-            context, IndustryBuilding.industry_building[index]['name'], index);
+            context, FoodBuilding.food_building[index]['name'], index);
       },
     );
   }
@@ -277,10 +275,10 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
                 flex: 1,
                 child: Center(
                     child: Text('Assign Worker (' +
-                        IndustryBuilding.industry_building[index]['workercount']
+                        FoodBuilding.food_building[index]['workercount']
                             .toString() +
                         "/" +
-                        IndustryBuilding.industry_building[index]['capacity']
+                        FoodBuilding.food_building[index]['capacity']
                             .toString() +
                         ')'))),
             Expanded(
@@ -384,7 +382,7 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
         setState(() {
           element['workarea'] = 'unemployed';
           eleme();
-          IndustryBuilding.industry_building.forEach((element3) {
+          FoodBuilding.food_building.forEach((element3) {
             element3['workercount'] = Citizen.citizen
                 .where((element) => (element['workarea'] == element3['name']))
                 .toList()
@@ -396,7 +394,7 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
   }
 
   void IseAlma(int id, String workarea_name) {
-    List a = IndustryBuilding.industry_building
+    List a = FoodBuilding.food_building
         .where((element) => element['name'] == workarea_name)
         .toList();
     if (a[0]['workercount'] < a[0]['capacity']) {
@@ -405,7 +403,7 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
           setState(() {
             element['workarea'] = workarea_name;
             eleme();
-            IndustryBuilding.industry_building.forEach((element3) {
+            FoodBuilding.food_building.forEach((element3) {
               element3['workercount'] = Citizen.citizen
                   .where((element) => (element['workarea'] == element3['name']))
                   .toList()
@@ -421,11 +419,11 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
   }
 
   void eleme() {
-
+    print(workarea);
     employedworker = Citizen.citizen
         .where((element) => (element['workarea'] == workarea))
         .toList();
-
+    print(employedworker);
     unemployedworker = Citizen.citizen
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
@@ -598,7 +596,7 @@ class _WorkerAssigningIndustryBuilderState
   }
 
   void IseAlma(int id, String workarea_name) {
-
+    print(workarea_name);
     Citizen.citizen.forEach((element) {
       if (element['id'] == id) {
         setState(() {

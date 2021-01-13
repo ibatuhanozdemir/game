@@ -614,7 +614,7 @@ class CircularButton extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
         shape: CircleBorder(),
         onLongPress: () {
-          print('asdf');
+
         },
         onPressed: onClick,
         child: Icon(

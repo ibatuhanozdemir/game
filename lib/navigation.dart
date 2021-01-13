@@ -3,6 +3,7 @@ import 'package:game/screens/townhall.dart';
 import 'package:game/town_services/town_service_building.dart';
 import 'package:game/town_services/town_service_widget.dart';
 import 'package:game/worker/citizen.dart';
+import 'buildings/foodbuildings/food_building_widget.dart';
 import 'buildings/foodbuildings/food_buildings.dart';
 import 'buildings/industrybuildings/industry_buildings_widget.dart';
 import 'kalip_widgetlar/citizen_widget.dart';

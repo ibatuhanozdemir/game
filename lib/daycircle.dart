@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:game/buildings/foodbuildings/food_buildings.dart';
 import 'package:game/buildings/foodbuildings/gatheres_hut.dart';
 import 'package:game/buildings/foodbuildings/hunting_cabin.dart';
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
-import 'package:game/buildings/industrybuildings/stonecutter.dart';
-import 'package:game/buildings/industrybuildings/woodcutter.dart';
+
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/savesystem/save_system.dart';
 import 'package:game/town_services/town_service_building.dart';
@@ -43,18 +43,19 @@ class Daycircle extends ChangeNotifier {
               Citizen().incrementAge();
             }
           }
-          SaveSystem().AllSave();
+
           GatherersHut().collectResources();
           HuntingCabin().collectResources();
-          WoodCutter().collectResources();
-          StoneCutter().collectResources();
+          IndustryBuilding().collectResource();
           FoodResources().calculateFood();
+          FoodBuilding().buildOnGoing();
           IndustryBuilding().buildOnGoing();
           TownServiceBuilding().buildOnGoing();
           Citizen().calculateGlobalHealth();
           Citizen().citizenCapacityCalculator();
           Citizen().citizenBirth();
           Citizen().citizenDeath();
+          SaveSystem().AllSave();
           notifyListeners();
           timer.cancel();
           startTimer();

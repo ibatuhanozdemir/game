@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:game/buildings/foodbuildings/food_buildings.dart';
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
@@ -133,6 +134,7 @@ class SaveSystem {
     IndustryBuilding().save();
     TownServiceBuilding().save();
     Citizen().save();
+    FoodBuilding().save();
     await saveEvents();
   }
 
@@ -149,6 +151,7 @@ class SaveSystem {
     Citizen().loadCitizen();
     IndustryBuilding().loadIndustryBuilding();
     TownServiceBuilding().loadTownServiceBuilding();
+    FoodBuilding().loadFoodBuilding();
     loadEvents();
     return 0;
   }
