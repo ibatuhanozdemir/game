@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:game/resources/industry/industry_resources.dart';
 import 'package:game/worker/citizen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,7 +13,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -21,6 +22,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
+      'totalprodctionprogress':20,
+      'productionprogress':0,
       'imagename':'woodcutter.png'
     },
     {
@@ -29,7 +32,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -38,6 +41,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
+      'totalprodctionprogress':20,
+      'productionprogress':0,
       'imagename':'stone mining.png'
     },
     {
@@ -46,7 +51,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -55,6 +60,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
+      'totalprodctionprogress':20,
+      'productionprogress':0,
       'imagename':'coal mining.png'
     },
     {
@@ -63,7 +70,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -72,6 +79,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
+      'totalprodctionprogress':20,
+      'productionprogress':0,
       'imagename':'iron mining.png'
     }
   ];
@@ -152,5 +161,29 @@ class IndustryBuilding extends ChangeNotifier {
 
 
     return 0;
+  }
+
+  void collectResource(){
+
+    industry_building.forEach((element) {
+
+      if(element['workercount']>=1){
+
+        for(int aa=0;aa<element['workercount'];aa++) {
+          print(element['workercount']);
+          element['productionprogress'] = element['productionprogress'] + 1;
+          if (element['productionprogress'] ==
+              element['totalprodctionprogress']) {
+            element['productionprogress']=0;
+            IndustryResources.industry_resources[industry_building.indexOf(element)][IndustryResources.industry_resources_name[industry_building.indexOf(element)]]=
+                IndustryResources.industry_resources[industry_building.indexOf(element)][IndustryResources.industry_resources_name[industry_building.indexOf(element)]]+5;
+
+          }
+        }
+
+      }
+
+
+    });
   }
 }

@@ -14,7 +14,7 @@ class Citizen {
     {
       'id': 1,
       'name': 'tayfun vural',
-      'workarea': 'woodcutter',
+      'workarea': 'unemployed',
       'gender': 'female',
       'health': 75,
       'happiness': 60,
@@ -28,7 +28,7 @@ class Citizen {
     {
       'id': 2,
       'name': 'batuhan özdemir',
-      'workarea': 'woodcutter',
+      'workarea': 'unemployed',
       'gender': 'female',
       'health': 75,
       'happiness': 60,
@@ -42,7 +42,7 @@ class Citizen {
     {
       'id': 3,
       'name': 'batuhan özdemir2',
-      'workarea': 'stonecutter',
+      'workarea': 'unemployed',
       'gender': 'male',
       'health': 90,
       'happiness': 80,
@@ -56,7 +56,7 @@ class Citizen {
     {
       'id': 4,
       'name': 'batuhan özdemir2',
-      'workarea': 'stonecutter',
+      'workarea': 'unemployed',
       'gender': 'male',
       'health': 75,
       'happiness': 60,
@@ -70,7 +70,7 @@ class Citizen {
     {
       'id': 5,
       'name': 'batuhan özdemir2',
-      'workarea': 'stonecutter',
+      'workarea': 'unemployed',
       'gender': 'male',
       'health': 60,
       'happiness': 80,

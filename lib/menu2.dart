@@ -74,7 +74,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    print(degOneTranslationAnimation.value);
+
     return Positioned(
       bottom: 0,
       left: MediaQuery.of(context).size.width * 0.25,
