@@ -24,7 +24,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildingprosses2': 0,
       'totalprodctionprogress':20,
       'productionprogress':0,
-      'imagename':'woodcutter.png'
+      'imagename':'natural_resources/woodcutter.png'
     },
     {
       'name': 'stonecutter',
@@ -43,7 +43,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildingprosses2': 0,
       'totalprodctionprogress':20,
       'productionprogress':0,
-      'imagename':'stone mining.png'
+      'imagename':'natural_resources/stone mining.png'
     },
     {
       'name': 'coal mine',
@@ -62,7 +62,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildingprosses2': 0,
       'totalprodctionprogress':20,
       'productionprogress':0,
-      'imagename':'coal mining.png'
+      'imagename':'natural_resources/coal mining.png'
     },
     {
       'name': 'iron mine',
@@ -81,7 +81,26 @@ class IndustryBuilding extends ChangeNotifier {
       'buildingprosses2': 0,
       'totalprodctionprogress':20,
       'productionprogress':0,
-      'imagename':'iron mining.png'
+      'imagename':'natural_resources/iron mining.png'
+    },
+    {
+      'name': 'forester',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 0,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0,
+      'totalprodctionprogress':20,
+      'productionprogress':0,
+      'imagename':'natural_resources/forester.png'
     }
   ];
 

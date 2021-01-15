@@ -21,7 +21,7 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'gatherershut.png'
+      'imagename':'food_buildings/gatherer hut.png'
     },
     {
       'name': 'hunter/s cabin',
@@ -38,7 +38,7 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'stone mining.png'
+      'imagename':'food_buildings/HuntingCabin.png'
     },
     {
       'name': 'farm field',
@@ -55,7 +55,7 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'farm.png'
+      'imagename':'food_buildings/farm.png'
     },
     {
       'name': 'orchard',
@@ -72,10 +72,10 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'orchard.png'
+      'imagename':'food_buildings/orchard.png'
     },
     {
-      'name': 'fishing dockk',
+      'name': 'fishing dock',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
@@ -89,7 +89,7 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'iron mining.png'
+      'imagename':'food_buildings/fishingson.png'
     },
     {
       'name': 'pasture (cow)',
@@ -106,7 +106,7 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'pastorEXPAND.png'
+      'imagename':'food_buildings/pastorEXPAND.png'
     },
     {
       'name': 'pasture (sheep)',
@@ -123,7 +123,7 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'iron mining.png'
+      'imagename':'food_buildings/koyun.png'
     },
     {
       'name': 'coop',
@@ -140,7 +140,7 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'iron mining.png'
+      'imagename':'food_buildings/coop.png'
     }
   ];
 
