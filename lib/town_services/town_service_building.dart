@@ -54,7 +54,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'saloon.png'
+      'imagename':'tavern.png'
     },
     {
       'name': 'graveyard',
