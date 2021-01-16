@@ -11,8 +11,6 @@ import 'package:game/savesystem/save_system.dart';
 import 'package:game/town_services/town_service_building.dart';
 import 'package:game/worker/citizen.dart';
 
-
-
 class Daycircle extends ChangeNotifier {
   int daycycle = 1;
   int get value1 => day;
@@ -23,7 +21,7 @@ class Daycircle extends ChangeNotifier {
   static int mounth;
   static int year;
   static int stop = 0;
-  static String abc='adsf';
+  static String abc = 'adsf';
   void startTimer() {
     const oneSec = const Duration(seconds: 2);
     notifyListeners();
@@ -32,9 +30,6 @@ class Daycircle extends ChangeNotifier {
         if (daycycle < 5) {
           day++;
           if (day > 3) {
-
-
-
             day = 1;
             mounth++;
             if (mounth > 12) {
@@ -66,11 +61,8 @@ class Daycircle extends ChangeNotifier {
     });
   }
 
-    void stop2(){
-        stop=1;
-        notifyListeners();
-    }
-
-
-
+  void stop2() {
+    stop = 1;
+    notifyListeners();
+  }
 }

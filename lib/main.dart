@@ -1,25 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/all.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:game/daycircle.dart';
-
 import 'package:game/menu2.dart';
 import 'package:game/navigation.dart';
-
 import 'package:game/savesystem/save_system.dart';
 import 'package:game/town_services/town_service_building.dart';
 import 'package:rive/rive.dart';
-
 import 'buildings/foodbuildings/food_buildings.dart';
-import 'buildings/industrybuildings/industry_buildings_widget.dart';
 import 'buildings/industrybuildings/industy_buildings.dart';
-import 'kalip_widgetlar/citizen_widget.dart';
 import 'kalip_widgetlar/exhibition_bottom_sheet.dart';
 import 'kalip_widgetlar/custom_app_bar.dart';
-import 'menu.dart';
+
 
 void main() {
   runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
@@ -41,14 +34,8 @@ class _MyAppState extends State<MyApp> {
     rootBundle.load('images/new_file.riv').then(
       (data) async {
         final file = RiveFile();
-
-        // Load the RiveFile from the binary data.
         if (file.import(data)) {
-          // The artboard is the root of the animation and gets drawn in the
-          // Rive widget.
           final artboard = file.mainArtboard;
-          // Add a controller to play back a known animation on the main/default
-          // artboard.We store a reference to it so we can toggle playback.
           artboard.addController(_controller = SimpleAnimation('Untitled 1'));
           setState(() => _riveArtboard = artboard);
         }
