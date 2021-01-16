@@ -103,9 +103,13 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                                     ),
                                 ],
                               ),
+                              IndustryBuilding.industry_building[index]['harvest'] ?
+                              CustomProductionProgressIndicator(IndustryBuilding.industry_building[index]['outputprogress'],IndustryBuilding.industry_building[index]['totaloutputprogress'], IndustryBuilding.industry_building[index]['lastdayoutput'], IndustryBuilding.industry_building[index]['estimatedoutput'])
+                                  :
+                              Text("Last output " + IndustryBuilding.industry_building[index]['lastdayoutput'].toString()),
                             ],
                           )),
-                      CustomProductionProgressIndicator(IndustryBuilding.industry_building[index]['productionprogress'], IndustryBuilding.industry_building[index]['totalprodctionprogress']),
+
                     ],
                   ),
                 ),

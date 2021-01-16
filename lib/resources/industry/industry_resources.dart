@@ -4,6 +4,7 @@ class IndustryResources {
     {'stone': 0},
     {'coal': 0},
     {'iron': 0},
+    {'tree': 0},
   ];
-  static List industry_resources_name = ["wood", "stone","coal","iron"];
+  static List industry_resources_name = ["wood", "stone","coal","iron","tree"];
 }

@@ -10,10 +10,13 @@ class IndustryBuilding extends ChangeNotifier {
     {
       'name': 'woodcutter',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'workeroutput': 5,
       'workercount': 0,
+      'lastdayoutput' : 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -22,17 +25,18 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'totalprodctionprogress':20,
-      'productionprogress':0,
-      'imagename':'natural_resources/woodcutter.png'
+      'imagename': 'natural_resources/woodcutter.png'
     },
     {
       'name': 'stonecutter',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'workeroutput': 5,
       'workercount': 0,
+      'lastdayoutput' : 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -41,17 +45,18 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'totalprodctionprogress':20,
-      'productionprogress':0,
-      'imagename':'natural_resources/stone mining.png'
+      'imagename': 'natural_resources/stone mining.png'
     },
     {
       'name': 'coal mine',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'workeroutput': 5,
       'workercount': 0,
+      'lastdayoutput' : 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -60,17 +65,18 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'totalprodctionprogress':20,
-      'productionprogress':0,
-      'imagename':'natural_resources/coal mining.png'
+      'imagename': 'natural_resources/coal mining.png'
     },
     {
       'name': 'iron mine',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'workeroutput': 5,
       'workercount': 0,
+      'lastdayoutput' : 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -79,17 +85,21 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'totalprodctionprogress':20,
-      'productionprogress':0,
-      'imagename':'natural_resources/iron mining.png'
+      'imagename': 'natural_resources/iron mining.png'
     },
     {
       'name': 'forester',
       'progres': true,
+      'harvest' : true,
+      'outputprogress' : 0,
+      'totaloutputprogress' : 10,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'estimatedoutput' :0,
+      'workeroutput': 5,
       'workercount': 0,
+      'lastdayoutput' : 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -98,17 +108,14 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'totalprodctionprogress':20,
-      'productionprogress':0,
-      'imagename':'natural_resources/forester.png'
+      'imagename': 'natural_resources/forester.png'
     }
   ];
 
   void buildstart(int index) {
     industry_building[index]['progres'] = false;
     industry_building[index]['buildingprosses1'] =
-        industry_building[index]['upgradereq'][0]['name'] +
-            " ";
+        industry_building[index]['upgradereq'][0]['name'] + " ";
 
     notifyListeners();
   }
@@ -178,31 +185,56 @@ class IndustryBuilding extends ChangeNotifier {
     }
     industry_building = jsonDecode(startupNumber);
 
-
     return 0;
   }
 
-  void collectResource(){
-
+  void collectResource() {
     industry_building.forEach((element) {
+      double totalWorkerEfficiency = 0;
+      if (element['workercount'] >= 1) {
+        Citizen.citizen
+            .where((element2) => element2['workarea'] == element['name'])
+            .toList()
+            .forEach((element3) {
+          totalWorkerEfficiency = totalWorkerEfficiency + element3['overallef'];
+        });
 
-      if(element['workercount']>=1){
-
-        for(int aa=0;aa<element['workercount'];aa++) {
-          print(element['workercount']);
-          element['productionprogress'] = element['productionprogress'] + 1;
-          if (element['productionprogress'] ==
-              element['totalprodctionprogress']) {
-            element['productionprogress']=0;
-            IndustryResources.industry_resources[industry_building.indexOf(element)][IndustryResources.industry_resources_name[industry_building.indexOf(element)]]=
-                IndustryResources.industry_resources[industry_building.indexOf(element)][IndustryResources.industry_resources_name[industry_building.indexOf(element)]]+5;
+        if(element['harvest']==false){
+          int a =
+              (element['workeroutput'] * (totalWorkerEfficiency) / 100).round();
+          IndustryResources.industry_resources[industry_building.indexOf(element)]
+              [IndustryResources.industry_resources_name[
+                  industry_building.indexOf(element)]] = IndustryResources
+                      .industry_resources[industry_building.indexOf(element)][
+                  IndustryResources
+                      .industry_resources_name[industry_building.indexOf(element)]] +
+              a;
+          element['lastdayoutput'] = a;
+        }else{
+          if(element['outputprogress']<element['totaloutputprogress']){
+            int a =
+            (element['workeroutput'] * (totalWorkerEfficiency) / 100).round();
+            element['estimatedoutput'] = element['estimatedoutput'] +a;
+            element['outputprogress']= element['outputprogress']+1;
+          }else{
+            element['outputprogress']=0;
+            int a =
+            (element['workeroutput'] * (totalWorkerEfficiency) / 100).round();
+            element['estimatedoutput'] = element['estimatedoutput'] +a;
+            IndustryResources.industry_resources[industry_building.indexOf(element)]
+            [IndustryResources.industry_resources_name[
+            industry_building.indexOf(element)]] = IndustryResources
+                .industry_resources[industry_building.indexOf(element)][
+            IndustryResources
+                .industry_resources_name[industry_building.indexOf(element)]] +
+                element['estimatedoutput'];
+            element['lastdayoutput'] = element['estimatedoutput'];
+            element['estimatedoutput']=0;
 
           }
         }
-
       }
-
-
     });
   }
 }
+
