@@ -10,13 +10,14 @@ class IndustryBuilding extends ChangeNotifier {
     {
       'name': 'woodcutter',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'outputname': 'wood',
       'workeroutput': 5,
       'workercount': 0,
-      'lastdayoutput' : 0,
+      'lastdayoutput': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -30,13 +31,14 @@ class IndustryBuilding extends ChangeNotifier {
     {
       'name': 'stonecutter',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'outputname': 'stone',
       'workeroutput': 5,
       'workercount': 0,
-      'lastdayoutput' : 0,
+      'lastdayoutput': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -50,13 +52,14 @@ class IndustryBuilding extends ChangeNotifier {
     {
       'name': 'coal mine',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'outputname': 'coal',
       'workeroutput': 5,
       'workercount': 0,
-      'lastdayoutput' : 0,
+      'lastdayoutput': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -70,13 +73,14 @@ class IndustryBuilding extends ChangeNotifier {
     {
       'name': 'iron mine',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'outputname': 'iron',
       'workeroutput': 5,
       'workercount': 0,
-      'lastdayoutput' : 0,
+      'lastdayoutput': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -90,16 +94,17 @@ class IndustryBuilding extends ChangeNotifier {
     {
       'name': 'forester',
       'progres': true,
-      'harvest' : true,
-      'outputprogress' : 0,
-      'totaloutputprogress' : 10,
+      'harvest': true,
+      'outputprogress': 0,
+      'totaloutputprogress': 10,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'estimatedoutput' :0,
+      'outputname': 'tree',
+      'estimatedoutput': 0,
       'workeroutput': 5,
       'workercount': 0,
-      'lastdayoutput' : 0,
+      'lastdayoutput': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -199,42 +204,40 @@ class IndustryBuilding extends ChangeNotifier {
           totalWorkerEfficiency = totalWorkerEfficiency + element3['overallef'];
         });
 
-        if(element['harvest']==false){
+        if (element['harvest'] == false) {
           int a =
               (element['workeroutput'] * (totalWorkerEfficiency) / 100).round();
-          IndustryResources.industry_resources[industry_building.indexOf(element)]
-              [IndustryResources.industry_resources_name[
-                  industry_building.indexOf(element)]] = IndustryResources
-                      .industry_resources[industry_building.indexOf(element)][
-                  IndustryResources
-                      .industry_resources_name[industry_building.indexOf(element)]] +
+          IndustryResources.industry_resources
+              .where((element4) => element4['name'] == element['outputname'])
+              .toList()[0]['count'] = IndustryResources.industry_resources
+                  .where(
+                      (element4) => element4['name'] == element['outputname'])
+                  .toList()[0]['count'] +
               a;
           element['lastdayoutput'] = a;
-        }else{
-          if(element['outputprogress']<element['totaloutputprogress']){
-            int a =
-            (element['workeroutput'] * (totalWorkerEfficiency) / 100).round();
-            element['estimatedoutput'] = element['estimatedoutput'] +a;
-            element['outputprogress']= element['outputprogress']+1;
-          }else{
-            element['outputprogress']=0;
-            int a =
-            (element['workeroutput'] * (totalWorkerEfficiency) / 100).round();
-            element['estimatedoutput'] = element['estimatedoutput'] +a;
-            IndustryResources.industry_resources[industry_building.indexOf(element)]
-            [IndustryResources.industry_resources_name[
-            industry_building.indexOf(element)]] = IndustryResources
-                .industry_resources[industry_building.indexOf(element)][
-            IndustryResources
-                .industry_resources_name[industry_building.indexOf(element)]] +
+        } else {
+          if (element['outputprogress'] < element['totaloutputprogress']) {
+            int a = (element['workeroutput'] * (totalWorkerEfficiency) / 100)
+                .round();
+            element['estimatedoutput'] = element['estimatedoutput'] + a;
+            element['outputprogress'] = element['outputprogress'] + 1;
+          } else {
+            element['outputprogress'] = 0;
+            int a = (element['workeroutput'] * (totalWorkerEfficiency) / 100)
+                .round();
+            element['estimatedoutput'] = element['estimatedoutput'] + a;
+            IndustryResources.industry_resources
+                .where((element4) => element4['name'] == element['outputname'])
+                .toList()[0]['count'] = IndustryResources.industry_resources
+                    .where(
+                        (element4) => element4['name'] == element['outputname'])
+                    .toList()[0]['count'] +
                 element['estimatedoutput'];
             element['lastdayoutput'] = element['estimatedoutput'];
-            element['estimatedoutput']=0;
-
+            element['estimatedoutput'] = 0;
           }
         }
       }
     });
   }
 }
-

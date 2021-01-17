@@ -115,9 +115,9 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                                 fontSize: headerFontSize,
                                 topMargin: 20,
                               ),
-                              for (String aaa
-                                  in IndustryResources.industry_resources_name)
-                                _industryResources(aaa),
+                              for (Map aaa
+                                  in IndustryResources.industry_resources)
+                                _industryResources(aaa['name'],IndustryResources.industry_resources.indexOf(aaa)),
                             ],
                           ),
                         ),
@@ -176,8 +176,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     );
   }
 
-  Widget _industryResources(String event) {
-    int index = IndustryResources.industry_resources_name.indexOf(event);
+  Widget _industryResources(String event,int index) {
+
 
     return Positioned(
       height: 50,
@@ -189,7 +189,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
             event +
                 " = " +
                 "" +
-                IndustryResources.industry_resources[index][event].toString(),
+                IndustryResources.industry_resources[index]['count'].toString(),
             style: TextStyle(color: Colors.white)),
       ),
     );

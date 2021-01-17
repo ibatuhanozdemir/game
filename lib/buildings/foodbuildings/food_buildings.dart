@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:game/resources/food/food_resources.dart';
+import 'package:game/resources/industry/industry_resources.dart';
 import 'package:game/worker/citizen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,10 +11,14 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'gatherer/s hut',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
+      'workeroutput':[{'name': 'mushroom','output':3,'lastoutput':0,'type':'food'},
+        {'name': 'berries','output':2,'lastoutput':0,'type':'food'}
+      ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -26,10 +32,14 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'hunter/s cabin',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
+      'workeroutput':[{'name': 'deer meet','output':3,'lastoutput':0,'type':'food'},
+        {'name': 'leather','output':2,'lastoutput':0,'type':'industry'}
+      ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -43,10 +53,11 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'farm field',
       'progres': true,
+      'harvest' : true,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount':0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -60,10 +71,11 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'orchard',
       'progres': true,
+      'harvest' : true,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -77,10 +89,12 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'fishing dock',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
+      'workeroutput':[{'name': 'fish','output':5,'lastoutput':0,'type':'food'}],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -94,10 +108,14 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'pasture (cow)',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
+      'workeroutput':[{'name': 'cow meet','output':3,'lastoutput':0,'type':'food'},
+        {'name': 'milk','output':2,'lastoutput':0,'type':'food'}
+      ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -111,10 +129,14 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'pasture (sheep)',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
+      'workeroutput':[{'name': 'sheep meet','output':3,'lastoutput':0,'type':'food'},
+        {'name': 'wool','output':2,'lastoutput':0,'type':'industry'}
+      ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -128,10 +150,14 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'coop',
       'progres': true,
+      'harvest' : false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount': 1,
+      'workercount': 0,
+      'workeroutput':[{'name': 'chicken meet','output':3,'lastoutput':0,'type':'food'},
+        {'name': 'egg','output':2,'lastoutput':0,'type':'food'}
+      ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -221,4 +247,56 @@ class FoodBuilding extends ChangeNotifier {
 
     return 0;
   }
+
+  void collectResource() {
+    food_building.forEach((element) {
+      double totalWorkerEfficiency = 0;
+      if (element['workercount'] >= 1) {
+        Citizen.citizen
+            .where((element2) => element2['workarea'] == element['name'])
+            .toList()
+            .forEach((element3) {
+          totalWorkerEfficiency = totalWorkerEfficiency + element3['overallef'];
+        });
+
+        if(element['harvest']==false){
+          element['workeroutput'].forEach((element4){
+            int a =
+            (element4['output'] * (totalWorkerEfficiency) / 100).round();
+            if(element4['type']=='food') {
+              FoodResources.food_resource_sublist
+                  .where((element5) => element5['foodname'] == element4['name'])
+                  .toList()[0]['count'] = FoodResources.food_resource_sublist
+                      .where((element5) =>
+                          element5['foodname'] == element4['name'])
+                      .toList()[0]['count'] +
+                  a;
+            }else{
+              IndustryResources.industry_resources
+                  .where((element5) => element5['name'] == element4['name'])
+                  .toList()[0]['count'] = IndustryResources.industry_resources
+                  .where((element5) =>
+              element5['name'] == element4['name'])
+                  .toList()[0]['count'] +
+                  a;
+
+
+            }
+          });
+
+
+
+
+
+
+
+
+
+        }
+      }
+    });
+  }
+
+
+
 }

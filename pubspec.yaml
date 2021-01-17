@@ -33,6 +33,7 @@ dependencies:
   font_awesome_flutter: ^8.10.0
   rive: ^0.6.3
   flutter_svg: ^0.18.1
+  configurable_expansion_tile: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

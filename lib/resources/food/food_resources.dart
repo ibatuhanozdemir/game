@@ -11,7 +11,15 @@ class FoodResources {
 
   static List food_resource_sublist = [
     {'foodname':'mushroom','count': 0, 'katsayı': 1},
-    {'foodname':'raw meet','count': 0, 'katsayı': 1}
+    {'foodname':'deer meet','count': 0, 'katsayı': 1},
+    {'foodname':'berries','count': 0, 'katsayı': 1},
+    {'foodname':'fish','count': 0, 'katsayı': 1},
+    {'foodname':'milk','count': 0, 'katsayı': 1},
+    {'foodname':'cow meet','count': 0, 'katsayı': 1},
+    {'foodname':'sheep meet','count': 0, 'katsayı': 1},
+    {'foodname':'chicken meet','count': 0, 'katsayı': 1},
+    {'foodname':'egg','count': 0, 'katsayı': 1}
+
   ];
 
   int foodConsumptionPerCitizen = 20;

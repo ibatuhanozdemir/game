@@ -92,7 +92,7 @@ class CustomAppBar extends ConsumerWidget {
                       child: TopResourceWidget(
                           'wood',
                           'wood',
-                          IndustryResources.industry_resources[0]['wood']
+                          IndustryResources.industry_resources[0]['count']
                               .toString()),
                     )
                   ],
@@ -118,7 +118,7 @@ class CustomAppBar extends ConsumerWidget {
                       child: TopResourceWidget(
                           'wood',
                           'wood',
-                          IndustryResources.industry_resources[0]['wood']
+                          IndustryResources.industry_resources[0]['count']
                               .toString()),
                     )
                   ],

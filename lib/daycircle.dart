@@ -39,9 +39,9 @@ class Daycircle extends ChangeNotifier {
             }
           }
 
-          GatherersHut().collectResources();
-          HuntingCabin().collectResources();
+
           IndustryBuilding().collectResource();
+          FoodBuilding().collectResource();
           FoodResources().calculateFood();
           FoodBuilding().buildOnGoing();
           IndustryBuilding().buildOnGoing();

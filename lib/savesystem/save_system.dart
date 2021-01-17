@@ -13,26 +13,24 @@ import '../daycircle.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SaveSystem {
-  Future<void> save(String resource_save_name, int resource_name) async {
+  Future<void> saveIndustry() async {
     final prefs = await SharedPreferences.getInstance();
 
-    prefs.setInt(resource_save_name, resource_name);
+    prefs.setString('industry_resources', jsonEncode(IndustryResources.industry_resources));
   }
 
 
 
-  Future<int> loadIndustry(String resource_save_name, int index) async {
+  Future<int> loadIndustry() async {
     final prefs = await SharedPreferences.getInstance();
-    final startupNumber = prefs.getInt(resource_save_name);
+    final startupNumber = prefs.getString('industry_resources');
 
     if (startupNumber == null) {
-      IndustryResources.industry_resources[index][resource_save_name] = 0;
+      IndustryResources.industry_resources= IndustryResources.industry_resources;
 
       return 0;
     }
-
-    IndustryResources.industry_resources[index][resource_save_name] =
-        startupNumber;
+    IndustryResources.industry_resources= jsonDecode(startupNumber);
 
     return 0;
   }
@@ -122,13 +120,7 @@ class SaveSystem {
   Future<void> AllSave() async {
 
 
-    await IndustryResources.industry_resources_name.forEach((element) async {
-      await save(
-          element,
-          IndustryResources.industry_resources[
-                  IndustryResources.industry_resources_name.indexOf(element)]
-              [element]);
-    });
+    await saveIndustry();
     await kaydet();
     await saveFood();
     IndustryBuilding().save();
@@ -141,10 +133,7 @@ class SaveSystem {
   Future<int> getResources() async {
 
 
-    await IndustryResources.industry_resources_name.forEach((element) async {
-      await loadIndustry(
-          element, IndustryResources.industry_resources_name.indexOf(element));
-    });
+    await loadIndustry();
     await getIntFromSharedPref();
     await loadFoodSublist();
     await loadFoodCount();
