@@ -2,12 +2,12 @@ import 'package:configurable_expansion_tile/configurable_expansion_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
+import 'package:game/kalip_widgetlar/production_indicator.dart';
 
 import 'package:game/worker/citizen.dart';
 
 import '../../main.dart';
 import 'food_buildings.dart';
-
 
 class FoodBuildingWidgeti extends ConsumerWidget {
   @override
@@ -17,351 +17,449 @@ class FoodBuildingWidgeti extends ConsumerWidget {
 
   Widget build(BuildContext context, ScopedReader watch) {
     watch(food_building_provider);
-    return FoodBuilding.food_building[index]['harvest'] ?  GestureDetector(
-      child: Container(
-        child: Card(
-          color: Color(0XFF99997A),
-          elevation: 0,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Color(0XFF99997A),
-              image: DecorationImage(
-                image: AssetImage("images/card.png"),
-                fit: BoxFit.fill,
-              ),
-            ),
-            child: Column(
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.15,
-                        width: MediaQuery.of(context).size.width * 0.15,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('images/' +
-                                FoodBuilding.food_building[index]
-                                ['imagename']),
-                          ),
-                        ),
-                      ),
+    return FoodBuilding.food_building[index]['harvest']
+        ? GestureDetector(
+            child: Container(
+              child: Card(
+                color: Color(0XFF99997A),
+                elevation: 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0XFF99997A),
+                    image: DecorationImage(
+                      image: AssetImage("images/card.png"),
+                      fit: BoxFit.fill,
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.01,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                            child: Text(
-                              FoodBuilding.food_building[index]['name'] +
-                                  '('  +
-                                  "Qty. " +
-                                  FoodBuilding.food_building[index]
-                                  ['quantity']
-                                      .toString() +
-                                  ')',
-                              style: TextStyle(
-                                  fontSize:
-                                  MediaQuery.of(context).size.height * 0.016),
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.15,
+                              width: MediaQuery.of(context).size.width * 0.15,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('images/' +
+                                      FoodBuilding.food_building[index]
+                                          ['imagename']),
+                                ),
+                              ),
                             ),
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.01,
                           ),
-                          Container(
-                            padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                          Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Req. for Building:',
-                                  style: TextStyle(
-                                      fontSize:
-                                      MediaQuery.of(context).size.height *
-                                          0.016),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                  child: Text(
+                                    FoodBuilding.food_building[index]['name'] +
+                                        '(' +
+                                        "Qty. " +
+                                        FoodBuilding.food_building[index]
+                                                ['quantity']
+                                            .toString() +
+                                        ')',
+                                    style: TextStyle(
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.016),
+                                  ),
                                 ),
-                                Row(
-                                  children: [
-                                    for (Map aaa in FoodBuilding.food_building[index]['upgradereq'])
-                                      Expanded(
-                                        child: Text(
-                                          aaa['name'] +
-                                              ':' +
-                                              aaa['count'].toString() +
-                                              '  ',
-                                          style: TextStyle(
-                                              fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                                  0.016),
-                                        ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Req. for Building:',
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.016),
                                       ),
-                                  ],
+                                      Row(
+                                        children: [
+                                          for (Map aaa in FoodBuilding
+                                                  .food_building[index]
+                                              ['upgradereq'])
+                                            Expanded(
+                                              child: Text(
+                                                aaa['name'] +
+                                                    ':' +
+                                                    aaa['count'].toString() +
+                                                    '  ',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.016),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-
                               ],
                             ),
                           ),
+                          Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FoodBuilding.food_building[index]['progres']
+                                    ? GestureDetector(
+                                        child: Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.07,
+                                            child: Image.asset(
+                                                'images/build.png')),
+                                        onTap: () {
+                                          context
+                                              .read(food_building_provider)
+                                              .buildstart(index);
+                                        })
+                                    : GestureDetector(
+                                        child: Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.07,
+                                            child: Image.asset(
+                                                'images/addperson.png')),
+                                        onTap: () {
+                                          BuilderAssignIndustryDialog(
+                                              context,
+                                              'builder' +
+                                                  FoodBuilding
+                                                          .food_building[index]
+                                                      ['name']);
+                                        }),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  child: FoodBuilding.food_building[index]
+                                          ['progres']
+                                      ? Container(
+                                          alignment: Alignment.center,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.20,
+                                        )
+                                      : Container(
+                                          alignment: Alignment.center,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.20,
+                                          child: Stack(children: [
+                                            LinearProgressIndicator(
+                                              minHeight: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02,
+                                              backgroundColor: Colors.red,
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                Colors.amber,
+                                              ),
+                                              value: FoodBuilding
+                                                          .food_building[index]
+                                                      ['buildprogres'] /
+                                                  FoodBuilding
+                                                          .food_building[index]
+                                                      ['totalupgradereq'],
+                                            ),
+                                            Text(
+                                                FoodBuilding.food_building[
+                                                            index]
+                                                        ['buildingprosses1'] +
+                                                    FoodBuilding
+                                                        .food_building[index]
+                                                            ['buildprogres']
+                                                        .toString() +
+                                                    '/' +
+                                                    FoodBuilding
+                                                        .food_building[index]
+                                                            ['totalupgradereq']
+                                                        .toString(),
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.016)),
+                                          ])),
+                                )
+                              ]),
                         ],
                       ),
-                    ),
-                    Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-
-                      FoodBuilding.food_building[index]['progres']
-                          ? GestureDetector(
-                          child: Container(
-                              height: MediaQuery.of(context).size.width * 0.07,
-                              child: Image.asset('images/build.png')),
-                          onTap: () {
-                            context.read(food_building_provider).buildstart(index);
-                          })
-                          : GestureDetector(
-                          child: Container(
-                              height: MediaQuery.of(context).size.width * 0.07,
-                              child: Image.asset('images/addperson.png')),
-                          onTap: () {
-                            BuilderAssignIndustryDialog(
-                                context,
-                                'builder' +
-                                    FoodBuilding.food_building[index]['name']);
-                          }),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: FoodBuilding.food_building[index]['progres']
-                            ? Container(
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width * 0.20,
-                        )
-                            : Container(
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width * 0.20,
-                            child: Stack(children: [
-                              LinearProgressIndicator(
-                                minHeight:
-                                MediaQuery.of(context).size.height * 0.02,
-                                backgroundColor: Colors.red,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.amber,
-                                ),
-                                value: FoodBuilding.food_building[index]
-                                ['buildprogres'] /
-                                    FoodBuilding.food_building[index]
-                                    ['totalupgradereq'],
-                              ),
-                              Text(
-                                  FoodBuilding.food_building[index]
-                                  ['buildingprosses1'] +
-                                      FoodBuilding.food_building[index]
-                                      ['buildprogres']
-                                          .toString() +
-                                      '/' +
-                                      FoodBuilding.food_building[index]
-                                      ['totalupgradereq']
-                                          .toString(),
-                                  style: TextStyle(
-                                      fontSize:
-                                      MediaQuery.of(context).size.height *
-                                          0.016)),
-                            ])),
-                      )
-                    ]),
-                  ],
-                ),
-                ConfigurableExpansionTile(
-                  header:Icon(Icons.keyboard_arrow_down_sharp),
-                  headerExpanded: Icon(Icons.keyboard_arrow_up_sharp),
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                            width: MediaQuery.of(context).size.width,
-                            color: Colors.red,
-                            child: Center(child: Text('data'))),
-                        Text('asdfww'),
-                      ],
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-      onTap: () {
-        WorkerAssignIndustryDialog(
-            context, FoodBuilding.food_building[index]['name'], index);
-      },
-    ) :GestureDetector(
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.15,
-        child: Card(
-          color: Color(0XFF99997A),
-          elevation: 0,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Color(0XFF99997A),
-              image: DecorationImage(
-                image: AssetImage("images/card.png"),
-                fit: BoxFit.fill,
-              ),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    width: MediaQuery.of(context).size.width * 0.15,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/' +
-                            FoodBuilding.food_building[index]
-                            ['imagename']),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.01,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                        child: Text(
-                          FoodBuilding.food_building[index]['name'] +
-                              '('  +
-                              "Qty. " +
-                              FoodBuilding.food_building[index]
-                              ['quantity']
-                                  .toString() +
-                              ')',
-                          style: TextStyle(
-                              fontSize:
-                              MediaQuery.of(context).size.height * 0.016),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      ConfigurableExpansionTile(
+                        header: Icon(Icons.keyboard_arrow_down_sharp),
+                        headerExpanded: Icon(Icons.keyboard_arrow_up_sharp),
+                        children: [
+                          Column(
                             children: [
-                              Text(
-                                'Req. for Building:',
-                                style: TextStyle(
-                                    fontSize:
-                                    MediaQuery.of(context).size.height *
-                                        0.016),
-                              ),
-                              Row(
-                                children: [
-                                  for (Map aaa in FoodBuilding.food_building[index]['upgradereq'])
-                                    Expanded(
-                                      child: Text(
-                                        aaa['name'] +
-                                            ':' +
-                                            aaa['count'].toString() +
-                                            '  ',
-                                        style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                .size
-                                                .height *
-                                                0.016),
-                                      ),
-                                    ),
-                                ],
-                              ),
-
+                              for (Map aaa in FoodBuilding
+                                  .food_building[index]['workeroutput'])
+                                FoodField(aaa['imagename'], aaa['outputprogress'], aaa['totaloutputprogress'], aaa['lastdayoutput'], aaa['estimatedoutput'])
                             ],
-                          ),
+                          )
+                        ],
                       ),
                     ],
                   ),
                 ),
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-
-                  FoodBuilding.food_building[index]['progres']
-                      ? GestureDetector(
-                      child: Container(
-                          height: MediaQuery.of(context).size.width * 0.07,
-                          child: Image.asset('images/build.png')),
-                      onTap: () {
-                        context.read(food_building_provider).buildstart(index);
-                      })
-                      : GestureDetector(
-                      child: Container(
-                          height: MediaQuery.of(context).size.width * 0.07,
-                          child: Image.asset('images/addperson.png')),
-                      onTap: () {
-                        BuilderAssignIndustryDialog(
-                            context,
-                            'builder' +
-                                FoodBuilding.food_building[index]['name']);
-                      }),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: FoodBuilding.food_building[index]['progres']
-                        ? Container(
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.20,
-                    )
-                        : Container(
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width * 0.20,
-                        child: Stack(children: [
-                          LinearProgressIndicator(
-                            minHeight:
-                            MediaQuery.of(context).size.height * 0.02,
-                            backgroundColor: Colors.red,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Colors.amber,
+              ),
+            ),
+            onTap: () {
+              WorkerAssignIndustryDialog(
+                  context, FoodBuilding.food_building[index]['name'], index);
+            },
+          )
+        : GestureDetector(
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.15,
+              child: Card(
+                color: Color(0XFF99997A),
+                elevation: 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0XFF99997A),
+                    image: DecorationImage(
+                      image: AssetImage("images/card.png"),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          width: MediaQuery.of(context).size.width * 0.15,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('images/' +
+                                  FoodBuilding.food_building[index]
+                                      ['imagename']),
                             ),
-                            value: FoodBuilding.food_building[index]
-                            ['buildprogres'] /
-                                FoodBuilding.food_building[index]
-                                ['totalupgradereq'],
                           ),
-                          Text(
-                              FoodBuilding.food_building[index]
-                              ['buildingprosses1'] +
-                                  FoodBuilding.food_building[index]
-                                  ['buildprogres']
-                                      .toString() +
-                                  '/' +
-                                  FoodBuilding.food_building[index]
-                                  ['totalupgradereq']
-                                      .toString(),
-                              style: TextStyle(
-                                  fontSize:
-                                  MediaQuery.of(context).size.height *
-                                      0.016)),
-                        ])),
-                  )
-                ]),
-              ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.01,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                              child: Text(
+                                FoodBuilding.food_building[index]['name'] +
+                                    '(' +
+                                    "Qty. " +
+                                    FoodBuilding.food_building[index]
+                                            ['quantity']
+                                        .toString() +
+                                    ')',
+                                style: TextStyle(
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.016),
+                              ),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            Container(
+                              padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Req. for Building:',
+                                    style: TextStyle(
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.016),
+                                  ),
+                                  Row(
+                                    children: [
+                                      for (Map aaa in FoodBuilding
+                                          .food_building[index]['upgradereq'])
+                                        Expanded(
+                                          child: Text(
+                                            aaa['name'] +
+                                                ':' +
+                                                aaa['count'].toString() +
+                                                '  ',
+                                            style: TextStyle(
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.016),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FoodBuilding.food_building[index]['progres']
+                                ? GestureDetector(
+                                    child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.width *
+                                                0.07,
+                                        child: Image.asset('images/build.png')),
+                                    onTap: () {
+                                      context
+                                          .read(food_building_provider)
+                                          .buildstart(index);
+                                    })
+                                : GestureDetector(
+                                    child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.width *
+                                                0.07,
+                                        child: Image.asset(
+                                            'images/addperson.png')),
+                                    onTap: () {
+                                      BuilderAssignIndustryDialog(
+                                          context,
+                                          'builder' +
+                                              FoodBuilding.food_building[index]
+                                                  ['name']);
+                                    }),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              child: FoodBuilding.food_building[index]
+                                      ['progres']
+                                  ? Container(
+                                      alignment: Alignment.center,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.20,
+                                    )
+                                  : Container(
+                                      alignment: Alignment.center,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.20,
+                                      child: Stack(children: [
+                                        LinearProgressIndicator(
+                                          minHeight: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.02,
+                                          backgroundColor: Colors.red,
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            Colors.amber,
+                                          ),
+                                          value: FoodBuilding
+                                                      .food_building[index]
+                                                  ['buildprogres'] /
+                                              FoodBuilding.food_building[index]
+                                                  ['totalupgradereq'],
+                                        ),
+                                        Text(
+                                            FoodBuilding.food_building[index]
+                                                    ['buildingprosses1'] +
+                                                FoodBuilding
+                                                    .food_building[index]
+                                                        ['buildprogres']
+                                                    .toString() +
+                                                '/' +
+                                                FoodBuilding
+                                                    .food_building[index]
+                                                        ['totalupgradereq']
+                                                    .toString(),
+                                            style: TextStyle(
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.016)),
+                                      ])),
+                            )
+                          ]),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            onTap: () {
+              WorkerAssignIndustryDialog(
+                  context, FoodBuilding.food_building[index]['name'], index);
+            },
+          );
+  }
+}
+
+class FoodField extends ConsumerWidget {
+  String image;
+  int production_progress;
+  int total_production_progress;
+  int lastOutput;
+  int estimatedOutput;
+  FoodField(this.image, this.production_progress,
+      this.total_production_progress, this.lastOutput, this.estimatedOutput);
+
+  @override
+  Widget build(BuildContext context, ScopedReader watch) {
+    return Container(
+      child: Row(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.05,
+            width: MediaQuery.of(context).size.width * 0.15,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('images/' + image
+                ),
+              ),
             ),
           ),
-        ),
+          CustomProductionProgressIndicator(production_progress, total_production_progress, lastOutput, estimatedOutput),
+          GestureDetector(
+            child: Icon(Icons.exposure_minus_1),
+            onTap: (){},
+          ),
+          GestureDetector(
+            child: Icon(Icons.plus_one),
+            onTap: (){},
+          ),
+        ],
       ),
-      onTap: () {
-        WorkerAssignIndustryDialog(
-            context, FoodBuilding.food_building[index]['name'], index);
-      },
     );
   }
 }
+
+
+
 
 Future<void> WorkerAssignIndustryDialog(
     BuildContext context, String workarea, int index) async {
@@ -659,20 +757,16 @@ class _WorkerAssigningIndustryBuilderState
         padding: EdgeInsets.fromLTRB(14, 12, 14, 12),
         child: Column(
           children: <Widget>[
+            Expanded(flex: 1, child: Text('Assigned Worker')),
             Expanded(
-                flex: 1,
-                child: Text('Assigned Worker')),
-            Expanded(
-              flex:6,
+              flex: 6,
               child: ListView.builder(
                   itemBuilder: (_, index) {
                     return AssignedWorker(context, index);
                   },
                   itemCount: employedworker.length),
             ),
-            Expanded(
-                flex: 1,
-                child: Text('Assign Worker')),
+            Expanded(flex: 1, child: Text('Assign Worker')),
             Expanded(
               flex: 6,
               child: ListView.builder(
@@ -690,7 +784,6 @@ class _WorkerAssigningIndustryBuilderState
                 },
               ),
             )
-
           ],
         ),
       ),

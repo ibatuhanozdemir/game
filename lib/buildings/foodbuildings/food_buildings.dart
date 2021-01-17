@@ -11,13 +11,15 @@ class FoodBuilding extends ChangeNotifier {
     {
       'name': 'gatherer/s hut',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding': 2,
       'workercount': 0,
-      'workeroutput':[{'name': 'mushroom','output':3,'lastoutput':0,'type':'food'},
-        {'name': 'berries','output':2,'lastoutput':0,'type':'food'}
+      'workeroutput': [
+        {'name': 'mushroom', 'output': 3, 'lastdayoutput': 0, 'type': 'food'},
+        {'name': 'berries', 'output': 2, 'lastdayoutput': 0, 'type': 'food'}
       ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
@@ -27,18 +29,20 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'food_buildings/gatherer hut.png'
+      'imagename': 'food_buildings/gatherer hut.png'
     },
     {
       'name': 'hunter/s cabin',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding': 2,
       'workercount': 0,
-      'workeroutput':[{'name': 'deer meet','output':3,'lastoutput':0,'type':'food'},
-        {'name': 'leather','output':2,'lastoutput':0,'type':'industry'}
+      'workeroutput': [
+        {'name': 'deer meet', 'output': 3, 'lastdayoutput': 0, 'type': 'food'},
+        {'name': 'leather', 'output': 2, 'lastdayoutput': 0, 'type': 'industry'}
       ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
@@ -48,16 +52,67 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'food_buildings/HuntingCabin.png'
+      'imagename': 'food_buildings/HuntingCabin.png'
     },
     {
       'name': 'farm field',
       'progres': true,
-      'harvest' : true,
+      'harvest': true,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'workercount':0,
+      'capacityperbuilding': 2,
+      'workercount': 0,
+      'workeroutput': [
+        {
+          'name': 'wheat',
+          'workeroutput': 5,
+          'output': 3,
+          'workercount': 0,
+          'lastdayoutput': 0,
+          'type': 'industry',
+          'outputprogress': 0,
+          'totaloutputprogress': 10,
+          'estimatedoutput': 0,
+          'imagename': 'food_buildings/farm.png',
+        },
+        {
+          'name': 'corn',
+          'workeroutput': 5,
+          'output': 2,
+          'workercount': 0,
+          'lastdayoutput': 0,
+          'type': 'food',
+          'outputprogress': 0,
+          'totaloutputprogress': 10,
+          'estimatedoutput': 0,
+          'imagename': 'food_buildings/farm.png',
+        },
+        {
+          'name': 'potato',
+          'workeroutput': 5,
+          'output': 2,
+          'workercount': 0,
+          'lastdayoutput': 0,
+          'type': 'food',
+          'outputprogress': 0,
+          'totaloutputprogress': 10,
+          'estimatedoutput': 0,
+          'imagename': 'food_buildings/farm.png',
+        },
+        {
+          'name': 'tomato',
+          'workeroutput': 5,
+          'output': 2,
+          'workercount': 0,
+          'lastdayoutput': 0,
+          'type': 'food',
+          'outputprogress': 0,
+          'totaloutputprogress': 10,
+          'estimatedoutput': 0,
+          'imagename': 'food_buildings/farm.png',
+        },
+      ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -66,16 +121,67 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'food_buildings/farm.png'
+      'imagename': 'food_buildings/farm.png'
     },
     {
       'name': 'orchard',
       'progres': true,
-      'harvest' : true,
+      'harvest': true,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding': 2,
       'workercount': 0,
+      'workeroutput': [
+        {
+          'name': 'apple',
+          'workeroutput': 5,
+          'output': 3,
+          'workercount': 0,
+          'lastdayoutput': 0,
+          'type': 'industry',
+          'outputprogress': 0,
+          'totaloutputprogress': 10,
+          'estimatedoutput': 0,
+          'imagename': 'food_buildings/farm.png',
+        },
+        {
+          'name': 'cherry',
+          'workeroutput': 5,
+          'output': 2,
+          'workercount': 0,
+          'lastdayoutput': 0,
+          'type': 'food',
+          'outputprogress': 0,
+          'totaloutputprogress': 10,
+          'estimatedoutput': 0,
+          'imagename': 'food_buildings/farm.png',
+        },
+        {
+          'name': 'walnut',
+          'workeroutput': 5,
+          'output': 2,
+          'workercount': 0,
+          'lastdayoutput': 0,
+          'type': 'food',
+          'outputprogress': 0,
+          'totaloutputprogress': 10,
+          'estimatedoutput': 0,
+          'imagename': 'food_buildings/farm.png',
+        },
+        {
+          'name': 'orange',
+          'workeroutput': 5,
+          'output': 2,
+          'workercount': 0,
+          'lastdayoutput': 0,
+          'type': 'food',
+          'outputprogress': 0,
+          'totaloutputprogress': 10,
+          'estimatedoutput': 0,
+          'imagename': 'food_buildings/farm.png',
+        },
+      ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -84,17 +190,20 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'food_buildings/orchard.png'
+      'imagename': 'food_buildings/orchard.png'
     },
     {
       'name': 'fishing dock',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding': 2,
       'workercount': 0,
-      'workeroutput':[{'name': 'fish','output':5,'lastoutput':0,'type':'food'}],
+      'workeroutput': [
+        {'name': 'fish', 'output': 5, 'lastdayoutput': 0, 'type': 'food'}
+      ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -103,18 +212,20 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'food_buildings/fishingson.png'
+      'imagename': 'food_buildings/fishingson.png'
     },
     {
       'name': 'pasture (cow)',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding': 2,
       'workercount': 0,
-      'workeroutput':[{'name': 'cow meet','output':3,'lastoutput':0,'type':'food'},
-        {'name': 'milk','output':2,'lastoutput':0,'type':'food'}
+      'workeroutput': [
+        {'name': 'cow meet', 'output': 3, 'lastdayoutput': 0, 'type': 'food'},
+        {'name': 'milk', 'output': 2, 'lastdayoutput': 0, 'type': 'food'}
       ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
@@ -124,18 +235,20 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'food_buildings/pastorEXPAND.png'
+      'imagename': 'food_buildings/pastorEXPAND.png'
     },
     {
       'name': 'pasture (sheep)',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding': 2,
       'workercount': 0,
-      'workeroutput':[{'name': 'sheep meet','output':3,'lastoutput':0,'type':'food'},
-        {'name': 'wool','output':2,'lastoutput':0,'type':'industry'}
+      'workeroutput': [
+        {'name': 'sheep meet', 'output': 3, 'lastdayoutput': 0, 'type': 'food'},
+        {'name': 'wool', 'output': 2, 'lastdayoutput': 0, 'type': 'industry'}
       ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
@@ -145,18 +258,20 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'food_buildings/koyun.png'
+      'imagename': 'food_buildings/koyun.png'
     },
     {
       'name': 'coop',
       'progres': true,
-      'harvest' : false,
+      'harvest': false,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding': 2,
       'workercount': 0,
-      'workeroutput':[{'name': 'chicken meet','output':3,'lastoutput':0,'type':'food'},
-        {'name': 'egg','output':2,'lastoutput':0,'type':'food'}
+      'workeroutput': [
+        {'name': 'chicken meet', 'output': 3, 'lastdayoutput': 0, 'type': 'food'},
+        {'name': 'egg', 'output': 2, 'lastdayoutput': 0, 'type': 'food'}
       ],
       'upgradereq': [
         {'name': 'wood', 'count': 20},
@@ -166,15 +281,14 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'food_buildings/coop.png'
+      'imagename': 'food_buildings/coop.png'
     }
   ];
 
   void buildstart(int index) {
     food_building[index]['progres'] = false;
     food_building[index]['buildingprosses1'] =
-        food_building[index]['upgradereq'][0]['name'] +
-            " ";
+        food_building[index]['upgradereq'][0]['name'] + " ";
 
     notifyListeners();
   }
@@ -184,7 +298,7 @@ class FoodBuilding extends ChangeNotifier {
       if (element['progres'] == false) {
         Citizen.citizen
             .where((element2) =>
-        (element2['workarea'].contains('builder' + element['name'])))
+                (element2['workarea'].contains('builder' + element['name'])))
             .toList()
             .forEach((element5) {
           if (element['progres'] == false) {
@@ -196,7 +310,7 @@ class FoodBuilding extends ChangeNotifier {
               element['buildingprosses2'] = 0;
               Citizen.citizen
                   .where((element2) => (element2['workarea']
-                  .contains('builder' + element['name'])))
+                      .contains('builder' + element['name'])))
                   .toList()
                   .forEach((element3) {
                 element3['workarea'] = 'unemployed';
@@ -217,7 +331,7 @@ class FoodBuilding extends ChangeNotifier {
                 element['buildingprosses1'] = 'Building ';
               } else {
                 element['buildingprosses1'] = element['upgradereq']
-                [element['buildingprosses2']]['name'] +
+                        [element['buildingprosses2']]['name'] +
                     " ";
               }
             }
@@ -244,7 +358,6 @@ class FoodBuilding extends ChangeNotifier {
     }
     food_building = jsonDecode(startupNumber);
 
-
     return 0;
   }
 
@@ -259,11 +372,11 @@ class FoodBuilding extends ChangeNotifier {
           totalWorkerEfficiency = totalWorkerEfficiency + element3['overallef'];
         });
 
-        if(element['harvest']==false){
-          element['workeroutput'].forEach((element4){
+        if (element['harvest'] == false) {
+          element['workeroutput'].forEach((element4) {
             int a =
-            (element4['output'] * (totalWorkerEfficiency) / 100).round();
-            if(element4['type']=='food') {
+                (element4['output'] * (totalWorkerEfficiency) / 100).round();
+            if (element4['type'] == 'food') {
               FoodResources.food_resource_sublist
                   .where((element5) => element5['foodname'] == element4['name'])
                   .toList()[0]['count'] = FoodResources.food_resource_sublist
@@ -271,32 +384,64 @@ class FoodBuilding extends ChangeNotifier {
                           element5['foodname'] == element4['name'])
                       .toList()[0]['count'] +
                   a;
-            }else{
+            } else {
               IndustryResources.industry_resources
                   .where((element5) => element5['name'] == element4['name'])
                   .toList()[0]['count'] = IndustryResources.industry_resources
-                  .where((element5) =>
-              element5['name'] == element4['name'])
-                  .toList()[0]['count'] +
+                      .where((element5) => element5['name'] == element4['name'])
+                      .toList()[0]['count'] +
                   a;
-
-
             }
           });
+        }else{
+          element['workeroutput'].forEach((element6) {
+            if(element6['workercount']>=1){
+              Citizen.citizen.where((element10) => element10['workarea']==element['name']).toList().where((element7) => element7['workfield']==element6['name']).toList().forEach((element8) {
+                totalWorkerEfficiency = totalWorkerEfficiency + element8['overallef'];
+              });
+              if (element6['outputprogress'] < element6['totaloutputprogress']) {
+                int a = (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
+                    .round();
+                element6['estimatedoutput'] = element6['estimatedoutput'] + a;
+                element6['outputprogress'] = element6['outputprogress'] + 1;
+              } else {
+                element6['outputprogress'] = 0;
+                int a = (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
+                    .round();
+                element6['estimatedoutput'] = element6['estimatedoutput'] + a;
+                if(element6['type']=='food'){
+                  FoodResources.food_resource_sublist
+                      .where((element12) => element12['foodname'] == element6['name'])
+                      .toList()[0]['count'] = FoodResources.food_resource_sublist
+                      .where(
+                          (element12) => element12['foodname'] == element6['name'])
+                      .toList()[0]['count'] +
+                      element6['estimatedoutput'];
+                }else{
+                  IndustryResources.industry_resources
+                      .where((element12) => element12['name'] == element6['name'])
+                      .toList()[0]['count'] = IndustryResources.industry_resources
+                      .where(
+                          (element12) => element12['name'] == element6['name'])
+                      .toList()[0]['count'] +
+                      element6['estimatedoutput'];
+                }
 
-
-
-
-
-
-
-
+                element6['lastdayoutput'] = element6['estimatedoutput'];
+                element6['estimatedoutput'] = 0;
+              }
+            }
+          } );
 
         }
       }
     });
   }
 
-
-
+  workerCapacity() {
+    food_building.forEach((element) {
+      element['capacity'] =
+          element['capacityperbuilding'] * element['quantity'];
+    });
+  }
 }

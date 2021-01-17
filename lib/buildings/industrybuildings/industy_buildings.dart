@@ -14,6 +14,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding' : 2,
       'outputname': 'wood',
       'workeroutput': 5,
       'workercount': 0,
@@ -35,6 +36,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding' : 2,
       'outputname': 'stone',
       'workeroutput': 5,
       'workercount': 0,
@@ -56,6 +58,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding' : 2,
       'outputname': 'coal',
       'workeroutput': 5,
       'workercount': 0,
@@ -77,6 +80,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding' : 2,
       'outputname': 'iron',
       'workeroutput': 5,
       'workercount': 0,
@@ -100,6 +104,7 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
+      'capacityperbuilding' : 2,
       'outputname': 'tree',
       'estimatedoutput': 0,
       'workeroutput': 5,
@@ -240,4 +245,10 @@ class IndustryBuilding extends ChangeNotifier {
       }
     });
   }
+
+  workerCapacity(){
+    industry_building.forEach((element) {element['capacity']=element['capacityperbuilding']*element['quantity'];});
+  }
+
+
 }

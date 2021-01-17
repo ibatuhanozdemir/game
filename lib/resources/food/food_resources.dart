@@ -18,7 +18,16 @@ class FoodResources {
     {'foodname':'cow meet','count': 0, 'katsayı': 1},
     {'foodname':'sheep meet','count': 0, 'katsayı': 1},
     {'foodname':'chicken meet','count': 0, 'katsayı': 1},
-    {'foodname':'egg','count': 0, 'katsayı': 1}
+    {'foodname':'egg','count': 0, 'katsayı': 1},
+    {'foodname':'apple','count': 0, 'katsayı': 1},
+    {'foodname':'orange','count': 0, 'katsayı': 1},
+    {'foodname':'corn','count': 0, 'katsayı': 1},
+    {'foodname':'potato','count': 0, 'katsayı': 1},
+    {'foodname':'tomato','count': 0, 'katsayı': 1},
+    {'foodname':'cherry','count': 0, 'katsayı': 1},
+    {'foodname':'walnut','count': 0, 'katsayı': 1},
+    {'foodname':'orange','count': 0, 'katsayı': 1},
+
 
   ];
 

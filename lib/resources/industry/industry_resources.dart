@@ -7,6 +7,7 @@ class IndustryResources {
     {'name':'tree','count':0},
     {'name':'wool','count':0},
     {'name':'leather','count':0},
+    {'name':'wheat','count':0},
   ];
 
 }
