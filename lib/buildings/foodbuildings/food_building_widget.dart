@@ -144,7 +144,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                                             child: Image.asset(
                                                 'images/addperson.png')),
                                         onTap: () {
-                                          BuilderAssignIndustryDialog(
+                                          BuilderAssignFoodDialog(
                                               context,
                                               'builder' +
                                                   FoodBuilding
@@ -229,7 +229,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
               ),
             ),
             onTap: () {
-              WorkerAssignIndustryDialog(
+              WorkerAssignFoodDialog(
                   context, FoodBuilding.food_building[index]['name'], index);
             },
           )
@@ -350,7 +350,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                                         child: Image.asset(
                                             'images/addperson.png')),
                                     onTap: () {
-                                      BuilderAssignIndustryDialog(
+                                      BuilderAssignFoodDialog(
                                           context,
                                           'builder' +
                                               FoodBuilding.food_building[index]
@@ -412,7 +412,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
               ),
             ),
             onTap: () {
-              WorkerAssignIndustryDialog(
+              WorkerAssignFoodDialog(
                   context, FoodBuilding.food_building[index]['name'], index);
             },
           );
@@ -451,7 +451,10 @@ watch(food_building_provider);
               child: CustomProductionProgressIndicator(production_progress, total_production_progress, lastOutput, estimatedOutput)),
           GestureDetector(
             child: Icon(Icons.remove,size: 20,),
-            onTap: (){},
+            onTap: (){context.read(food_building_provider).farmfieldWorkerRemove(food_building_name, field_name);
+
+
+            },
           ),
           Text(workercount.toString()),
           GestureDetector(
@@ -467,7 +470,7 @@ watch(food_building_provider);
 
 
 
-Future<void> WorkerAssignIndustryDialog(
+Future<void> WorkerAssignFoodDialog(
     BuildContext context, String workarea, int index) async {
   return await showDialog(
       context: context,
@@ -478,13 +481,13 @@ Future<void> WorkerAssignIndustryDialog(
             return Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: WorkerAssigningIndustry(context, workarea, index));
+                child: WorkerAssigningFood(context, workarea, index));
           }),
         );
       });
 }
 
-Future<void> BuilderAssignIndustryDialog(
+Future<void> BuilderAssignFoodDialog(
     BuildContext context, String workarea) async {
   return await showDialog(
       context: context,
@@ -495,28 +498,28 @@ Future<void> BuilderAssignIndustryDialog(
             return Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: WorkerAssigningIndustryBuilder(context, workarea));
+                child: WorkerAssigningFoodBuilder(context, workarea));
           }),
         );
       });
 }
 
-class WorkerAssigningIndustry extends StatefulWidget {
+class WorkerAssigningFood extends StatefulWidget {
   BuildContext context;
   String workarea;
   int index;
-  WorkerAssigningIndustry(this.context, this.workarea, this.index);
+  WorkerAssigningFood(this.context, this.workarea, this.index);
 
   @override
-  _WorkerAssigningIndustryState createState() =>
-      _WorkerAssigningIndustryState(context, workarea, index);
+  _WorkerAssigningFoodState createState() =>
+      _WorkerAssigningFoodState(context, workarea, index);
 }
 
-class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
+class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
   @override
   BuildContext context;
   int index;
-  _WorkerAssigningIndustryState(this.context, this.workarea, this.index);
+  _WorkerAssigningFoodState(this.context, this.workarea, this.index);
   List employedworker = [];
   List unemployedworker = [];
   String workarea;
@@ -719,23 +722,23 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
   }
 }
 
-class WorkerAssigningIndustryBuilder extends StatefulWidget {
+class WorkerAssigningFoodBuilder extends StatefulWidget {
   BuildContext context;
   String workarea;
   int index;
-  WorkerAssigningIndustryBuilder(this.context, this.workarea);
+  WorkerAssigningFoodBuilder(this.context, this.workarea);
 
   @override
-  _WorkerAssigningIndustryBuilderState createState() =>
-      _WorkerAssigningIndustryBuilderState(context, workarea);
+  _WorkerAssigningFoodBuilderState createState() =>
+      _WorkerAssigningFoodBuilderState(context, workarea);
 }
 
-class _WorkerAssigningIndustryBuilderState
-    extends State<WorkerAssigningIndustryBuilder> {
+class _WorkerAssigningFoodBuilderState
+    extends State<WorkerAssigningFoodBuilder> {
   @override
   BuildContext context;
 
-  _WorkerAssigningIndustryBuilderState(this.context, this.workarea);
+  _WorkerAssigningFoodBuilderState(this.context, this.workarea);
   List employedworker = [];
   List unemployedworker = [];
   String workarea;

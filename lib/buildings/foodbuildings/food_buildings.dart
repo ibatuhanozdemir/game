@@ -473,10 +473,31 @@ class FoodBuilding extends ChangeNotifier {
 
       }
 
-
-
-
-
-
   }notifyListeners();}
+
+  void farmfieldWorkerRemove(String food_building_name,String field_name){
+
+    if(food_building_name=='farm field'){
+
+      if(food_building[2]['workeroutput'].where((element10)=> element10['name']==field_name).toList()[0]['workercount']>0){
+        food_building[2]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[2]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']-1;
+        Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']==field_name).toList()[0]['workfield']='unemployed';
+      }
+
+
+    }else{
+
+      if(food_building[2]['workeroutput'].where((element10)=> element10['name']==field_name).toList()[0]['workercount']>0){
+        food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']-1;
+        Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']==field_name).toList()[0]['workfield']='unemployed';
+
+
+      }
+
+    }notifyListeners();}
+
+
+
+
+
 }
