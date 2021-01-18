@@ -39,7 +39,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                           Padding(
                             padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                             child: Container(
-                              height: MediaQuery.of(context).size.height * 0.15,
+                              height: MediaQuery.of(context).size.height * 0.10,
                               width: MediaQuery.of(context).size.width * 0.15,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -152,7 +152,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                                                       ['name']);
                                         }),
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                                   child: FoodBuilding.food_building[index]
                                           ['progres']
                                       ? Container(
@@ -218,7 +218,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                             children: [
                               for (Map aaa in FoodBuilding
                                   .food_building[index]['workeroutput'])
-                                FoodField(aaa['imagename'], aaa['outputprogress'], aaa['totaloutputprogress'], aaa['lastdayoutput'], aaa['estimatedoutput'])
+                                FoodField(aaa['imagename'], aaa['outputprogress'], aaa['totaloutputprogress'], aaa['lastdayoutput'], aaa['estimatedoutput'],aaa['workercount'],FoodBuilding.food_building[index]['name'],aaa['name'])
                             ],
                           )
                         ],
@@ -420,16 +420,19 @@ class FoodBuildingWidgeti extends ConsumerWidget {
 }
 
 class FoodField extends ConsumerWidget {
-  String image;
+  String image,food_building_name,field_name;
   int production_progress;
   int total_production_progress;
   int lastOutput;
   int estimatedOutput;
+  int workercount;
+
   FoodField(this.image, this.production_progress,
-      this.total_production_progress, this.lastOutput, this.estimatedOutput);
+      this.total_production_progress, this.lastOutput, this.estimatedOutput,this.workercount,this.food_building_name,this.field_name);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+watch(food_building_provider);
     return Container(
       child: Row(
         children: [
@@ -443,14 +446,17 @@ class FoodField extends ConsumerWidget {
               ),
             ),
           ),
-          CustomProductionProgressIndicator(production_progress, total_production_progress, lastOutput, estimatedOutput),
+          Container(
+              width: MediaQuery.of(context).size.width * 0.65,
+              child: CustomProductionProgressIndicator(production_progress, total_production_progress, lastOutput, estimatedOutput)),
           GestureDetector(
-            child: Icon(Icons.exposure_minus_1),
+            child: Icon(Icons.remove,size: 20,),
             onTap: (){},
           ),
+          Text(workercount.toString()),
           GestureDetector(
-            child: Icon(Icons.plus_one),
-            onTap: (){},
+            child: Icon(Icons.add,size: 20),
+            onTap: (){context.read(food_building_provider).farmfieldWorkerAdd(food_building_name, field_name);},
           ),
         ],
       ),

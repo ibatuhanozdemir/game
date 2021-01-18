@@ -394,11 +394,14 @@ class FoodBuilding extends ChangeNotifier {
             }
           });
         }else{
+
           element['workeroutput'].forEach((element6) {
+            double totalWorkerEfficiency = 0;
             if(element6['workercount']>=1){
               Citizen.citizen.where((element10) => element10['workarea']==element['name']).toList().where((element7) => element7['workfield']==element6['name']).toList().forEach((element8) {
                 totalWorkerEfficiency = totalWorkerEfficiency + element8['overallef'];
               });
+              print(totalWorkerEfficiency);
               if (element6['outputprogress'] < element6['totaloutputprogress']) {
                 int a = (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
                     .round();
@@ -438,10 +441,42 @@ class FoodBuilding extends ChangeNotifier {
     });
   }
 
-  workerCapacity() {
+ void workerCapacity() {
     food_building.forEach((element) {
       element['capacity'] =
           element['capacityperbuilding'] * element['quantity'];
     });
   }
+
+  void farmfieldWorkerAdd(String food_building_name,String field_name){
+    int total_fields_worker_count=0;
+    if(food_building_name=='farm field'){
+      food_building[2]['workeroutput'].forEach((element){
+      total_fields_worker_count=total_fields_worker_count+ element['workercount'];
+
+    });
+    if(food_building[2]['workercount']>total_fields_worker_count){
+      food_building[2]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[2]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']+1;
+      Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']=='unemployed').toList()[0]['workfield']=field_name;
+    }
+
+
+    }else{
+      food_building[3]['workeroutput'].forEach((element){
+        total_fields_worker_count=total_fields_worker_count+ element['workercount'];
+
+      });
+      if(food_building[3]['workercount']>total_fields_worker_count){
+        food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']+1;
+        Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']=='unemployed').toList()[0]['workfield']=field_name;
+
+
+      }
+
+
+
+
+
+
+  }notifyListeners();}
 }

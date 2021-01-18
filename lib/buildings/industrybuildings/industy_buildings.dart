@@ -246,7 +246,7 @@ class IndustryBuilding extends ChangeNotifier {
     });
   }
 
-  workerCapacity(){
+  void workerCapacity(){
     industry_building.forEach((element) {element['capacity']=element['capacityperbuilding']*element['quantity'];});
   }
 
