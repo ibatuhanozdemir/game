@@ -139,7 +139,7 @@ class FoodBuilding extends ChangeNotifier {
           'output': 3,
           'workercount': 0,
           'lastdayoutput': 0,
-          'type': 'industry',
+          'type': 'food',
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
@@ -401,7 +401,7 @@ class FoodBuilding extends ChangeNotifier {
               Citizen.citizen.where((element10) => element10['workarea']==element['name']).toList().where((element7) => element7['workfield']==element6['name']).toList().forEach((element8) {
                 totalWorkerEfficiency = totalWorkerEfficiency + element8['overallef'];
               });
-              print(totalWorkerEfficiency);
+
               if (element6['outputprogress'] < element6['totaloutputprogress']) {
                 int a = (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
                     .round();
@@ -467,6 +467,7 @@ class FoodBuilding extends ChangeNotifier {
 
       });
       if(food_building[3]['workercount']>total_fields_worker_count){
+
         food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']+1;
         Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']=='unemployed').toList()[0]['workfield']=field_name;
 
@@ -485,9 +486,10 @@ class FoodBuilding extends ChangeNotifier {
       }
 
 
-    }else{
+    }else if(food_building_name=='orchard'){
 
-      if(food_building[2]['workeroutput'].where((element10)=> element10['name']==field_name).toList()[0]['workercount']>0){
+      if(food_building[3]['workeroutput'].where((element10)=> element10['name']==field_name).toList()[0]['workercount']>0){
+
         food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']-1;
         Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']==field_name).toList()[0]['workfield']='unemployed';
 
