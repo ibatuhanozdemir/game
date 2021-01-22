@@ -17,6 +17,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
 
   Widget build(BuildContext context, ScopedReader watch) {
     watch(food_building_provider);
+    print("asd");
     return FoodBuilding.food_building[index]['harvest']
         ? GestureDetector(
             child: Container(
@@ -556,7 +557,7 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
               child: Container(
                 child: ListView.builder(
                     itemBuilder: (_, index) {
-                      return AssignedWorker(context, index);
+                      return AssignedWorker(context, index, employedworker[index]['workarea'], employedworker[index]['workfield']);
                     },
                     itemCount: employedworker.length),
               ),
@@ -596,37 +597,47 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
     );
   }
 
-  Widget AssignedWorker(BuildContext context, int index) {
+  Widget AssignedWorker(BuildContext context, int index,String food_building_name,String field_name) {
     return GestureDetector(
       child: Card(
         color: Colors.grey.shade700,
         elevation: 20,
-        child: Row(
-          children: <Widget>[
-            Container(
-                height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.height * 0.08,
-                padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
-                child: Icon(Icons.people)),
-            SizedBox(
-              width: MediaQuery.of(context).size.height * 0.01,
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: Text(employedworker[index]['name']),
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.05,
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: MediaQuery.of(context).size.height * 0.01,
               ),
-            ),
-            Container(
-              padding: EdgeInsets.all(0),
-              width: MediaQuery.of(context).size.height * 0.05,
-              child: Text("1"),
-            ),
-          ],
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: Text(employedworker[index]['name']),
+                ),
+              ),
+              ((){
+                if(employedworker[index]['workarea']== 'farm field' || employedworker[index]['workarea']== 'orchard'){
+                  return Container(
+                    padding: EdgeInsets.all(0),
+                    width: MediaQuery.of(context).size.height * 0.05,
+                    child: Text(employedworker[index]['workfield']),
+                  );
+                }else{
+                  return Container(
+                    padding: EdgeInsets.all(0),
+                    width: MediaQuery.of(context).size.height * 0.05,
+                    child: Text(""),
+                  );
+                }
+              }()),
+
+            ],
+          ),
         ),
       ),
       onTap: () {
         this.IstenCikarma(employedworker[index]['id']);
+        context.read(food_building_provider).workFieldArranger(food_building_name, field_name);
       },
     );
   }
@@ -636,28 +647,21 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
       child: Card(
         color: Colors.grey.shade700,
         elevation: 20,
-        child: Row(
-          children: <Widget>[
-            Container(
-                height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.height * 0.08,
-                padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
-                child: Icon(Icons.people)),
-            SizedBox(
-              width: MediaQuery.of(context).size.height * 0.01,
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: Text(unemployedworker[index]['name']),
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.05,
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: MediaQuery.of(context).size.height * 0.01,
               ),
-            ),
-            Container(
-              padding: EdgeInsets.all(0),
-              width: MediaQuery.of(context).size.height * 0.05,
-              child: Text("1"),
-            ),
-          ],
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: Text(unemployedworker[index]['name']),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       onTap: () {
@@ -671,6 +675,7 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
       if (element['id'] == id) {
         setState(() {
           element['workarea'] = 'unemployed';
+          element['workfield'] = 'unemployed';
           eleme();
           FoodBuilding.food_building.forEach((element3) {
             element3['workercount'] = Citizen.citizen
@@ -709,18 +714,18 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
   }
 
   void eleme() {
-    print(workarea);
     employedworker = Citizen.citizen
         .where((element) => (element['workarea'] == workarea))
         .toList();
-    print(employedworker);
     unemployedworker = Citizen.citizen
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
-
     loading = true;
   }
 }
+
+
+
 
 class WorkerAssigningFoodBuilder extends StatefulWidget {
   BuildContext context;
@@ -881,7 +886,6 @@ class _WorkerAssigningFoodBuilderState
   }
 
   void IseAlma(int id, String workarea_name) {
-    print(workarea_name);
     Citizen.citizen.forEach((element) {
       if (element['id'] == id) {
         setState(() {

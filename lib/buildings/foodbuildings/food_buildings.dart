@@ -270,7 +270,12 @@ class FoodBuilding extends ChangeNotifier {
       'capacityperbuilding': 2,
       'workercount': 0,
       'workeroutput': [
-        {'name': 'chicken meet', 'output': 3, 'lastdayoutput': 0, 'type': 'food'},
+        {
+          'name': 'chicken meet',
+          'output': 3,
+          'lastdayoutput': 0,
+          'type': 'food'
+        },
         {'name': 'egg', 'output': 2, 'lastdayoutput': 0, 'type': 'food'}
       ],
       'upgradereq': [
@@ -393,40 +398,54 @@ class FoodBuilding extends ChangeNotifier {
                   a;
             }
           });
-        }else{
-
+        } else {
           element['workeroutput'].forEach((element6) {
             double totalWorkerEfficiency = 0;
-            if(element6['workercount']>=1){
-              Citizen.citizen.where((element10) => element10['workarea']==element['name']).toList().where((element7) => element7['workfield']==element6['name']).toList().forEach((element8) {
-                totalWorkerEfficiency = totalWorkerEfficiency + element8['overallef'];
+            if (element6['workercount'] >= 1) {
+              Citizen.citizen
+                  .where(
+                      (element10) => element10['workarea'] == element['name'])
+                  .toList()
+                  .where(
+                      (element7) => element7['workfield'] == element6['name'])
+                  .toList()
+                  .forEach((element8) {
+                totalWorkerEfficiency =
+                    totalWorkerEfficiency + element8['overallef'];
               });
 
-              if (element6['outputprogress'] < element6['totaloutputprogress']) {
-                int a = (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
-                    .round();
+              if (element6['outputprogress'] <
+                  element6['totaloutputprogress']) {
+                int a =
+                    (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
+                        .round();
                 element6['estimatedoutput'] = element6['estimatedoutput'] + a;
                 element6['outputprogress'] = element6['outputprogress'] + 1;
               } else {
                 element6['outputprogress'] = 0;
-                int a = (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
-                    .round();
+                int a =
+                    (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
+                        .round();
                 element6['estimatedoutput'] = element6['estimatedoutput'] + a;
-                if(element6['type']=='food'){
+                if (element6['type'] == 'food') {
                   FoodResources.food_resource_sublist
-                      .where((element12) => element12['foodname'] == element6['name'])
-                      .toList()[0]['count'] = FoodResources.food_resource_sublist
-                      .where(
-                          (element12) => element12['foodname'] == element6['name'])
-                      .toList()[0]['count'] +
+                      .where((element12) =>
+                          element12['foodname'] == element6['name'])
+                      .toList()[0]['count'] = FoodResources
+                          .food_resource_sublist
+                          .where((element12) =>
+                              element12['foodname'] == element6['name'])
+                          .toList()[0]['count'] +
                       element6['estimatedoutput'];
-                }else{
+                } else {
                   IndustryResources.industry_resources
-                      .where((element12) => element12['name'] == element6['name'])
-                      .toList()[0]['count'] = IndustryResources.industry_resources
                       .where(
                           (element12) => element12['name'] == element6['name'])
-                      .toList()[0]['count'] +
+                      .toList()[0]['count'] = IndustryResources
+                          .industry_resources
+                          .where((element12) =>
+                              element12['name'] == element6['name'])
+                          .toList()[0]['count'] +
                       element6['estimatedoutput'];
                 }
 
@@ -434,72 +453,114 @@ class FoodBuilding extends ChangeNotifier {
                 element6['estimatedoutput'] = 0;
               }
             }
-          } );
-
+          });
         }
       }
     });
   }
 
- void workerCapacity() {
+  void workerCapacity() {
     food_building.forEach((element) {
       element['capacity'] =
           element['capacityperbuilding'] * element['quantity'];
     });
   }
 
-  void farmfieldWorkerAdd(String food_building_name,String field_name){
-    int total_fields_worker_count=0;
-    if(food_building_name=='farm field'){
-      food_building[2]['workeroutput'].forEach((element){
-      total_fields_worker_count=total_fields_worker_count+ element['workercount'];
-
-    });
-    if(food_building[2]['workercount']>total_fields_worker_count){
-      food_building[2]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[2]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']+1;
-      Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']=='unemployed').toList()[0]['workfield']=field_name;
-    }
-
-
-    }else{
-      food_building[3]['workeroutput'].forEach((element){
-        total_fields_worker_count=total_fields_worker_count+ element['workercount'];
-
+  void farmfieldWorkerAdd(String food_building_name, String field_name) {
+    int total_fields_worker_count = 0;
+    if (food_building_name == 'farm field') {
+      food_building[2]['workeroutput'].forEach((element) {
+        total_fields_worker_count =
+            total_fields_worker_count + element['workercount'];
       });
-      if(food_building[3]['workercount']>total_fields_worker_count){
-
-        food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']+1;
-        Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']=='unemployed').toList()[0]['workfield']=field_name;
-
-
+      if (food_building[2]['workercount'] > total_fields_worker_count) {
+        food_building[2]['workeroutput']
+            .where((element2) => element2['name'] == field_name)
+            .toList()[0]['workercount'] = food_building[2]['workeroutput']
+                .where((element2) => element2['name'] == field_name)
+                .toList()[0]['workercount'] +
+            1;
+        Citizen.citizen
+            .where((element3) => element3['workarea'] == food_building_name)
+            .toList()
+            .where((element4) => element4['workfield'] == 'unemployed')
+            .toList()[0]['workfield'] = field_name;
       }
-
-  }notifyListeners();}
-
-  void farmfieldWorkerRemove(String food_building_name,String field_name){
-
-    if(food_building_name=='farm field'){
-
-      if(food_building[2]['workeroutput'].where((element10)=> element10['name']==field_name).toList()[0]['workercount']>0){
-        food_building[2]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[2]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']-1;
-        Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']==field_name).toList()[0]['workfield']='unemployed';
+    } else {
+      food_building[3]['workeroutput'].forEach((element) {
+        total_fields_worker_count =
+            total_fields_worker_count + element['workercount'];
+      });
+      if (food_building[3]['workercount'] > total_fields_worker_count) {
+        food_building[3]['workeroutput']
+            .where((element2) => element2['name'] == field_name)
+            .toList()[0]['workercount'] = food_building[3]['workeroutput']
+                .where((element2) => element2['name'] == field_name)
+                .toList()[0]['workercount'] +
+            1;
+        Citizen.citizen
+            .where((element3) => element3['workarea'] == food_building_name)
+            .toList()
+            .where((element4) => element4['workfield'] == 'unemployed')
+            .toList()[0]['workfield'] = field_name;
       }
+    }
+    notifyListeners();
+  }
 
-
-    }else if(food_building_name=='orchard'){
-
-      if(food_building[3]['workeroutput'].where((element10)=> element10['name']==field_name).toList()[0]['workercount']>0){
-
-        food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']=food_building[3]['workeroutput'].where((element2)=>element2['name']==field_name).toList()[0]['workercount']-1;
-        Citizen.citizen.where((element3) => element3['workarea']==food_building_name).toList().where((element4) => element4['workfield']==field_name).toList()[0]['workfield']='unemployed';
-
-
+  void farmfieldWorkerRemove(String food_building_name, String field_name) {
+    if (food_building_name == 'farm field') {
+      if (food_building[2]['workeroutput']
+              .where((element10) => element10['name'] == field_name)
+              .toList()[0]['workercount'] >
+          0) {
+        food_building[2]['workeroutput']
+            .where((element2) => element2['name'] == field_name)
+            .toList()[0]['workercount'] = food_building[2]['workeroutput']
+                .where((element2) => element2['name'] == field_name)
+                .toList()[0]['workercount'] -
+            1;
+        Citizen.citizen
+            .where((element3) => element3['workarea'] == food_building_name)
+            .toList()
+            .where((element4) => element4['workfield'] == field_name)
+            .toList()[0]['workfield'] = 'unemployed';
       }
+    } else if (food_building_name == 'orchard') {
+      if (food_building[3]['workeroutput']
+              .where((element10) => element10['name'] == field_name)
+              .toList()[0]['workercount'] >
+          0) {
+        food_building[3]['workeroutput']
+            .where((element2) => element2['name'] == field_name)
+            .toList()[0]['workercount'] = food_building[3]['workeroutput']
+                .where((element2) => element2['name'] == field_name)
+                .toList()[0]['workercount'] -
+            1;
+        Citizen.citizen
+            .where((element3) => element3['workarea'] == food_building_name)
+            .toList()
+            .where((element4) => element4['workfield'] == field_name)
+            .toList()[0]['workfield'] = 'unemployed';
+      }
+    }
+    notifyListeners();
+  }
 
-    }notifyListeners();}
+  void workFieldArranger(String food_building_name, String field_name) {
+    print(field_name);
+    if(field_name != 'unemployed'){
+      food_building
+          .where((element) => element['name'] == food_building_name)
+          .toList()[0]['workeroutput']
+          .where((element2) => element2['name'] == field_name)
+          .toList()[0]['workercount'] =
+          Citizen.citizen
+              .where((element3) => element3['workfield'] == field_name)
+              .toList()
+              .length;
 
-
-
-
-
+      notifyListeners();
+    }
+  }
 }
