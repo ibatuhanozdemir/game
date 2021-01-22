@@ -12,6 +12,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 3,
       'workercount': 1,
+      'effectcitizencount':5,
+      'effectrate':20,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -29,6 +31,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 2,
       'workercount': 1,
+      'effectcitizencount':5,
+      'effectrate':20,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -46,6 +50,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 2,
       'workercount': 1,
+      'effectcitizencount':5,
+      'effectrate':20,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -57,12 +63,14 @@ class TownServiceBuilding extends ChangeNotifier {
       'imagename':'tavern.png'
     },
     {
-      'name': 'graveyard',
+      'name': 'hospital',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
       'workercount': 1,
+      'effectcitizencount':5,
+      'effectrate':20,
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
@@ -72,7 +80,45 @@ class TownServiceBuilding extends ChangeNotifier {
       'buildingprosses1': '',
       'buildingprosses2': 0,
       'imagename':'mezar.png'
-    }
+    },
+    {
+      'name': 'well',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 1,
+      'effectcitizencount':5,
+      'effectrate':20,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0,
+      'imagename':'mezar.png'
+    },
+    {
+      'name': 'graveyard',
+      'progres': true,
+      'buildprogres': 0,
+      'quantity': 10,
+      'capacity': 2,
+      'workercount': 1,
+      'effectcitizencount':5,
+      'effectrate':20,
+      'upgradereq': [
+        {'name': 'wood', 'count': 20},
+        {'name': 'stone', 'count': 50},
+        {'name': 'labourcost', 'count': 10},
+      ],
+      'totalupgradereq': 80,
+      'buildingprosses1': '',
+      'buildingprosses2': 0,
+      'imagename':'mezar.png'
+    },
   ];
 
   void buildstart(int index) {

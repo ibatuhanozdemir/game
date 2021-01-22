@@ -39,7 +39,7 @@ class Daycircle extends ChangeNotifier {
             }
           }
 
-
+          Citizen().calculateCitizenHappiness();
           IndustryBuilding().collectResource();
           FoodBuilding().collectResource();
           FoodResources().calculateFood();
@@ -49,6 +49,7 @@ class Daycircle extends ChangeNotifier {
           IndustryBuilding().workerCapacity();
           FoodBuilding().workerCapacity();
           Citizen().calculateGlobalHealth();
+          Citizen().calculateGlobalHappiness();
           Citizen().citizenCapacityCalculator();
           Citizen().citizenBirth();
           Citizen().citizenDeath();

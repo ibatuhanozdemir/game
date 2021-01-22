@@ -109,9 +109,8 @@ class CustomAppBar extends ConsumerWidget {
                       child: TopResourceWidget(
                           'Happ. ',
                           'laugh',
-                          Citizen.citizen.length.toString() +
-                              "/" +
-                              Citizen.citizenCapacity.toString()),
+                          Citizen.globalHappiness.toString()
+                             ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(2.0),

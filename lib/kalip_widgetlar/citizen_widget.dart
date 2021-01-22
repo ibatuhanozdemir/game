@@ -93,6 +93,15 @@ class citizenWidgeti extends StatelessWidget {
                 child: Text(Citizen.citizen[index]['name']),
               ),
             ),
+            SizedBox(
+              width: MediaQuery.of(context).size.height * 0.01,
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: Text(Citizen.citizen[index]['happiness'].toString()),
+              ),
+            ),
             Container(
               child: Image.asset("images/heart" +
                   (() {
@@ -130,8 +139,6 @@ class citizenWidgeti extends StatelessWidget {
             Citizen.citizen[index]['name'],
             Citizen.citizen[index]['workarea'],
             Citizen.citizen[index]['gender'],
-            Citizen.citizen[index]['tool'],
-            Citizen.citizen[index]['cloth'],
             Citizen.citizen[index]['education'],
             Citizen.citizen[index]['health'],
             Citizen.citizen[index]['happiness'],
@@ -148,8 +155,6 @@ Future<void> showInformationDialog3(
     String name,
     String workarea,
     String gender,
-    String tool,
-    String cloth,
     String education,
     int health,
     int happiness,
@@ -160,7 +165,7 @@ Future<void> showInformationDialog3(
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: CitizenInfo(context, name, workarea, gender, tool, cloth,
+          content: CitizenInfo(context, name, workarea, gender,
               education, health, happiness, overallef, age, hunger),
           actions: [
             GestureDetector(
@@ -182,8 +187,7 @@ class CitizenInfo extends StatelessWidget {
     this.name,
     this.workarea,
     this.gender,
-    this.tool,
-    this.cloth,
+
     this.education,
     this.health,
     this.happines,
@@ -195,7 +199,7 @@ class CitizenInfo extends StatelessWidget {
   String hunger;
   String name;
   String workarea;
-  String gender, tool, cloth, education;
+  String gender,  education;
   int health, happines, overallef, age;
   @override
   Widget build(BuildContext context) {
@@ -225,8 +229,6 @@ class CitizenInfo extends StatelessWidget {
             Text("Health" + health.toString()),
             Text("Happiness" + happines.toString()),
             Text("Overall Efficiency:" + overallef.toString()),
-            Text("Tool:" + tool),
-            Text("Cloth" + cloth),
             Text("Education" + education),
             Text("Hunger" + hunger),
           ],
