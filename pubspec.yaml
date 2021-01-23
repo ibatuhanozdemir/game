@@ -81,6 +81,9 @@ flutter:
     - family: Hanalei
       fonts:
         - asset: fonts/HanaleiFill-Regular.ttf
+    - family: Alike
+      fonts:
+        - asset: fonts/Alike.ttf
 
   #
   # For details regarding fonts from package dependencies,

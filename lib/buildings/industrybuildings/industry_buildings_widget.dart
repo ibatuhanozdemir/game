@@ -18,7 +18,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
     watch(aa);
     return GestureDetector(
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.15,
+        height: MediaQuery.of(context).size.height * 0.18,
         child: Card(
           color: Color(0XFF99997A),
           elevation: 0,
@@ -31,13 +31,13 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
               ),
             ),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    width: MediaQuery.of(context).size.width * 0.15,
+                    height: MediaQuery.of(context).size.height * 0.20,
+                    width: MediaQuery.of(context).size.width * 0.20,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('images/' +
@@ -47,74 +47,105 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.01,
-                ),
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                        child: Text(
-                          IndustryBuilding.industry_building[index]['name'] +
-                              '('  +
-                              "Qty. " +
-                              IndustryBuilding.industry_building[index]
-                              ['quantity']
-                                  .toString() +
-                              ')',
-                          style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.016),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.16,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black),
+                      color: Color(0xFFe19f28),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text(
+                              IndustryBuilding.industry_building[index]['name'] +
+                                  ' ( '  +
+                                  IndustryBuilding.industry_building[index]
+                                  ['quantity']
+                                      .toString() +
+                                  ' )',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "Alike",
+                                  fontSize:
+                                  MediaQuery.of(context).size.height * 0.02),
+
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Req. for Building:',
-                                style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.016),
-                              ),
-                              Row(
-                                children: [
-                                  for (Map aaa in IndustryBuilding
-                                      .industry_building[index]['upgradereq'])
-                                    Expanded(
-                                      child: Text(
+                        Divider(height: 7,thickness: 1,indent: 50,endIndent: 50,color: Colors.black54,),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.08,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Requirements:',
+                                  style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              0.016),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    for (Map aaa in IndustryBuilding
+                                        .industry_building[index]['upgradereq'])
+                                      Text(
                                         aaa['name'] +
                                             ':' +
-                                            aaa['count'].toString() +
-                                            '  ',
+                                            aaa['count'].toString(),
                                         style: TextStyle(
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .height *
                                                 0.016),
                                       ),
+                                  ],
+                                ),
+                                IndustryBuilding.industry_building[index]['harvest'] ?
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  child: CustomProductionProgressIndicator(IndustryBuilding.industry_building[index]['outputprogress'],IndustryBuilding.industry_building[index]['totaloutputprogress'], IndustryBuilding.industry_building[index]['lastdayoutput'], IndustryBuilding.industry_building[index]['estimatedoutput']),
+                                )
+                                    :
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                      child: Text("Last output: " + IndustryBuilding.industry_building[index]['lastdayoutput'].toString(),style: TextStyle(
+                                          fontSize: MediaQuery.of(context)
+                                              .size
+                                              .height *
+                                              0.016),),
                                     ),
-                                ],
-                              ),
-                              IndustryBuilding.industry_building[index]['harvest'] ?
-                              CustomProductionProgressIndicator(IndustryBuilding.industry_building[index]['outputprogress'],IndustryBuilding.industry_building[index]['totaloutputprogress'], IndustryBuilding.industry_building[index]['lastdayoutput'], IndustryBuilding.industry_building[index]['estimatedoutput'])
-                                  :
-                              Text("Last output " + IndustryBuilding.industry_building[index]['lastdayoutput'].toString()),
-                            ],
-                          )),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                      child: Text("Employee: " + IndustryBuilding.industry_building[index]['workercount'].toString(),style: TextStyle(
+                                          fontSize: MediaQuery.of(context)
+                                              .size
+                                              .height *
+                                              0.016),),
+                                    ),
 
-                    ],
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-
                   IndustryBuilding.industry_building[index]['progres']
                       ? GestureDetector(
                           child: Container(
@@ -134,15 +165,15 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                                 IndustryBuilding.industry_building[index]['name']);
                       }),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    padding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                     child: IndustryBuilding.industry_building[index]['progres']
                         ? Container(
                             alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width * 0.20,
+                            width: MediaQuery.of(context).size.width * 0.17,
                           )
                         : Container(
                             alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width * 0.20,
+                            width: MediaQuery.of(context).size.width * 0.17,
                             child: Stack(children: [
                               LinearProgressIndicator(
                                 minHeight:

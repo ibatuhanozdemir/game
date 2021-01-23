@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                 child: Text(
                   "Tab bar tamam ama altındaki widgetlar yordu biraz. Onları da bir tek liste haline getiricem",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontFamily: "Cinzel"),
+                  style: TextStyle(fontFamily: "Alike"),
                 ),
                 onPressed: () async {
                   dynamic result2 = await SaveSystem().getResources();

@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class IndustryBuilding extends ChangeNotifier {
   static List industry_building = [
     {
-      'name': 'woodcutter',
+      'name': 'WOODCUTTER',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -22,7 +22,7 @@ class IndustryBuilding extends ChangeNotifier {
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
-        {'name': 'labourcost', 'count': 10},
+        {'name': 'labour', 'count': 10},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
@@ -30,7 +30,7 @@ class IndustryBuilding extends ChangeNotifier {
       'imagename': 'natural_resources/woodcutter.png'
     },
     {
-      'name': 'stonecutter',
+      'name': 'STONECUTTER',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -44,7 +44,7 @@ class IndustryBuilding extends ChangeNotifier {
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
-        {'name': 'labourcost', 'count': 10},
+        {'name': 'labour', 'count': 10},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
@@ -52,7 +52,7 @@ class IndustryBuilding extends ChangeNotifier {
       'imagename': 'natural_resources/stone mining.png'
     },
     {
-      'name': 'coal mine',
+      'name': 'COAL MINE',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -66,7 +66,7 @@ class IndustryBuilding extends ChangeNotifier {
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
-        {'name': 'labourcost', 'count': 10},
+        {'name': 'labour', 'count': 10},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
@@ -74,7 +74,7 @@ class IndustryBuilding extends ChangeNotifier {
       'imagename': 'natural_resources/coal mining.png'
     },
     {
-      'name': 'iron mine',
+      'name': 'IRON MINE',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -88,7 +88,7 @@ class IndustryBuilding extends ChangeNotifier {
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
-        {'name': 'labourcost', 'count': 10},
+        {'name': 'labour', 'count': 10},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
@@ -96,7 +96,7 @@ class IndustryBuilding extends ChangeNotifier {
       'imagename': 'natural_resources/iron mining.png'
     },
     {
-      'name': 'forester',
+      'name': 'FORESTER',
       'progres': true,
       'harvest': true,
       'outputprogress': 0,
@@ -113,7 +113,7 @@ class IndustryBuilding extends ChangeNotifier {
       'upgradereq': [
         {'name': 'wood', 'count': 20},
         {'name': 'stone', 'count': 50},
-        {'name': 'labourcost', 'count': 10},
+        {'name': 'labour', 'count': 10},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
