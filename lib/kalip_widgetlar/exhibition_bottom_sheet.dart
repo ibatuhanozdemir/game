@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
+import 'package:game/resources/real_industry/real_industry_resources.dart';
 
 
 const double iconStartSize = 46;
@@ -108,16 +109,39 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                           ),
                         ),
                         Expanded(
-                          child: Stack(
-                            children: <Widget>[
-                              SheetHeader(
-                                text: 'Industry',
-                                fontSize: headerFontSize,
-                                topMargin: 20,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                flex: 10,
+                                child: Stack(
+
+                                  children: <Widget>[
+                                    SheetHeader(
+                                      text: 'Natural Resources',
+                                      fontSize: headerFontSize,
+                                      topMargin: 20,
+                                    ),
+                                    for (Map aaa
+                                        in IndustryResources.industry_resources)
+                                      _industryResources(aaa['name'],IndustryResources.industry_resources.indexOf(aaa)),
+                                  ],
+                                ),
                               ),
-                              for (Map aaa
-                                  in IndustryResources.industry_resources)
-                                _industryResources(aaa['name'],IndustryResources.industry_resources.indexOf(aaa)),
+                              Expanded(
+                                flex: 13,
+                                child: Stack(
+                                  children: <Widget>[
+                                    SheetHeader(
+                                      text: 'Natural Resources',
+                                      fontSize: headerFontSize, topMargin: 0,
+
+                                    ),
+                                    for (Map aaa
+                                    in RealIndustryResources.real_industry_resources)
+                                      _RealindustryResources(aaa['name'],RealIndustryResources.real_industry_resources.indexOf(aaa)),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -184,12 +208,29 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       width: 180,
       top: 50 + index.toDouble() * 20,
       left: 0,
+
       child: ClipRRect(
         child: Text(
             event +
                 " = " +
                 "" +
                 IndustryResources.industry_resources[index]['count'].toString(),
+            style: TextStyle(color: Colors.white)),
+      ),
+    );
+  }
+  Widget _RealindustryResources(String event,int index) {
+    return Positioned(
+      height: 50,
+      width: 180,
+      top: 30 + index.toDouble() * 20,
+      left: 0,
+      child: ClipRRect(
+        child: Text(
+            event +
+                " = " +
+                "" +
+                RealIndustryResources.real_industry_resources[index]['count'].toString(),
             style: TextStyle(color: Colors.white)),
       ),
     );

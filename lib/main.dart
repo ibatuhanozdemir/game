@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:flutter/material.dart';
+import 'package:game/buildings/real_industry_building/real_industry_buildings.dart';
 import 'package:game/daycircle.dart';
+import 'package:game/kalip_widgetlar/custom_dropdown.dart';
 import 'package:game/menu2.dart';
 import 'package:game/navigation.dart';
 import 'package:game/savesystem/save_system.dart';
@@ -93,6 +95,7 @@ class _MyAppState extends State<MyApp> {
 final nav = ChangeNotifierProvider((ref) => Navigation());
 final asd3 = ChangeNotifierProvider((ref) => Daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
+final real_industry_buildings_provider= ChangeNotifierProvider((ref) => RealIndustryBuildings());
 final town = ChangeNotifierProvider((ref)=> TownServiceBuilding());
 final food_building_provider = ChangeNotifierProvider((ref) => FoodBuilding());
 class MyApp2 extends ConsumerWidget {

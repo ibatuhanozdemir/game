@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:game/buildings/real_industry_building/real_industry_buildings_widget.dart';
 import 'package:game/screens/townhall.dart';
 import 'package:game/town_services/town_service_building.dart';
 import 'package:game/town_services/town_service_widget.dart';
@@ -44,7 +45,16 @@ class Navigation extends ChangeNotifier {
             return TownServiceWidget(index);
           },
           itemCount: TownServiceBuilding.town_service_building.length);
+    }else if(index==5){
+      return ListView.builder(
+          itemBuilder: (_, index) {
+            return RealIndustryBuildingWidgeti(index);
+          },
+          itemCount: FoodBuilding.food_building.length);
     }
+
+
+
     notifyListeners();
   }
 

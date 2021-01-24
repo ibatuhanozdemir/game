@@ -15,7 +15,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -34,7 +34,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -53,7 +53,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -72,7 +72,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -91,7 +91,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -110,7 +110,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],

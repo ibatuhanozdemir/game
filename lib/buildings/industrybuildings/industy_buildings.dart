@@ -15,12 +15,12 @@ class IndustryBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 2,
       'capacityperbuilding' : 2,
-      'outputname': 'wood',
+      'outputname': 'Wood',
       'workeroutput': 5,
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -42,7 +42,7 @@ class IndustryBuilding extends ChangeNotifier {
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -64,7 +64,7 @@ class IndustryBuilding extends ChangeNotifier {
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -86,7 +86,7 @@ class IndustryBuilding extends ChangeNotifier {
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],
@@ -111,7 +111,7 @@ class IndustryBuilding extends ChangeNotifier {
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labour', 'count': 10},
       ],

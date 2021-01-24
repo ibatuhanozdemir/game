@@ -1,6 +1,6 @@
 class IndustryResources {
   static List industry_resources = [
-    {"name": "wood",'count':0},
+    {"name": "Wood",'count':0},
     {"name": 'stone','count':0},
     {'name': 'coal','count':0},
     {'name': 'iron','count':0},

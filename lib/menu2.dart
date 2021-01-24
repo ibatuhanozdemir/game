@@ -99,7 +99,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 child: Button(
                     color: Color(0xffd6d6d6),
                     icon: Icons.people,
-                    text: animationController.value == 1 ? 'Industry' : '1',
+                    text: animationController.value == 1 ? 'Natural' : '1',
                     onTap: () {
                       (context).read(nav).numberswitch(0);
                       animationController.reverse();
@@ -145,8 +145,14 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 child: Button(
                     color: Color(0xffd6d6d6),
                     icon: Icons.people,
-                    text: animationController.value == 1 ? 'Natural' : '1',
-                    onTap: () {}),
+                    text: animationController.value == 1 ? 'Industry' : '1',
+                    onTap: () {
+
+                      (context).read(nav).numberswitch(5);
+                      animationController.reverse();
+
+
+                    }),
               ),
             ),
           ),

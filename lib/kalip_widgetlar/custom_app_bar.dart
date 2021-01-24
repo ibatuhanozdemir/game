@@ -90,7 +90,7 @@ class CustomAppBar extends ConsumerWidget {
                     Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: TopResourceWidget(
-                          'wood',
+                          'Wood',
                           'wood',
                           IndustryResources.industry_resources[0]['count']
                               .toString()),
@@ -115,7 +115,7 @@ class CustomAppBar extends ConsumerWidget {
                     Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: TopResourceWidget(
-                          'wood',
+                          'Wood',
                           'wood',
                           IndustryResources.industry_resources[0]['count']
                               .toString()),

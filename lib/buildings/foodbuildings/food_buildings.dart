@@ -22,7 +22,7 @@ class FoodBuilding extends ChangeNotifier {
         {'name': 'berries', 'output': 2, 'lastdayoutput': 0, 'type': 'food'}
       ],
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labourcost', 'count': 10},
       ],
@@ -45,7 +45,7 @@ class FoodBuilding extends ChangeNotifier {
         {'name': 'leather', 'output': 2, 'lastdayoutput': 0, 'type': 'industry'}
       ],
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labourcost', 'count': 10},
       ],
@@ -114,7 +114,7 @@ class FoodBuilding extends ChangeNotifier {
         },
       ],
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labourcost', 'count': 10},
       ],
@@ -183,7 +183,7 @@ class FoodBuilding extends ChangeNotifier {
         },
       ],
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labourcost', 'count': 10},
       ],
@@ -205,7 +205,7 @@ class FoodBuilding extends ChangeNotifier {
         {'name': 'fish', 'output': 5, 'lastdayoutput': 0, 'type': 'food'}
       ],
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labourcost', 'count': 10},
       ],
@@ -228,7 +228,7 @@ class FoodBuilding extends ChangeNotifier {
         {'name': 'milk', 'output': 2, 'lastdayoutput': 0, 'type': 'food'}
       ],
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labourcost', 'count': 10},
       ],
@@ -251,7 +251,7 @@ class FoodBuilding extends ChangeNotifier {
         {'name': 'wool', 'output': 2, 'lastdayoutput': 0, 'type': 'industry'}
       ],
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labourcost', 'count': 10},
       ],
@@ -279,7 +279,7 @@ class FoodBuilding extends ChangeNotifier {
         {'name': 'egg', 'output': 2, 'lastdayoutput': 0, 'type': 'food'}
       ],
       'upgradereq': [
-        {'name': 'wood', 'count': 20},
+        {'name': 'Wood', 'count': 20},
         {'name': 'stone', 'count': 50},
         {'name': 'labourcost', 'count': 10},
       ],
