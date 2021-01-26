@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:game/buildings/real_industry_building/real_industry_buildings.dart';
 import 'package:game/daycircle.dart';
 import 'package:game/kalip_widgetlar/custom_dropdown.dart';
+import 'package:game/kalip_widgetlar/exhibition_appbar_sheet.dart';
 import 'package:game/menu2.dart';
 import 'package:game/navigation.dart';
 import 'package:game/savesystem/save_system.dart';
@@ -14,7 +15,6 @@ import 'buildings/foodbuildings/food_buildings.dart';
 import 'buildings/industrybuildings/industy_buildings.dart';
 import 'kalip_widgetlar/exhibition_bottom_sheet.dart';
 import 'kalip_widgetlar/custom_app_bar.dart';
-
 
 void main() {
   runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
@@ -92,46 +92,37 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
 final nav = ChangeNotifierProvider((ref) => Navigation());
 final asd3 = ChangeNotifierProvider((ref) => Daycircle());
 final aa = ChangeNotifierProvider((ref) => IndustryBuilding());
-final real_industry_buildings_provider= ChangeNotifierProvider((ref) => RealIndustryBuildings());
-final town = ChangeNotifierProvider((ref)=> TownServiceBuilding());
+final real_industry_buildings_provider =
+    ChangeNotifierProvider((ref) => RealIndustryBuildings());
+final town = ChangeNotifierProvider((ref) => TownServiceBuilding());
 final food_building_provider = ChangeNotifierProvider((ref) => FoodBuilding());
+
 class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final greeting5 = watch(asd3);
     final navWatch = watch(nav);
 
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0XFF99997A),
-        appBar: PreferredSize(
-          preferredSize:
-              Size.fromHeight(MediaQuery.of(context).size.height * 0.22),
-          child: AppBar(
-            flexibleSpace: CustomAppBar(),
-          ),
-        ),
         body: Stack(
           children: <Widget>[
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.005,
-              width: MediaQuery.of(context).size.width,
-              bottom: MediaQuery.of(context).size.height *0.078,
-              child: navWatch.navigation()
-            ),
+                top: MediaQuery.of(context).size.height * 0.2,
+                width: MediaQuery.of(context).size.width,
+                bottom: MediaQuery.of(context).size.height * 0.078,
+                child: navWatch.navigation()),
             Menu2(),
             ExhibitionBottomSheet(),
+            CustomAppBar(),
+            ExhibitionAppbarSheet(),
           ],
         ),
       ),
     );
   }
-
-
-
 }
-
-

@@ -134,7 +134,6 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                                               .height *
                                               0.016),),
                                     ),
-
                                   ],
                                 ),
                               ],
@@ -374,6 +373,7 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
       ),
       onTap: () {
         this.IstenCikarma(employedworker[index]['id']);
+        context.read(aa).workAreaArranger(workarea);
       },
     );
   }
@@ -409,6 +409,7 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
       ),
       onTap: () {
         this.IseAlma(unemployedworker[index]['id'], workarea);
+        context.read(aa).workAreaArranger(workarea);
       },
     );
   }

@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class FoodBuilding extends ChangeNotifier {
   static List food_building = [
     {
-      'name': 'gatherer/s hut',
+      'name': 'GATHERER\'S HUT',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -32,7 +32,7 @@ class FoodBuilding extends ChangeNotifier {
       'imagename': 'food_buildings/gatherer hut.png'
     },
     {
-      'name': 'hunter/s cabin',
+      'name': 'HUNTER\'S CABIN',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -55,7 +55,7 @@ class FoodBuilding extends ChangeNotifier {
       'imagename': 'food_buildings/HuntingCabin.png'
     },
     {
-      'name': 'farm field',
+      'name': 'FARM FIELD',
       'progres': true,
       'harvest': true,
       'buildprogres': 0,
@@ -124,7 +124,7 @@ class FoodBuilding extends ChangeNotifier {
       'imagename': 'food_buildings/farm.png'
     },
     {
-      'name': 'orchard',
+      'name': 'ORCHARD',
       'progres': true,
       'harvest': true,
       'buildprogres': 0,
@@ -190,10 +190,10 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/orchard.png'
+      'imagename': 'food_buildings/farm.png'
     },
     {
-      'name': 'fishing dock',
+      'name': 'FISHING DOCK',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -215,7 +215,7 @@ class FoodBuilding extends ChangeNotifier {
       'imagename': 'food_buildings/fishingson.png'
     },
     {
-      'name': 'pasture (cow)',
+      'name': 'PASTRE (COW)',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -238,7 +238,7 @@ class FoodBuilding extends ChangeNotifier {
       'imagename': 'food_buildings/pastorEXPAND.png'
     },
     {
-      'name': 'pasture (sheep)',
+      'name': 'PASTRE (SHEEP)',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -261,7 +261,7 @@ class FoodBuilding extends ChangeNotifier {
       'imagename': 'food_buildings/koyun.png'
     },
     {
-      'name': 'coop',
+      'name': 'COOP',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -468,7 +468,7 @@ class FoodBuilding extends ChangeNotifier {
 
   void farmfieldWorkerAdd(String food_building_name, String field_name) {
     int total_fields_worker_count = 0;
-    if (food_building_name == 'farm field') {
+    if (food_building_name == 'FARM FIELD') {
       food_building[2]['workeroutput'].forEach((element) {
         total_fields_worker_count =
             total_fields_worker_count + element['workercount'];
@@ -509,7 +509,7 @@ class FoodBuilding extends ChangeNotifier {
   }
 
   void farmfieldWorkerRemove(String food_building_name, String field_name) {
-    if (food_building_name == 'farm field') {
+    if (food_building_name == 'FARM FIELD') {
       if (food_building[2]['workeroutput']
               .where((element10) => element10['name'] == field_name)
               .toList()[0]['workercount'] >
@@ -526,7 +526,7 @@ class FoodBuilding extends ChangeNotifier {
             .where((element4) => element4['workfield'] == field_name)
             .toList()[0]['workfield'] = 'unemployed';
       }
-    } else if (food_building_name == 'orchard') {
+    } else if (food_building_name == 'ORCHARD') {
       if (food_building[3]['workeroutput']
               .where((element10) => element10['name'] == field_name)
               .toList()[0]['workercount'] >
@@ -562,5 +562,8 @@ class FoodBuilding extends ChangeNotifier {
 
       notifyListeners();
     }
+  }
+  void workAreaArranger(String food_building_name){
+    notifyListeners();
   }
 }

@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:game/buildings/foodbuildings/food_buildings.dart';
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/daycircle.dart';
+import 'package:game/kalip_widgetlar/exhibition_appbar_sheet.dart';
 import 'package:game/main.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
+import 'package:game/screens/townhall.dart';
 import 'package:game/worker/citizen.dart';
 
 import 'time_widget.dart';
@@ -16,6 +18,7 @@ class CustomAppBar extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     final greeting5 = watch(asd3);
     return Container(
+      height: MediaQuery.of(context).size.height * 0.2,
       decoration: BoxDecoration(
         color: Colors.grey,
         image: DecorationImage(
@@ -24,15 +27,10 @@ class CustomAppBar extends ConsumerWidget {
         ),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            "Mehmet's Town",
-            style: TextStyle(
-                color: Color(0xFFE8C341),
-                fontSize: MediaQuery.of(context).size.height * 0.05,
-                fontFamily: "Hanalei"),
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height *0.06,),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -43,11 +41,8 @@ class CustomAppBar extends ConsumerWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(2.0),
-                      child: TopResourceWidget(
-                          'food',
-                          'tomato',
-                          FoodResources.foodCount
-                              .toString()),
+                      child: TopResourceWidget('food', 'tomato',
+                          FoodResources.foodCount.toString()),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(2.0),
@@ -72,7 +67,9 @@ class CustomAppBar extends ConsumerWidget {
                   ],
                 ),
               ),
-              SizedBox(width: 2,),
+              SizedBox(
+                width: 2,
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -98,7 +95,9 @@ class CustomAppBar extends ConsumerWidget {
                   ],
                 ),
               ),
-              SizedBox(width: 2,),
+              SizedBox(
+                width: 2,
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -106,11 +105,8 @@ class CustomAppBar extends ConsumerWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(2.0),
-                      child: TopResourceWidget(
-                          'Happ. ',
-                          'laugh',
-                          Citizen.globalHappiness.toString()
-                             ),
+                      child: TopResourceWidget('Happ. ', 'laugh',
+                          Citizen.globalHappiness.toString()),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(2.0),
@@ -124,9 +120,6 @@ class CustomAppBar extends ConsumerWidget {
                 ),
               ),
             ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.01,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -147,11 +140,17 @@ class CustomAppBar extends ConsumerWidget {
                       child: (() {
                         if (Daycircle.stop == 0) {
                           return Container(
-                            height: MediaQuery.of(context).size.height * 0.04,
+                              height: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.04,
                               child: Image.asset('images/pauseoff.png'));
                         } else {
                           return Container(
-                            height: MediaQuery.of(context).size.height * 0.04,
+                              height: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.04,
                               child: Image.asset('images/pauseon.png'));
                         }
                       })(),
@@ -166,11 +165,17 @@ class CustomAppBar extends ConsumerWidget {
                       child: (() {
                         if (Daycircle.stop == 1) {
                           return Container(
-                              height: MediaQuery.of(context).size.height * 0.04,
+                              height: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.04,
                               child: Image.asset('images/playoff.png'));
                         } else {
                           return Container(
-                              height: MediaQuery.of(context).size.height * 0.04,
+                              height: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.04,
                               child: Image.asset('images/playon.png'));
                         }
                       })(),
@@ -180,17 +185,24 @@ class CustomAppBar extends ConsumerWidget {
                       },
                     ),
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.04,)
+                  SizedBox(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.04,
+                  )
                 ],
               ),
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.01,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.005,
           ),
         ],
       ),
     );
   }
 }
-

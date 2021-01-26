@@ -250,5 +250,8 @@ class IndustryBuilding extends ChangeNotifier {
     industry_building.forEach((element) {element['capacity']=element['capacityperbuilding']*element['quantity'];});
   }
 
+  void workAreaArranger(String workarea_name){
+    notifyListeners();
+  }
 
 }
