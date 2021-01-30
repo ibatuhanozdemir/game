@@ -62,22 +62,28 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: Text(
-                              IndustryBuilding.industry_building[index]['name'] +
-                                  ' ( '  +
+                              IndustryBuilding.industry_building[index]
+                                      ['name'] +
+                                  ' ( ' +
                                   IndustryBuilding.industry_building[index]
-                                  ['quantity']
+                                          ['quantity']
                                       .toString() +
                                   ' )',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontFamily: "Alike",
-                                  fontSize:
-                                  MediaQuery.of(context).size.height * 0.02),
-
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      0.02),
                             ),
                           ),
                         ),
-                        Divider(height: 7,thickness: 1,indent: 50,endIndent: 50,color: Colors.black54,),
+                        Divider(
+                          height: 7,
+                          thickness: 1,
+                          indent: 50,
+                          endIndent: 50,
+                          color: Colors.black54,
+                        ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                           child: Container(
@@ -93,7 +99,8 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                                               0.016),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     for (Map aaa in IndustryBuilding
                                         .industry_building[index]['upgradereq'])
@@ -109,33 +116,67 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                                       ),
                                   ],
                                 ),
-                                IndustryBuilding.industry_building[index]['harvest'] ?
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                  child: CustomProductionProgressIndicator(IndustryBuilding.industry_building[index]['outputprogress'],IndustryBuilding.industry_building[index]['totaloutputprogress'], IndustryBuilding.industry_building[index]['lastdayoutput'], IndustryBuilding.industry_building[index]['estimatedoutput']),
-                                )
-                                    :
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                      child: Text("Last output: " + IndustryBuilding.industry_building[index]['lastdayoutput'].toString(),style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                              .size
-                                              .height *
-                                              0.016),),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                      child: Text("Employee: " + IndustryBuilding.industry_building[index]['workercount'].toString(),style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                              .size
-                                              .height *
-                                              0.016),),
-                                    ),
-                                  ],
-                                ),
+                                IndustryBuilding.industry_building[index]
+                                        ['harvest']
+                                    ? Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 10, 0, 0),
+                                        child:
+                                            CustomProductionProgressIndicator(
+                                                IndustryBuilding
+                                                        .industry_building[
+                                                    index]['outputprogress'],
+                                                IndustryBuilding
+                                                            .industry_building[
+                                                        index]
+                                                    ['totaloutputprogress'],
+                                                IndustryBuilding
+                                                        .industry_building[
+                                                    index]['lastdayoutput'],
+                                                IndustryBuilding
+                                                        .industry_building[
+                                                    index]['estimatedoutput']),
+                                      )
+                                    : Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                0, 10, 0, 0),
+                                            child: Text(
+                                              "Last output: " +
+                                                  IndustryBuilding
+                                                      .industry_building[index]
+                                                          ['lastdayoutput']
+                                                      .toString(),
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.016),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                0, 10, 0, 0),
+                                            child: Text(
+                                              "Employee: " +
+                                                  IndustryBuilding
+                                                      .industry_building[index]
+                                                          ['workercount']
+                                                      .toString(),
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.016),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ],
                             ),
                           ),
@@ -145,6 +186,24 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                   ),
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  GestureDetector(
+                    child: Container(
+                      height: MediaQuery.of(context).size.width * 0.07,
+                      child: Image.asset('images/info.png'),
+                    ),
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return InfoAlertIndustry(
+                                context,
+                                IndustryBuilding.industry_building[index]['explanation']);
+                          });
+                    },
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
                   IndustryBuilding.industry_building[index]['progres']
                       ? GestureDetector(
                           child: Container(
@@ -154,15 +213,16 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                             context.read(aa).buildstart(index);
                           })
                       : GestureDetector(
-                      child: Container(
-                          height: MediaQuery.of(context).size.width * 0.07,
-                          child: Image.asset('images/addperson.png')),
-                      onTap: () {
-                        BuilderAssignIndustryDialog(
-                            context,
-                            'builder' +
-                                IndustryBuilding.industry_building[index]['name']);
-                      }),
+                          child: Container(
+                              height: MediaQuery.of(context).size.width * 0.07,
+                              child: Image.asset('images/addperson.png')),
+                          onTap: () {
+                            BuilderAssignIndustryDialog(
+                                context,
+                                'builder' +
+                                    IndustryBuilding.industry_building[index]
+                                        ['name']);
+                          }),
                   Padding(
                     padding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                     child: IndustryBuilding.industry_building[index]['progres']
@@ -457,7 +517,6 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
   }
 
   void eleme() {
-
     employedworker = Citizen.citizen
         .where((element) => (element['workarea'] == workarea))
         .toList();
@@ -514,20 +573,16 @@ class _WorkerAssigningIndustryBuilderState
         padding: EdgeInsets.fromLTRB(14, 12, 14, 12),
         child: Column(
           children: <Widget>[
+            Expanded(flex: 1, child: Text('Assigned Worker')),
             Expanded(
-                flex: 1,
-                child: Text('Assigned Worker')),
-            Expanded(
-              flex:6,
+              flex: 6,
               child: ListView.builder(
                   itemBuilder: (_, index) {
                     return AssignedWorker(context, index);
                   },
                   itemCount: employedworker.length),
             ),
-            Expanded(
-                flex: 1,
-                child: Text('Assign Worker')),
+            Expanded(flex: 1, child: Text('Assign Worker')),
             Expanded(
               flex: 6,
               child: ListView.builder(
@@ -545,7 +600,6 @@ class _WorkerAssigningIndustryBuilderState
                 },
               ),
             )
-
           ],
         ),
       ),
@@ -634,7 +688,6 @@ class _WorkerAssigningIndustryBuilderState
   }
 
   void IseAlma(int id, String workarea_name) {
-
     Citizen.citizen.forEach((element) {
       if (element['id'] == id) {
         setState(() {
@@ -654,5 +707,23 @@ class _WorkerAssigningIndustryBuilderState
         .toList();
 
     loading = true;
+  }
+}
+
+class InfoAlertIndustry extends StatelessWidget {
+  @override
+  final BuildContext context;
+  final String info;
+
+  InfoAlertIndustry(this.context, this.info);
+
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Colors.brown.shade400,
+      content: Container(
+        color: Colors.transparent,
+        child: Text(info),
+      ),
+    );
   }
 }

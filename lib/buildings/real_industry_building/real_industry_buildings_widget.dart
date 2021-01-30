@@ -158,6 +158,19 @@ class RealIndustryBuildingWidgeti extends ConsumerWidget {
                   ),
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  GestureDetector(
+                    child: Container(
+                      height: MediaQuery.of(context).size.width *
+                          0.07,
+                      child: Image.asset('images/info.png'),
+                    ),
+                    onTap: (){
+                      showDialog(context: context,builder: (context){
+                        return InfoAlertRealIndustry(context, RealIndustryBuildings.real_industry_building[index]['explanation']);
+                      });
+                    },
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                   RealIndustryBuildings.real_industry_building[index]['progres']
                       ? GestureDetector(
                       child: Container(
@@ -666,5 +679,21 @@ class _WorkerAssigningRealIndustryBuilderState
         .toList();
 
     loading = true;
+  }
+}
+
+class InfoAlertRealIndustry extends StatelessWidget {
+  @override
+  final BuildContext context;
+  final String info;
+  InfoAlertRealIndustry(this.context, this.info);
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Colors.brown.shade400,
+      content: Container(
+        color: Colors.transparent,
+        child: Text(info),
+      ),
+    );
   }
 }

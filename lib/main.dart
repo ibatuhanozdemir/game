@@ -105,7 +105,7 @@ class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final navWatch = watch(nav);
-
+    watch(asd3);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0XFF99997A),

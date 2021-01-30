@@ -33,7 +33,8 @@ class RealIndustryBuildings extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/woodcutter.png'
+      'imagename': 'natural_resources/woodcutter.png',
+      'explanation' : 'Uses wood and turns it into firewood. Firewood is used in warming and tool making.'
     },
     {
       'name': 'WORKSHOP',
@@ -89,7 +90,8 @@ class RealIndustryBuildings extends ChangeNotifier {
       'buildingprosses1': '',
       'buildingprosses2': 0,
       'dropdownitemvalue':0,
-      'imagename': 'natural_resources/stone mining.png'
+      'imagename': 'natural_resources/stone mining.png',
+      'explanation' : 'Uses wood and stone to produce wood or stone tools'
     },
     {
       'name': 'TAILOR',
@@ -158,7 +160,9 @@ class RealIndustryBuildings extends ChangeNotifier {
       'buildingprosses1': '',
       'buildingprosses2': 0,
       'dropdownitemvalue':0,
-      'imagename': 'natural_resources/coal mining.png'
+      'imagename': 'natural_resources/coal mining.png',
+      'explanation' : 'Uses wool or leather to produce clothes. Clothing improves efficiency.'
+
     },
     {
       'name': 'BLACKSMITH',
@@ -219,7 +223,8 @@ class RealIndustryBuildings extends ChangeNotifier {
       'buildingprosses1': '',
       'buildingprosses2': 0,
       'dropdownitemvalue':0,
-      'imagename': 'natural_resources/iron mining.png'
+      'imagename': 'natural_resources/iron mining.png',
+      'explanation' : 'Uses iron and coal to produce iron or steel tools. '
     },
     {
       'name': 'BREWERY',
@@ -248,7 +253,8 @@ class RealIndustryBuildings extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/forester.png'
+      'imagename': 'natural_resources/forester.png',
+      'explanation' : 'Uses wheat to produce beer. Beer is used in taverns.'
     },
     {
       'name': 'MILL',
@@ -277,7 +283,8 @@ class RealIndustryBuildings extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/forester.png'
+      'imagename': 'natural_resources/forester.png',
+      'explanation' : 'Uses wheat to produce flour. Flour is used in bakeries.'
     },
     {
       'name': 'BAKERY',
@@ -306,7 +313,8 @@ class RealIndustryBuildings extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/forester.png'
+      'imagename': 'natural_resources/forester.png',
+      'explanation' : 'Uses wheat to produce bread'
     },
     {
       'name': 'STABLE',
@@ -335,7 +343,8 @@ class RealIndustryBuildings extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/forester.png'
+      'imagename': 'natural_resources/forester.png',
+      'explanation' : 'Requires horses. Improves efficiency of explorers dramatically.'
     }
   ];
 

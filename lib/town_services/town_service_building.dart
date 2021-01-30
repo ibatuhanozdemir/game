@@ -22,7 +22,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'ev.png'
+      'imagename':'ev.png',
+      'explanation' : 'Provides shelter to town citizens. Without houses, citizen efficiency will be very low. Citizens are very likely to get sick and become unavailable for work. '
     },
     {
       'name': 'church',
@@ -41,7 +42,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'church.png'
+      'imagename':'church.png',
+      'explanation' : 'Provides happiness to town citizens. Lack of churches will decrease happiness.'
     },
     {
       'name': 'tavern',
@@ -60,7 +62,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'tavern.png'
+      'imagename':'tavern.png',
+      'explanation' : 'Main entertainment building in towns. The existence of taverns makes a big difference in town in terms of happiness.'
     },
     {
       'name': 'hospital',
@@ -79,7 +82,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'mezar.png'
+      'imagename':'mezar.png',
+      'explanation' : 'Citizens can get sick for various reasons. Hospital is the only way to cure diseases.'
     },
     {
       'name': 'well',
@@ -98,7 +102,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'mezar.png'
+      'imagename':'mezar.png',
+      'explanation' : 'In summer there might be fires. Enough number of wells will protect you from fires.'
     },
     {
       'name': 'graveyard',
@@ -117,7 +122,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename':'mezar.png'
+      'imagename':'mezar.png',
+      'explanation' : 'Where you bury the passed away citizens. Lack of graveyard or lack of graveyard workers might start a contagious disease in town.'
     },
   ];
 

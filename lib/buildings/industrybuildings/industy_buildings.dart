@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class IndustryBuilding extends ChangeNotifier {
   static List industry_building = [
     {
-      'name': 'WOODCUTTER',
+      'name': 'WOOD CAMP',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -27,7 +27,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/woodcutter.png'
+      'imagename': 'natural_resources/woodcutter.png',
+      'explanation' : 'A camp where workers cut trees to be used in construction and tool making. Wood is required to produce firewood.'
     },
     {
       'name': 'STONECUTTER',
@@ -49,7 +50,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/stone mining.png'
+      'imagename': 'natural_resources/stone mining.png',
+      'explanation' : 'A camp where workers find stones then carves them into useful shapes. Stone is required for almost any construction work.'
     },
     {
       'name': 'COAL MINE',
@@ -71,7 +73,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/coal mining.png'
+      'imagename': 'natural_resources/coal mining.png',
+      'explanation' : 'Must be built to get coal. Coal is used in steel tool making and warming in houses.'
     },
     {
       'name': 'IRON MINE',
@@ -93,7 +96,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/iron mining.png'
+      'imagename': 'natural_resources/iron mining.png',
+      'explanation' : 'Must be built to get iron. Iron is used in steel tool making.'
     },
     {
       'name': 'FORESTER',
@@ -118,7 +122,8 @@ class IndustryBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'natural_resources/forester.png'
+      'imagename': 'natural_resources/forester.png',
+      'explanation' : 'Workers of forester camp plant saplings. If there is no forester camping or nobody is working here, you might run out of trees to get wood from.'
     }
   ];
 

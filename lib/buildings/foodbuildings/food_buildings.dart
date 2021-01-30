@@ -29,7 +29,8 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/gatherer hut.png'
+      'imagename': 'food_buildings/gatherer hut.png',
+      'explanation' : 'The workers of this building go out in nature and pick whatever food they can find. '
     },
     {
       'name': 'HUNTER\'S CABIN',
@@ -52,7 +53,8 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/HuntingCabin.png'
+      'imagename': 'food_buildings/HuntingCabin.png',
+      'explanation' : 'Workers of this place are responsible for hunting. They will hunt deer. The output of this place is raw meat and leather.'
     },
     {
       'name': 'FARM FIELD',
@@ -121,7 +123,8 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/farm.png'
+      'imagename': 'food_buildings/farm.png',
+      'explanation' : 'To provide nutritional richness you need farm fields. You need explorers to find seeds first. When they find those seeds you can plant and harvest them when ready.'
     },
     {
       'name': 'ORCHARD',
@@ -190,7 +193,8 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/farm.png'
+      'imagename': 'food_buildings/farm.png',
+      'explanation' : 'To provide nutritional richness you need orchards. You need explorers to find seeds first. When they find those seeds you can plant and harvest them when ready. '
     },
     {
       'name': 'FISHING DOCK',
@@ -212,10 +216,12 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/fishingson.png'
+      'imagename': 'food_buildings/fishingson.png',
+      'explanation' : 'Must be built to get fish. It is recommended to build some fishing dock to increase the nutritional richness in the early game.'
+
     },
     {
-      'name': 'PASTRE (COW)',
+      'name': 'DAIRY FARM',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -235,10 +241,12 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/pastorEXPAND.png'
+      'imagename': 'food_buildings/pastorEXPAND.png',
+      'explanation' : 'The output of this place is milk and raw meat. You need explorers to bring cows from unknown areas first.'
+
     },
     {
-      'name': 'PASTRE (SHEEP)',
+      'name': 'SHEEP FARM',
       'progres': true,
       'harvest': false,
       'buildprogres': 0,
@@ -258,7 +266,8 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/koyun.png'
+      'imagename': 'food_buildings/koyun.png',
+      'explanation' : 'The output of this place is wool and raw meat. You need explorers to bring sheep from unknown areas first.'
     },
     {
       'name': 'COOP',
@@ -286,7 +295,8 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/coop.png'
+      'imagename': 'food_buildings/coop.png',
+      'explanation' : 'The output of this place is eggs and raw meat. You need explorers to bring chicken from unknown areas first.'
     }
   ];
 

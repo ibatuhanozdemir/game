@@ -110,6 +110,19 @@ class TownServiceWidget extends ConsumerWidget {
                   ),
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  GestureDetector(
+                    child: Container(
+                      height: MediaQuery.of(context).size.width *
+                          0.07,
+                      child: Image.asset('images/info.png'),
+                    ),
+                    onTap: (){
+                      showDialog(context: context,builder: (context){
+                        return InfoAlertTownServices(context, TownServiceBuilding.town_service_building[index]['explanation']);
+                      });
+                    },
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                   TownServiceBuilding.town_service_building[index]['progres']
                       ? GestureDetector(
                           child: Container(
@@ -629,5 +642,21 @@ class _WorkerAssigningTownServiceBuilderState
         .toList();
 
     loading = true;
+  }
+}
+
+class InfoAlertTownServices extends StatelessWidget {
+  @override
+  final BuildContext context;
+  final String info;
+  InfoAlertTownServices(this.context, this.info);
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Colors.brown.shade400,
+      content: Container(
+        color: Colors.transparent,
+        child: Text(info),
+      ),
+    );
   }
 }
