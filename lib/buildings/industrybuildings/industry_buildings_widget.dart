@@ -350,7 +350,7 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(14, 12, 14, 12),
+        padding: EdgeInsets.fromLTRB(14, 12, 14, 0),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -389,12 +389,25 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(
-                child: Center(child: Text("Done")),
+              child: GestureDetector(child:Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Container(
+                  width: MediaQuery.of(context).size.width*0.4,
+
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.black),
+                    color: Color(0xFFe19f28),
+                  ),
+
+                  child: Center(child: Text("Done")),
+                ),
+              ),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true).pop('dialog');
                 },
               ),
+
             )
           ],
         ),
@@ -517,11 +530,11 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
   }
 
   void eleme() {
-    employedworker = Citizen.citizen
+    employedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
         .where((element) => (element['workarea'] == workarea))
         .toList();
 
-    unemployedworker = Citizen.citizen
+    unemployedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
 
@@ -570,7 +583,7 @@ class _WorkerAssigningIndustryBuilderState
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(14, 12, 14, 12),
+        padding: EdgeInsets.fromLTRB(14, 12, 14, 0),
         child: Column(
           children: <Widget>[
             Expanded(flex: 1, child: Text('Assigned Worker')),
@@ -593,12 +606,25 @@ class _WorkerAssigningIndustryBuilderState
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(
-                child: Center(child: Text("Done")),
+              child: GestureDetector(child:Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Container(
+                  width: MediaQuery.of(context).size.width*0.4,
+
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.black),
+                    color: Color(0xFFe19f28),
+                  ),
+
+                  child: Center(child: Text("Done")),
+                ),
+              ),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true).pop('dialog');
                 },
               ),
+
             )
           ],
         ),
@@ -699,10 +725,10 @@ class _WorkerAssigningIndustryBuilderState
   }
 
   void eleme(String workarea_name) {
-    employedworker = Citizen.citizen
+    employedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
         .where((element) => (element['workarea'] == workarea_name))
         .toList();
-    unemployedworker = Citizen.citizen
+    unemployedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
 

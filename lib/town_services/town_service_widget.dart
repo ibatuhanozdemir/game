@@ -445,12 +445,12 @@ class _WorkerAssigningTownServiceState
   }
 
   void eleme() {
-    print(workarea);
-    employedworker = Citizen.citizen
+
+    employedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
         .where((element) => (element['workarea'] == workarea))
         .toList();
-    print(employedworker);
-    unemployedworker = Citizen.citizen
+
+    unemployedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
 
@@ -634,10 +634,10 @@ class _WorkerAssigningTownServiceBuilderState
   }
 
   void eleme(String workarea_name) {
-    employedworker = Citizen.citizen
+    employedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
         .where((element) => (element['workarea'] == workarea_name))
         .toList();
-    unemployedworker = Citizen.citizen
+    unemployedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
 

@@ -7,8 +7,8 @@ class CustomProductionProgressIndicator extends StatelessWidget {
   int lastOutput;
   int estimatedOutput;
 
-  CustomProductionProgressIndicator(
-      this.production_progress, this.total_production_progress, this.lastOutput, this.estimatedOutput);
+  CustomProductionProgressIndicator(this.production_progress,
+      this.total_production_progress, this.lastOutput, this.estimatedOutput);
 
   Widget build(BuildContext context) {
     return Container(
@@ -18,21 +18,24 @@ class CustomProductionProgressIndicator extends StatelessWidget {
         LinearProgressIndicator(
           minHeight: MediaQuery.of(context).size.height * 0.02,
           backgroundColor: Colors.red,
+
           valueColor: AlwaysStoppedAnimation<Color>(
-            Colors.amber,
+            Color(0xFF654321),
           ),
           value: production_progress / total_production_progress,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
-            Text("Last output: "+ lastOutput.toString(),style: TextStyle(
-    fontSize: MediaQuery.of(context).size.height * 0.016)),
-            Text("Estimated output: "+ estimatedOutput.toString() ,style: TextStyle(
-    fontSize: MediaQuery.of(context).size.height * 0.016)),
+            Text("Last output: " + lastOutput.toString(),
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.height * 0.016)),
+            Text("Estimated output: " + estimatedOutput.toString(),
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.height * 0.016)),
             Text(
-                (production_progress / total_production_progress * 100).toString() +
+                (production_progress / total_production_progress * 100)
+                        .toString() +
                     '%',
                 style: TextStyle(
                     fontSize: MediaQuery.of(context).size.height * 0.016)),

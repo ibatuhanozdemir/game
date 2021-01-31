@@ -100,12 +100,12 @@ final real_industry_buildings_provider =
     ChangeNotifierProvider((ref) => RealIndustryBuildings());
 final town = ChangeNotifierProvider((ref) => TownServiceBuilding());
 final food_building_provider = ChangeNotifierProvider((ref) => FoodBuilding());
-
+final int calisma_yasi =15;
 class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final navWatch = watch(nav);
-    watch(asd3);
+watch(asd3);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0XFF99997A),

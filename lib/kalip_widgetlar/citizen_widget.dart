@@ -138,13 +138,13 @@ class citizenWidgeti extends StatelessWidget {
             context,
             Citizen.citizen[index]['name'],
             Citizen.citizen[index]['workarea'],
-            Citizen.citizen[index]['gender'],
-            Citizen.citizen[index]['education'],
             Citizen.citizen[index]['health'],
             Citizen.citizen[index]['happiness'],
             Citizen.citizen[index]['overallef'],
             Citizen.citizen[index]['age'],
-            Citizen.citizen[index]['hunger']);
+            Citizen.citizen[index]['hunger'],
+        Citizen.citizen[index]['tool']['name'],
+          Citizen.citizen[index]['cloth']['name']);
       },
     );
   }
@@ -154,28 +154,26 @@ Future<void> showInformationDialog3(
     BuildContext context,
     String name,
     String workarea,
-    String gender,
-    String education,
     int health,
     int happiness,
     int overallef,
     int age,
-    String hunger) async {
+    String hunger,
+    String tool,
+    String cloth) async {
   return await showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: CitizenInfo(context, name, workarea, gender,
-              education, health, happiness, overallef, age, hunger),
-          actions: [
-            GestureDetector(
-              child: Center(child: Text("Done")),
-              onTap: () {
-                Navigator.pop;
-              },
-            )
-          ],
+          contentPadding: EdgeInsets.all(0),
+          content: Builder(builder: (context) {
+                 return Container(height: MediaQuery.of(context).size.height*0.75,
+                                 width: MediaQuery.of(context).size.width*0.75,
+                       child: CitizenInfo(context, name, workarea,
+                                      health, happiness, overallef, age, hunger,tool,cloth)
         );
+
+        }));
       });
 }
 
@@ -186,53 +184,77 @@ class CitizenInfo extends StatelessWidget {
     this.context,
     this.name,
     this.workarea,
-    this.gender,
-
-    this.education,
     this.health,
     this.happines,
     this.overallef,
     this.age,
     this.hunger,
+      this.tool,
+      this.cloth
   );
 
   String hunger;
   String name;
-  String workarea;
-  String gender,  education;
+  String workarea,tool,cloth;
   int health, happines, overallef, age;
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        image: DecorationImage(
+          image: AssetImage("images/AppBar2.png"),
+          fit: BoxFit.fill,
+        ),
+      ),
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 200,
-              child: (() {
-                if (gender == 'male') {
-                  return Image.asset("images/maleface.jpg");
-                } else {
-                  return Image.asset("images/femaleface.jpg");
-                }
-              })(),
+            Expanded(
+              flex: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Text("Name: " + name),
+                  Text("Age: " + age.toString()),
+                  Text("Workarea: " + workarea.toLowerCase()),
+                  Text("Health: " + health.toString()),
+                  Text("Happiness: " + happines.toString()),
+                  Text("Overall Efficiency: " + overallef.toString()),
+                  Text("Hunger: " + hunger),
+                  Text("Tool: " + tool),
+                  Text("Cloth: " + cloth),
+                ],
+              ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Text("Name:" + name),
-            Text("Age" + age.toString()),
-            Text("Gender:" + gender),
-            Text("Workarea:" + workarea),
-            Text("Health" + health.toString()),
-            Text("Happiness" + happines.toString()),
-            Text("Overall Efficiency:" + overallef.toString()),
-            Text("Education" + education),
-            Text("Hunger" + hunger),
+
+              Expanded(
+                flex: 1,
+                child: GestureDetector(child:Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.5,
+
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black),
+                      color: Color(0xFFe19f28),
+                    ),
+
+                    child: Center(child: Text("Done")),
+                  ),
+                ),
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true).pop('dialog');
+                  },
+              ),
+
+            )
           ],
         ),
+
       ),
     );
   }

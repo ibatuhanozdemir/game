@@ -98,7 +98,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                     degOneTranslationAnimation.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
-                    icon: Icons.people,
+                    icon: Icons.nature,
                     text: animationController.value == 1 ? 'Natural' : '1',
                     onTap: () {
                       (context).read(nav).numberswitch(0);
@@ -121,7 +121,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                     degOneTranslationAnimation.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
-                    icon: Icons.people,
+                    icon: Icons.set_meal_sharp,
                     text: animationController.value == 1 ? 'Food' : '1',
                     onTap: () {
                       (context).read(nav).numberswitch(1);
@@ -144,7 +144,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                     degOneTranslationAnimation.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
-                    icon: Icons.people,
+                    icon: Icons.home_work_sharp,
                     text: animationController.value == 1 ? 'Industry' : '1',
                     onTap: () {
 
@@ -170,7 +170,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                     degOneTranslationAnimation.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
-                    icon: Icons.people,
+                    icon: Icons.storage,
                     text: animationController.value == 1 ? 'Storage' : '1',
                     onTap: () {}),
               ),
@@ -225,7 +225,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                   color: animationController.isCompleted
                       ? Colors.blue
                       : Color(0xffd6d6d6),
-                  icon: Icons.people,
+                  icon: Icons.home,
                   text: 'Buildings',
                   onTap: () {
                     if (animationController.isCompleted) {
@@ -253,7 +253,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 ),
                 Button(
                   color: Color(0xffd6d6d6),
-                  icon: Icons.people,
+                  icon: Icons.emoji_events_sharp,
                   text: 'Event Log',
                   onTap: () {
                     (context).read(nav).numberswitch(3);
@@ -266,7 +266,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                   },
                 ),
                 Button(
-                  color: Color(0xffd6d6d6),
+                  color: Color(0xFFe19f28),
                   icon: Icons.people,
                   text: 'Town Service',
                   onTap: () {
@@ -322,11 +322,12 @@ class Button extends StatelessWidget {
             child: (() {
               if (text != '1') {
                 return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(icon),
+                    Icon(icon,),
                     Text(
                       text,
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 10,color: Color(0xFFe19f28)),
                     )
                   ],
                 );

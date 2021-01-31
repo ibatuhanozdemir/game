@@ -85,11 +85,14 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                 onVerticalDragUpdate: _handleDragUpdate,
                 onVerticalDragEnd: _handleDragEnd,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 32),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(32)),
+                  padding: const EdgeInsets.only(top: 15,left: 32),
+                  decoration: BoxDecoration(
+
+
+                    image: DecorationImage(
+                      image: _controller.isCompleted ? AssetImage("images/AppBar2.png"):AssetImage("images/appbar.png"),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                   child: Opacity(
                     opacity: _controller.isCompleted ? 1 : 0,
@@ -152,8 +155,22 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
               ),
             ),
             Container(
-                child: _controller.isCompleted
+                child: _controller.isDismissed
                     ? Positioned(
+                  height: MediaQuery.of(context).size.width * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.222,
+                  left: 17,
+                  bottom: 3,
+                  child: GestureDetector(
+                    onTap: () {
+                      _toggle();
+                    },
+                    child: Text(
+                      'Resources',
+                      style: TextStyle(color: Color(0xFFe19f28)),
+                    ),
+                  ),
+                ):Positioned(
                         height: MediaQuery.of(context).size.width * 0.01,
                         width: MediaQuery.of(context).size.width * 0.01,
                         right: 0,
@@ -163,21 +180,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                           style: TextStyle(color: Colors.white),
                         ),
                       )
-                    : Positioned(
-                        height: MediaQuery.of(context).size.width * 0.07,
-                        width: MediaQuery.of(context).size.width * 0.222,
-                        left: 18,
-                        bottom: 0,
-                        child: GestureDetector(
-                          onTap: () {
-                            _toggle();
-                          },
-                          child: Text(
-                            'Resources',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      )),
+                     ),
           ],
         );
       },
@@ -279,7 +282,7 @@ class SheetHeader extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          color: Colors.white,
+          color: Color(0xFFe19f28),
           fontSize: fontSize,
           fontWeight: FontWeight.w500,
         ),
