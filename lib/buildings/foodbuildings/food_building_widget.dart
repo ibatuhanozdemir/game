@@ -632,10 +632,15 @@ class FoodField extends ConsumerWidget {
               ),
             ),
           ),
-          Container(
-              width: MediaQuery.of(context).size.width * 0.65,
-              child: CustomProductionProgressIndicator(production_progress,
-                  total_production_progress, lastOutput, estimatedOutput)),
+          Column(
+            children: [
+              Text(field_name.toUpperCase(),style: TextStyle(color: Color(0xFFe19f28)),),
+              Container(
+                  width: MediaQuery.of(context).size.width * 0.65,
+                  child: CustomProductionProgressIndicator(production_progress,
+                      total_production_progress, lastOutput, estimatedOutput)),
+            ],
+          ),
           GestureDetector(
             child: Icon(
               Icons.remove,

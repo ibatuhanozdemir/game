@@ -85,7 +85,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                           color: Colors.black54,
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.08,
                             child: Column(

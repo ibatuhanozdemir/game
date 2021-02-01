@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:flutter/material.dart';
 import 'package:game/buildings/real_industry_building/real_industry_buildings.dart';
 import 'package:game/daycircle.dart';
-import 'package:game/kalip_widgetlar/custom_dropdown.dart';
 import 'package:game/kalip_widgetlar/exhibition_appbar_sheet.dart';
 import 'package:game/menu2.dart';
 import 'package:game/navigation.dart';

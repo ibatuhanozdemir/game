@@ -76,7 +76,7 @@ class FoodBuilding extends ChangeNotifier {
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
-          'imagename': 'food_buildings/farm.png',
+          'imagename': 'food_buildings/wheat.png',
         },
         {
           'name': 'corn',
@@ -88,7 +88,7 @@ class FoodBuilding extends ChangeNotifier {
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
-          'imagename': 'food_buildings/farm.png',
+          'imagename': 'food_buildings/corn.png',
         },
         {
           'name': 'potato',
@@ -100,7 +100,7 @@ class FoodBuilding extends ChangeNotifier {
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
-          'imagename': 'food_buildings/farm.png',
+          'imagename': 'food_buildings/potato.png',
         },
         {
           'name': 'tomato',
@@ -112,7 +112,7 @@ class FoodBuilding extends ChangeNotifier {
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
-          'imagename': 'food_buildings/farm.png',
+          'imagename': 'food_buildings/tomatofarm.png',
         },
       ],
       'upgradereq': [
@@ -146,7 +146,7 @@ class FoodBuilding extends ChangeNotifier {
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
-          'imagename': 'food_buildings/farm.png',
+          'imagename': 'food_buildings/apple.png',
         },
         {
           'name': 'cherry',
@@ -158,7 +158,7 @@ class FoodBuilding extends ChangeNotifier {
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
-          'imagename': 'food_buildings/farm.png',
+          'imagename': 'food_buildings/cherry.png',
         },
         {
           'name': 'walnut',
@@ -170,7 +170,7 @@ class FoodBuilding extends ChangeNotifier {
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
-          'imagename': 'food_buildings/farm.png',
+          'imagename': 'food_buildings/walnut.png',
         },
         {
           'name': 'orange',
@@ -182,7 +182,7 @@ class FoodBuilding extends ChangeNotifier {
           'outputprogress': 0,
           'totaloutputprogress': 10,
           'estimatedoutput': 0,
-          'imagename': 'food_buildings/farm.png',
+          'imagename': 'food_buildings/orange.png',
         },
       ],
       'upgradereq': [
@@ -193,7 +193,7 @@ class FoodBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
       'buildingprosses2': 0,
-      'imagename': 'food_buildings/farm.png',
+      'imagename': 'food_buildings/orchard.png',
       'explanation' : 'To provide nutritional richness you need orchards. You need explorers to find seeds first. When they find those seeds you can plant and harvest them when ready. '
     },
     {
