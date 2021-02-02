@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class TownServiceBuilding extends ChangeNotifier {
   static List town_service_building = [
     {
-      'name': 'house',
+      'name': 'HOUSE',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
@@ -26,7 +26,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'explanation' : 'Provides shelter to town citizens. Without houses, citizen efficiency will be very low. Citizens are very likely to get sick and become unavailable for work. '
     },
     {
-      'name': 'church',
+      'name': 'CHURCH',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
@@ -46,7 +46,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'explanation' : 'Provides happiness to town citizens. Lack of churches will decrease happiness.'
     },
     {
-      'name': 'tavern',
+      'name': 'TAVERN',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
@@ -66,7 +66,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'explanation' : 'Main entertainment building in towns. The existence of taverns makes a big difference in town in terms of happiness.'
     },
     {
-      'name': 'hospital',
+      'name': 'HOSPITAL',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
@@ -86,7 +86,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'explanation' : 'Citizens can get sick for various reasons. Hospital is the only way to cure diseases.'
     },
     {
-      'name': 'well',
+      'name': 'WELL',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,
@@ -106,7 +106,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'explanation' : 'In summer there might be fires. Enough number of wells will protect you from fires.'
     },
     {
-      'name': 'graveyard',
+      'name': 'GRAVEYARD',
       'progres': true,
       'buildprogres': 0,
       'quantity': 10,

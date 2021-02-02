@@ -39,8 +39,8 @@ class RealIndustryBuildingWidgeti extends ConsumerWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.22,
-                    width: MediaQuery.of(context).size.width * 0.20,
+                    height: MediaQuery.of(context).size.height * 0.17,
+                    width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('images/' +
@@ -80,9 +80,9 @@ class RealIndustryBuildingWidgeti extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        Divider(height: 7,thickness: 1,indent: 50,endIndent: 50,color: Colors.black54,),
+                        Divider(height: 7,thickness: 1,indent: MediaQuery.of(context).size.width * 0.10,endIndent: MediaQuery.of(context).size.width * 0.10,color: Colors.black54,),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                          padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.10,
                             child: Column(
@@ -142,7 +142,12 @@ class RealIndustryBuildingWidgeti extends ConsumerWidget {
                                   ],
                                 ):  Column(
                                   children: [
-                                          CustomDropDowm(RealIndustryBuildings.real_industry_building[index]['name']),
+
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                            child: CustomDropDowm(RealIndustryBuildings.real_industry_building[index]['name']),
+                                          ),
+                                    SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
                                       child: CustomProductionProgressIndicator(RealIndustryBuildings.real_industry_building[index]['outputname'].where((element)=>element['select']==true).toList()[0]['outputprogress'],RealIndustryBuildings.real_industry_building[index]['outputname'].where((element)=>element['select']==true).toList()[0]['totaloutputprogress'], RealIndustryBuildings.real_industry_building[index]['lastdayoutput'],1),
@@ -715,9 +720,14 @@ class InfoAlertRealIndustry extends StatelessWidget {
   InfoAlertRealIndustry(this.context, this.info);
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.brown.shade400,
+      shape: ,
+      backgroundColor: Color(0xFFe19f28),
       content: Container(
-        color: Colors.transparent,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(20),
+        ),
+
         child: Text(info),
       ),
     );

@@ -38,10 +38,10 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Padding(
-                            padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                            padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.01, 0, MediaQuery.of(context).size.width * 0.01, 0),
                             child: Container(
-                              height: MediaQuery.of(context).size.height * 0.20,
-                              width: MediaQuery.of(context).size.width * 0.20,
+                              height: MediaQuery.of(context).size.height * 0.17,
+                              width: MediaQuery.of(context).size.width * 0.17,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage('images/' +
@@ -86,13 +86,13 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                                   Divider(
                                     height: 7,
                                     thickness: 1,
-                                    indent: 50,
-                                    endIndent: 50,
+                                    indent: MediaQuery.of(context).size.width * 0.1,
+                                    endIndent: MediaQuery.of(context).size.width * 0.1,
                                     color: Colors.black54,
                                   ),
                                   Padding(
                                     padding:
-                                        const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                        const EdgeInsets.fromLTRB(5, 5, 5, 5),
                                     child: Container(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -340,10 +340,10 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.01, 0, MediaQuery.of(context).size.width * 0.01, 0),
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.20,
-                          width: MediaQuery.of(context).size.width * 0.20,
+                          height: MediaQuery.of(context).size.height * 0.17,
+                          width: MediaQuery.of(context).size.width * 0.17,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('images/' +
@@ -386,13 +386,13 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                               Divider(
                                 height: 7,
                                 thickness: 1,
-                                indent: 50,
-                                endIndent: 50,
+                                indent: MediaQuery.of(context).size.width * 0.1,
+                                endIndent: MediaQuery.of(context).size.width * 0.1,
                                 color: Colors.black54,
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                    const EdgeInsets.fromLTRB(5, 5, 5, 5),
                                 child: Container(
                                   height:
                                       MediaQuery.of(context).size.height * 0.09,
@@ -1149,7 +1149,7 @@ class InfoAlertFood extends StatelessWidget {
   InfoAlertFood(this.context, this.info);
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.brown.shade400,
+      backgroundColor: Color(0xFFe19f28),
       content: Container(
         color: Colors.transparent,
         child: Text(info),

@@ -13,7 +13,7 @@ CustomDropDowm(this.building_name);
   Widget build(BuildContext context, ScopedReader watch) {
     watch(real_industry_buildings_provider);
     return Container(
-      height: 20,
+      height: MediaQuery.of(context).size.height * 0.02,
         child: DropdownButtonHideUnderline(
           child: DropdownButton(
 
@@ -38,7 +38,7 @@ CustomDropDowm(this.building_name);
    return DropdownMenuItem(
 
      child: Container(
-       height: 10,
+       height: MediaQuery.of(context).size.height * 0.03,
        child: Text(sub_product_name,style: TextStyle(
            fontSize: MediaQuery.of(context)
                .size

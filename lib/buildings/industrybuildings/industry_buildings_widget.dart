@@ -36,8 +36,8 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.20,
-                    width: MediaQuery.of(context).size.width * 0.20,
+                    height: MediaQuery.of(context).size.height * 0.17,
+                    width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('images/' +
@@ -80,12 +80,12 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                         Divider(
                           height: 7,
                           thickness: 1,
-                          indent: 50,
-                          endIndent: 50,
+                          indent: MediaQuery.of(context).size.width * 0.1,
+                          endIndent: MediaQuery.of(context).size.width * 0.1,
                           color: Colors.black54,
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                          padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.08,
                             child: Column(
@@ -745,7 +745,7 @@ class InfoAlertIndustry extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.brown.shade400,
+      backgroundColor: Color(0xFFe19f28),
       content: Container(
         color: Colors.transparent,
         child: Text(info),

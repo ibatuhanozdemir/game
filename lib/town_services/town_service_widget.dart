@@ -35,8 +35,8 @@ class TownServiceWidget extends ConsumerWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    width: MediaQuery.of(context).size.width * 0.15,
+                    height: MediaQuery.of(context).size.height * 0.17,
+                    width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('images/' +
@@ -50,63 +50,83 @@ class TownServiceWidget extends ConsumerWidget {
                   width: MediaQuery.of(context).size.width * 0.01,
                 ),
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                        child: Text(
-                          TownServiceBuilding.town_service_building[index]
-                                  ['name'] +
-                              '(' +
-                              "Qty. " +
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.16,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black),
+                      color: Color(0xFFe19f28),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                            child: Text(
                               TownServiceBuilding.town_service_building[index]
-                                      ['quantity']
-                                  .toString() +
-                              ')',
-                          style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.016),
+                                      ['name'] +
+                                  '(' +
+                                  TownServiceBuilding.town_service_building[index]
+                                          ['quantity']
+                                      .toString() +
+                                  ')',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "Alike",
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      0.02
+                                  ),
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Req. for Building:',
-                                style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.016),
-                              ),
-                              Row(
+                        Divider(
+                          height: 7,
+                          thickness: 1,
+                          indent: MediaQuery.of(context).size.width * 0.1,
+                          endIndent: MediaQuery.of(context).size.width * 0.1,
+                          color: Colors.black54,
+                        ),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.08,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  for (Map aaa in TownServiceBuilding
-                                          .town_service_building[index]
-                                      ['upgradereq'])
-                                    Expanded(
-                                      child: Text(
-                                        aaa['name'] +
-                                            ':' +
-                                            aaa['count'].toString() +
-                                            '  ',
-                                        style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
+                                  Text(
+                                    'Requirements:',
+                                    style: TextStyle(
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
                                                 0.016),
-                                      ),
-                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      for (Map aaa in TownServiceBuilding
+                                              .town_service_building[index]
+                                          ['upgradereq'])
+                                        Expanded(
+                                          child: Text(
+                                            aaa['name'] +
+                                                ':' +
+                                                aaa['count'].toString() +
+                                                '  ',
+                                            style: TextStyle(
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.016),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                                 ],
                               ),
-                            ],
-                          )),
-                    ],
+                            )),
+                      ],
+                    ),
                   ),
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -652,7 +672,7 @@ class InfoAlertTownServices extends StatelessWidget {
   InfoAlertTownServices(this.context, this.info);
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.brown.shade400,
+      backgroundColor: Color(0xFFe19f28),
       content: Container(
         color: Colors.transparent,
         child: Text(info),
