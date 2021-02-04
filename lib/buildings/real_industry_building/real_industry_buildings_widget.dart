@@ -720,7 +720,6 @@ class InfoAlertRealIndustry extends StatelessWidget {
   InfoAlertRealIndustry(this.context, this.info);
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: ,
       backgroundColor: Color(0xFFe19f28),
       content: Container(
         decoration: BoxDecoration(
