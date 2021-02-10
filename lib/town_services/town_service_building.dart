@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:game/resources/industry/industry_resources.dart';
 import 'package:game/worker/citizen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,13 +16,13 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
+
       'imagename':'ev.png',
       'explanation' : 'Provides shelter to town citizens. Without houses, citizen efficiency will be very low. Citizens are very likely to get sick and become unavailable for work. '
     },
@@ -35,13 +36,13 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
+
       'imagename':'church.png',
       'explanation' : 'Provides happiness to town citizens. Lack of churches will decrease happiness.'
     },
@@ -55,13 +56,13 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
+
       'imagename':'tavern.png',
       'explanation' : 'Main entertainment building in towns. The existence of taverns makes a big difference in town in terms of happiness.'
     },
@@ -75,13 +76,13 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
+
       'imagename':'mezar.png',
       'explanation' : 'Citizens can get sick for various reasons. Hospital is the only way to cure diseases.'
     },
@@ -95,13 +96,13 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
+
       'imagename':'mezar.png',
       'explanation' : 'In summer there might be fires. Enough number of wells will protect you from fires.'
     },
@@ -115,13 +116,13 @@ class TownServiceBuilding extends ChangeNotifier {
       'effectcitizencount':5,
       'effectrate':20,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
+
       'imagename':'mezar.png',
       'explanation' : 'Where you bury the passed away citizens. Lack of graveyard or lack of graveyard workers might start a contagious disease in town.'
     },
@@ -138,44 +139,59 @@ class TownServiceBuilding extends ChangeNotifier {
   void buildOnGoing() {
     town_service_building.forEach((element) {
       if (element['progres'] == false) {
+
         Citizen.citizen
             .where((element2) =>
-                (element2['workarea'].contains('builder' + element['name'])))
+        (element2['workarea'].contains('builder' + element['name'])))
             .toList()
             .forEach((element5) {
           if (element['progres'] == false) {
-            element['buildprogres'] = element['buildprogres'] + 1;
+
+            element['buildingprosses1'] = element['upgradereq']
+                .where((element2) => (element2['progres'] != element2['count']))
+                .toList()[0]['name'];
+
+
+            if(element['buildingprosses1']=='labour'){
+              element['upgradereq']
+                  .where(
+                      (element2) => (element2['progres'] != element2['count']))
+                  .toList()[0]['progres']++;
+              element['buildprogres'] = element['buildprogres'] + 1;
+
+            }else{
+              if (IndustryResources.industry_resources
+                  .where((element3) =>
+              element3['name'] == element['buildingprosses1'])
+                  .toList()[0]['count'] >
+                  1) {
+                IndustryResources.industry_resources
+                    .where((element3) =>
+                (element3['name'] == element['buildingprosses1']))
+                    .toList()[0]['count']--;
+                element['upgradereq']
+                    .where(
+                        (element2) => (element2['progres'] != element2['count']))
+                    .toList()[0]['progres']++;
+                element['buildprogres'] = element['buildprogres'] + 1;
+              }}
+
+
+
             if (element['buildprogres'] >= element['totalupgradereq']) {
               element['buildprogres'] = 0;
               element['progres'] = true;
               element['quantity'] = element['quantity'] + 1;
-              element['buildingprosses2'] = 0;
+              element['upgradereq'].forEach((element2) {
+                element2['progres'] = 0;
+              });
               Citizen.citizen
                   .where((element2) => (element2['workarea']
-                      .contains('builder' + element['name'])))
+                  .contains('builder' + element['name'])))
                   .toList()
                   .forEach((element3) {
                 element3['workarea'] = 'unemployed';
               });
-            }
-
-            int buildstatus = 0;
-            for (int i = 0; i <= element['buildingprosses2']; i++) {
-              buildstatus = buildstatus + element['upgradereq'][i]['count'];
-            }
-
-            if (buildstatus <= element['buildprogres']) {
-              element['buildingprosses2'] = element['buildingprosses2'] + 1;
-              print(element['buildingprosses2']);
-
-              if (element['buildingprosses2'] ==
-                  element['upgradereq'].length - 1) {
-                element['buildingprosses1'] = 'Building ';
-              } else {
-                element['buildingprosses1'] = element['upgradereq']
-                        [element['buildingprosses2']]['name'] +
-                    " ";
-              }
             }
           }
         });

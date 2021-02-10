@@ -97,7 +97,7 @@ class Citizen {
   int min = 0;
 
   citizenCapacityCalculator(){
-    citizenCapacity = TownServiceBuilding.town_service_building.where((element) => element['name']=='house').toList()[0]['quantity']*TownServiceBuilding.town_service_building.where((element) => element['name']=='house').toList()[0]['capacity'];
+    citizenCapacity = TownServiceBuilding.town_service_building.where((element) => element['name']=='HOUSE').toList()[0]['quantity']*TownServiceBuilding.town_service_building.where((element) => element['name']=='HOUSE').toList()[0]['capacity'];
   }
 
 

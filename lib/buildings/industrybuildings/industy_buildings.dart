@@ -14,21 +14,21 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'capacityperbuilding' : 2,
+      'capacityperbuilding': 2,
       'outputname': 'Wood',
       'workeroutput': 5,
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
       'imagename': 'natural_resources/woodcutter.png',
-      'explanation' : 'A camp where workers cut trees to be used in construction and tool making. Wood is required to produce firewood.'
+      'explanation':
+          'A camp where workers cut trees to be used in construction and tool making. Wood is required to produce firewood.'
     },
     {
       'name': 'STONECUTTER',
@@ -37,21 +37,21 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'capacityperbuilding' : 2,
+      'capacityperbuilding': 2,
       'outputname': 'stone',
       'workeroutput': 5,
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
       'imagename': 'natural_resources/stone mining.png',
-      'explanation' : 'A camp where workers find stones then carves them into useful shapes. Stone is required for almost any construction work.'
+      'explanation':
+          'A camp where workers find stones then carves them into useful shapes. Stone is required for almost any construction work.'
     },
     {
       'name': 'COAL MINE',
@@ -60,21 +60,21 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'capacityperbuilding' : 2,
+      'capacityperbuilding': 2,
       'outputname': 'coal',
       'workeroutput': 5,
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
       'imagename': 'natural_resources/coal mining.png',
-      'explanation' : 'Must be built to get coal. Coal is used in steel tool making and warming in houses.'
+      'explanation':
+          'Must be built to get coal. Coal is used in steel tool making and warming in houses.'
     },
     {
       'name': 'IRON MINE',
@@ -83,21 +83,21 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'capacityperbuilding' : 2,
+      'capacityperbuilding': 2,
       'outputname': 'iron',
       'workeroutput': 5,
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
       'imagename': 'natural_resources/iron mining.png',
-      'explanation' : 'Must be built to get iron. Iron is used in steel tool making.'
+      'explanation':
+          'Must be built to get iron. Iron is used in steel tool making.'
     },
     {
       'name': 'FORESTER',
@@ -108,22 +108,22 @@ class IndustryBuilding extends ChangeNotifier {
       'buildprogres': 0,
       'quantity': 10,
       'capacity': 2,
-      'capacityperbuilding' : 2,
+      'capacityperbuilding': 2,
       'outputname': 'tree',
       'estimatedoutput': 0,
       'workeroutput': 5,
       'workercount': 0,
       'lastdayoutput': 0,
       'upgradereq': [
-        {'name': 'Wood', 'count': 20},
-        {'name': 'stone', 'count': 50},
-        {'name': 'labour', 'count': 10},
+        {'name': 'Wood', 'count': 20, 'progres': 0},
+        {'name': 'stone', 'count': 50, 'progres': 0},
+        {'name': 'labour', 'count': 10, 'progres': 0},
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-      'buildingprosses2': 0,
       'imagename': 'natural_resources/forester.png',
-      'explanation' : 'Workers of forester camp plant saplings. If there is no forester camping or nobody is working here, you might run out of trees to get wood from.'
+      'explanation':
+          'Workers of forester camp plant saplings. If there is no forester camping or nobody is working here, you might run out of trees to get wood from.'
     }
   ];
 
@@ -138,18 +138,52 @@ class IndustryBuilding extends ChangeNotifier {
   void buildOnGoing() {
     industry_building.forEach((element) {
       if (element['progres'] == false) {
+
         Citizen.citizen
             .where((element2) =>
                 (element2['workarea'].contains('builder' + element['name'])))
             .toList()
             .forEach((element5) {
           if (element['progres'] == false) {
-            element['buildprogres'] = element['buildprogres'] + 1;
+
+              element['buildingprosses1'] = element['upgradereq']
+                  .where((element2) => (element2['progres'] != element2['count']))
+                  .toList()[0]['name'];
+
+
+              if(element['buildingprosses1']=='labour'){
+                element['upgradereq']
+                    .where(
+                        (element2) => (element2['progres'] != element2['count']))
+                    .toList()[0]['progres']++;
+                element['buildprogres'] = element['buildprogres'] + 1;
+
+              }else{
+                if (IndustryResources.industry_resources
+                  .where((element3) =>
+              element3['name'] == element['buildingprosses1'])
+                  .toList()[0]['count'] >
+                  1) {
+                IndustryResources.industry_resources
+                    .where((element3) =>
+                (element3['name'] == element['buildingprosses1']))
+                    .toList()[0]['count']--;
+                element['upgradereq']
+                    .where(
+                        (element2) => (element2['progres'] != element2['count']))
+                    .toList()[0]['progres']++;
+                element['buildprogres'] = element['buildprogres'] + 1;
+              }}
+
+
+
             if (element['buildprogres'] >= element['totalupgradereq']) {
               element['buildprogres'] = 0;
               element['progres'] = true;
               element['quantity'] = element['quantity'] + 1;
-              element['buildingprosses2'] = 0;
+              element['upgradereq'].forEach((element2) {
+                element2['progres'] = 0;
+              });
               Citizen.citizen
                   .where((element2) => (element2['workarea']
                       .contains('builder' + element['name'])))
@@ -157,25 +191,6 @@ class IndustryBuilding extends ChangeNotifier {
                   .forEach((element3) {
                 element3['workarea'] = 'unemployed';
               });
-            }
-
-            int buildstatus = 0;
-            for (int i = 0; i <= element['buildingprosses2']; i++) {
-              buildstatus = buildstatus + element['upgradereq'][i]['count'];
-            }
-
-            if (buildstatus <= element['buildprogres']) {
-              element['buildingprosses2'] = element['buildingprosses2'] + 1;
-              print(element['buildingprosses2']);
-
-              if (element['buildingprosses2'] ==
-                  element['upgradereq'].length - 1) {
-                element['buildingprosses1'] = 'Building ';
-              } else {
-                element['buildingprosses1'] = element['upgradereq']
-                        [element['buildingprosses2']]['name'] +
-                    " ";
-              }
             }
           }
         });
@@ -251,12 +266,14 @@ class IndustryBuilding extends ChangeNotifier {
     });
   }
 
-  void workerCapacity(){
-    industry_building.forEach((element) {element['capacity']=element['capacityperbuilding']*element['quantity'];});
+  void workerCapacity() {
+    industry_building.forEach((element) {
+      element['capacity'] =
+          element['capacityperbuilding'] * element['quantity'];
+    });
   }
 
-  void workAreaArranger(String workarea_name){
+  void workAreaArranger(String workarea_name) {
     notifyListeners();
   }
-
 }
