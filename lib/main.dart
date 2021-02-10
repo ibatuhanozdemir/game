@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:flutter/material.dart';
 import 'package:game/buildings/real_industry_building/real_industry_buildings.dart';
+import 'package:game/buildings/stroragebuildings/storage_buildings.dart';
 import 'package:game/daycircle.dart';
 import 'package:game/kalip_widgetlar/exhibition_appbar_sheet.dart';
 import 'package:game/menu2.dart';
@@ -101,6 +102,9 @@ final real_industry_buildings_provider =
 final town = ChangeNotifierProvider((ref) => TownServiceBuilding());
 final food_building_provider = ChangeNotifierProvider((ref) => FoodBuilding());
 final int calisma_yasi =15;
+final storage_building_provider = ChangeNotifierProvider((ref) => StorageBuilding());
+
+
 class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {

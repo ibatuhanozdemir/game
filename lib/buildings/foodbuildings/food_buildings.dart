@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:game/buildings/stroragebuildings/storage_buildings.dart';
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
 import 'package:game/worker/citizen.dart';
@@ -407,20 +408,30 @@ class FoodBuilding extends ChangeNotifier {
             int a =
                 (element4['output'] * (totalWorkerEfficiency) / 100).round();
             if (element4['type'] == 'food') {
-              FoodResources.food_resource_sublist
-                  .where((element5) => element5['foodname'] == element4['name'])
-                  .toList()[0]['count'] = FoodResources.food_resource_sublist
-                      .where((element5) =>
-                          element5['foodname'] == element4['name'])
-                      .toList()[0]['count'] +
-                  a;
+              element4['lastdayoutput'] = 'STORAGE FULL';
+              if(StorageBuilding.storage_building.where((element11) => element11['name']=='BARN').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='BARN').toList()[0]['capacity']){
+
+                FoodResources.food_resource_sublist
+                    .where((element5) => element5['foodname'] == element4['name'])
+                    .toList()[0]['count'] = FoodResources.food_resource_sublist
+                    .where((element5) =>
+                element5['foodname'] == element4['name'])
+                    .toList()[0]['count'] +
+                    a;
+                element4['lastdayoutput'] = a;
+              }
+
             } else {
-              IndustryResources.industry_resources
-                  .where((element5) => element5['name'] == element4['name'])
-                  .toList()[0]['count'] = IndustryResources.industry_resources
-                      .where((element5) => element5['name'] == element4['name'])
-                      .toList()[0]['count'] +
-                  a;
+              element4['lastdayoutput'] = 'STORAGE FULL';
+              if(StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['capacity']) {
+                IndustryResources.industry_resources
+                    .where((element5) => element5['name'] == element4['name'])
+                    .toList()[0]['count'] = IndustryResources.industry_resources
+                    .where((element5) => element5['name'] == element4['name'])
+                    .toList()[0]['count'] +
+                    a;
+                element4['lastdayoutput'] = a;
+              }
             }
           });
         } else {
@@ -452,29 +463,36 @@ class FoodBuilding extends ChangeNotifier {
                     (element6['workeroutput'] * (totalWorkerEfficiency) / 100)
                         .round();
                 element6['estimatedoutput'] = element6['estimatedoutput'] + a;
+                element6['lastdayoutput'] = 'STORAGE FULL';
                 if (element6['type'] == 'food') {
-                  FoodResources.food_resource_sublist
-                      .where((element12) =>
-                          element12['foodname'] == element6['name'])
-                      .toList()[0]['count'] = FoodResources
-                          .food_resource_sublist
-                          .where((element12) =>
-                              element12['foodname'] == element6['name'])
-                          .toList()[0]['count'] +
-                      element6['estimatedoutput'];
-                } else {
-                  IndustryResources.industry_resources
-                      .where(
-                          (element12) => element12['name'] == element6['name'])
-                      .toList()[0]['count'] = IndustryResources
-                          .industry_resources
-                          .where((element12) =>
-                              element12['name'] == element6['name'])
-                          .toList()[0]['count'] +
-                      element6['estimatedoutput'];
-                }
+                  if(StorageBuilding.storage_building.where((element11) => element11['name']=='BARN').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='BARN').toList()[0]['capacity']) {
+                    FoodResources.food_resource_sublist
+                        .where((element12) =>
+                    element12['foodname'] == element6['name'])
+                        .toList()[0]['count'] = FoodResources
+                        .food_resource_sublist
+                        .where((element12) =>
+                    element12['foodname'] == element6['name'])
+                        .toList()[0]['count'] +
+                        element6['estimatedoutput'];
+                    element6['lastdayoutput'] = element6['estimatedoutput'];
+                  }} else {
 
-                element6['lastdayoutput'] = element6['estimatedoutput'];
+                  if(StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['capacity']) {
+                    IndustryResources.industry_resources
+                        .where(
+                            (element12) =>
+                        element12['name'] == element6['name'])
+                        .toList()[0]['count'] = IndustryResources
+                        .industry_resources
+                        .where((element12) =>
+                    element12['name'] == element6['name'])
+                        .toList()[0]['count'] +
+                        element6['estimatedoutput'];
+                    element6['lastdayoutput'] = element6['estimatedoutput'];
+                  } }
+
+
                 element6['estimatedoutput'] = 0;
               }
             }

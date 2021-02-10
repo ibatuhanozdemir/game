@@ -1,13 +1,14 @@
 import 'dart:math';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:game/buildings/stroragebuildings/storage_buildings.dart';
 import 'package:game/worker/citizen.dart';
 
 class FoodResources {
   final _random = new Random();
   int next(min, int max) => min + _random.nextInt(max - min);
   static int foodCount=0;
-
+  int foodConsumptionPerCitizen = 20;
 
   static List food_resource_sublist = [
     {'foodname':'mushroom','count': 0, 'katsayı': 1},
@@ -31,7 +32,7 @@ class FoodResources {
 
   ];
 
-  int foodConsumptionPerCitizen = 20;
+
   void calculateFood() {
     // tüketim öncesi toplam yemek hesabı
     foodCount=0;
@@ -76,5 +77,7 @@ class FoodResources {
       });
       yiyici.removeAt(araDeger);//yiyenler ayrılsın
     });//tüketim fonksiyonu
+    StorageBuilding.storage_building.where((element) => element['name']=='BARN').toList()[0]['fullness']=foodCount;
+
   }
 }

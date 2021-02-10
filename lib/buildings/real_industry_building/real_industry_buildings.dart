@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:game/buildings/stroragebuildings/storage_buildings.dart';
 import 'package:game/resources/industry/industry_resources.dart';
 import 'package:game/resources/real_industry/real_industry_resources.dart';
 import 'package:game/worker/citizen.dart';
@@ -441,52 +442,6 @@ class RealIndustryBuildings extends ChangeNotifier {
   }
 
   void collectResource() {
-    /*real_industry_building.forEach((element) {
-      double totalWorkerEfficiency = 0;
-      if (element['workercount'] >= 1) {
-        Citizen.citizen
-            .where((element2) => element2['workarea'] == element['name'])
-            .toList()
-            .forEach((element3) {
-          totalWorkerEfficiency = totalWorkerEfficiency + element3['overallef'];
-        });
-
-        if (element['harvest'] == false) {
-          int a =
-          (element['workeroutput'] * (totalWorkerEfficiency) / 100).round();
-          IndustryResources.industry_resources
-              .where((element4) => element4['name'] == element['outputname'])
-              .toList()[0]['count'] = IndustryResources.industry_resources
-              .where(
-                  (element4) => element4['name'] == element['outputname'])
-              .toList()[0]['count'] +
-              a;
-          element['lastdayoutput'] = a;
-        } else {
-          if (element['outputprogress'] < element['totaloutputprogress']) {
-            int a = (element['workeroutput'] * (totalWorkerEfficiency) / 100)
-                .round();
-            element['estimatedoutput'] = element['estimatedoutput'] + a;
-            element['outputprogress'] = element['outputprogress'] + 1;
-          } else {
-            element['outputprogress'] = 0;
-            int a = (element['workeroutput'] * (totalWorkerEfficiency) / 100)
-                .round();
-            element['estimatedoutput'] = element['estimatedoutput'] + a;
-            IndustryResources.industry_resources
-                .where((element4) => element4['name'] == element['outputname'])
-                .toList()[0]['count'] = IndustryResources.industry_resources
-                .where(
-                    (element4) => element4['name'] == element['outputname'])
-                .toList()[0]['count'] +
-                element['estimatedoutput'];
-            element['lastdayoutput'] = element['estimatedoutput'];
-            element['estimatedoutput'] = 0;
-          }
-        }
-      }
-    });*/
-
     real_industry_building.forEach((element) {
       if (element['workercount'] >= 1) {
         if (element['oneoutput'] == true) {
@@ -510,6 +465,8 @@ class RealIndustryBuildings extends ChangeNotifier {
                 int a =
                     (element['workeroutput'] * (totalWorkerEfficiency) / 100)
                         .round();
+                element['lastdayoutput'] = 'STORAGE FULL';
+                if(StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['capacity']) {
                 RealIndustryResources.real_industry_resources
                     .where(
                         (element4) => element4['name'] == element['outputname'])
@@ -519,7 +476,7 @@ class RealIndustryBuildings extends ChangeNotifier {
                             element4['name'] == element['outputname'])
                         .toList()[0]['count'] +
                     a;
-                element['lastdayoutput'] = a;
+                element['lastdayoutput'] = a;}
               } else {
                 if (element['outputprogress'] <
                     element['totaloutputprogress']) {
@@ -532,17 +489,19 @@ class RealIndustryBuildings extends ChangeNotifier {
                   if (a < 1) {
                     a = 1;
                   }
-                  RealIndustryResources.real_industry_resources
-                      .where((element4) =>
-                          element4['name'] == element['outputname'])
-                      .toList()[0]['count'] = RealIndustryResources
-                          .real_industry_resources
-                          .where((element4) =>
-                              element4['name'] == element['outputname'])
-                          .toList()[0]['count'] +
-                      a;
-                  element['lastdayoutput'] = a;
-                }
+                  element['lastdayoutput'] = 'STORAGE FULL';
+                  if(StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['capacity']) {
+                    RealIndustryResources.real_industry_resources
+                        .where((element4) =>
+                    element4['name'] == element['outputname'])
+                        .toList()[0]['count'] = RealIndustryResources
+                        .real_industry_resources
+                        .where((element4) =>
+                    element4['name'] == element['outputname'])
+                        .toList()[0]['count'] +
+                        a;
+                    element['lastdayoutput'] = a;
+                  }}
               }
               IndustryResources.industry_resources
                   .where((element2) =>
@@ -577,17 +536,20 @@ class RealIndustryBuildings extends ChangeNotifier {
                 int a =
                     (element['workeroutput'] * (totalWorkerEfficiency) / 100)
                         .round();
-                RealIndustryResources.real_industry_resources
-                    .where(
-                        (element4) => element4['name'] == element['outputname'])
-                    .toList()[0]['count'] = RealIndustryResources
-                        .real_industry_resources
-                        .where((element4) =>
-                            element4['name'] == element['outputname'])
-                        .toList()[0]['count'] +
-                    a;
-                element['lastdayoutput'] = a;
-              } else {
+                element['lastdayoutput'] = 'STORAGE FULL';
+                if(StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['capacity']) {
+                  RealIndustryResources.real_industry_resources
+                      .where(
+                          (element4) =>
+                      element4['name'] == element['outputname'])
+                      .toList()[0]['count'] = RealIndustryResources
+                      .real_industry_resources
+                      .where((element4) =>
+                  element4['name'] == element['outputname'])
+                      .toList()[0]['count'] +
+                      a;
+                  element['lastdayoutput'] = a;
+                }} else {
                 if (element['outputprogress'] <
                     element['totaloutputprogress']) {
                   element['outputprogress'] = element['outputprogress'] + 1;
@@ -599,17 +561,19 @@ class RealIndustryBuildings extends ChangeNotifier {
                   if (a < 1) {
                     a = 1;
                   }
-                  RealIndustryResources.real_industry_resources
-                      .where((element4) =>
-                          element4['name'] == element['outputname'])
-                      .toList()[0]['count'] = RealIndustryResources
-                          .real_industry_resources
-                          .where((element4) =>
-                              element4['name'] == element['outputname'])
-                          .toList()[0]['count'] +
-                      a;
-                  element['lastdayoutput'] = a;
-                }
+                  element['lastdayoutput'] = 'STORAGE FULL';
+                  if(StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['capacity']) {
+                    RealIndustryResources.real_industry_resources
+                        .where((element4) =>
+                    element4['name'] == element['outputname'])
+                        .toList()[0]['count'] = RealIndustryResources
+                        .real_industry_resources
+                        .where((element4) =>
+                    element4['name'] == element['outputname'])
+                        .toList()[0]['count'] +
+                        a;
+                    element['lastdayoutput'] = a;
+                  } }
               }
               RealIndustryResources.real_industry_resources
                   .where((element2) =>
@@ -653,17 +617,23 @@ class RealIndustryBuildings extends ChangeNotifier {
               if (a < 1) {
                 a = 1;
               }
-              RealIndustryResources.real_industry_resources
-                  .where((element4) =>
-              element4['name'] == element['outputname'].where((element2)=> element2['select']==true).toList()[0]['name'])
-                  .toList()[0]['count'] = RealIndustryResources
-                  .real_industry_resources
-                  .where((element4) =>
-              element4['name'] == element['outputname'].where((element2)=> element2['select']==true).toList()[0]['name'])
-                  .toList()[0]['count'] +
-                  a;
-              element['lastdayoutput'] = a;
-            }
+              element['lastdayoutput'] = 'STORAGE FULL';
+              if(StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['fullness']<StorageBuilding.storage_building.where((element11) => element11['name']=='WAREHOUSE').toList()[0]['capacity']) {
+                RealIndustryResources.real_industry_resources
+                    .where((element4) =>
+                element4['name'] == element['outputname']
+                    .where((element2) => element2['select'] == true)
+                    .toList()[0]['name'])
+                    .toList()[0]['count'] = RealIndustryResources
+                    .real_industry_resources
+                    .where((element4) =>
+                element4['name'] == element['outputname']
+                    .where((element2) => element2['select'] == true)
+                    .toList()[0]['name'])
+                    .toList()[0]['count'] +
+                    a;
+                element['lastdayoutput'] = a;
+              } }
             element['outputname'].where((element2)=> element2['select']==true).toList()[0]['resourceconsumption'].forEach((element3){
               IndustryResources.industry_resources.where((element4) => element4['name']==element3['name']).toList()[0]['count']=IndustryResources.industry_resources.where((element4) => element4['name']==element3['name']).toList()[0]['count']-element3['count']*element['workercount'];
 

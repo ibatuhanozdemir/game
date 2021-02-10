@@ -172,7 +172,9 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                     color: Color(0xffd6d6d6),
                     icon: Icons.storage,
                     text: animationController.value == 1 ? 'Storage' : '1',
-                    onTap: () {}),
+                    onTap: () { (context).read(nav).numberswitch(6);
+                    animationController.reverse();
+                    }),
               ),
             ),
           ),

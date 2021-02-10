@@ -1,8 +1,10 @@
+
 import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:game/buildings/stroragebuildings/storage_buildings.dart';
 
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/resources/industry/industry_resources.dart';
@@ -25,7 +27,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   double get minHeight => MediaQuery.of(context).size.height *0.07;
-  double get maxHeight => MediaQuery.of(context).size.height * 0.745;
+  double get maxHeight => MediaQuery.of(context).size.height * 0.765;
 
   double get headerTopMargin =>
       lerp(20, 20 + MediaQuery.of(context).padding.top);
@@ -99,15 +101,37 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                     child: Row(
                       children: [
                         Expanded(
-                          child: Stack(
-                            children: <Widget>[
-                              SheetHeader(
-                                fontSize: headerFontSize,
-                                topMargin: 20,
-                                text: 'Food',
+                          child: Column(
+                            children: [
+                              Expanded(
+                                flex: 10,
+                                child: Stack(
+                                  children: <Widget>[
+                                    SheetHeader(
+                                      fontSize: headerFontSize,
+                                      topMargin: 20,
+                                      text: 'Food Resources',
+                                    ),
+                                    for (Map aaab in FoodResources.food_resource_sublist)
+                                      _foodResources(aaab['foodname'],FoodResources.food_resource_sublist.indexOf(aaab)),
+                                  ],
+                                ),
                               ),
-                              for (Map aaab in FoodResources.food_resource_sublist)
-                                _foodResources(aaab['foodname'],FoodResources.food_resource_sublist.indexOf(aaab)),
+                              Expanded(
+                                flex: 3,
+                                child: Stack(
+                                  children: <Widget>[
+                                    SheetHeader(
+                                      fontSize: headerFontSize,
+                                      topMargin: 1,
+                                      text: 'Storage',
+                                    ),
+                                    for (Map aaab in StorageBuilding.storage_building)
+                                      _Storage(aaab['name'],StorageBuilding.storage_building.indexOf(aaab)),
+                                  ],
+                                ),
+                              ),
+
                             ],
                           ),
                         ),
@@ -135,7 +159,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                                 child: Stack(
                                   children: <Widget>[
                                     SheetHeader(
-                                      text: 'Natural Resources',
+                                      text: 'Industry Resources',
                                       fontSize: headerFontSize, topMargin: 0,
 
                                     ),
@@ -193,7 +217,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     return Positioned(
       height: 50,
       width: 180,
-      top: 50 + index.toDouble() * 20,
+      top: 40 + index.toDouble() * 20,
       left: 0,
       child: ClipRRect(
         child: Text(
@@ -202,14 +226,13 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       ),
     );
   }
-
   Widget _industryResources(String event,int index) {
 
 
     return Positioned(
       height: 50,
       width: 180,
-      top: 50 + index.toDouble() * 20,
+      top: 40 + index.toDouble() * 20,
       left: 0,
 
       child: ClipRRect(
@@ -238,7 +261,22 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       ),
     );
   }
-
+  Widget _Storage(String event,int index) {
+    return Positioned(
+      height: 50,
+      width: 180,
+      top: 30 + index.toDouble() * 20,
+      left: 0,
+      child: ClipRRect(
+        child: Text(
+            event +
+                " = " +
+                "" +
+                StorageBuilding.storage_building[index]['fullness'].toString() + "/"+StorageBuilding.storage_building[index]['capacity'].toString(),
+            style: TextStyle(color: Colors.white)),
+      ),
+    );
+  }
   void _toggle() {
     final bool isOpen = _controller.status == AnimationStatus.completed;
 

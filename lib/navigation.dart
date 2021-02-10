@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:game/buildings/real_industry_building/real_industry_buildings_widget.dart';
+import 'package:game/buildings/stroragebuildings/storage_buildings.dart';
+import 'package:game/buildings/stroragebuildings/storage_buildings_widget.dart';
 import 'package:game/screens/townhall.dart';
 import 'package:game/town_services/town_service_building.dart';
 import 'package:game/town_services/town_service_widget.dart';
@@ -51,6 +53,12 @@ class Navigation extends ChangeNotifier {
             return RealIndustryBuildingWidgeti(index);
           },
           itemCount: FoodBuilding.food_building.length);
+    }else if(index==6){
+      return ListView.builder(
+          itemBuilder: (_, index) {
+            return StorageBuildingWidgeti(index);
+          },
+          itemCount: StorageBuilding.storage_building.length);
     }
 
 
