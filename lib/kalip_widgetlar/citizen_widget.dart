@@ -143,6 +143,7 @@ class citizenWidgeti extends StatelessWidget {
             Citizen.citizen[index]['overallef'],
             Citizen.citizen[index]['age'],
             Citizen.citizen[index]['hunger'],
+            Citizen.citizen[index]['shelter'],
         Citizen.citizen[index]['tool']['name'],
           Citizen.citizen[index]['cloth']['name']);
       },
@@ -159,6 +160,7 @@ Future<void> showInformationDialog3(
     int overallef,
     int age,
     String hunger,
+    String shelter,
     String tool,
     String cloth) async {
   return await showDialog(
@@ -170,7 +172,7 @@ Future<void> showInformationDialog3(
                  return Container(height: MediaQuery.of(context).size.height*0.75,
                                  width: MediaQuery.of(context).size.width*0.75,
                        child: CitizenInfo(context, name, workarea,
-                                      health, happiness, overallef, age, hunger,tool,cloth)
+                                      health, happiness, overallef, age, hunger,shelter,tool,cloth)
         );
 
         }));
@@ -189,13 +191,14 @@ class CitizenInfo extends StatelessWidget {
     this.overallef,
     this.age,
     this.hunger,
+      this.shelter,
       this.tool,
       this.cloth
   );
 
   String hunger;
   String name;
-  String workarea,tool,cloth;
+  String workarea,tool,cloth,shelter;
   int health, happines, overallef, age;
   @override
   Widget build(BuildContext context) {
@@ -224,6 +227,7 @@ class CitizenInfo extends StatelessWidget {
                   Text("Happiness: " + happines.toString()),
                   Text("Overall Efficiency: " + overallef.toString()),
                   Text("Hunger: " + hunger),
+                  Text("Shelter: " + shelter),
                   Text("Tool: " + tool),
                   Text("Cloth: " + cloth),
                 ],

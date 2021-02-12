@@ -5,7 +5,6 @@ import 'package:game/buildings/foodbuildings/food_buildings.dart';
 
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/buildings/real_industry_building/real_industry_buildings.dart';
-import 'package:game/buildings/stroragebuildings/storage_buildings.dart';
 
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/savesystem/save_system.dart';
@@ -49,11 +48,8 @@ class Daycircle extends ChangeNotifier {
           IndustryBuilding().buildOnGoing();
           RealIndustryBuildings().buildOnGoing();
           TownServiceBuilding().buildOnGoing();
-          StorageBuilding().buildOnGoing();
           IndustryBuilding().workerCapacity();
           FoodBuilding().workerCapacity();
-          StorageBuilding().storageCapacity();
-          StorageBuilding().storageWarehouseFullness();
           Citizen().calculateGlobalHealth();
           Citizen().calculateGlobalHappiness();
           Citizen().citizenCapacityCalculator();

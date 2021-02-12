@@ -13,8 +13,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 3,
       'workercount': 1,
-      'effectcitizencount':5,
-      'effectrate':20,
+      'effectcitizencount': 5,
+      'effectrate': 20,
       'upgradereq': [
         {'name': 'Wood', 'count': 20, 'progres': 0},
         {'name': 'stone', 'count': 50, 'progres': 0},
@@ -23,8 +23,9 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
 
-      'imagename':'ev.png',
-      'explanation' : 'Provides shelter to town citizens. Without houses, citizen efficiency will be very low. Citizens are very likely to get sick and become unavailable for work. '
+      'imagename': 'ev.png',
+      'explanation':
+          'Provides shelter to town citizens. Without houses, citizen efficiency will be very low. Citizens are very likely to get sick and become unavailable for work. '
     },
     {
       'name': 'CHURCH',
@@ -33,8 +34,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 2,
       'workercount': 1,
-      'effectcitizencount':5,
-      'effectrate':20,
+      'effectcitizencount': 5,
+      'effectrate': 20,
       'upgradereq': [
         {'name': 'Wood', 'count': 20, 'progres': 0},
         {'name': 'stone', 'count': 50, 'progres': 0},
@@ -43,8 +44,9 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
 
-      'imagename':'church.png',
-      'explanation' : 'Provides happiness to town citizens. Lack of churches will decrease happiness.'
+      'imagename': 'church.png',
+      'explanation':
+          'Provides happiness to town citizens. Lack of churches will decrease happiness.'
     },
     {
       'name': 'TAVERN',
@@ -53,8 +55,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 2,
       'workercount': 1,
-      'effectcitizencount':5,
-      'effectrate':20,
+      'effectcitizencount': 5,
+      'effectrate': 20,
       'upgradereq': [
         {'name': 'Wood', 'count': 20, 'progres': 0},
         {'name': 'stone', 'count': 50, 'progres': 0},
@@ -63,8 +65,9 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
 
-      'imagename':'tavern.png',
-      'explanation' : 'Main entertainment building in towns. The existence of taverns makes a big difference in town in terms of happiness.'
+      'imagename': 'tavern.png',
+      'explanation':
+          'Main entertainment building in towns. The existence of taverns makes a big difference in town in terms of happiness.'
     },
     {
       'name': 'HOSPITAL',
@@ -73,8 +76,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 2,
       'workercount': 1,
-      'effectcitizencount':5,
-      'effectrate':20,
+      'effectcitizencount': 5,
+      'effectrate': 20,
       'upgradereq': [
         {'name': 'Wood', 'count': 20, 'progres': 0},
         {'name': 'stone', 'count': 50, 'progres': 0},
@@ -83,8 +86,9 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
 
-      'imagename':'mezar.png',
-      'explanation' : 'Citizens can get sick for various reasons. Hospital is the only way to cure diseases.'
+      'imagename': 'mezar.png',
+      'explanation':
+          'Citizens can get sick for various reasons. Hospital is the only way to cure diseases.'
     },
     {
       'name': 'WELL',
@@ -93,8 +97,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 2,
       'workercount': 1,
-      'effectcitizencount':5,
-      'effectrate':20,
+      'effectcitizencount': 5,
+      'effectrate': 20,
       'upgradereq': [
         {'name': 'Wood', 'count': 20, 'progres': 0},
         {'name': 'stone', 'count': 50, 'progres': 0},
@@ -103,8 +107,9 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
 
-      'imagename':'mezar.png',
-      'explanation' : 'In summer there might be fires. Enough number of wells will protect you from fires.'
+      'imagename': 'mezar.png',
+      'explanation':
+          'In summer there might be fires. Enough number of wells will protect you from fires.'
     },
     {
       'name': 'GRAVEYARD',
@@ -113,8 +118,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'quantity': 10,
       'capacity': 2,
       'workercount': 1,
-      'effectcitizencount':5,
-      'effectrate':20,
+      'effectcitizencount': 5,
+      'effectrate': 20,
       'upgradereq': [
         {'name': 'Wood', 'count': 20, 'progres': 0},
         {'name': 'stone', 'count': 50, 'progres': 0},
@@ -123,8 +128,9 @@ class TownServiceBuilding extends ChangeNotifier {
       'totalupgradereq': 80,
       'buildingprosses1': '',
 
-      'imagename':'mezar.png',
-      'explanation' : 'Where you bury the passed away citizens. Lack of graveyard or lack of graveyard workers might start a contagious disease in town.'
+      'imagename': 'mezar.png',
+      'explanation':
+          'Where you bury the passed away citizens. Lack of graveyard or lack of graveyard workers might start a contagious disease in town.'
     },
   ];
 
@@ -211,7 +217,6 @@ class TownServiceBuilding extends ChangeNotifier {
 
     if (startupNumber == null) {
       town_service_building = town_service_building;
-
       return 0;
     }
     town_service_building = jsonDecode(startupNumber);

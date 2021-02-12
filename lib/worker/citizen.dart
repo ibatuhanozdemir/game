@@ -25,6 +25,7 @@ class Citizen {
       'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
       'education': 'yes',
       'hunger': 'yes',
+      'shelter' : 'no',
       'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
     },
     {
@@ -41,6 +42,7 @@ class Citizen {
       'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
       'education': 'yes',
       'hunger': 'yes',
+      'shelter' : 'no',
       'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
     },
     {
@@ -57,6 +59,7 @@ class Citizen {
       'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
       'education': 'yes',
       'hunger': 'yes',
+      'shelter' : 'no',
       'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
     },
     {
@@ -73,6 +76,7 @@ class Citizen {
       'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
       'education': 'yes',
       'hunger': 'yes',
+      'shelter' : 'no',
       'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
     },
     {
@@ -89,6 +93,7 @@ class Citizen {
       'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
       'education': 'yes',
       'hunger': 'yes',
+      'shelter' : 'no',
       'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
     }
   ];
@@ -156,6 +161,7 @@ class Citizen {
           'cloth': {'name':'nothing','braketime':0,'hascloth':false,'efficiency':20},
           'education': 'no',
           'hunger': 'yes',
+          'shelter' : 'no',
           'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
         };
         citizen.add(newCitizen);
