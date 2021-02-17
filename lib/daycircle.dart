@@ -5,6 +5,7 @@ import 'package:game/buildings/foodbuildings/food_buildings.dart';
 
 import 'package:game/buildings/industrybuildings/industy_buildings.dart';
 import 'package:game/buildings/real_industry_building/real_industry_buildings.dart';
+import 'package:game/random_events.dart';
 
 import 'package:game/resources/food/food_resources.dart';
 import 'package:game/savesystem/save_system.dart';
@@ -50,9 +51,11 @@ class Daycircle extends ChangeNotifier {
           TownServiceBuilding().buildOnGoing();
           IndustryBuilding().workerCapacity();
           FoodBuilding().workerCapacity();
+          RandomEvents().eventOccurrence();
           Citizen().calculateGlobalHealth();
           Citizen().calculateGlobalHappiness();
           Citizen().citizenCapacityCalculator();
+          Citizen().shelterChecker();
           Citizen().citizenBirth();
           Citizen().citizenDeath();
           SaveSystem().AllSave();

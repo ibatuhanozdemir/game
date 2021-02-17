@@ -1,15 +1,25 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:game/buildings/foodbuildings/food_building_widget.dart';
 import 'package:game/daycircle.dart';
+import 'package:game/main.dart';
 import 'package:game/screens/townhall.dart';
 import 'package:game/town_services/town_service_building.dart';
 import 'package:game/worker/citizen_names.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:game/buildings/industrybuildings/industy_buildings.dart';
+import 'package:game/buildings/real_industry_building/real_industry_buildings.dart';
+import 'package:game/buildings/foodbuildings/food_buildings.dart';
+import 'package:game/buildings/real_industry_building/real_industry_buildings.dart';
+import 'package:game/town_services/town_service_building.dart';
 
-class Citizen {
+class Citizen extends ChangeNotifier{
   static int globalHealth = 0;
-  static int globalHappiness=0;
+  static int globalHappiness = 0;
+  static List deadCitizens;
   static List citizen = [
     {
       'id': 1,
@@ -20,13 +30,28 @@ class Citizen {
       'health': 75,
       'happiness': 60,
       'overallef': 80,
-      'age': 20,
-      'tool': {'name':'Wooden axe','braketime':20,'hastool':true,'efficiency':30},
-      'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
+      'age': 75,
+      'tool': {
+        'name': 'Wooden axe',
+        'braketime': 20,
+        'hastool': true,
+        'efficiency': 30
+      },
+      'cloth': {
+        'name': 'leather cloth',
+        'braketime': 20,
+        'hascloth': true,
+        'efficiency': 20
+      },
       'education': 'yes',
       'hunger': 'yes',
-      'shelter' : 'no',
-      'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
+      'shelter': 'no',
+      'happinessstatus': [
+        {'name': 'church', 'status': 'no'},
+        {'name': 'tavern', 'status': 'no'},
+        {'name': 'hospital', 'status': 'no'},
+        {'name': 'well', 'status': 'no'},
+      ]
     },
     {
       'id': 2,
@@ -38,12 +63,27 @@ class Citizen {
       'happiness': 60,
       'overallef': 80,
       'age': 20,
-      'tool': {'name':'Wooden axe','braketime':20,'hastool':true,'efficiency':30},
-      'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
+      'tool': {
+        'name': 'Wooden axe',
+        'braketime': 20,
+        'hastool': true,
+        'efficiency': 30
+      },
+      'cloth': {
+        'name': 'leather cloth',
+        'braketime': 20,
+        'hascloth': true,
+        'efficiency': 20
+      },
       'education': 'yes',
       'hunger': 'yes',
-      'shelter' : 'no',
-      'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
+      'shelter': 'no',
+      'happinessstatus': [
+        {'name': 'church', 'status': 'no'},
+        {'name': 'tavern', 'status': 'no'},
+        {'name': 'hospital', 'status': 'no'},
+        {'name': 'well', 'status': 'no'},
+      ]
     },
     {
       'id': 3,
@@ -55,12 +95,27 @@ class Citizen {
       'happiness': 80,
       'overallef': 70,
       'age': 40,
-      'tool': {'name':'Wooden axe','braketime':20,'hastool':true,'efficiency':30},
-      'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
+      'tool': {
+        'name': 'Wooden axe',
+        'braketime': 20,
+        'hastool': true,
+        'efficiency': 30
+      },
+      'cloth': {
+        'name': 'leather cloth',
+        'braketime': 20,
+        'hascloth': true,
+        'efficiency': 20
+      },
       'education': 'yes',
       'hunger': 'yes',
-      'shelter' : 'no',
-      'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
+      'shelter': 'no',
+      'happinessstatus': [
+        {'name': 'church', 'status': 'no'},
+        {'name': 'tavern', 'status': 'no'},
+        {'name': 'hospital', 'status': 'no'},
+        {'name': 'well', 'status': 'no'},
+      ]
     },
     {
       'id': 4,
@@ -72,12 +127,27 @@ class Citizen {
       'happiness': 60,
       'overallef': 80,
       'age': 20,
-      'tool': {'name':'Wooden axe','braketime':20,'hastool':true,'efficiency':30},
-      'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
+      'tool': {
+        'name': 'Wooden axe',
+        'braketime': 20,
+        'hastool': true,
+        'efficiency': 30
+      },
+      'cloth': {
+        'name': 'leather cloth',
+        'braketime': 20,
+        'hascloth': true,
+        'efficiency': 20
+      },
       'education': 'yes',
       'hunger': 'yes',
-      'shelter' : 'no',
-      'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
+      'shelter': 'no',
+      'happinessstatus': [
+        {'name': 'church', 'status': 'no'},
+        {'name': 'tavern', 'status': 'no'},
+        {'name': 'hospital', 'status': 'no'},
+        {'name': 'well', 'status': 'no'},
+      ]
     },
     {
       'id': 5,
@@ -89,22 +159,41 @@ class Citizen {
       'happiness': 80,
       'overallef': 40,
       'age': 50,
-      'tool': {'name':'Wooden axe','braketime':20,'hastool':true,'efficiency':30},
-      'cloth': {'name':'leather cloth','braketime':20,'hascloth':true,'efficiency':20},
+      'tool': {
+        'name': 'Wooden axe',
+        'braketime': 20,
+        'hastool': true,
+        'efficiency': 30
+      },
+      'cloth': {
+        'name': 'leather cloth',
+        'braketime': 20,
+        'hascloth': true,
+        'efficiency': 20
+      },
       'education': 'yes',
       'hunger': 'yes',
-      'shelter' : 'no',
-      'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
+      'shelter': 'no',
+      'happinessstatus': [
+        {'name': 'church', 'status': 'no'},
+        {'name': 'tavern', 'status': 'no'},
+        {'name': 'hospital', 'status': 'no'},
+        {'name': 'well', 'status': 'no'},
+      ]
     }
   ];
 
   static int citizenCapacity = 10;
   int min = 0;
 
-  citizenCapacityCalculator(){
-    citizenCapacity = TownServiceBuilding.town_service_building.where((element) => element['name']=='HOUSE').toList()[0]['quantity']*TownServiceBuilding.town_service_building.where((element) => element['name']=='HOUSE').toList()[0]['capacity'];
+  citizenCapacityCalculator() {
+    citizenCapacity = TownServiceBuilding.town_service_building
+            .where((element) => element['name'] == 'HOUSE')
+            .toList()[0]['quantity'] *
+        TownServiceBuilding.town_service_building
+            .where((element) => element['name'] == 'HOUSE')
+            .toList()[0]['capacity'];
   }
-
 
   Future<void> save() async {
     final prefs = await SharedPreferences.getInstance();
@@ -157,12 +246,27 @@ class Citizen {
           'happiness': 100,
           'overallef': 100,
           'age': 0,
-          'tool': {'name':'nothing','braketime':0,'hastool':false,'efficiency':30},
-          'cloth': {'name':'nothing','braketime':0,'hascloth':false,'efficiency':20},
+          'tool': {
+            'name': 'nothing',
+            'braketime': 0,
+            'hastool': false,
+            'efficiency': 30
+          },
+          'cloth': {
+            'name': 'nothing',
+            'braketime': 0,
+            'hascloth': false,
+            'efficiency': 20
+          },
           'education': 'no',
           'hunger': 'yes',
-          'shelter' : 'no',
-          'happinessstatus':[{'name':'church','status':'no'},{'name':'tavern','status':'no'},{'name':'hospital','status':'no'},{'name':'well','status':'no'},]
+          'shelter': 'no',
+          'happinessstatus': [
+            {'name': 'church', 'status': 'no'},
+            {'name': 'tavern', 'status': 'no'},
+            {'name': 'hospital', 'status': 'no'},
+            {'name': 'well', 'status': 'no'},
+          ]
         };
         citizen.add(newCitizen);
         TownHall.events.add(Daycircle.day.toString() +
@@ -180,6 +284,7 @@ class Citizen {
 
   void citizenDeath() {
     List deaths = [];
+    int nufus = citizen.length;
     citizen.forEach((element) {
       if (element['age'] >= 60 && element['age'] < 70) {
         if (next(1, 101) <= 5) {
@@ -219,6 +324,7 @@ class Citizen {
               " died at age of " +
               element['age'].toString());
           deaths.add(element);
+
         }
       } else if (element['age'] >= 90) {
         if (next(1, 101) <= 70) {
@@ -236,8 +342,42 @@ class Citizen {
       }
     });
 
+
+    
     citizen.removeWhere((element) => deaths.contains(element));
+    if(nufus-citizen.length!=0){
+      int fark = nufus - citizen.length;
+      for(int i = 0; i< fark; i++){
+        print(deaths[i]);
+        IndustryBuilding.industry_building.forEach((element) {
+          if(element['name']==deaths[i]['workarea']){
+            element['workercount']--;
+          }
+        });
+        RealIndustryBuildings.real_industry_building.forEach((element) {
+          if(element['name']==deaths[i]['workarea']){
+            element['workercount']--;
+          }
+        });
+        TownServiceBuilding.town_service_building.forEach((element) {
+          if(element['name']==deaths[i]['workarea']){
+            element['workercount']--;
+          }
+        });
+        FoodBuilding.food_building.forEach((element) {
+          if(element['name']==deaths[i]['workarea']){
+            element['workercount']--;
+            if(deaths[i]['workarea']=='FARM FIELD' || deaths[i]['workarea']=='ORCHARD'){
+              element['workeroutput'].where((element2) => element2['name']==deaths[i]['workfield']).toList()[0]['workercount']--;
+            }
+          }
+        });
+      }
+    }
+    notifyListeners();
+
   }
+
 
   final _random = new Random();
   int next(min, int max) => min + _random.nextInt(max - min);
@@ -251,102 +391,168 @@ class Citizen {
     globalHealth = a.toInt();
   }
 
-  void calculateCitizenHappiness(){
-
+  void calculateCitizenHappiness() {
     //BaseHappinessCalculation
     citizen.forEach((element) {
-      if(element['age']<=30){
-        element['happiness']=40;
-        element['happinessstatus'][0]['status']='no';
-        element['happinessstatus'][1]['status']='no';
-        element['happinessstatus'][2]['status']='no';
-        element['happinessstatus'][3]['status']='no';
-      }else if(element['age']<=40){
-        element['happiness']=35;
-        element['happinessstatus'][0]['status']='no';
-        element['happinessstatus'][1]['status']='no';
-        element['happinessstatus'][2]['status']='no';
-        element['happinessstatus'][3]['status']='no';
-      }else if(element['age']<=50){
-        element['happiness']=30;
-        element['happinessstatus'][0]['status']='no';
-        element['happinessstatus'][1]['status']='no';
-        element['happinessstatus'][2]['status']='no';
-        element['happinessstatus'][3]['status']='no';
-      }else if(element['age']<=60){
-        element['happiness']=25;
-        element['happinessstatus'][0]['status']='no';
-        element['happinessstatus'][1]['status']='no';
-        element['happinessstatus'][2]['status']='no';
-        element['happinessstatus'][3]['status']='no';
-      }else if(element['age']<=70){
-        element['happiness']=20;
-        element['happinessstatus'][0]['status']='no';
-        element['happinessstatus'][1]['status']='no';
-        element['happinessstatus'][2]['status']='no';
-        element['happinessstatus'][3]['status']='no';
-      }else if(element['age']<=80){
-        element['happiness']=15;
-        element['happinessstatus'][0]['status']='no';
-        element['happinessstatus'][1]['status']='no';
-        element['happinessstatus'][2]['status']='no';
-        element['happinessstatus'][3]['status']='no';
-      }else if(element['age']<=90){
-        element['happiness']=10;
-        element['happinessstatus'][0]['status']='no';
-        element['happinessstatus'][1]['status']='no';
-        element['happinessstatus'][2]['status']='no';
-        element['happinessstatus'][3]['status']='no';
-      }else{element['happiness']=5;
-      element['happinessstatus'][0]['status']='no';
-      element['happinessstatus'][1]['status']='no';
-      element['happinessstatus'][2]['status']='no';
-      element['happinessstatus'][3]['status']='no';}
-    });//BaseHappinessCalculation
+      if (element['age'] <= 30) {
+        element['happiness'] = 40;
+        element['happinessstatus'][0]['status'] = 'no';
+        element['happinessstatus'][1]['status'] = 'no';
+        element['happinessstatus'][2]['status'] = 'no';
+        element['happinessstatus'][3]['status'] = 'no';
+      } else if (element['age'] <= 40) {
+        element['happiness'] = 35;
+        element['happinessstatus'][0]['status'] = 'no';
+        element['happinessstatus'][1]['status'] = 'no';
+        element['happinessstatus'][2]['status'] = 'no';
+        element['happinessstatus'][3]['status'] = 'no';
+      } else if (element['age'] <= 50) {
+        element['happiness'] = 30;
+        element['happinessstatus'][0]['status'] = 'no';
+        element['happinessstatus'][1]['status'] = 'no';
+        element['happinessstatus'][2]['status'] = 'no';
+        element['happinessstatus'][3]['status'] = 'no';
+      } else if (element['age'] <= 60) {
+        element['happiness'] = 25;
+        element['happinessstatus'][0]['status'] = 'no';
+        element['happinessstatus'][1]['status'] = 'no';
+        element['happinessstatus'][2]['status'] = 'no';
+        element['happinessstatus'][3]['status'] = 'no';
+      } else if (element['age'] <= 70) {
+        element['happiness'] = 20;
+        element['happinessstatus'][0]['status'] = 'no';
+        element['happinessstatus'][1]['status'] = 'no';
+        element['happinessstatus'][2]['status'] = 'no';
+        element['happinessstatus'][3]['status'] = 'no';
+      } else if (element['age'] <= 80) {
+        element['happiness'] = 15;
+        element['happinessstatus'][0]['status'] = 'no';
+        element['happinessstatus'][1]['status'] = 'no';
+        element['happinessstatus'][2]['status'] = 'no';
+        element['happinessstatus'][3]['status'] = 'no';
+      } else if (element['age'] <= 90) {
+        element['happiness'] = 10;
+        element['happinessstatus'][0]['status'] = 'no';
+        element['happinessstatus'][1]['status'] = 'no';
+        element['happinessstatus'][2]['status'] = 'no';
+        element['happinessstatus'][3]['status'] = 'no';
+      } else {
+        element['happiness'] = 5;
+        element['happinessstatus'][0]['status'] = 'no';
+        element['happinessstatus'][1]['status'] = 'no';
+        element['happinessstatus'][2]['status'] = 'no';
+        element['happinessstatus'][3]['status'] = 'no';
+      }
+    }); //BaseHappinessCalculation
 
     //Church Happiness Effect
-    for(int i=0;i<TownServiceBuilding.town_service_building[1]['effectcitizencount'];i++){
-        if(citizen.where((element) => element['happinessstatus'][0]['status']=='no').toList().length>0) {
-        int aa = citizen.indexOf(citizen.where((element) => element['happinessstatus'][0]['status'] == 'no').toList()[
-                next(0, citizen.where((element) => element['happinessstatus'][0]['status'] == 'no').toList().length)]);
+    for (int i = 0;
+        i < TownServiceBuilding.town_service_building[1]['effectcitizencount'];
+        i++) {
+      if (citizen
+              .where(
+                  (element) => element['happinessstatus'][0]['status'] == 'no')
+              .toList()
+              .length >
+          0) {
+        int aa = citizen.indexOf(
+            citizen
+                    .where((element) =>
+                        element['happinessstatus'][0]['status'] == 'no')
+                    .toList()[
+                next(
+                    0,
+                    citizen
+                        .where((element) =>
+                            element['happinessstatus'][0]['status'] == 'no')
+                        .toList()
+                        .length)]);
         citizen[aa]['happiness'] = citizen[aa]['happiness'] + 15;
         citizen[aa]['happinessstatus'][0]['status'] = 'yes';
       }
     }
 
     //Tavern Happiness Effect
-    for(int i=0;i<TownServiceBuilding.town_service_building[2]['effectcitizencount'];i++){
-      if(citizen.where((element) => element['happinessstatus'][1]['status']=='no').toList().length>0) {
-        int aa = citizen.indexOf(citizen.where((element) => element['happinessstatus'][1]['status'] == 'no').toList()[
-        next(0, citizen.where((element) => element['happinessstatus'][1]['status'] == 'no').toList().length)]);
+    for (int i = 0;
+        i < TownServiceBuilding.town_service_building[2]['effectcitizencount'];
+        i++) {
+      if (citizen
+              .where(
+                  (element) => element['happinessstatus'][1]['status'] == 'no')
+              .toList()
+              .length >
+          0) {
+        int aa = citizen.indexOf(
+            citizen
+                    .where((element) =>
+                        element['happinessstatus'][1]['status'] == 'no')
+                    .toList()[
+                next(
+                    0,
+                    citizen
+                        .where((element) =>
+                            element['happinessstatus'][1]['status'] == 'no')
+                        .toList()
+                        .length)]);
         citizen[aa]['happiness'] = citizen[aa]['happiness'] + 15;
         citizen[aa]['happinessstatus'][1]['status'] = 'yes';
       }
     }
     //Hospital Happiness Effect
-    for(int i=0;i<TownServiceBuilding.town_service_building[3]['effectcitizencount'];i++){
-      if(citizen.where((element) => element['happinessstatus'][2]['status']=='no').toList().length>0) {
-        int aa = citizen.indexOf(citizen.where((element) => element['happinessstatus'][2]['status'] == 'no').toList()[
-        next(0, citizen.where((element) => element['happinessstatus'][2]['status'] == 'no').toList().length)]);
+    for (int i = 0;
+        i < TownServiceBuilding.town_service_building[3]['effectcitizencount'];
+        i++) {
+      if (citizen
+              .where(
+                  (element) => element['happinessstatus'][2]['status'] == 'no')
+              .toList()
+              .length >
+          0) {
+        int aa = citizen.indexOf(
+            citizen
+                    .where((element) =>
+                        element['happinessstatus'][2]['status'] == 'no')
+                    .toList()[
+                next(
+                    0,
+                    citizen
+                        .where((element) =>
+                            element['happinessstatus'][2]['status'] == 'no')
+                        .toList()
+                        .length)]);
         citizen[aa]['happiness'] = citizen[aa]['happiness'] + 15;
         citizen[aa]['happinessstatus'][2]['status'] = 'yes';
       }
     }
 //Well Happiness Effect
-    for(int i=0;i<TownServiceBuilding.town_service_building[4]['effectcitizencount'];i++){
-      if(citizen.where((element) => element['happinessstatus'][3]['status']=='no').toList().length>0) {
-        int aa = citizen.indexOf(citizen.where((element) => element['happinessstatus'][3]['status'] == 'no').toList()[
-        next(0, citizen.where((element) => element['happinessstatus'][3]['status'] == 'no').toList().length)]);
+    for (int i = 0;
+        i < TownServiceBuilding.town_service_building[4]['effectcitizencount'];
+        i++) {
+      if (citizen
+              .where(
+                  (element) => element['happinessstatus'][3]['status'] == 'no')
+              .toList()
+              .length >
+          0) {
+        int aa = citizen.indexOf(
+            citizen
+                    .where((element) =>
+                        element['happinessstatus'][3]['status'] == 'no')
+                    .toList()[
+                next(
+                    0,
+                    citizen
+                        .where((element) =>
+                            element['happinessstatus'][3]['status'] == 'no')
+                        .toList()
+                        .length)]);
         citizen[aa]['happiness'] = citizen[aa]['happiness'] + 15;
         citizen[aa]['happinessstatus'][3]['status'] = 'yes';
       }
     }
-
-
-
   }
 
-  void calculateGlobalHappiness(){
+  void calculateGlobalHappiness() {
     globalHappiness = 0;
     citizen.forEach((element) {
       globalHappiness = globalHappiness + element['happiness'];
@@ -355,8 +561,16 @@ class Citizen {
     globalHappiness = a.toInt();
   }
 
-
-
-
-
+  shelterChecker() {
+    if (citizen.where((element) => element['shelter'] == 'no').isNotEmpty) {
+      citizen
+          .where((element) => element['shelter'] == 'no')
+          .toList()
+          .forEach((element2) {
+        if (citizenCapacity > citizen.length) {
+          element2['shelter'] = 'yes';
+        }
+      });
+    }
+  }
 }

@@ -115,8 +115,8 @@ class TownServiceBuilding extends ChangeNotifier {
       'name': 'GRAVEYARD',
       'progres': true,
       'buildprogres': 0,
-      'quantity': 10,
-      'capacity': 2,
+      'quantity': 1,
+      'capacity': 20,
       'workercount': 1,
       'effectcitizencount': 5,
       'effectrate': 20,
@@ -127,7 +127,6 @@ class TownServiceBuilding extends ChangeNotifier {
       ],
       'totalupgradereq': 80,
       'buildingprosses1': '',
-
       'imagename': 'mezar.png',
       'explanation':
           'Where you bury the passed away citizens. Lack of graveyard or lack of graveyard workers might start a contagious disease in town.'
