@@ -62,7 +62,7 @@ class FoodBuilding extends ChangeNotifier {
       'progres': true,
       'harvest': true,
       'buildprogres': 0,
-      'quantity': 10,
+      'quantity': 1,
       'capacity': 2,
       'capacityperbuilding': 2,
       'workercount': 0,

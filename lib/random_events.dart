@@ -12,12 +12,10 @@ import 'buildings/real_industry_building/real_industry_buildings.dart';
 import 'main.dart';
 
 class RandomEvents {
-  int month = Daycircle.mounth;
-  int evSayisi = TownServiceBuilding.town_service_building[0]['quantity'];
 
-  int toplamHastaneKapasitesi = TownServiceBuilding.town_service_building[3]
-          ['quantity'] *
-      TownServiceBuilding.town_service_building[3]['capacity'];
+
+
+
 
   final _random = new Random();
   int next(min, int max) => min + _random.nextInt(max - min);
@@ -26,8 +24,8 @@ class RandomEvents {
     int prob = next(0, 1001);
     int deciderHot = next(0, 3);
     int deciderCold = next(0, 2);
-    if (prob <= 300) {
-      if (month > 6 && month <= 9) {
+    if (prob <= 700) {
+      if (Daycircle.mounth > 6 && Daycircle.mounth <= 9) {
         if (deciderHot == 0) {
           deprem();
         } else if (deciderHot == 1) {
@@ -46,6 +44,7 @@ class RandomEvents {
   }
 
   deprem() {
+    int evSayisi = TownServiceBuilding.town_service_building[0]['quantity'];
     TownHall.events.add("Earthquake!");
     double yikilacakEvsayisi = evSayisi < 50 ? evSayisi / 10 : evSayisi / 20;
     int gercekYikimSayisi = yikilacakEvsayisi.toInt();
@@ -68,42 +67,74 @@ class RandomEvents {
     int wellKorumaKapasitesi =
         TownServiceBuilding.town_service_building[4]['quantity'] * 4;
 
-    if (wellKorumaKapasitesi < (farmSayisi + orchardSayisi)) {
-      int aciktaKalanlarinSayisi =
-          farmSayisi + orchardSayisi - wellKorumaKapasitesi;
-      int yanacaklarSayisi = next(0, aciktaKalanlarinSayisi + 1);
-      if (yanacaklarSayisi > 0) {
-        int farmOrchardDecider = next(2, 4);
-        FoodBuilding.food_building[farmOrchardDecider]['quantity'] =
-            FoodBuilding.food_building[farmOrchardDecider]['quantity'] -
-                yanacaklarSayisi;
+    int farmOrchardDecider = next(2, 3);
+    if(farmOrchardDecider==2){
+      if (wellKorumaKapasitesi < (farmSayisi)) {
+        int aciktaKalanlarinSayisi =
+            farmSayisi  - wellKorumaKapasitesi;
+        int yanacaklarSayisi = next(0, aciktaKalanlarinSayisi + 1);
+        if (yanacaklarSayisi > 0) {
+          FoodBuilding.food_building[farmOrchardDecider]['quantity'] =
+              FoodBuilding.food_building[farmOrchardDecider]['quantity'] -
+                  yanacaklarSayisi;
 
-        if ((FoodBuilding.food_building[farmOrchardDecider]['quantity'] *
-                FoodBuilding.food_building[farmOrchardDecider]['capacity']) <
-            FoodBuilding.food_building[farmOrchardDecider]['workercount']) {
-          int istenCikarilacaklar = FoodBuilding
-                  .food_building[farmOrchardDecider]['workercount'] -
-              (FoodBuilding.food_building[farmOrchardDecider]['quantity'] *
-                  FoodBuilding.food_building[farmOrchardDecider]['capacity']);
-          if (farmOrchardDecider == 2) {
-            for (int i = 0; i < istenCikarilacaklar; i++) {
-              Citizen.citizen
-                  .where((element) => element['workarea'] == 'FARM FIELD')
-                  .toList()[i]['workfied'] = 'unemployed';
-              Citizen.citizen
-                  .where((element) => element['workarea'] == 'FARM FIELD')
-                  .toList()[i]['workarea'] = 'unemployed';
-            }
+          if ((FoodBuilding.food_building[farmOrchardDecider]['quantity'] *
+              FoodBuilding.food_building[farmOrchardDecider]['capacity']) <
+              FoodBuilding.food_building[farmOrchardDecider]['workercount']) {
+            int istenCikarilacaklar = FoodBuilding
+                .food_building[farmOrchardDecider]['workercount'] -
+                (FoodBuilding.food_building[farmOrchardDecider]['quantity'] *
+                    FoodBuilding.food_building[farmOrchardDecider]['capacity']);
+            FoodBuilding
+                .food_building[farmOrchardDecider]['workercount']= FoodBuilding
+                .food_building[farmOrchardDecider]['workercount']- istenCikarilacaklar;
+              for (int i = 0; i < istenCikarilacaklar; i++) {
+                FoodBuilding.food_building[farmOrchardDecider]['workeroutput'].where((element2) => element2['name']==Citizen.citizen
+                    .where((element) => element['workarea'] == 'FARM FIELD')
+                    .toList()[0]['workfield']).toList()[0]['workercount']--;
+                Citizen.citizen
+                    .where((element) => element['workarea'] == 'FARM FIELD')
+                    .toList()[0]['workfield'] = 'unemployed';
+                Citizen.citizen
+                    .where((element) => element['workarea'] == 'FARM FIELD')
+                    .toList()[0]['workarea'] = 'unemployed';
+              }
+
           }
-          if (farmOrchardDecider == 3) {
-            for (int i = 0; i < istenCikarilacaklar; i++) {
-              Citizen.citizen
-                  .where((element) => element['workarea'] == 'ORCHARD')
-                  .toList()[i]['workfied'] = 'unemployed';
-              Citizen.citizen
-                  .where((element) => element['workarea'] == 'ORCHARD')
-                  .toList()[i]['workarea'] = 'unemployed';
-            }
+        }
+      }
+    }else if(farmOrchardDecider ==3){
+      if (wellKorumaKapasitesi < ( orchardSayisi)) {
+        int aciktaKalanlarinSayisi =
+             orchardSayisi - wellKorumaKapasitesi;
+        int yanacaklarSayisi = next(0, aciktaKalanlarinSayisi + 1);
+        if (yanacaklarSayisi > 0) {
+          FoodBuilding.food_building[farmOrchardDecider]['quantity'] =
+              FoodBuilding.food_building[farmOrchardDecider]['quantity'] -
+                  yanacaklarSayisi;
+
+          if ((FoodBuilding.food_building[farmOrchardDecider]['quantity'] *
+              FoodBuilding.food_building[farmOrchardDecider]['capacity']) <
+              FoodBuilding.food_building[farmOrchardDecider]['workercount']) {
+            int istenCikarilacaklar = FoodBuilding
+                .food_building[farmOrchardDecider]['workercount'] -
+                (FoodBuilding.food_building[farmOrchardDecider]['quantity'] *
+                    FoodBuilding.food_building[farmOrchardDecider]['capacity']);
+            FoodBuilding
+                .food_building[farmOrchardDecider]['workercount']= FoodBuilding
+                .food_building[farmOrchardDecider]['workercount']- istenCikarilacaklar;
+              for (int i = 0; i < istenCikarilacaklar; i++) {
+                FoodBuilding.food_building[farmOrchardDecider]['workeroutput'].where((element2) => element2['name']==Citizen.citizen
+                    .where((element) => element['workarea'] == 'ORCHARD')
+                    .toList()[0]['workfield']).toList()[0]['workercount']--;
+                Citizen.citizen
+                    .where((element) => element['workarea'] == 'ORCHARD')
+                    .toList()[0]['workfield'] = 'unemployed';
+                Citizen.citizen
+                    .where((element) => element['workarea'] == 'ORCHARD')
+                    .toList()[0]['workarea'] = 'unemployed';
+              }
+
           }
         }
       }
@@ -111,6 +142,9 @@ class RandomEvents {
   }
 
   salgin() {
+    int toplamHastaneKapasitesi = TownServiceBuilding.town_service_building[3]
+    ['quantity'] *
+        TownServiceBuilding.town_service_building[3]['capacity'];
     List deaths = [];
     TownHall.events.add("Contagious disease occurred in town");
     int nufus = Citizen.citizen.length;
