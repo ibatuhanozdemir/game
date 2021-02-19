@@ -73,7 +73,7 @@ class TownServiceBuilding extends ChangeNotifier {
       'name': 'HOSPITAL',
       'progres': true,
       'buildprogres': 0,
-      'quantity': 10,
+      'quantity': 2,
       'capacity': 2,
       'workercount': 1,
       'effectcitizencount': 5,
