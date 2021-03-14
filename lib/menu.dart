@@ -39,11 +39,11 @@ class _MyHomePage2State extends State<MyHomePage2>
   @override
   void initState() {
     animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+        AnimationController(value: this, duration: Duration(milliseconds: 500));
     animationController2 =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+        AnimationController(value: this, duration: Duration(milliseconds: 500));
     animationController3 =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+        AnimationController(value: this, duration: Duration(milliseconds: 500));
     degOneTranslationAnimation = TweenSequence([
       TweenSequenceItem<double>(
           tween: Tween<double>(begin: 0.0, end: 0.8), weight: 75.0),
@@ -139,11 +139,11 @@ class _MyHomePage2State extends State<MyHomePage2>
         ),
         Positioned(
           bottom: y1,
-          child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+          Widget: Transform.translate(
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 secodlayerFiveTranslationAnimaytion.value * 30),
-            child: Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(270),
+            value: Transform.translate(
+              Offset: Offset.fromDirection(getRadiansFromDegree(270),
                   secodlayerFiveTranslationAnimaytion.value * -12),
               child: Transform(
                 transform: Matrix4.rotationZ(
@@ -167,11 +167,11 @@ class _MyHomePage2State extends State<MyHomePage2>
         ),
         Positioned(
           bottom: y2,
-          child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+          Widget: Transform.translate(
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 secodlayerSixTranslationAnimaytion.value * 30),
             child: Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(270),
+              Offset: Offset.fromDirection(getRadiansFromDegree(270),
                   secodlayerSixTranslationAnimaytion.value * 12),
               child: Transform(
                 transform: Matrix4.rotationZ(
@@ -200,11 +200,11 @@ class _MyHomePage2State extends State<MyHomePage2>
         ),
         Positioned(
           bottom: y3,
-          child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+          Widget: Transform.translate(
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 secodlayerOneTranslationAnimaytion.value * 30),
             child: Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(270),
+              Offset: Offset.fromDirection(getRadiansFromDegree(270),
                   secodlayerOneTranslationAnimaytion.value * 12),
               child: Transform(
                 transform: Matrix4.rotationZ(
@@ -233,10 +233,10 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(
+          Offset: Offset.fromDirection(
               getRadiansFromDegree(270), degOneTranslationAnimation.value * 75),
           child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 degOneTranslationAnimation.value * 50),
             child: Transform(
               transform: Matrix4.rotationZ(
@@ -261,11 +261,11 @@ class _MyHomePage2State extends State<MyHomePage2>
         ),
         Positioned(
           bottom: y3,
-          child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+          Widget: Transform.translate(
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 secodlayerTwoTranslationAnimaytion.value * 30),
             child: Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(270),
+              Offset: Offset.fromDirection(getRadiansFromDegree(270),
                   secodlayerTwoTranslationAnimaytion.value * 36),
               child: Transform(
                 transform: Matrix4.rotationZ(
@@ -295,11 +295,11 @@ class _MyHomePage2State extends State<MyHomePage2>
         ),
         Positioned(
           bottom: y3,
-          child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+          Widget: Transform.translate(
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 secodlayerThreeTranslationAnimaytion.value * 30),
             child: Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(270),
+              Offset: Offset.fromDirection(getRadiansFromDegree(270),
                   secodlayerThreeTranslationAnimaytion.value * -12),
               child: Transform(
                 transform: Matrix4.rotationZ(
@@ -324,11 +324,11 @@ class _MyHomePage2State extends State<MyHomePage2>
         ),
         Positioned(
           bottom: y3,
-          child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+          Widget: Transform.translate(
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 secodlayerFourTranslationAnimaytion.value * 30),
             child: Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(270),
+              Offset: Offset.fromDirection(getRadiansFromDegree(270),
                   secodlayerFourTranslationAnimaytion.value * -36),
               child: Transform(
                 transform: Matrix4.rotationZ(
@@ -354,10 +354,10 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(
+          Offset: Offset.fromDirection(
               getRadiansFromDegree(270), degOneTranslationAnimation.value * 75),
           child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 degOneTranslationAnimation.value * 50),
             child: Transform(
               transform: Matrix4.rotationZ(
@@ -381,7 +381,7 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(
+          Offset: Offset.fromDirection(
               getRadiansFromDegree(270), degOneTranslationAnimation.value * 70),
           child: Transform(
             transform: Matrix4.rotationZ(
@@ -406,10 +406,10 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(
+          Offset: Offset.fromDirection(
               getRadiansFromDegree(270), degOneTranslationAnimation.value * 143),
           child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 degOneTranslationAnimation.value * 50),
             child: Transform(
               transform: Matrix4.rotationZ(
@@ -433,7 +433,7 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(
+          Offset: Offset.fromDirection(
               getRadiansFromDegree(270), degTwoTranslationAnimation.value * 70),
           child: Transform(
             transform: Matrix4.rotationZ(
@@ -458,10 +458,10 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(
+          Offset: Offset.fromDirection(
               getRadiansFromDegree(270), degOneTranslationAnimation.value * 213),
           child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 degOneTranslationAnimation.value * 50),
             child: Transform(
               transform: Matrix4.rotationZ(
@@ -485,7 +485,7 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(getRadiansFromDegree(270),
+          Offset: Offset.fromDirection(getRadiansFromDegree(270),
               degThreeTranslationAnimation.value * 70),
           child: Transform(
             transform: Matrix4.rotationZ(
@@ -512,10 +512,10 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(
+          Offset: Offset.fromDirection(
               getRadiansFromDegree(270), degOneTranslationAnimation.value * 285),
           child: Transform.translate(
-            offset: Offset.fromDirection(getRadiansFromDegree(180),
+            Offset: Offset.fromDirection(getRadiansFromDegree(180),
                 degOneTranslationAnimation.value * 50),
             child: Transform(
               transform: Matrix4.rotationZ(
@@ -539,7 +539,7 @@ class _MyHomePage2State extends State<MyHomePage2>
           ),
         ),
         Transform.translate(
-          offset: Offset.fromDirection(getRadiansFromDegree(270),
+          Offset: Offset.fromDirection(getRadiansFromDegree(270),
               degFourTranslationAnimation.value * 70),
           child: Transform(
             transform: Matrix4.rotationZ(

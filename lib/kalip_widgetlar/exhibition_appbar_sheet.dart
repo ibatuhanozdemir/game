@@ -52,7 +52,7 @@ class _ExhibitionAppbarSheetState extends State<ExhibitionAppbarSheet>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      vsync: this,
+      value: this,
       duration: Duration(milliseconds: 600),
     );
   }
@@ -70,8 +70,7 @@ class _ExhibitionAppbarSheetState extends State<ExhibitionAppbarSheet>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
+      Listenable: (context, child,_controller) {
         return Stack(
           children: [
             Positioned(
@@ -80,7 +79,7 @@ class _ExhibitionAppbarSheetState extends State<ExhibitionAppbarSheet>
                   MediaQuery.of(context).size.width),
               left: lerp(MediaQuery.of(context).size.width * 0.1, 0),
               top: lerp(MediaQuery.of(context).size.height * 0.01, MediaQuery.of(context).size.height * 0.2),
-              child: GestureDetector(
+              Widget: GestureDetector(
                 onTap: _toggle,
                 onVerticalDragUpdate: _handleDragUpdate,
                 onVerticalDragEnd: _handleDragEnd,
@@ -104,7 +103,7 @@ class _ExhibitionAppbarSheetState extends State<ExhibitionAppbarSheet>
                         width: MediaQuery.of(context).size.width * 0.01,
                         right: 0,
                         top: 0,
-                        child: Text(
+                        Widget: Text(
                           '.',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -114,7 +113,7 @@ class _ExhibitionAppbarSheetState extends State<ExhibitionAppbarSheet>
                         width: MediaQuery.of(context).size.width * 0.9,
                         left: MediaQuery.of(context).size.height * 0.11,
                         top: MediaQuery.of(context).size.height * 0.017,
-                        child: GestureDetector(
+                        Widget: GestureDetector(
                           onTap: () {
                             _toggle();
                           },
@@ -136,7 +135,7 @@ class _ExhibitionAppbarSheetState extends State<ExhibitionAppbarSheet>
       width: 180,
       top: 50 + index.toDouble() * 20,
       left: 0,
-      child: ClipRRect(
+      Widget: ClipRRect(
         child: Text(
             event +
                 " = " +
@@ -153,7 +152,7 @@ class _ExhibitionAppbarSheetState extends State<ExhibitionAppbarSheet>
       width: 180,
       top: 50 + index.toDouble() * 20,
       left: 0,
-      child: ClipRRect(
+      Widget: ClipRRect(
         child: Text(
             event +
                 " = " +
@@ -170,7 +169,7 @@ class _ExhibitionAppbarSheetState extends State<ExhibitionAppbarSheet>
       width: 180,
       top: 30 + index.toDouble() * 20,
       left: 0,
-      child: ClipRRect(
+      Widget: ClipRRect(
         child: Text(
             event +
                 " = " +
@@ -222,7 +221,7 @@ class SheetHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       top: topMargin,
-      child: Text(
+      Widget: Text(
         text,
         style: TextStyle(
           color: Colors.white,

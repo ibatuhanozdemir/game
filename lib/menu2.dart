@@ -30,9 +30,9 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
   @override
   void initState() {
     animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 225));
+        AnimationController(value: this, duration: Duration(milliseconds: 225));
     animationController2 =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 225));
+        AnimationController(value: this, duration: Duration(milliseconds: 225));
 
     degOneTranslationAnimation =
         Tween<double>(begin: 0, end: 1).animate(animationController);
@@ -78,7 +78,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
     return Positioned(
       bottom: 0,
       left: MediaQuery.of(context).size.width * 0.25,
-      child: Stack(
+      Widget: Stack(
         children: <Widget>[
           IgnorePointer(
             child: Container(
@@ -90,11 +90,11 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
           ),
           Positioned(
             bottom: 0,
-            child: Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(0),
+            Widget: Transform.translate(
+              Offset: Offset.fromDirection(getRadiansFromDegree(0),
                   degOneTranslationAnimation.value * 0),
               child: Transform.translate(
-                offset: Offset.fromDirection(getRadiansFromDegree(270),
+                Offset: Offset.fromDirection(getRadiansFromDegree(270),
                     degOneTranslationAnimation.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
@@ -109,15 +109,15 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
           ),
           Positioned(
             bottom: 0,
-            child: Transform.translate(
-              offset: Offset.fromDirection(
+            Widget: Transform.translate(
+              Offset: Offset.fromDirection(
                   getRadiansFromDegree(0),
                   degOneTranslationAnimation.value *
                       MediaQuery.of(context).size.width *
                       0.75 /
                       4),
               child: Transform.translate(
-                offset: Offset.fromDirection(getRadiansFromDegree(270),
+                Offset: Offset.fromDirection(getRadiansFromDegree(270),
                     degOneTranslationAnimation.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
@@ -132,15 +132,15 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
           ),
           Positioned(
             bottom: 0,
-            child: Transform.translate(
-              offset: Offset.fromDirection(
+            Widget: Transform.translate(
+              Offset: Offset.fromDirection(
                   getRadiansFromDegree(0),
                   degOneTranslationAnimation.value *
                       MediaQuery.of(context).size.width *
                       1.5 /
                       4),
               child: Transform.translate(
-                offset: Offset.fromDirection(getRadiansFromDegree(270),
+                Offset: Offset.fromDirection(getRadiansFromDegree(270),
                     degOneTranslationAnimation.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
@@ -158,15 +158,15 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
           ),
           Positioned(
             bottom: 0,
-            child: Transform.translate(
-              offset: Offset.fromDirection(
+            Widget: Transform.translate(
+              Offset: Offset.fromDirection(
                   getRadiansFromDegree(0),
                   degOneTranslationAnimation.value *
                       MediaQuery.of(context).size.width *
                       2.25 /
                       4),
               child: Transform.translate(
-                offset: Offset.fromDirection(getRadiansFromDegree(270),
+                Offset: Offset.fromDirection(getRadiansFromDegree(270),
                     degOneTranslationAnimation.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
@@ -182,10 +182,10 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
             bottom: 0,
             left: MediaQuery.of(context).size.width * 0.75 / 4,
             child: Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(0),
+              Offset: Offset.fromDirection(getRadiansFromDegree(0),
                   secodlayerOneTranslationAnimaytion.value * 0),
               child: Transform.translate(
-                offset: Offset.fromDirection(getRadiansFromDegree(270),
+                Offset: Offset.fromDirection(getRadiansFromDegree(270),
                     secodlayerOneTranslationAnimaytion.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
@@ -198,15 +198,15 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
           Positioned(
             bottom: 0,
             left: MediaQuery.of(context).size.width * 0.75 / 4,
-            child: Transform.translate(
-              offset: Offset.fromDirection(
+            Widget: Transform.translate(
+              Offset: Offset.fromDirection(
                   getRadiansFromDegree(0),
                   secodlayerOneTranslationAnimaytion.value *
                       MediaQuery.of(context).size.width *
                       0.75 /
                       4),
               child: Transform.translate(
-                offset: Offset.fromDirection(getRadiansFromDegree(270),
+                Offset: Offset.fromDirection(getRadiansFromDegree(270),
                     secodlayerOneTranslationAnimaytion.value * 55),
                 child: Button(
                     color: Color(0xffd6d6d6),
@@ -221,7 +221,7 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
           ),
           Positioned(
             bottom: 0,
-            child: Row(
+            Widget: Row(
               children: <Widget>[
                 Button(
                   color: animationController.isCompleted
@@ -255,8 +255,8 @@ class _Menu2State extends State<Menu2> with TickerProviderStateMixin {
                 ),
                 Button(
                   color: Color(0xffd6d6d6),
-                  icon: Icons.emoji_events_sharp,
-                  text: 'Event Log',
+                  icon: Icons.directions_walk,
+                  text: 'Explorer',
                   onTap: () {
                     (context).read(nav).numberswitch(3);
 

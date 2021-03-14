@@ -48,7 +48,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                   ),
                 ),
                 Expanded(
-                  child: Container(
+                  Widget: Container(
                     height: MediaQuery.of(context).size.height * 0.16,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -193,8 +193,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
                     ),
                     onTap: () {
                       showDialog(
-                          context: context,
-                          builder: (context) {
+                          BuildContext: (context) {
                             return InfoAlertIndustry(
                                 context,
                                 IndustryBuilding.industry_building[index]['explanation']);
@@ -279,8 +278,7 @@ class IndstryBuildingWidgeti extends ConsumerWidget {
 Future<void> WorkerAssignIndustryDialog(
     BuildContext context, String workarea, int index) async {
   return await showDialog(
-      context: context,
-      builder: (context) {
+      BuildContext: (context) {
         return AlertDialog(
           contentPadding: EdgeInsets.all(0),
           content: Builder(builder: (context) {
@@ -296,8 +294,7 @@ Future<void> WorkerAssignIndustryDialog(
 Future<void> BuilderAssignIndustryDialog(
     BuildContext context, String workarea) async {
   return await showDialog(
-      context: context,
-      builder: (context) {
+      BuildContext: (context) {
         return AlertDialog(
           contentPadding: EdgeInsets.all(0),
           content: Builder(builder: (context) {
@@ -355,21 +352,21 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Center(child: Text('Assigned Worker')),
+              Widget: Center(child: Text('Assigned Worker')),
             ),
             Expanded(
               flex: 6,
-              child: Container(
+              Widget: Container(
                 child: ListView.builder(
-                    itemBuilder: (_, index) {
+                    IndexedWidgetBuilder: (_, index) {
                       return AssignedWorker(context, index);
                     },
-                    itemCount: employedworker.length),
+                    itemExtent: employedworker.length.toDouble()),
               ),
             ),
             Expanded(
                 flex: 1,
-                child: Center(
+                Widget: Center(
                     child: Text('Assign Worker (' +
                         IndustryBuilding.industry_building[index]['workercount']
                             .toString() +
@@ -379,17 +376,17 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
                         ')'))),
             Expanded(
               flex: 6,
-              child: Container(
+              Widget: Container(
                 child: ListView.builder(
-                    itemBuilder: (_, index) {
+                    IndexedWidgetBuilder: (_, index) {
                       return AssignWorker(context, index);
                     },
-                    itemCount: unemployedworker.length),
+                    itemExtent: unemployedworker.length.toDouble()),
               ),
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(child:Padding(
+              Widget: GestureDetector(child:Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Container(
                   width: MediaQuery.of(context).size.width*0.4,
@@ -431,7 +428,7 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(employedworker[index]['name']),
               ),
@@ -467,7 +464,7 @@ class _WorkerAssigningIndustryState extends State<WorkerAssigningIndustry> {
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(unemployedworker[index]['name']),
               ),
@@ -586,27 +583,27 @@ class _WorkerAssigningIndustryBuilderState
         padding: EdgeInsets.fromLTRB(14, 12, 14, 0),
         child: Column(
           children: <Widget>[
-            Expanded(flex: 1, child: Text('Assigned Worker')),
+            Expanded(flex: 1, Widget: Text('Assigned Worker')),
             Expanded(
               flex: 6,
-              child: ListView.builder(
-                  itemBuilder: (_, index) {
+              Widget: ListView.builder(
+                  IndexedWidgetBuilder: (_, index) {
                     return AssignedWorker(context, index);
                   },
-                  itemCount: employedworker.length),
+                  itemExtent: employedworker.length.toDouble()),
             ),
-            Expanded(flex: 1, child: Text('Assign Worker')),
+            Expanded(flex: 1, Widget: Text('Assign Worker')),
             Expanded(
               flex: 6,
-              child: ListView.builder(
-                  itemBuilder: (_, index) {
+              Widget: ListView.builder(
+                  IndexedWidgetBuilder: (_, index) {
                     return AssignWorker(context, index);
                   },
-                  itemCount: unemployedworker.length),
+                  itemExtent: unemployedworker.length.toDouble()),
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(child:Padding(
+              Widget: GestureDetector(child:Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Container(
                   width: MediaQuery.of(context).size.width*0.4,
@@ -648,7 +645,7 @@ class _WorkerAssigningIndustryBuilderState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(employedworker[index]['name']),
               ),
@@ -683,7 +680,7 @@ class _WorkerAssigningIndustryBuilderState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(unemployedworker[index]['name']),
               ),

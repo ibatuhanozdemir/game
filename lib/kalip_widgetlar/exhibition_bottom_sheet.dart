@@ -54,7 +54,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      vsync: this,
+      value: this,
       duration: Duration(milliseconds: 600),
     );
   }
@@ -72,8 +72,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
+      Listenable: (context, child, _controller) {
         return Stack(
           children: [
             Positioned(
@@ -82,7 +81,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                   MediaQuery.of(context).size.width),
               left: 0,
               bottom: 0,
-              child: GestureDetector(
+              Widget: GestureDetector(
                 onTap: _toggle,
                 onVerticalDragUpdate: _handleDragUpdate,
                 onVerticalDragEnd: _handleDragEnd,
@@ -101,11 +100,11 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                     child: Row(
                       children: [
                         Expanded(
-                          child: Column(
+                          Widget: Column(
                             children: [
                               Expanded(
                                 flex: 10,
-                                child: Stack(
+                                Widget: Stack(
                                   children: <Widget>[
                                     SheetHeader(
                                       fontSize: headerFontSize,
@@ -119,7 +118,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                               ),
                               Expanded(
                                 flex: 3,
-                                child: Stack(
+                                Widget: Stack(
                                   children: <Widget>[
                                     SheetHeader(
                                       fontSize: headerFontSize,
@@ -136,11 +135,11 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                           ),
                         ),
                         Expanded(
-                          child: Column(
+                          Widget: Column(
                             children: [
                               Expanded(
                                 flex: 10,
-                                child: Stack(
+                                Widget: Stack(
 
                                   children: <Widget>[
                                     SheetHeader(
@@ -156,7 +155,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                               ),
                               Expanded(
                                 flex: 13,
-                                child: Stack(
+                                Widget: Stack(
                                   children: <Widget>[
                                     SheetHeader(
                                       text: 'Industry Resources',
@@ -185,7 +184,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                   width: MediaQuery.of(context).size.width * 0.222,
                   left: 17,
                   bottom: 3,
-                  child: GestureDetector(
+                  Widget: GestureDetector(
                     onTap: () {
                       _toggle();
                     },
@@ -199,7 +198,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                         width: MediaQuery.of(context).size.width * 0.01,
                         right: 0,
                         bottom: 0,
-                        child: Text(
+                  Widget: Text(
                           '.',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -219,7 +218,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       width: 180,
       top: 40 + index.toDouble() * 20,
       left: 0,
-      child: ClipRRect(
+      Widget: ClipRRect(
         child: Text(
             event + " = " + "" +FoodResources.food_resource_sublist[index]['count'].toString(),
             style: TextStyle(color: Colors.white)),
@@ -235,7 +234,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       top: 40 + index.toDouble() * 20,
       left: 0,
 
-      child: ClipRRect(
+      Widget: ClipRRect(
         child: Text(
             event +
                 " = " +
@@ -251,7 +250,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       width: 180,
       top: 30 + index.toDouble() * 20,
       left: 0,
-      child: ClipRRect(
+      Widget: ClipRRect(
         child: Text(
             event +
                 " = " +
@@ -267,7 +266,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       width: 180,
       top: 30 + index.toDouble() * 20,
       left: 0,
-      child: ClipRRect(
+      Widget: ClipRRect(
         child: Text(
             event +
                 " = " +
@@ -317,7 +316,7 @@ class SheetHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       top: topMargin,
-      child: Text(
+      Widget: Text(
         text,
         style: TextStyle(
           color: Color(0xFFe19f28),

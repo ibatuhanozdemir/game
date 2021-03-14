@@ -50,7 +50,7 @@ class TownServiceWidget extends ConsumerWidget {
                   width: MediaQuery.of(context).size.width * 0.01,
                 ),
                 Expanded(
-                  child: Container(
+                  Widget: Container(
                     height: MediaQuery.of(context).size.height * 0.16,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -108,7 +108,7 @@ class TownServiceWidget extends ConsumerWidget {
                                               .town_service_building[index]
                                           ['upgradereq'])
                                         Expanded(
-                                          child: Text(
+                                          Widget: Text(
                                             aaa['name'] +
                                                 ':' +
                                                 aaa['count'].toString() +
@@ -137,7 +137,7 @@ class TownServiceWidget extends ConsumerWidget {
                       child: Image.asset('images/info.png'),
                     ),
                     onTap: (){
-                      showDialog(context: context,builder: (context){
+                      showDialog(BuildContext: (context){
                         return InfoAlertTownServices(context, TownServiceBuilding.town_service_building[index]['explanation']);
                       });
                     },
@@ -224,8 +224,7 @@ class TownServiceWidget extends ConsumerWidget {
 Future<void> WorkerAssignTownServiceDialog(
     BuildContext context, String workarea, int index) async {
   return await showDialog(
-      context: context,
-      builder: (context) {
+        BuildContext: (context) {
         return AlertDialog(
           contentPadding: EdgeInsets.all(0),
           content: Builder(builder: (context) {
@@ -241,8 +240,7 @@ Future<void> WorkerAssignTownServiceDialog(
 Future<void> BuilderAssignTownServiceDialog(
     BuildContext context, String workarea) async {
   return await showDialog(
-      context: context,
-      builder: (context) {
+      BuildContext: (context) {
         return AlertDialog(
           contentPadding: EdgeInsets.all(0),
           content: Builder(builder: (context) {
@@ -303,21 +301,21 @@ class _WorkerAssigningTownServiceState
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Center(child: Text('Assigned Worker')),
+              Widget: Center(child: Text('Assigned Worker')),
             ),
             Expanded(
               flex: 6,
-              child: Container(
+              Widget: Container(
                 child: ListView.builder(
-                    itemBuilder: (_, index) {
+                    IndexedWidgetBuilder: (_, index) {
                       return AssignedWorker(context, index);
                     },
-                    itemCount: employedworker.length),
+                    itemExtent: employedworker.length.toDouble()),
               ),
             ),
             Expanded(
                 flex: 1,
-                child: Center(
+                Widget: Center(
                     child: Text('Assign Worker (' +
                         TownServiceBuilding.town_service_building[index]
                                 ['workercount']
@@ -329,17 +327,17 @@ class _WorkerAssigningTownServiceState
                         ')'))),
             Expanded(
               flex: 6,
-              child: Container(
+              Widget: Container(
                 child: ListView.builder(
-                    itemBuilder: (_, index) {
+                    IndexedWidgetBuilder: (_, index) {
                       return AssignWorker(context, index);
                     },
-                    itemCount: unemployedworker.length),
+                    itemExtent: unemployedworker.length.toDouble()),
               ),
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(
+              Widget: GestureDetector(
                 child: Center(child: Text("Done")),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -368,7 +366,7 @@ class _WorkerAssigningTownServiceState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(employedworker[index]['name']),
               ),
@@ -403,7 +401,7 @@ class _WorkerAssigningTownServiceState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(unemployedworker[index]['name']),
               ),
@@ -524,29 +522,29 @@ class _WorkerAssigningTownServiceBuilderState
           children: <Widget>[
             Expanded(
                 flex: 1,
-                child: Text('Assigned Worker')),
+                Widget: Text('Assigned Worker')),
             Expanded(
               flex:6,
-              child: ListView.builder(
-                  itemBuilder: (_, index) {
+              Widget: ListView.builder(
+                  IndexedWidgetBuilder: (_, index) {
                     return AssignedWorker(context, index);
                   },
-                  itemCount: employedworker.length),
+                  itemExtent: employedworker.length.toDouble()),
             ),
             Expanded(
                 flex: 1,
-                child: Text('Assign Worker')),
+                Widget: Text('Assign Worker')),
             Expanded(
               flex: 6,
-              child: ListView.builder(
-                  itemBuilder: (_, index) {
+              Widget: ListView.builder(
+                  IndexedWidgetBuilder: (_, index) {
                     return AssignWorker(context, index);
                   },
-                  itemCount: unemployedworker.length),
+                  itemExtent: unemployedworker.length.toDouble()),
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(
+              Widget: GestureDetector(
                 child: Center(child: Text("Done")),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -576,7 +574,7 @@ class _WorkerAssigningTownServiceBuilderState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(employedworker[index]['name']),
               ),
@@ -611,7 +609,7 @@ class _WorkerAssigningTownServiceBuilderState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(unemployedworker[index]['name']),
               ),

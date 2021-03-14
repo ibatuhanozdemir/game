@@ -22,43 +22,43 @@ class Navigation extends ChangeNotifier {
   navigation() {
     if(index==0){
       return ListView.builder(
-          itemBuilder: (_, index) {
+          IndexedWidgetBuilder: (_, index) {
             return IndstryBuildingWidgeti(index);
           },
-          itemCount: IndustryBuilding.industry_building.length);
+          itemExtent: IndustryBuilding.industry_building.length.toDouble());
     }else if(index==1){
       return ListView.builder(
-          itemBuilder: (_, index) {
+          IndexedWidgetBuilder: (_, index) {
             return FoodBuildingWidgeti(index);
           },
-          itemCount: FoodBuilding.food_building.length);
+          itemExtent: FoodBuilding.food_building.length.toDouble());
     }else if(index==2){
       return ListView.builder(
-          itemBuilder: (_, index) {
+          IndexedWidgetBuilder: (_, index) {
             return citizenWidgeti(index);
           },
-          itemCount: Citizen.citizen.length);
+          itemExtent: Citizen.citizen.length.toDouble());
     }else if(index==3){
       return TownHall();
     }else if(index==4){
 
       return ListView.builder(
-          itemBuilder: (_, index) {
+          IndexedWidgetBuilder: (_, index) {
             return TownServiceWidget(index);
           },
-          itemCount: TownServiceBuilding.town_service_building.length);
+          itemExtent: TownServiceBuilding.town_service_building.length.toDouble());
     }else if(index==5){
       return ListView.builder(
-          itemBuilder: (_, index) {
+          IndexedWidgetBuilder: (_, index) {
             return RealIndustryBuildingWidgeti(index);
           },
-          itemCount: FoodBuilding.food_building.length);
+          itemExtent: FoodBuilding.food_building.length.toDouble());
     }else if(index==6){
       return ListView.builder(
-          itemBuilder: (_, index) {
+          IndexedWidgetBuilder: (_, index) {
             return StorageBuildingWidgeti(index);
           },
-          itemCount: StorageBuilding.storage_building.length);
+          itemExtent: StorageBuilding.storage_building.length.toDouble());
     }
 
 

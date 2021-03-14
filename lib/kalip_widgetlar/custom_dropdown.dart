@@ -15,7 +15,7 @@ CustomDropDowm(this.building_name);
     return Container(
       height: MediaQuery.of(context).size.height * 0.02,
         child: DropdownButtonHideUnderline(
-          child: DropdownButton(
+          Widget: DropdownButton(
 
             value: RealIndustryBuildings.real_industry_building.where((element) => element['name']==building_name).toList()[0]['dropdownitemvalue'],
             items: <DropdownMenuItem<int>>[
@@ -37,7 +37,7 @@ CustomDropDowm(this.building_name);
   Widget CustomDropDownMenuItem(String sub_product_name,int value,String building_name,BuildContext context){
    return DropdownMenuItem(
 
-     child: Container(
+     Widget: Container(
        height: MediaQuery.of(context).size.height * 0.03,
        child: Text(sub_product_name,style: TextStyle(
            fontSize: MediaQuery.of(context)

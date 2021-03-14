@@ -38,7 +38,11 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Padding(
-                            padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.01, 0, MediaQuery.of(context).size.width * 0.01, 0),
+                            padding: EdgeInsets.fromLTRB(
+                                MediaQuery.of(context).size.width * 0.01,
+                                0,
+                                MediaQuery.of(context).size.width * 0.01,
+                                0),
                             child: Container(
                               height: MediaQuery.of(context).size.height * 0.17,
                               width: MediaQuery.of(context).size.width * 0.17,
@@ -52,123 +56,131 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                             ),
                           ),
                           Expanded(
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.2,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black),
-                                color: Color(0xFFe19f28),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Text(
-                                        FoodBuilding.food_building[index]
-                                                ['name'] +
-                                            '( ' +
-                                            FoodBuilding.food_building[index]
-                                                    ['quantity']
-                                                .toString() +
-                                            ' )',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: "Alike",
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.02),
+                            Widget: [
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.2,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: Colors.black),
+                                  color: Color(0xFFe19f28),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(top: 5),
+                                        child: Text(
+                                          FoodBuilding.food_building[index]
+                                                  ['name'] +
+                                              '( ' +
+                                              FoodBuilding.food_building[index]
+                                                      ['quantity']
+                                                  .toString() +
+                                              ' )',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontFamily: "Alike",
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.02),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Divider(
-                                    height: 7,
-                                    thickness: 1,
-                                    indent: MediaQuery.of(context).size.width * 0.1,
-                                    endIndent: MediaQuery.of(context).size.width * 0.1,
-                                    color: Colors.black54,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                    child: Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.12,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 5, 0, 0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Requirements:',
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              0.016),
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    for (Map aaa in FoodBuilding
-                                                            .food_building[
-                                                        index]['upgradereq'])
-                                                      Expanded(
-                                                        child: Text(
-                                                          aaa['name'] +
-                                                              ':' +
-                                                              aaa['count']
-                                                                  .toString() +
-                                                              '  ',
-                                                          style: TextStyle(
-                                                              fontSize: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .height *
-                                                                  0.016),
+                                    Divider(
+                                      height: 7,
+                                      thickness: 1,
+                                      indent:
+                                          MediaQuery.of(context).size.width *
+                                              0.1,
+                                      endIndent:
+                                          MediaQuery.of(context).size.width *
+                                              0.1,
+                                      color: Colors.black54,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.12,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 5, 0, 0),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Requirements:',
+                                                    style: TextStyle(
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.016),
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      for (Map aaa in FoodBuilding
+                                                              .food_building[
+                                                          index]['upgradereq'])
+                                                        Expanded(
+                                                          Widget: Text(
+                                                            aaa['name'] +
+                                                                ':' +
+                                                                aaa['count']
+                                                                    .toString() +
+                                                                '  ',
+                                                            style: TextStyle(
+                                                                fontSize: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    0.016),
+                                                          ),
                                                         ),
-                                                      ),
-                                                  ],
-                                                ),
-                                              ],
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          Center(
-                                            child: Text(
-                                              "Employee: " +
-                                                  FoodBuilding
-                                                      .food_building[index]
-                                                          ['workercount']
-                                                      .toString(),
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.016),
-                                            ),
-                                          )
-                                        ],
+                                            Center(
+                                              child: Text(
+                                                "Employee: " +
+                                                    FoodBuilding
+                                                        .food_building[index]
+                                                            ['workercount']
+                                                        .toString(),
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.016),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                           Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -181,8 +193,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                                   ),
                                   onTap: () {
                                     showDialog(
-                                        context: context,
-                                        builder: (context) {
+                                        BuildContext: (context) {
                                           return InfoAlertFood(
                                               context,
                                               FoodBuilding.food_building[index]
@@ -340,7 +351,11 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.01, 0, MediaQuery.of(context).size.width * 0.01, 0),
+                        padding: EdgeInsets.fromLTRB(
+                            MediaQuery.of(context).size.width * 0.01,
+                            0,
+                            MediaQuery.of(context).size.width * 0.01,
+                            0),
                         child: Container(
                           height: MediaQuery.of(context).size.height * 0.17,
                           width: MediaQuery.of(context).size.width * 0.17,
@@ -354,7 +369,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                         ),
                       ),
                       Expanded(
-                        child: Container(
+                        Widget: Container(
                           height: MediaQuery.of(context).size.height * 0.18,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -387,12 +402,12 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                                 height: 7,
                                 thickness: 1,
                                 indent: MediaQuery.of(context).size.width * 0.1,
-                                endIndent: MediaQuery.of(context).size.width * 0.1,
+                                endIndent:
+                                    MediaQuery.of(context).size.width * 0.1,
                                 color: Colors.black54,
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                                 child: Container(
                                   height:
                                       MediaQuery.of(context).size.height * 0.09,
@@ -427,7 +442,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                                                         .food_building[index]
                                                     ['upgradereq'])
                                                   Expanded(
-                                                    child: Text(
+                                                    Widget: Text(
                                                       aaa['name'] +
                                                           ':' +
                                                           aaa['count']
@@ -495,8 +510,7 @@ class FoodBuildingWidgeti extends ConsumerWidget {
                               ),
                               onTap: () {
                                 showDialog(
-                                    context: context,
-                                    builder: (context) {
+                                    BuildContext: (context) {
                                       return InfoAlertFood(
                                           context,
                                           FoodBuilding.food_building[index]
@@ -634,7 +648,10 @@ class FoodField extends ConsumerWidget {
           ),
           Column(
             children: [
-              Text(field_name.toUpperCase(),style: TextStyle(color: Color(0xFFe19f28)),),
+              Text(
+                field_name.toUpperCase(),
+                style: TextStyle(color: Color(0xFFe19f28)),
+              ),
               Container(
                   width: MediaQuery.of(context).size.width * 0.65,
                   child: CustomProductionProgressIndicator(production_progress,
@@ -670,8 +687,7 @@ class FoodField extends ConsumerWidget {
 Future<void> WorkerAssignFoodDialog(
     BuildContext context, String workarea, int index) async {
   return await showDialog(
-      context: context,
-      builder: (context) {
+      BuildContext: (context) {
         return AlertDialog(
           contentPadding: EdgeInsets.all(0),
           content: Builder(builder: (context) {
@@ -687,8 +703,7 @@ Future<void> WorkerAssignFoodDialog(
 Future<void> BuilderAssignFoodDialog(
     BuildContext context, String workarea) async {
   return await showDialog(
-      context: context,
-      builder: (context) {
+      BuildContext: (context) {
         return AlertDialog(
           contentPadding: EdgeInsets.all(0),
           content: Builder(builder: (context) {
@@ -746,25 +761,25 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Center(child: Text('Assigned Worker')),
+              Widget: Center(child: Text('Assigned Worker')),
             ),
             Expanded(
               flex: 6,
-              child: Container(
+              Widget: Container(
                 child: ListView.builder(
-                    itemBuilder: (_, index) {
+                    IndexedWidgetBuilder: (_, index) {
                       return AssignedWorker(
                           context,
                           index,
                           employedworker[index]['workarea'],
                           employedworker[index]['workfield']);
                     },
-                    itemCount: employedworker.length),
+                    itemExtent: employedworker.length.toDouble()),
               ),
             ),
             Expanded(
                 flex: 1,
-                child: Center(
+                Widget: Center(
                     child: Text('Assign Worker (' +
                         FoodBuilding.food_building[index]['workercount']
                             .toString() +
@@ -774,36 +789,34 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
                         ')'))),
             Expanded(
               flex: 6,
-              child: Container(
+              Widget: Container(
                 child: ListView.builder(
-                    itemBuilder: (_, index) {
+                    IndexedWidgetBuilder: (_, index) {
                       return AssignWorker(
                           context, index, unemployedworker[index]['workarea']);
                     },
-                    itemCount: unemployedworker.length),
+                    itemExtent: unemployedworker.length.toDouble()),
               ),
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(child:Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Container(
-                  width: MediaQuery.of(context).size.width*0.4,
-
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.black),
-                    color: Color(0xFFe19f28),
+              Widget: GestureDetector(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black),
+                      color: Color(0xFFe19f28),
+                    ),
+                    child: Center(child: Text("Done")),
                   ),
-
-                  child: Center(child: Text("Done")),
                 ),
-              ),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true).pop('dialog');
                 },
               ),
-
             )
           ],
         ),
@@ -825,7 +838,7 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
                 width: MediaQuery.of(context).size.height * 0.01,
               ),
               Expanded(
-                child: Container(
+                Widget: Container(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: Text(employedworker[index]['name']),
                 ),
@@ -876,7 +889,7 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
                 width: MediaQuery.of(context).size.height * 0.01,
               ),
               Expanded(
-                child: Container(
+                Widget: Container(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: Text(unemployedworker[index]['name']),
                 ),
@@ -938,10 +951,14 @@ class _WorkerAssigningFoodState extends State<WorkerAssigningFood> {
   }
 
   void eleme() {
-    employedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
+    employedworker = Citizen.citizen
+        .where((element2) => element2['age'] >= calisma_yasi)
+        .toList()
         .where((element) => (element['workarea'] == workarea))
         .toList();
-    unemployedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
+    unemployedworker = Citizen.citizen
+        .where((element2) => element2['age'] >= calisma_yasi)
+        .toList()
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
     loading = true;
@@ -992,45 +1009,43 @@ class _WorkerAssigningFoodBuilderState
         padding: EdgeInsets.fromLTRB(14, 12, 14, 0),
         child: Column(
           children: <Widget>[
-            Expanded(flex: 1, child: Text('Assigned Worker')),
+            Expanded(flex: 1, Widget: Text('Assigned Worker')),
             Expanded(
               flex: 6,
-              child: ListView.builder(
-                  itemBuilder: (_, index) {
+              Widget: ListView.builder(
+                  IndexedWidgetBuilder: (_, index) {
                     return AssignedWorker(context, index);
                   },
-                  itemCount: employedworker.length),
+                  itemExtent: employedworker.length.toDouble()),
             ),
-            Expanded(flex: 1, child: Text('Assign Worker')),
+            Expanded(flex: 1, Widget: Text('Assign Worker')),
             Expanded(
               flex: 6,
-              child: ListView.builder(
-                  itemBuilder: (_, index) {
+              Widget: ListView.builder(
+                  IndexedWidgetBuilder: (_, index) {
                     return AssignWorker(context, index);
                   },
-                  itemCount: unemployedworker.length),
+                  itemExtent: unemployedworker.length.toDouble()),
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(child:Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Container(
-                  width: MediaQuery.of(context).size.width*0.4,
-
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.black),
-                    color: Color(0xFFe19f28),
+              Widget: GestureDetector(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black),
+                      color: Color(0xFFe19f28),
+                    ),
+                    child: Center(child: Text("Done")),
                   ),
-
-                  child: Center(child: Text("Done")),
                 ),
-              ),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true).pop('dialog');
                 },
               ),
-
             )
           ],
         ),
@@ -1054,7 +1069,7 @@ class _WorkerAssigningFoodBuilderState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(employedworker[index]['name']),
               ),
@@ -1089,7 +1104,7 @@ class _WorkerAssigningFoodBuilderState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(unemployedworker[index]['name']),
               ),
@@ -1131,10 +1146,14 @@ class _WorkerAssigningFoodBuilderState
   }
 
   void eleme(String workarea_name) {
-    employedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
+    employedworker = Citizen.citizen
+        .where((element2) => element2['age'] >= calisma_yasi)
+        .toList()
         .where((element) => (element['workarea'] == workarea_name))
         .toList();
-    unemployedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
+    unemployedworker = Citizen.citizen
+        .where((element2) => element2['age'] >= calisma_yasi)
+        .toList()
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
 

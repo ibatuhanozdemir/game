@@ -20,7 +20,6 @@ void main() {
   runApp(ProviderScope(child: MaterialApp(title: 'river', home: MyApp())));
 }
 
-
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -69,13 +68,8 @@ class _MyAppState extends State<MyApp> {
                         fit: BoxFit.contain,
                       ),
               ),
-              RaisedButton(
-                child: Text(
-                  "Tab bar tamam ama altındaki widgetlar yordu biraz. Onları da bir tek liste haline getiricem",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontFamily: "Alike"),
-                ),
-                onPressed: () async {
+              ElevatedButton(
+                VoidCallback: () async {
                   dynamic result2 = await SaveSystem().getResources();
                   context.read(asd3).startTimer();
                   if (result2 == null) {
@@ -85,6 +79,9 @@ class _MyAppState extends State<MyApp> {
                         MaterialPageRoute(builder: (context) => MyApp2()));
                   }
                 },
+                key: Key(
+                  "Tab bar tamam ama altındaki widgetlar yordu biraz. Onları da bir tek liste haline getiricem",
+                  ),
               ),
             ],
           ),
@@ -101,15 +98,15 @@ final real_industry_buildings_provider =
     ChangeNotifierProvider((ref) => RealIndustryBuildings());
 final town = ChangeNotifierProvider((ref) => TownServiceBuilding());
 final food_building_provider = ChangeNotifierProvider((ref) => FoodBuilding());
-final int calisma_yasi =15;
-final storage_building_provider = ChangeNotifierProvider((ref) => StorageBuilding());
-
+final int calisma_yasi = 15;
+final storage_building_provider =
+    ChangeNotifierProvider((ref) => StorageBuilding());
 
 class MyApp2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final navWatch = watch(nav);
-watch(asd3);
+    watch(asd3);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0XFF99997A),
@@ -119,7 +116,7 @@ watch(asd3);
                 top: MediaQuery.of(context).size.height * 0.2,
                 width: MediaQuery.of(context).size.width,
                 bottom: MediaQuery.of(context).size.height * 0.078,
-                child: navWatch.navigation()),
+                Widget: navWatch.navigation()),
             Menu2(),
             ExhibitionBottomSheet(),
             CustomAppBar(),

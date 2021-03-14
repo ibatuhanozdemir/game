@@ -44,15 +44,15 @@ class _SecondLayerCustomAppBar2State extends State<SecondLayerCustomAppBar2>
             body: TabBarView(
               children: [
                 ListView.builder(
-                    itemBuilder: (_, index) {
+                    IndexedWidgetBuilder: (_, index) {
                       return citizenWidgeti(index);
                     },
-                    itemCount: Citizen.citizen.length),
+                    itemExtent: Citizen.citizen.length.toDouble()),
                 ListView.builder(
-                    itemBuilder: (_, index) {
+                    IndexedWidgetBuilder: (_, index) {
                       return FoodBuildingWidgeti(index);
                     },
-                    itemCount: FoodBuilding.food_building.length),
+                    itemExtent: FoodBuilding.food_building.length.toDouble()),
               ],
             ),
           ),
@@ -88,7 +88,7 @@ class citizenWidgeti extends StatelessWidget {
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(Citizen.citizen[index]['name']),
               ),
@@ -97,7 +97,7 @@ class citizenWidgeti extends StatelessWidget {
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(Citizen.citizen[index]['happiness'].toString()),
               ),
@@ -164,8 +164,7 @@ Future<void> showInformationDialog3(
     String tool,
     String cloth) async {
   return await showDialog(
-      context: context,
-      builder: (context) {
+      BuildContext: (context) {
         return AlertDialog(
           contentPadding: EdgeInsets.all(0),
           content: Builder(builder: (context) {
@@ -215,7 +214,7 @@ class CitizenInfo extends StatelessWidget {
           children: [
             Expanded(
               flex: 10,
-              child: Column(
+              Widget: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -236,7 +235,7 @@ class CitizenInfo extends StatelessWidget {
 
               Expanded(
                 flex: 1,
-                child: GestureDetector(child:Padding(
+                Widget: GestureDetector(child:Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.5,

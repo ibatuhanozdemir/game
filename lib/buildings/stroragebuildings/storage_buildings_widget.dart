@@ -8,7 +8,6 @@ import 'package:game/worker/citizen.dart';
 
 import '../../main.dart';
 
-
 class StorageBuildingWidgeti extends ConsumerWidget {
   @override
   int index;
@@ -43,19 +42,18 @@ class StorageBuildingWidgeti extends ConsumerWidget {
                       image: DecorationImage(
                         image: AssetImage('images/' +
                             StorageBuilding.storage_building[index]
-                            ['imagename']),
+                                ['imagename']),
                       ),
                     ),
                   ),
                 ),
                 Expanded(
-                  child: Container(
+                  Widget: Container(
                     height: MediaQuery.of(context).size.height * 0.16,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black),
-                      color: Color(0xFFe19f28),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.black),
+                        color: Color(0xFFe19f28)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -63,8 +61,7 @@ class StorageBuildingWidgeti extends ConsumerWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: Text(
-                              StorageBuilding.storage_building[index]
-                              ['name'] +
+                              StorageBuilding.storage_building[index]['name'] +
                                   ' ( ' +
                                   StorageBuilding.storage_building[index]
                                   ['quantity']
@@ -133,11 +130,11 @@ class StorageBuildingWidgeti extends ConsumerWidget {
                     ),
                     onTap: () {
                       showDialog(
-                          context: context,
-                          builder: (context) {
+                          BuildContext: (context) {
                             return InfoAlertStorage(
                                 context,
-                                StorageBuilding.storage_building[index]['explanation']);
+                                StorageBuilding.storage_building[index]
+                                    ['explanation']);
                           });
                     },
                   ),
@@ -146,61 +143,63 @@ class StorageBuildingWidgeti extends ConsumerWidget {
                   ),
                   StorageBuilding.storage_building[index]['progres']
                       ? GestureDetector(
-                      child: Container(
-                          height: MediaQuery.of(context).size.width * 0.07,
-                          child: Image.asset('images/build.png')),
-                      onTap: () {
-                        context.read(storage_building_provider).buildstart(index);
-                      })
+                          child: Container(
+                              height: MediaQuery.of(context).size.width * 0.07,
+                              child: Image.asset('images/build.png')),
+                          onTap: () {
+                            context
+                                .read(storage_building_provider)
+                                .buildstart(index);
+                          })
                       : GestureDetector(
-                      child: Container(
-                          height: MediaQuery.of(context).size.width * 0.07,
-                          child: Image.asset('images/addperson.png')),
-                      onTap: () {
-                        BuilderAssignStorageDialog(
-                            context,
-                            'builder' +
-                                StorageBuilding.storage_building[index]
-                                ['name']);
-                      }),
+                          child: Container(
+                              height: MediaQuery.of(context).size.width * 0.07,
+                              child: Image.asset('images/addperson.png')),
+                          onTap: () {
+                            BuilderAssignStorageDialog(
+                                context,
+                                'builder' +
+                                    StorageBuilding.storage_building[index]
+                                        ['name']);
+                          }),
                   Padding(
                     padding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                     child: StorageBuilding.storage_building[index]['progres']
                         ? Container(
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.17,
-                    )
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width * 0.17,
+                          )
                         : Container(
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width * 0.17,
-                        child: Stack(children: [
-                          LinearProgressIndicator(
-                            minHeight:
-                            MediaQuery.of(context).size.height * 0.02,
-                            backgroundColor: Colors.red,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Colors.amber,
-                            ),
-                            value: StorageBuilding.storage_building[index]
-                            ['buildprogres'] /
-                                StorageBuilding.storage_building[index]
-                                ['totalupgradereq'],
-                          ),
-                          Text(
-                              StorageBuilding.storage_building[index]
-                              ['buildingprosses1'] +
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width * 0.17,
+                            child: Stack(children: [
+                              LinearProgressIndicator(
+                                minHeight:
+                                    MediaQuery.of(context).size.height * 0.02,
+                                backgroundColor: Colors.red,
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.amber,
+                                ),
+                                value: StorageBuilding.storage_building[index]
+                                        ['buildprogres'] /
+                                    StorageBuilding.storage_building[index]
+                                        ['totalupgradereq'],
+                              ),
+                              Text(
                                   StorageBuilding.storage_building[index]
-                                  ['buildprogres']
-                                      .toString() +
-                                  '/' +
-                                  StorageBuilding.storage_building[index]
-                                  ['totalupgradereq']
-                                      .toString(),
-                              style: TextStyle(
-                                  fontSize:
-                                  MediaQuery.of(context).size.height *
-                                      0.016)),
-                        ])),
+                                          ['buildingprosses1'] +
+                                      StorageBuilding.storage_building[index]
+                                              ['buildprogres']
+                                          .toString() +
+                                      '/' +
+                                      StorageBuilding.storage_building[index]
+                                              ['totalupgradereq']
+                                          .toString(),
+                                  style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              0.016)),
+                            ])),
                   )
                 ]),
               ],
@@ -212,12 +211,10 @@ class StorageBuildingWidgeti extends ConsumerWidget {
   }
 }
 
-
 Future<void> BuilderAssignStorageDialog(
     BuildContext context, String workarea) async {
   return await showDialog(
-      context: context,
-      builder: (context) {
+      BuildContext: (context) {
         return AlertDialog(
           contentPadding: EdgeInsets.all(0),
           content: Builder(builder: (context) {
@@ -229,7 +226,6 @@ Future<void> BuilderAssignStorageDialog(
         );
       });
 }
-
 
 class WorkerAssigningStorageBuilder extends StatefulWidget {
   BuildContext context;
@@ -275,45 +271,43 @@ class _WorkerAssigningStorageBuilderState
         padding: EdgeInsets.fromLTRB(14, 12, 14, 0),
         child: Column(
           children: <Widget>[
-            Expanded(flex: 1, child: Text('Assigned Worker')),
+            Expanded(flex: 1, Widget: Text('Assigned Worker')),
             Expanded(
               flex: 6,
-              child: ListView.builder(
-                  itemBuilder: (_, index) {
+              Widget: ListView.builder(
+                  IndexedWidgetBuilder: (_, index) {
                     return AssignedWorker(context, index);
                   },
-                  itemCount: employedworker.length),
+                  itemExtent: employedworker.length.toDouble()),
             ),
-            Expanded(flex: 1, child: Text('Assign Worker')),
+            Expanded(flex: 1, Widget: Text('Assign Worker')),
             Expanded(
               flex: 6,
-              child: ListView.builder(
-                  itemBuilder: (_, index) {
+              Widget: ListView.builder(
+                  IndexedWidgetBuilder: (_, index) {
                     return AssignWorker(context, index);
                   },
-                  itemCount: unemployedworker.length),
+                  itemExtent: unemployedworker.length.toDouble()),
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(child:Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Container(
-                  width: MediaQuery.of(context).size.width*0.4,
-
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.black),
-                    color: Color(0xFFe19f28),
+              Widget: GestureDetector(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black),
+                      color: Color(0xFFe19f28),
+                    ),
+                    child: Center(child: Text("Done")),
                   ),
-
-                  child: Center(child: Text("Done")),
                 ),
-              ),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true).pop('dialog');
                 },
               ),
-
             )
           ],
         ),
@@ -337,7 +331,7 @@ class _WorkerAssigningStorageBuilderState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(employedworker[index]['name']),
               ),
@@ -372,7 +366,7 @@ class _WorkerAssigningStorageBuilderState
               width: MediaQuery.of(context).size.height * 0.01,
             ),
             Expanded(
-              child: Container(
+              Widget: Container(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Text(unemployedworker[index]['name']),
               ),
@@ -414,10 +408,14 @@ class _WorkerAssigningStorageBuilderState
   }
 
   void eleme(String workarea_name) {
-    employedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
+    employedworker = Citizen.citizen
+        .where((element2) => element2['age'] >= calisma_yasi)
+        .toList()
         .where((element) => (element['workarea'] == workarea_name))
         .toList();
-    unemployedworker = Citizen.citizen.where((element2) => element2['age']>=calisma_yasi).toList()
+    unemployedworker = Citizen.citizen
+        .where((element2) => element2['age'] >= calisma_yasi)
+        .toList()
         .where((element) => (element['workarea'] == 'unemployed'))
         .toList();
 

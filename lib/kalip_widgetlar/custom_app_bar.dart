@@ -35,7 +35,7 @@ class CustomAppBar extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Column(
+                Widget: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -71,7 +71,7 @@ class CustomAppBar extends ConsumerWidget {
                 width: 2,
               ),
               Expanded(
-                child: Column(
+                Widget: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -99,7 +99,7 @@ class CustomAppBar extends ConsumerWidget {
                 width: 2,
               ),
               Expanded(
-                child: Column(
+                Widget: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

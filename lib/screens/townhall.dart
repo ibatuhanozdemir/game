@@ -14,7 +14,7 @@ class TownHall extends ConsumerWidget {
     return Column(
       children: [
         Expanded(
-          child: Container(
+          Widget: Container(
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: Colors.brown,
@@ -43,11 +43,11 @@ class TownHall extends ConsumerWidget {
                     height: MediaQuery.of(context).size.height * 0.01,
                   ),
                   Expanded(
-                    child: ListView.builder(
-                        itemBuilder: (_, index) {
+                    Widget: ListView.builder(
+                        IndexedWidgetBuilder: (_, index) {
                           return Events(index);
                         },
-                        itemCount: events.length),
+                        itemExtent: events.length.toDouble()),
                   )
                 ],
               ),
